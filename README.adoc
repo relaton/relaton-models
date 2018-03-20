@@ -3,6 +3,9 @@
 These bibliographic models are developed to consolidate and standardize
 the data models used for bibliographic and citation purposes.
 
+These models are meant to be fully compatible with ISO 690 and
+ISO TC 46's (and SC 4, SC 9) work on bibliography.
+
 They are used extensively in the following projects as containers
 for bibliographic data management and for managing document metadata:
 
