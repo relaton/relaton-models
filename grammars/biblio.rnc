@@ -1,0 +1,623 @@
+# instantiations of this grammar may replace leaf strings
+# with more elaborated types; e.g. title (text) replaced with
+# title-main, title-intro, title-part; type replaced with
+# enum.
+#
+# some renaming at leaf nodes is permissible
+#
+# obligations can change both from optional to mandatory,
+# and from mandatory to optional; optional elements may
+# be omitted; freely positioned alternatives may be replaced
+# with strict ordering
+#
+# DO NOT introduce a namespace here. We do not want a distinct namespace
+# for these elements, and a distinct namespace for any grammar inheriting
+# these elements; we just want one namespace for any child grammars
+# of this.
+
+grammar {
+
+start = standard-document
+
+standard-document =
+element standard-document {
+  bibdata, version?, sections+, annex*, references*
+}
+
+bibdata =
+  element bibdata { BibData }
+
+docrelation =
+  element relation {
+    attribute type { 
+      ( "parent" | "child" | "obsoletes" | "updates" | "complements" | "derivedFrom" |
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" ) },
+       element bibitem { BibliographicItem },
+       locality*      
+}
+
+status =
+  element status { FormattedString }
+
+language =
+  element language { text }
+## ISO-639
+
+script =
+  element script { text }
+## ISO-15924: Latn
+
+version =
+  element version {
+    edition?, revision-date?, version*
+}
+
+edition = element edition { xsd:int }
+revision-date = element revision-date { xsd:date }
+version = element version { text }
+
+sections =
+  element sections {
+    ( content | clause | terms | symbols-abbrevs )+
+}
+
+symbols-abbrevs =
+  element symbols-abbrevs {
+    attribute id { xsd:ID }?,
+    section-title?,
+    dl
+}
+
+section-title =
+  element title { text }
+
+content =
+  element content { Content-Section }
+
+content-subsection =
+  element subsection { Content-Section }
+
+Content-Section =
+    attribute id { xsd:ID }?,
+    section-title?,
+    ( (BasicBlock+, note*) |
+      content-subsection+ )
+
+clause =
+  element clause { Clause-Section }
+
+Clause-Section =
+    attribute id { xsd:ID }?,
+    section-title?,
+    (
+      ( BasicBlock+, note* ) |
+       clause-subsection+
+    )
+
+clause-subsection =
+  element subsection { Clause-Section }
+
+annex =
+  element annex {
+    attribute id { xsd:ID }?,
+    attribute obligation { ( "normative" | "informative" ) },
+    section-title?,
+    ( ( BasicBlock+, note* ) | clause-subsection+ )
+}
+
+references =
+  element references {
+    attribute id { xsd:ID }?,
+    section-title?,
+    bibitem*
+  }
+
+terms =
+  element terms {
+    attribute id { xsd:ID }?,
+    term+
+  }
+
+term =
+  element term {
+    attribute id { xsd:ID }?,
+    preferred+, admitted*, deprecates*,
+    termdomain?, definition, termnote*, termexample*, termsource*
+  }
+
+preferred =
+  element preferred { TextElement+ }
+
+admitted =
+  element admitted { TextElement+ }
+
+deprecates =
+  element deprecates { TextElement+ }
+
+termdomain =
+  element domain { TextElement+ }
+
+definition =
+  element definition {
+    ( paragraph )
+  }
+
+termnote =
+  element termnote { 
+    attribute id { xsd:ID },
+paragraph }
+
+termexample =
+  element termexample { 
+    attribute id { xsd:ID },
+BasicBlock }
+
+termsource =
+  element termsource {
+    attribute status { ( "identical" | "modified" ) },
+    origin, modification?
+}
+
+origin =
+  element origin { erefType }
+
+modification =
+  element modification { paragraph }
+
+BasicBlock =  paragraph-with-footnote | table | formula | admonition | ol | ul | dl | figure |
+  quote | sourcecode | example | review
+
+paragraph =
+  element p { ParagraphType }
+
+Alignments = ( "left" | "right" | "center" | "justified" )
+
+ParagraphType =
+    attribute id { xsd:ID },
+    attribute align { Alignments }?,
+   ( TextElement )*, note*
+
+paragraph-with-footnote =
+  element p {
+    attribute id { xsd:ID },
+    attribute align { Alignments }?,
+   ( TextElement | fn  )*, note*
+}
+
+note =
+  element note {
+    attribute id { xsd:ID },
+    paragraph-with-footnote+
+  }
+
+
+review =
+  element review {
+  attribute id { xsd:ID },
+  attribute reviewer { text },
+  attribute date { xsd:date }?,
+  attribute from { xsd:IDREF },
+  attribute to { xsd:IDREF }?,
+  paragraph+
+}
+
+formula =
+  element formula {
+    attribute id { xsd:ID },
+    stem, dl?, note*
+}
+
+quote =
+  element quote {
+    attribute id { xsd:ID },
+    attribute alignment { Alignments }?,
+    quote-source?,
+    quote-author?,
+    paragraph-with-footnote+,
+    note*
+}
+
+quote-source =
+  element source { erefType }
+
+quote-author =
+  element author { text }
+
+sourcecode =
+  element sourcecode {
+    attribute id { xsd:ID },
+    tname?, ( text | callout )+, annotation*, note*
+  }
+
+table =
+  element table {
+    attribute id { xsd:ID },
+    tname?, thead?, tbody, tfoot?, table-note*, dl?
+  }
+
+tname = element name { text }
+thead = element thead { tr }
+tfoot = element tfoot { tr }
+tbody = element tbody { tr+ }
+
+table-note = element note { paragraph }
+
+tr =
+  element tr { ( td | th )+ }
+
+td =
+  element td {
+    attribute colspan { text }?,
+    attribute rowspan { text }?,
+    attribute align { "left" | "right" | "center" }?,
+    (
+      (TextElement )* |
+      paragraph-with-footnote+
+    )
+}
+
+th =
+  element th {
+    attribute colspan { text }?,
+    attribute rowspan { text }?,
+    attribute align { "left" | "right" | "center" }?,
+    (
+      (TextElement )* |
+      paragraph-with-footnote+
+    )
+}
+
+example =
+  element example {
+    attribute id { xsd:ID },
+    ( formula | ul | ol | dl | quote | sourcecode | paragraph-with-footnote )+,
+    note*
+}
+
+admonition =
+  element admonition {
+    attribute type { ( "warning" | "note" | "tip" | "important" | "caution" ) },
+    attribute id { xsd:ID },
+    paragraph-with-footnote*,
+    note*
+  }
+
+figure =
+  element figure {
+    attribute id { xsd:ID },
+     source?, tname?, ( figure+ |  ( TextElement*, note*, dl? ) )
+  }
+
+TextElement =
+  text | em | eref | strong | stem | sub | sup | tt |
+  strike | smallcap | xref | br | hyperlink | hr | pagebreak | bookmark
+
+source = element source { xsd:anyURI }
+
+em = element em { text }
+strong = element strong { text }
+tt = element tt { text }
+sub = element sub { text }
+sup = element sup { text }
+strike = element strike { text }
+smallcap = element smallcap { text }
+
+br = element br { empty }
+hr = element hr { empty }
+pagebreak = element pagebreak { empty }
+
+# bare ID element, used for referencing arbitrary spans of text
+bookmark =
+  element bookmark {
+  attribute id { xsd:ID },
+  empty
+}
+
+ReferenceFormat = ( "external" | "inline" | "footnote" | "callout" )
+
+eref =
+  element eref { erefType }
+
+erefType = 
+    attribute normative { xsd:boolean }?,
+    attribute citeas { text },
+    attribute type { ReferenceFormat },
+    CitationType,
+    text
+
+hyperlink =
+  element link {
+    attribute target { xsd:anyURI },
+    attribute type { ReferenceFormat },
+    text
+}
+
+xref =
+  element xref {
+     attribute target { xsd:IDREF },
+     attribute type { ReferenceFormat },
+     text
+}
+
+fn =
+  element fn {
+    attribute reference { text },
+    paragraph+
+}
+# This is xref with fixed @type="footnote", and @target built in as paragraph+
+# @reference replaces ReferenceElement/text
+# so <fn reference="2"><p>This is a footnote</p></fn>
+# corresponds to 
+# <eref type="footnote" target="fn2">2</xref> <p id="fn2">This is a footnote</p>
+
+callout =
+  element callout {
+    attribute target { xsd:IDREF },
+    text
+  }
+
+# This is xref with fixed @type="callout"; the target by convention is in an annotation in the same source code snippet
+# so <callout target="xyz">1</callout>
+# corresponds to <xref type="callout" target="xyz">1</xref>
+
+image =
+  element image {
+    attribute id { xsd:ID },
+    attribute src { xsd:anyURI }?,
+    attribute imagetype { ("SVG" | "JPEG" | "GIF" | "PNG" | "PDF" ) },
+    attribute width {xsd:int}?,
+    attribute height {xsd:int}? 
+}
+
+stem =
+  element stem {
+    attribute type { "MathML" | "AsciiMath" },
+    text
+}
+
+annotation =
+  element annotation {
+    attribute id { xsd:ID },
+    paragraph
+}
+
+ul =
+  element ul {
+    attribute id { xsd:ID },
+    li+, note*
+}
+
+li =
+  element li { paragraph-with-footnote+ }
+
+ol =
+  element ol {
+    attribute id { xsd:ID },
+    attribute type { ( "roman" | "alphabet" | "arabic" | 
+                       "roman_upper" | "alphabet_upper" ) },
+    li+, note*
+}
+
+dl =
+  element dl {
+    attribute id { xsd:ID },
+    (dt, dd)+, note*
+}
+
+dt =
+  element dt { TextElement }
+
+dd =
+  element dd { paragraph-with-footnote* }
+
+LocalizedString =
+  # multiple languages and scripts possible: comma delimit them if so
+  attribute language { text }?,
+  attribute script { text }?,
+  text 
+
+# Unlike UML, change type to format: type is overloaded
+# Would be need if plain were default value and could omit the attribute
+# Added LocalizedStringOrXsAny
+FormattedString =
+  # attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
+  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" | 
+    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-isodoc+xml" | text ) }?,
+  LocalizedStringOrXsAny
+
+LocalizedStringOrXsAny =
+  # multiple languages and scripts possible: comma delimit them if so
+  attribute language { text }?,
+  attribute script { text }?,
+  ( text | AnyElement )+
+
+
+contributor = 
+  element contributor {
+    role*,
+    ContributorInfo
+}
+
+role =
+  element role {
+    attribute type { ( "author" | "edition" | "publisher" | text ) }?,
+    roledescription*
+}
+
+ContributorInfo =
+  ( person | organization )
+
+roledescription = 
+  element description { FormattedString }
+
+person = 
+  element person {
+    fullname?, affiliation*, person-identifier*, contact*, uri?
+}
+
+fullname =
+  element name {
+    prefix*, forename*, initial*, surname, addition*
+}
+
+prefix = element prefix { LocalizedString }
+initial = element initial { LocalizedString }
+addition = element addition { LocalizedString }
+surname = element surname { LocalizedString }
+forename = element forename { LocalizedString }
+
+affiliation =
+  element affiliation { 
+    affiliationname?, affiliationdescription*, organization
+}
+
+affiliationname = element name { LocalizedString }
+
+affiliationdescription = element description { FormattedString }
+
+organization = 
+  element organization {
+    orgname, abbreviation?, uri?, org-identifier*, contact*
+}
+
+orgname =
+  element name { LocalizedString }
+
+abbreviation =
+  element abbreviation { LocalizedString }
+
+uri =
+  element uri { xsd:anyURI }
+
+# TODO may change
+contact =
+  ( address | phone | email | uri )
+
+phone = element phone { text }
+email = element email { text }
+
+address =
+  element address {
+    # iso191606 TODO
+    street+, city, state?, country, postcode?
+}
+
+street = element street { text }
+city = element city { text }
+state = element state { text }
+country = element country { text }
+postcode = element postcode { text }
+
+person-identifier =
+  element identifier {
+    attribute type { ("isni" | "uri") },
+    text
+  }
+
+org-identifier =
+  element identifier {
+    attribute type { ("orcid" | "uri") },
+    text
+  }
+
+citation =
+  element citation { CitationType }
+
+CitationType = 
+    attribute bibitemid { xsd:IDREF },
+    locality*, date?
+
+date = element date { ( xsd:gYear | xsd:date )  }
+
+locality =
+  element locality {
+    attribute type { ( "section" | "clause" | "part" | "paragraph" | 
+                       "chapter" | "page" | "whole" | "table" | "annex" |
+                        "figure" | "note" | "example" ) },
+    referenceFrom, referenceTo?
+}
+
+referenceFrom = element referenceFrom { text }
+referenceTo = element referenceTo { text }
+
+# unlike UML, has id attribute; that results from including bibitem in a docmodel
+bibitem =
+  element bibitem { 
+     attribute id { xsd:ID },
+     BibliographicItem 
+}
+
+bibitem_no_id =
+  element bibitem { 
+     BibliographicItem 
+}
+
+BibItemType |=
+    (  "article" | "book" | "booklet" | "conference" | "manual" |
+                      "proceedings" | "presentation" | "thesis" | "techreport" |
+                      "standard" | "unpublished" )
+ 
+
+BibliographicItem =
+    attribute type { BibItemType }?,
+    (btitle+ | formattedref), source*, docidentifier*, bdate*, contributor*, 
+    edition?, biblionote*, partof*, language*, script*, abstract?, status?, copyright?,
+    docrelation*
+
+BibData =
+    attribute type { BibItemType }?,
+    btitle+, formattedref?, source*, docidentifier*, bdate*, contributor*, edition?,
+    biblionote*, partof*, language*, script*, abstract?, status?, copyright, docrelation*
+
+btitle = element title { FormattedString }
+formattedref = element formattedref { FormattedString }
+link = element link { TypedUri }
+
+TypedUri =
+  attribute type { text }?,
+  xsd:anyURI 
+
+bdate = element date {
+  attribute type { ( "published" | "accessed" | "created" | "activated" | "obsoleted" ) },
+  bfrom, bto?
+}
+
+bfrom = element from { ( xsd:gYear | xsd:date ) }
+
+bto = element to { ( xsd:gYear | xsd:date ) }
+
+docidentifier = element docidentifier { 
+  attribute type { text }?,
+  text 
+}
+
+biblionote = element note { FormattedString }
+abstract = element abstract { FormattedString }
+
+partof = element partof { BibliographicItem }
+
+copyright =
+  element copyright {
+    from, to?, owner
+}
+
+from = element from { xsd:gYear }
+to = element to { xsd:gYear }
+
+owner =
+  element owner { ContributorInfo }
+
+#Anycontents = mixed {
+# https://github.com/relaxng/jing-trang/issues/211
+# https://lists.oasis-open.org/archives/office/200808/msg00024.html
+# https://lists.oasis-open.org/archives/office/200808/msg00099.html
+# For this to work, we will actually strip any attributes in the Anycontents before
+# passing it for validation. Horrible I know, but there are no good alternatives
+# that also allow us to do grammar inheritance
+	# (attribute * { text } | Any)*
+#        Any*
+#}
+AnyElement = element * { ( text | AnyElement) }
+
+
+}
