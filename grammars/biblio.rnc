@@ -153,7 +153,7 @@ locality =
   element locality {
     attribute type { ( "section" | "clause" | "part" | "paragraph" | 
                        "chapter" | "page" | "whole" | "table" | "annex" |
-                        "figure" | "note" | "example" ) },
+                        "figure" | "note" | "example" | ("locality:", text) ) },
     referenceFrom, referenceTo?
 }
 
