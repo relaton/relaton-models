@@ -223,6 +223,15 @@ to = element to { xsd:gYear }
 owner =
   element owner { ContributorInfo }
 
+docrelation =
+  element relation {
+    attribute type {
+      ( "parent" | "child" | "obsoletes" | "updatedBy" | "complements" | "derivedFrom" |
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" ) },
+       element bibitem { BibliographicItem },
+       locality*
+}
+
 #Anycontents = mixed {
 # https://github.com/relaxng/jing-trang/issues/211
 # https://lists.oasis-open.org/archives/office/200808/msg00024.html
