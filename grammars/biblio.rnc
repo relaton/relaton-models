@@ -151,11 +151,12 @@ date = element date { ( xsd:gYear | xsd:date )  }
 
 locality =
   element locality {
-    attribute type { ( "section" | "clause" | "part" | "paragraph" | 
-                       "chapter" | "page" | "whole" | "table" | "annex" |
-                        "figure" | "note" | "example" | ("locality:", text) ) },
+    # attribute type { ( "section" | "clause" | "part" | "paragraph" | "chapter" | "page" | "whole" | "table" | "annex" | "figure" | "note" | "example" | ("locality:", text) ) },
+    attribute type { LocalityType },
     referenceFrom, referenceTo?
 }
+
+LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|example|locality:[a-zA-Z0-9_]+" } 
 
 referenceFrom = element referenceFrom { text }
 referenceTo = element referenceTo { text }
