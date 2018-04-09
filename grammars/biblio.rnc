@@ -194,7 +194,7 @@ TypedUri =
   xsd:anyURI 
 
 bdate = element date {
-  attribute type { ( "published" | "accessed" | "created" | "activated" | "obsoleted" ) },
+  attribute type { ( "published" | "accessed" | "created" | "activated" | "obsoleted" | "confirmed" | "updated" | "issued" ) },
   bfrom, bto?
 }
 
