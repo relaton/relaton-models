@@ -18,7 +18,7 @@
 grammar {
 
 status =
-  element status { FormattedString }
+  element status { LocalizedString }
 
 language =
   element language { text }
