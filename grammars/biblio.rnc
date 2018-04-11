@@ -182,7 +182,7 @@ BibItemType |=
 BibliographicItem =
     attribute type { BibItemType }?,
     (btitle+ | formattedref), source*, docidentifier*, bdate*, contributor*, 
-    edition?, biblionote*, partof*, language*, script*, abstract?, status?, copyright?,
+    edition?, biblionote*, language*, script*, abstract?, status?, copyright?,
     docrelation*
 
 btitle = element title { FormattedString }
@@ -209,8 +209,6 @@ docidentifier = element docidentifier {
 
 biblionote = element note { FormattedString }
 abstract = element abstract { FormattedString }
-
-partof = element partof { BibliographicItem }
 
 copyright =
   element copyright {
