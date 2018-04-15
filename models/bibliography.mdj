@@ -10070,6 +10070,35 @@
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
+										},
+										{
+											"_type": "UMLEnumerationLiteralView",
+											"_id": "AAAAAAFiyIa9Z8C+oGc=",
+											"_parent": {
+												"$ref": "AAAAAAFhqxtoeB9+9SY="
+											},
+											"model": {
+												"$ref": "AAAAAAFiyIa9PsCdA3I="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 1261,
+											"top": 745,
+											"width": 155.669921875,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "updates",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5,
+											"wordWrap": false
 										}
 									],
 									"visible": true,
@@ -10084,7 +10113,7 @@
 									"left": 1256,
 									"top": 590,
 									"width": 165.669921875,
-									"height": 158,
+									"height": 173,
 									"autoResize": false
 								}
 							],
@@ -10100,7 +10129,7 @@
 							"left": 1256,
 							"top": 552,
 							"width": 165.669921875,
-							"height": 196,
+							"height": 211,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -20749,7 +20778,7 @@
 									"containerExtending": false,
 									"left": 680,
 									"top": 198,
-									"width": 226.861328125,
+									"width": 219.75830078125,
 									"height": 83,
 									"autoResize": false
 								},
@@ -28516,6 +28545,15 @@
 								"$ref": "AAAAAAFhqxtodR9yJAs="
 							},
 							"name": "nonequivalent",
+							"visibility": "public"
+						},
+						{
+							"_type": "UMLEnumerationLiteral",
+							"_id": "AAAAAAFiyIa9PsCdA3I=",
+							"_parent": {
+								"$ref": "AAAAAAFhqxtodR9yJAs="
+							},
+							"name": "updates",
 							"visibility": "public"
 						}
 					]
