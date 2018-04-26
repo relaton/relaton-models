@@ -181,11 +181,12 @@ BibItemType |=
 
 BibliographicItem =
     attribute type { BibItemType }?,
-    (btitle+ | formattedref), source*, docidentifier*, bdate*, contributor*, 
+    (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*, 
     edition?, biblionote*, language*, script*, abstract?, status?, copyright?,
     docrelation*
 
 btitle = element title { FormattedString }
+bsource = element source { TypedUri }
 formattedref = element formattedref { FormattedString }
 link = element link { TypedUri }
 
