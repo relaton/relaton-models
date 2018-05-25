@@ -1,4 +1,4 @@
-= Bibliographic Models
+= The Relaton Bibliographic Models
 
 These bibliographic models are developed to consolidate and standardize
 the data models used for bibliographic and citation purposes.
@@ -41,18 +41,18 @@ document models, into HTML and Microsoft Word:
 
 === Bibliographic Item
 
-image::images/bibliographic-item.png[]
+image::images/png/Bibliography__BibliographicItem_0.png[]
 
 === Citation
 
-image::images/citation.png[]
+image::images/png/Bibliography__Citation_2.png[]
 
 === Contributor
 
-image::images/contributor.png[]
+image::images/png/Bibliography__Contributor_3.png[]
 
 === Data Types
 
-image::images/datatypes.png[]
+image::images/png/Bibliography__DataTypes_1.png[]
 
 
