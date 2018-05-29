@@ -196,7 +196,15 @@ TypedUri =
 
 bdate = element date {
   attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" ) },
-  ( ( bfrom, bto? ) | date_on )
+  # ( ( bfrom, bto? ) | date_on )
+  (
+(
+element from { ( xsd:gYear | xsd:date ) },
+element to { ( xsd:gYear | xsd:date ) }?
+) |
+element on { ( xsd:gYear | xsd:date ) }
+)
+
 }
 
 bfrom = element from { ( xsd:gYear | xsd:date ) }
