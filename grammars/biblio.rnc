@@ -196,11 +196,9 @@ link = element link { TypedUri }
 validity = element validity {
   validityBegins?, validityEnds?, validityRevision?
 }
-validityBegins = element validityBegins { Iso8601DateTime }
-validityEnds = element validityEnds { Iso8601DateTime }
-validityRevision = element revision { Iso8601DateTime }
-
-Iso860DateTime = xsd:dateTime
+validityBegins = element validityBegins { xsd:dateTime }
+validityEnds = element validityEnds { xsd:dateTime }
+validityRevision = element revision { xsd:dateTime }
 
 TypedTitleString = 
   attribute type { TitleType }?,
