@@ -20,15 +20,13 @@ grammar {
 status =
   element status { LocalizedString }
 
-language =
-  element language { text }
+language = element language { text }
 ## ISO-639
 
-script =
-  element script { text }
+script = element script { text }
 ## ISO-15924: Latn
 
-edition = element edition { xsd:int }
+edition = element edition { text }
 
 LocalizedString =
   # multiple languages and scripts possible: comma delimit them if so
@@ -60,7 +58,7 @@ contributor =
 
 role =
   element role {
-    attribute type { ( "author" | "edition" | "publisher" | text ) }?,
+    attribute type { ( "author" | "performer" | "publisher" | "editor" | "adapter" | "translator" | "distributor" ) }?,
     roledescription*
 }
 
@@ -77,7 +75,8 @@ person =
 
 fullname =
   element name {
-    prefix*, forename*, initial*, surname, addition*
+    (( prefix*, forename*, initial*, surname, addition* ) | completeName ),
+    bnote*
 }
 
 prefix = element prefix { LocalizedString }
@@ -85,6 +84,7 @@ initial = element initial { LocalizedString }
 addition = element addition { LocalizedString }
 surname = element surname { LocalizedString }
 forename = element forename { LocalizedString }
+completename = element completename { LocalizedString }
 
 affiliation =
   element affiliation { 
@@ -97,11 +97,11 @@ affiliationdescription = element description { FormattedString }
 
 organization = 
   element organization {
-    orgname, abbreviation?, uri?, org-identifier*, contact*
+    orgname, subdivision?, abbreviation?, uri?, org-identifier*, contact*
 }
 
-orgname =
-  element name { LocalizedString }
+orgname = element name { LocalizedString }
+subdivision = element subdivision { LocalizedString }
 
 abbreviation =
   element abbreviation { LocalizedString }
@@ -151,12 +151,11 @@ date = element date { ( xsd:gYear | xsd:date )  }
 
 locality =
   element locality {
-    # attribute type { ( "section" | "clause" | "part" | "paragraph" | "chapter" | "page" | "whole" | "table" | "annex" | "figure" | "note" | "example" | ("locality:", text) ) },
     attribute type { LocalityType },
     referenceFrom, referenceTo?
 }
 
-LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|example|locality:[a-zA-Z0-9_]+" } 
+LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|example|volume|issue|locality:[a-zA-Z0-9_]+" } 
 
 referenceFrom = element referenceFrom { text }
 referenceTo = element referenceTo { text }
@@ -175,28 +174,47 @@ bibitem_no_id =
 
 BibItemType |=
     (  "article" | "book" | "booklet" | "conference" | "manual" |
-                      "proceedings" | "presentation" | "thesis" | "techreport" |
-                      "standard" | "unpublished" )
+       "proceedings" | "presentation" | "thesis" | "techreport" |
+       "standard" | "unpublished" | "map" | "electronic resource" | 
+       "audiovisual" | "film" | "video" | "broadcast" |
+       "graphic work" | "music" | "patent" | "inbook" | "incollection" |
+        "inproceedings" )
  
-
 BibliographicItem =
     attribute type { BibItemType }?,
-    (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*, 
-    edition?, biblionote*, language*, script*, abstract?, status?, copyright*,
-    docrelation*
+    (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*,
+    edition?, biblionote*, language*, script*,
+    abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
+    extent*, accesslocation*, bclassification?, validity?
 
-btitle = element title { FormattedString }
-bsource = element source { TypedUri }
+btitle = element title { TypedTitleString }
+bsource = element link { TypedUri }
 formattedref = element formattedref { FormattedString }
 link = element link { TypedUri }
+
+validity = element validity {
+  validityBegins?, validityEnds?, validityRevision?
+}
+validityBegins = element validityBegins { Iso8601DateTime}
+validityEnds = element validityEnds { Iso8601DateTime}
+validityRevision = element revision { Iso8601DateTime}
+
+TypedTitleString = 
+  attribute type { TitleType }?,
+  FormattedString  
+
+TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
 
 TypedUri =
   attribute type { text }?,
   xsd:anyURI 
 
+DateType =
+  attribute text { text }?,
+  ( xsd:gYear | xsd:date )?
+
 bdate = element date {
-  attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" ) },
-  # ( ( bfrom, bto? ) | date_on )
+  attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" ) },
   (
 (
 element from { ( xsd:gYear | xsd:date ) },
@@ -207,14 +225,40 @@ element on { ( xsd:gYear | xsd:date ) }
 
 }
 
-bfrom = element from { ( xsd:gYear | xsd:date ) }
-bto = element to { ( xsd:gYear | xsd:date ) }
-date_on = element on { ( xsd:gYear | xsd:date ) }
-
 docidentifier = element docidentifier { 
   attribute type { text }?,
   text 
 }
+bclassification = element classification { 
+  attribute type { text }?,
+  text 
+}
+
+bplace = element place { text }
+medium = element medium { 
+  form?, size?, scale?
+}
+form = element form { text }
+size = element size { text }
+scale = element scale { text }
+accesslocation = element accesslocation { text }
+
+extent = element extent { BibItemLocality }
+
+series = element series {
+  attribute type { "main" | "alt" }?,
+  ( btitle | formattedref ),
+  bplace, seriesorganization,
+  abbreviation?,
+  seriesfrom?, seriesto?,
+  seriesnumber?, seriespartnumber?
+}
+
+seriesorganization = element organization { text }
+seriesfrom = element from { xsd:dateTime | xsd:gYear }
+seriesto = element to { xsd:dateTime | xsd:gYear }
+seriesnumber = element number { text }
+seriespartnumber = element partnumber { text }
 
 biblionote = element note { FormattedString }
 abstract = element abstract { FormattedString }
@@ -233,8 +277,8 @@ owner =
 docrelation =
   element relation {
     attribute type {
-      ( "parent" | "child" | "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" |
-        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" ) },
+      ( "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" ) },
        element bibitem { BibliographicItem },
        locality*
 }
