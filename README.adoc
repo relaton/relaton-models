@@ -50,9 +50,23 @@ image::images/png/Bibliography__Citation_2.png[]
 === Contributor
 
 image::images/png/Bibliography__Contributor_3.png[]
+image::images/png/Bibliography__Contribution_7.png[]
+
+=== Date
+
+image::images/png/Bibliography__BibDates_5.png[]
+
+=== Document Relations
+
+image::images/png/Bibliography__Relations_4.png[]
+
+=== Series
+
+image::images/png/Bibliography__Series_8.png[]
 
 === Data Types
 
 image::images/png/Bibliography__DataTypes_1.png[]
+image::images/png/Bibliography__ItemTypes_6.png[]
 
 
