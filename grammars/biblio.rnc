@@ -278,7 +278,8 @@ docrelation =
   element relation {
     attribute type {
       ( "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
-        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" ) },
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" |
+        "instance" | "partOf" ) },
        element bibitem { BibliographicItem },
        locality*
 }
