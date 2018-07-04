@@ -189,9 +189,8 @@ BibliographicItem =
     extent*, accesslocation*, bclassification?, validity?
 
 btitle = element title { TypedTitleString }
-bsource = element link { TypedUri }
+bsource = element uri { TypedUri }
 formattedref = element formattedref { FormattedString }
-link = element link { TypedUri }
 
 validity = element validity {
   validityBegins?, validityEnds?, validityRevision?
