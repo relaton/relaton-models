@@ -156,7 +156,7 @@ BibItemLocality =
     attribute type { LocalityType },
     referenceFrom, referenceTo?
 
-LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|example|volume|issue|locality:[a-zA-Z0-9_]+" } 
+LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|list|example|volume|issue|locality:[a-zA-Z0-9_]+" } 
 
 referenceFrom = element referenceFrom { text }
 referenceTo = element referenceTo { text }
