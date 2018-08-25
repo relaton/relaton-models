@@ -248,7 +248,7 @@ extent = element extent { BibItemLocality }
 series = element series {
   attribute type { "main" | "alt" }?,
   ( btitle | formattedref ),
-  bplace, seriesorganization,
+  bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
   seriesnumber?, seriespartnumber?
