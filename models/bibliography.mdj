@@ -6510,6 +6510,14 @@
 								"$ref": "AAAAAAFha+mqMk1IbqE="
 							},
 							"name": "copied"
+						},
+						{
+							"_type": "UMLEnumerationLiteral",
+							"_id": "AAAAAAFlk0NSLFNiqTc=",
+							"_parent": {
+								"$ref": "AAAAAAFha+mqMk1IbqE="
+							},
+							"name": "unchanged"
 						}
 					]
 				},
@@ -9061,7 +9069,7 @@
 											"font": "Arial;13;0",
 											"left": -848,
 											"top": -576,
-											"width": 109,
+											"width": 109.814453125,
 											"height": 13,
 											"text": "(from Bibliography)"
 										},
@@ -18230,13 +18238,30 @@
 											"height": 13,
 											"text": "copied",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLEnumerationLiteralView",
+											"_id": "AAAAAAFlk0NSPFNlycY=",
+											"_parent": {
+												"$ref": "AAAAAAFjVX78ubovqEM="
+											},
+											"model": {
+												"$ref": "AAAAAAFlk0NSLFNiqTc="
+											},
+											"font": "Arial;13;0",
+											"left": 57,
+											"top": 369,
+											"width": 151.82958984375,
+											"height": 13,
+											"text": "unchanged",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 52,
 									"top": 214,
 									"width": 161.82958984375,
-									"height": 158
+									"height": 173
 								}
 							],
 							"font": "Arial;13;0",
@@ -18244,7 +18269,7 @@
 							"left": 52,
 							"top": 176,
 							"width": 161.82958984375,
-							"height": 196,
+							"height": 211,
 							"nameCompartment": {
 								"$ref": "AAAAAAFjVX78ubomI6I="
 							},
