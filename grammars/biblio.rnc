@@ -107,7 +107,10 @@ abbreviation =
   element abbreviation { LocalizedString }
 
 uri =
-  element uri { xsd:anyURI }
+  element uri { 
+    attribute type { text }?,
+    xsd:anyURI 
+  }
 
 # TODO may change
 contact =

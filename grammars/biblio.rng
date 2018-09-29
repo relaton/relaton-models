@@ -259,6 +259,9 @@
   </define>
   <define name="uri">
     <element name="uri">
+      <optional>
+        <attribute name="type"/>
+      </optional>
       <data type="anyURI"/>
     </element>
   </define>
