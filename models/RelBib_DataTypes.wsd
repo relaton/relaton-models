@@ -1,0 +1,178 @@
+@startuml RelBib_DataTypes
+/'
+Diagram:        RelBib_Series
+DateCreate:     30/08/2018
+Description:    These bibliographic models are developed to consolidate and standardize the data models used for bibliographic and citation purposes.
+                These models are meant to be fully compatible with ISO 690 and ISO TC 46’s (and SC 4, SC 9) work on bibliography.
+                They are used extensively in the following projects as containers for bibliographic data management and for managing document metadata:
+
+                - ISO Standards
+                - CSD Standards
+                - Chinese Standards (GB and family)
+                - ISO bibliography gem
+                
+                Below are the UML diagrams.
+                The document models are expressed as UML and as RelaxNG Compact (RNC) grammars; see discussion under Grammars. This repository contains the RNC grammars for the base BibliographicItem model, Citation model and the Contributor model.
+                The document models are currently used by IsoDoc-based authoring tools for standards, which convert Asciidoctor source to XML representations of the document models, and validate the XML generated against the RNC schemas:
+                
+                - https://github.com/riboseinc/asciidoctor-iso
+                - https://github.com/riboseinc/asciidoctor-csd
+                - https://github.com/riboseinc/asciidoctor-gb
+                
+                They are also used by tools that render those XML representations of the document models, into HTML and Microsoft Word:
+                
+                - https://github.com/riboseinc/isodoc
+                - https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
+                - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
+
+Hystory of changes:
+> DD/MM/YYYY
+    - 
+    - 
+'/
+
+'******* CONFIGURATION ************************************************
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam Dpi 150
+skinparam Monochrome true
+skinparam LineType ortho
+skinparam nodesep 30
+skinparam ranksep 30
+hide circle
+/' skinparam CircledCharacterRadius 0 '/
+/' skinparam CircledCharacterFontSize 0 '/
+skinparam Default {
+TextAlignment center
+FontName Helvetica
+}
+skinparam Class {
+AttributeIconSize 0
+BackgroundColor White
+FontStyle bold
+StereotypeFontSize 10
+}
+skinparam Rectangle {
+BackgroundColor White
+FontStyle bold
+FontSize 11
+StereotypeFontSize 10
+}
+skinparam Object {
+BackgroundColor White
+FontStyle bold
+FontSize 11
+StereotypeFontSize 10
+}
+skinparam Entity {
+StereotypeFontSize 10
+}
+
+'******* CLASS DEFINITION *********************************************
+
+together {
+
+    class Uri <<dataType>> {
+
+    }
+
+    class Iso8601DataTime <<dataType>> {
+
+    }
+
+    class Iso8601Date <<dataType>> {
+
+    }
+
+    class Iso639Code <<dataType>> {
+
+    }
+
+    class Iso15924Code <<dataType>> {
+
+    }
+
+    class String <<primitiveType>> {
+
+    }
+
+}
+
+together {
+
+    class DateTime{
+        +text:String[0..1]
+        +content: Iso8601DateTime[0..1]
+    }
+
+    class TypedUri{
+
+    }
+
+
+}
+
+class LocalizedString{
+    +language: Iso639Code[0..*]
+    +script: Iso15924Code[0..*]
+    +content: String
+}
+
+
+class FormattedString{
+    +type: StringFormat
+}
+
+enum StringFormat <<enumeration>>{
+    plain
+    html
+    docbook
+    tei
+    assciidoc
+    markdown
+    isodoc
+}
+
+enum BibItemType <<enumeration>>{
+    article
+    book
+    booklet
+    conference
+    manual
+    proceedings
+    presentation
+    thesis
+    techreport
+    standard
+    unpublished
+    map
+    electronic_resource
+    audiovisual
+    film
+    video
+    broadcast
+    graphic_work
+    music
+    patent
+    inbook
+    incollection
+    inproceedings
+    journal
+}
+
+'******* NOTES ********************************************************
+note bottom of BibItemType: Types imported from\nISO 690 and BibTeX,\nwith the addition of\n"standard"
+note left of StringFormat: The corresponding MIME\ntypes, defaults to "text/plain"\n(docbook / asciidoc / isdoc\nare not registered types yet)
+
+'******* CLASS RELATIONS **********************************************
+Uri -[hidden]- Iso8601DataTime
+Iso8601DataTime -[hidden]- Iso8601Date
+Iso8601Date -[hidden]- Iso639Code
+Iso639Code -[hidden]- Iso15924Code
+Iso15924Code -[hidden]- String
+DateTime -[hidden]- TypedUri
+
+LocalizedString <|-- FormattedString
+FormattedString <|-- StringFormat
+
+@enduml
