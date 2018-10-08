@@ -51,6 +51,18 @@
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
+							"_id": "AAAAAAFmUqQlf8WFfIo=",
+							"_parent": {
+								"$ref": "AAAAAAFglkPKdkr42i8="
+							},
+							"name": "fetched",
+							"type": {
+								"$ref": "AAAAAAFjL7qPUJn77c8="
+							},
+							"multiplicity": "0..1"
+						},
+						{
+							"_type": "UMLAttribute",
 							"_id": "AAAAAAFgnCB+U7f90lQ=",
 							"_parent": {
 								"$ref": "AAAAAAFglkPKdkr42i8="
@@ -420,6 +432,23 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFmUqQlnsWIMqs=",
+											"_parent": {
+												"$ref": "AAAAAAFgnBYqWZCA9jE="
+											},
+											"model": {
+												"$ref": "AAAAAAFmUqQlf8WFfIo="
+											},
+											"font": "Arial;13;0",
+											"left": 69,
+											"top": 102,
+											"width": 245.29248046875,
+											"height": 13,
+											"text": "+fetched: DateTime[0..1]",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFgnCB+nLgA/Nw=",
 											"_parent": {
 												"$ref": "AAAAAAFgnBYqWZCA9jE="
@@ -429,7 +458,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 102,
+											"top": 117,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+title: TypedTitleString[0..*]",
@@ -446,7 +475,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 117,
+											"top": 132,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+link: TypedUri[0..*]",
@@ -463,7 +492,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 132,
+											"top": 147,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+type: BibItemType[0..1]",
@@ -480,7 +509,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 147,
+											"top": 162,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+docIdentifier: DocumentIdentifier[0..*]",
@@ -497,7 +526,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 162,
+											"top": 177,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+dates: BibliographicDate[0..*]",
@@ -514,7 +543,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 177,
+											"top": 192,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+contributors: ContributionInfo[0..*]",
@@ -531,7 +560,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 192,
+											"top": 207,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+edition: String[0..1]",
@@ -548,7 +577,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 207,
+											"top": 222,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+notes: FormattedString[0..*]",
@@ -565,7 +594,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 222,
+											"top": 237,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+language: Iso639Code[0..*]",
@@ -582,7 +611,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 237,
+											"top": 252,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+script: Iso15924Code[0..*]",
@@ -599,7 +628,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 252,
+											"top": 267,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+formattedRef: FormattedString[0..1]",
@@ -616,7 +645,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 267,
+											"top": 282,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+abstract: FormattedString[0..*]",
@@ -633,7 +662,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 282,
+											"top": 297,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+status: DocumentStatus[0..1]",
@@ -650,7 +679,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 297,
+											"top": 312,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+copyright: CopyrightAssociation[0..1]",
@@ -667,7 +696,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 312,
+											"top": 327,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+relations: DocumentRelation[0..*]",
@@ -684,7 +713,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 327,
+											"top": 342,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+series: SeriesType[0..*]",
@@ -701,7 +730,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 342,
+											"top": 357,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+medium: MediumType[0..1]",
@@ -718,7 +747,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 357,
+											"top": 372,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+place: String[0..*]",
@@ -735,7 +764,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 372,
+											"top": 387,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+extent: BibItemLocality[0..*]",
@@ -752,7 +781,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 387,
+											"top": 402,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+accessLocation: String[0..*]",
@@ -769,7 +798,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 402,
+											"top": 417,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+classification: DocumentIdentifier[0..*]",
@@ -786,7 +815,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 69,
-											"top": 417,
+											"top": 432,
 											"width": 245.29248046875,
 											"height": 13,
 											"text": "+validity: ValidityType[0..1]",
@@ -797,7 +826,7 @@
 									"left": 64,
 									"top": 97,
 									"width": 255.29248046875,
-									"height": 338
+									"height": 353
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -810,7 +839,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 64,
-									"top": 435,
+									"top": 450,
 									"width": 255.29248046875,
 									"height": 10
 								},
@@ -852,7 +881,7 @@
 							"left": 64,
 							"top": 72,
 							"width": 255.29248046875,
-							"height": 373,
+							"height": 388,
 							"nameCompartment": {
 								"$ref": "AAAAAAFgnBYqWZB7yuc="
 							},

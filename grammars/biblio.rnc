@@ -186,6 +186,7 @@ BibItemType |=
  
 BibliographicItem =
     attribute type { BibItemType }?,
+    fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*,
     edition?, biblionote*, language*, script*,
     abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
@@ -195,12 +196,15 @@ btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
 formattedref = element formattedref { FormattedString }
 
+fetched = element fetched { xsd:dateTime }
+
 validity = element validity {
   validityBegins?, validityEnds?, validityRevision?
 }
 validityBegins = element validityBegins { xsd:dateTime }
 validityEnds = element validityEnds { xsd:dateTime }
 validityRevision = element revision { xsd:dateTime }
+
 
 TypedTitleString = 
   attribute type { TitleType }?,

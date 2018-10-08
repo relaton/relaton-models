@@ -447,6 +447,9 @@
         <ref name="BibItemType"/>
       </attribute>
     </optional>
+    <optional>
+      <ref name="fetched"/>
+    </optional>
     <choice>
       <oneOrMore>
         <ref name="btitle"/>
@@ -524,6 +527,11 @@
   <define name="formattedref">
     <element name="formattedref">
       <ref name="FormattedString"/>
+    </element>
+  </define>
+  <define name="fetched">
+    <element name="fetched">
+      <data type="dateTime"/>
     </element>
   </define>
   <define name="validity">
