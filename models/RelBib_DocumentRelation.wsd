@@ -77,17 +77,19 @@ class DocumentRelation {
 
 enum DocumentRelationType <<enumeration>>{
     obsoletes
-    updateBy
+    updates
+    updatedBy
     complements
-    derivedForm
+    derivedFrom
+    translatedFrom
     adoptedFrom
     equivalent
     identical
     nonequivalent
-    updates
     includedIn
     includes
-    translatedFrom
+    instance
+    partOf
 }
 
 '******* NOTES ********************************************************

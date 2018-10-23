@@ -1,4 +1,4 @@
-@startuml RelBib_Citation
+@startuml RelBib_Contribution
 /'
 Diagram:        RelBib_Citation
 DateCreate:     30/08/2018
@@ -69,46 +69,32 @@ StereotypeFontSize 10
 }
 
 '******* CLASS DEFINITION *********************************************
-class Citation {
-    +date: Iso8601DateTiem[0..1]
-    +bibLocality: BibItemLocality[0..*]
-    +bibItem: BibliographicItem[0..1]
+class ContributionInfo{
+    +role: ContributorRole[0..*]
+    +entity: Contributor
 }
 
-class BibItemLocality{
-    +type: SpecificLocalityType
-    +referenceFrom: LocalizedString
-    +referenceTo: LocalizedString[0..1]
+class ContributorRole{
+    +description: FormattedString[0..*]
+    +type: ContributorRoleTypes[0..1]
 }
 
-enum SpecificLocalityType <<enumeration>>{
-    section
-    clause
-    part
-    paragraph
-    chapter
-    page
-    whole
-    table
-    annex
-    figure
-    note
-    list
-    example
-    volume
-    issue
-    locality_String
+
+enum ContributorRoleTypes <<enumeration>>{
+    author
+    performer
+    editor
+    adapter
+    translator
+    publisher
+    distributor
 }
 
 '******* NOTES ********************************************************
-note right of Citation: date defaults to year,\nbut can specify month\nand/or day
-note right of BibItemLocality: 'referenceForm' identifies the\nthing that is being referred to,\ne.g., section "1.1"\nWhen referring to "Sections\n1.1 to 1.9" 'referenceFrom = \n1.2' and 'referenceTo = 1.9'
-note right of SpecificLocalityType: If SpecificLocalityType is\n'whole', BibItemLocality\n'identifier' should be empty.
-note bottom of SpecificLocalityType: locality_String: String\nprefixed with "locality:"
+note bottom of ContributorRoleTypes: ISO 690 gives these possible roles:\na) author, composer, librettist, mapping agency,\nsurveyor, cartographer, copyst, system designer of\nsoftware, patentee, patent applicant, artist, photographer,\ndraughtsman, graphic designer;\nb) conductor, performer of music, drama, etc., director of films, inventor;\nc) compiler, editor, reviser;\nd) translator, engraver, photographer of another creator's\nwork, copyst, arranger, software programmer;\ne) publisher, online information provider, production company;\nf) distributor, online host.
 
 '******* CLASS RELATIONS **********************************************
-Citation <-- BibItemLocality
-BibItemLocality <-- SpecificLocalityType
-
+ContributionInfo <-- ContributorRole
+ContributorRole <-- ContributorRoleTypes
 
 @enduml

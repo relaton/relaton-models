@@ -70,15 +70,16 @@ StereotypeFontSize 10
 
 '******* CLASS DEFINITION *********************************************
 class BibliographicItem {
+    +fetched: DateTime[0..1]
     +title: TypedTitleString[0..*]
     +link: TypedUri[0..*]
-    +type: BiblItemType[0..1]
+    +type: BibItemType[0..1]
     +docidentifier: DocumentIdentifier[0..*]
     +dates: BibliographicDate[0..*]
     +contributors: ContributionInfo[0..*]
     +edition: String[0..1]
     +notes: FormattedString[0..*]
-    +language: Iso639COde[0..*]
+    +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
     +formatedRef: FormattedString[0..1]
     +abstract: FormatedString[0..*]
@@ -92,7 +93,6 @@ class BibliographicItem {
     +accessLocation: String[0..*]
     +classification: DocumentIdentifier[0..*]
     +validity: ValidityType[0..1]
-    +to: DateTime[0..1]
 }
 
 class DocumentIdentifier{
@@ -118,7 +118,7 @@ class MediumType{
 
 class TypedTitleString{
     +type: TitleType[0..1]
-    +contant: FormattedString
+    +content: FormattedString
 }
 
 class ValidityType{

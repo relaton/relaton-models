@@ -73,7 +73,6 @@ StereotypeFontSize 10
 together {
 
     class Uri <<dataType>> {
-        +type: String[0..1]
     }
 
     class Iso8601DataTime <<dataType>> {
@@ -106,7 +105,8 @@ together {
     }
 
     class TypedUri{
-
+        +type: String[0..1]
+        +content: Uri
     }
 
 

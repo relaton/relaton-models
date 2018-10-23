@@ -67,6 +67,5 @@ image::images/png/Bibliography__Series_8.png[]
 === Data Types
 
 image::images/png/Bibliography__DataTypes_1.png[]
-image::images/png/Bibliography__ItemTypes_6.png[]
 
 

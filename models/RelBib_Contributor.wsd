@@ -76,7 +76,7 @@ class Contributor {
 together {
     class Person{
         +name: FullName[0..1]
-        +uri: Uri[0..1]
+        +uri: TypeUri[0..1]
         +affiliation: Affiliation[0..*]
         +identifiers: PersonalIdentifier[0..*]
         +contacts: ContactMethod[0..*]
@@ -89,7 +89,7 @@ together {
     class Organization{
         +name: LocalizedString
         +subdivision: LocalizedString[0..1]
-        +uri: Uri[0..1]
+        +uri: TypedUri[0..1]
         +identifiers: OrgIdentifier[0..*]
         +contacts: ContactMethod[0..*]
         +abbreviation: LocalizedString[0..1]
@@ -139,29 +139,7 @@ together {
 }
 
 
-class ContributionInfo{
-    +role: ContributorRole[0..*]
-    +entity: Contributor
-}
-
-class ContributorRole{
-    +description: FormattedString[0..*]
-    +type: ContributorRoleTypes[0..1]
-}
-
-
-enum ContributorRoleTypes <<enumeration>>{
-    author
-    performer
-    editor
-    adapter
-    translator
-    publisher
-    distributor
-}
-
 '******* NOTES ********************************************************
-note bottom of ContributorRoleTypes: ISO 690 gives these possible roles:\na) author, composer, librettist, mapping agency,\nsurveyor, cartographer, copyst, system designer of\nsoftware, patentee, patent applicant, artist, photographer,\ndraughtsman, graphic designer;\nb) conductor, performer of music, drama, etc., director of films, inventor;\nc) compiler, editor, reviser;\nd) translator, engraver, photographer of another creator's\nwork, copyst, arranger, software programmer;\ne) publisher, online information provider, production company;\nf) distributor, online host.
 
 '******* CLASS RELATIONS **********************************************
 Contributor <|-- Person
@@ -182,8 +160,5 @@ Person <-- FullName
 
 Organization <-- OrgIdentifier
 OrgIdentifier <-- OrgIdentifierType
-
-ContributionInfo <-- ContributorRole
-ContributorRole <-- ContributorRoleTypes
 
 @enduml
