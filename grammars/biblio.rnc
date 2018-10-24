@@ -176,6 +176,13 @@ bibitem_no_id =
      BibliographicItem 
 }
 
+relaton_collection = 
+  element relaton-collection {
+    attribute type { text }?,
+    btitle, contributor*,
+    docrelation*
+}
+
 BibItemType |=
     (  "article" | "book" | "booklet" | "conference" | "manual" |
        "proceedings" | "presentation" | "thesis" | "techreport" |

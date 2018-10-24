@@ -414,6 +414,20 @@
       <ref name="BibliographicItem"/>
     </element>
   </define>
+  <define name="relaton_collection">
+    <element name="relaton-collection">
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <ref name="btitle"/>
+      <zeroOrMore>
+        <ref name="contributor"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="docrelation"/>
+      </zeroOrMore>
+    </element>
+  </define>
   <define name="BibItemType" combine="choice">
     <choice>
       <value>article</value>
