@@ -32,41 +32,8 @@ Hystory of changes:
 '/
 
 '******* CONFIGURATION ************************************************
-top to bottom direction
-skinparam classAttributeIconSize 0
-skinparam Dpi 150
-skinparam Monochrome true
-skinparam LineType ortho
-skinparam nodesep 30
-skinparam ranksep 30
-hide circle
-/' skinparam CircledCharacterRadius 0 '/
-/' skinparam CircledCharacterFontSize 0 '/
-skinparam Default {
-TextAlignment center
-FontName Helvetica
-}
-skinparam Class {
-AttributeIconSize 0
-BackgroundColor White
-FontStyle bold
-StereotypeFontSize 10
-}
-skinparam Rectangle {
-BackgroundColor White
-FontStyle bold
-FontSize 11
-StereotypeFontSize 10
-}
-skinparam Object {
-BackgroundColor White
-FontStyle bold
-FontSize 11
-StereotypeFontSize 10
-}
-skinparam Entity {
-StereotypeFontSize 10
-}
+!include style.uml.inc
+
 
 '******* CLASS DEFINITION *********************************************
 

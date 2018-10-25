@@ -9,9 +9,9 @@ ISO TC 46's (and SC 4, SC 9) work on bibliography.
 They are used extensively in the following projects as containers
 for bibliographic data management and for managing document metadata:
 
-* https://github.com/riboseinc/isodoc-models[ISO Standards]
-* https://github.com/riboseinc/csd[CSD Standards]
-* https://github.com/riboseinc/gbdoc[Chinese Standards (GB and family)]
+* https://github.com/riboseinc/metanorma-model-iso[ISO Standards]
+* https://github.com/riboseinc/metanorma-model-csd[CSD Standards]
+* https://github.com/riboseinc/metanorma-model-gb[Chinese Standards (GB and family)]
 * https://github.com/riboseinc/isobib[ISO bibliography gem]
 
 Below are the UML diagrams.
@@ -26,46 +26,46 @@ The document models are currently used by IsoDoc-based authoring tools for
 standards, which convert Asciidoctor source to XML representations of the
 document models, and validate the XML generated against the RNC schemas:
 
-* https://github.com/riboseinc/asciidoctor-iso
-* https://github.com/riboseinc/asciidoctor-csd
-* https://github.com/riboseinc/asciidoctor-gb
+* https://github.com/riboseinc/metanorma-iso
+* https://github.com/riboseinc/metanorma-csd
+* https://github.com/riboseinc/metanorma-gb
 
 They are also used by tools that render those XML representations of the
 document models, into HTML and Microsoft Word:
 
 * https://github.com/riboseinc/isodoc
-* https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
-* https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
+* https://github.com/riboseinc/metanorma-csd (inheriting from isodoc)
+* https://github.com/riboseinc/metanorma-gb (inheriting from isodoc)
 
 == Bibliography UML Models
 
 === Bibliographic Item
 
-image::images/png/Bibliography__BibliographicItem_0.png[]
+image::images/RelBib_BibliographicItem.png[]
 
 === Citation
 
-image::images/png/Bibliography__Citation_2.png[]
+image::images/RelBib_Citation.png[]
 
 === Contributor
 
-image::images/png/Bibliography__Contributor_3.png[]
-image::images/png/Bibliography__Contribution_7.png[]
+image::images/RelBib_Contributor.png[]
+image::images/RelBib_Contribution.png[]
 
 === Date
 
-image::images/png/Bibliography__BibDates_5.png[]
+image::images/RelBib_Date.png[]
 
 === Document Relations
 
-image::images/png/Bibliography__Relations_4.png[]
+image::images/RelBib_DocumentRelation.png[]
 
 === Series
 
-image::images/png/Bibliography__Series_8.png[]
+image::images/RelBib_Series.png[]
 
 === Data Types
 
-image::images/png/Bibliography__DataTypes_1.png[]
+image::images/RelBib_DataTypes.png[]
 
 
