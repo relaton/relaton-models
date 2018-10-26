@@ -545,7 +545,10 @@
   </define>
   <define name="fetched">
     <element name="fetched">
-      <data type="dateTime"/>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
     </element>
   </define>
   <define name="validity">
@@ -563,17 +566,26 @@
   </define>
   <define name="validityBegins">
     <element name="validityBegins">
-      <data type="dateTime"/>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
     </element>
   </define>
   <define name="validityEnds">
     <element name="validityEnds">
-      <data type="dateTime"/>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
     </element>
   </define>
   <define name="validityRevision">
     <element name="revision">
-      <data type="dateTime"/>
+      <choice>
+        <data type="dateTime"/>
+        <data type="date"/>
+      </choice>
     </element>
   </define>
   <define name="TypedTitleString">
@@ -758,6 +770,7 @@
     <element name="from">
       <choice>
         <data type="dateTime"/>
+        <data type="date"/>
         <data type="gYear"/>
       </choice>
     </element>
@@ -766,6 +779,7 @@
     <element name="to">
       <choice>
         <data type="dateTime"/>
+        <data type="date"/>
         <data type="gYear"/>
       </choice>
     </element>

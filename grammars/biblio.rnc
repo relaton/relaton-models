@@ -203,14 +203,14 @@ btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
 formattedref = element formattedref { FormattedString }
 
-fetched = element fetched { xsd:dateTime }
+fetched = element fetched { xsd:dateTime | xsd:date }
 
 validity = element validity {
   validityBegins?, validityEnds?, validityRevision?
 }
-validityBegins = element validityBegins { xsd:dateTime }
-validityEnds = element validityEnds { xsd:dateTime }
-validityRevision = element revision { xsd:dateTime }
+validityBegins = element validityBegins { xsd:dateTime | xsd:date }
+validityEnds = element validityEnds { xsd:dateTime | xsd:date }
+validityRevision = element revision { xsd:dateTime | xsd:date }
 
 
 TypedTitleString = 
@@ -269,8 +269,8 @@ series = element series {
 }
 
 seriesorganization = element organization { text }
-seriesfrom = element from { xsd:dateTime | xsd:gYear }
-seriesto = element to { xsd:dateTime | xsd:gYear }
+seriesfrom = element from { xsd:dateTime | xsd:date | xsd:gYear }
+seriesto = element to { xsd:dateTime | xsd:date | xsd:gYear }
 seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
 
