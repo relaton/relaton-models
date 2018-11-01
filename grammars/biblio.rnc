@@ -228,7 +228,7 @@ DateType =
   ( xsd:gYear | xsd:date )?
 
 bdate = element date {
-  attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" ) },
+  attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" | text ) },
   (
 (
 element from { ( xsd:gYear | xsd:date ) },

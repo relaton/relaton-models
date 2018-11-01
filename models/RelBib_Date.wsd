@@ -36,7 +36,7 @@ Hystory of changes:
 
 '******* CLASS DEFINITION *********************************************
 class BibliographicDate {
-    +type: BibliographicDateType
+    +type: BibliographicDateType | text
     +from: DateTime[0..1]
     +to: DateTime[0..1]
     +on: DateTime[0..1]
@@ -54,6 +54,7 @@ enum BibliographicDateType <<enumeration>>{
     transmitted
     copied
     unchanged
+    circulated
 }
 
 '******* NOTES ********************************************************
