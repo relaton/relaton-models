@@ -42,6 +42,7 @@ class BibliographicItem {
     +link: TypedUri[0..*]
     +type: BibItemType[0..1]
     +docidentifier: DocumentIdentifier[0..*]
+    +docnumber: String[0..1]
     +dates: BibliographicDate[0..*]
     +contributors: ContributionInfo[0..*]
     +edition: String[0..1]

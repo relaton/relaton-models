@@ -194,7 +194,7 @@ BibItemType |=
 BibliographicItem =
     attribute type { BibItemType }?,
     fetched?,
-    (btitle+ | formattedref), bsource*, docidentifier*, bdate*, contributor*,
+    (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, biblionote*, language*, script*,
     abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
     extent*, accesslocation*, bclassification?, validity?
@@ -243,6 +243,8 @@ docidentifier = element docidentifier {
   attribute type { text }?,
   text 
 }
+docnumber = element docnumber { text }
+
 bclassification = element classification { 
   attribute type { text }?,
   text 
