@@ -68,4 +68,7 @@ image::images/RelBib_Series.png[]
 
 image::images/RelBib_DataTypes.png[]
 
+== Collection
 
+
+image::images/RelBib_Collection.png[]
