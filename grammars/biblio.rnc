@@ -195,7 +195,7 @@ BibliographicItem =
     attribute type { BibItemType }?,
     fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
-    edition?, biblionote*, language*, script*,
+    edition?, version?, biblionote*, language*, script*,
     abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
     extent*, accesslocation*, bclassification?, validity?
 
@@ -299,6 +299,16 @@ docrelation =
        element bibitem { BibliographicItem },
        locality*
 }
+
+version =
+  element version {
+    vedition?, revision-date?, draft*
+}
+
+vedition = element edition { xsd:int }
+revision-date = element revision-date { xsd:date }
+draft = element draft { text }
+
 
 #Anycontents = mixed {
 # https://github.com/relaxng/jing-trang/issues/211

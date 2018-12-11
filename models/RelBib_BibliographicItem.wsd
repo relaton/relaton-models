@@ -27,7 +27,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 
 Hystory of changes:
 > DD/MM/YYYY
-    -
+    - 20181211 add VersionInfo
     -
 '/
 
@@ -46,6 +46,7 @@ class BibliographicItem {
     +dates: BibliographicDate[0..*]
     +contributors: ContributionInfo[0..*]
     +edition: String[0..1]
+    +version: VersionInfo[0..1]
     +notes: FormattedString[0..*]
     +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
@@ -103,6 +104,11 @@ enum TitleType <<enumeration>>{
     main
 }
 
+class VersionInfo{
+    +revision-date: Iso8601DateTime[0..1]
+    +draft: String[0..1]
+}
+
 '******* NOTES ********************************************************
 
 
@@ -114,6 +120,7 @@ BibliographicItem <-- CopyrightAssociation
 BibliographicItem <-- MediumType
 BibliographicItem <-- TypedTitleString
 BibliographicItem <-- ValidityType
+BibliographicItem <-- VersionInfo
 
 TypedTitleString <-- TitleType
 
