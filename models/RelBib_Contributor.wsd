@@ -26,7 +26,7 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
 
 Hystory of changes:
-> DD/MM/YYYY
+> 12/01/2019: Add formattedAddress
     -
     -
 '/
@@ -51,6 +51,7 @@ together {
 
     class ContactMethod{
         +ContactTBD
+        +formattedAddress: LocalizedString[0..1]
     }
 
     class Organization{
@@ -107,6 +108,8 @@ together {
 
 
 '******* NOTES ********************************************************
+note right of ContactMethod: to be populated; formattedAddress is intended\nas an alternative to address broken down by field.
+
 
 '******* CLASS RELATIONS **********************************************
 Contributor <|-- Person

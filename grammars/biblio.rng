@@ -286,18 +286,23 @@
   </define>
   <define name="address">
     <element name="address">
-      <oneOrMore>
+      <choice>
         <!-- iso191606 TODO -->
-        <ref name="street"/>
-      </oneOrMore>
-      <ref name="city"/>
-      <optional>
-        <ref name="state"/>
-      </optional>
-      <ref name="country"/>
-      <optional>
-        <ref name="postcode"/>
-      </optional>
+        <group>
+          <oneOrMore>
+            <ref name="street"/>
+          </oneOrMore>
+          <ref name="city"/>
+          <optional>
+            <ref name="state"/>
+          </optional>
+          <ref name="country"/>
+          <optional>
+            <ref name="postcode"/>
+          </optional>
+        </group>
+        <ref name="formattedAddress"/>
+      </choice>
     </element>
   </define>
   <define name="street">
@@ -322,6 +327,11 @@
   </define>
   <define name="postcode">
     <element name="postcode">
+      <text/>
+    </element>
+  </define>
+  <define name="formattedAddress">
+    <element name="formattedAddress">
       <text/>
     </element>
   </define>
@@ -487,6 +497,9 @@
     </zeroOrMore>
     <optional>
       <ref name="edition"/>
+    </optional>
+    <optional>
+      <ref name="version"/>
     </optional>
     <zeroOrMore>
       <ref name="biblionote"/>
@@ -864,6 +877,34 @@
       <zeroOrMore>
         <ref name="locality"/>
       </zeroOrMore>
+    </element>
+  </define>
+  <define name="version">
+    <element name="version">
+      <optional>
+        <ref name="vedition"/>
+      </optional>
+      <optional>
+        <ref name="revision-date"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="draft"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="vedition">
+    <element name="edition">
+      <data type="int"/>
+    </element>
+  </define>
+  <define name="revision-date">
+    <element name="revision-date">
+      <data type="date"/>
+    </element>
+  </define>
+  <define name="draft">
+    <element name="draft">
+      <text/>
     </element>
   </define>
   <!--
