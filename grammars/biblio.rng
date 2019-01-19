@@ -550,7 +550,7 @@
     </element>
   </define>
   <define name="bsource">
-    <element name="source">
+    <element name="uri">
       <ref name="TypedUri"/>
     </element>
   </define>
