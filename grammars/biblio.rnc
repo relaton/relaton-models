@@ -201,7 +201,7 @@ BibliographicItem =
     extent*, accesslocation*, bclassification?, validity?
 
 btitle = element title { TypedTitleString }
-bsource = element uri { TypedUri }
+bsource = element source { TypedUri }
 formattedref = element formattedref { FormattedString }
 
 fetched = element fetched { xsd:dateTime | xsd:date }
