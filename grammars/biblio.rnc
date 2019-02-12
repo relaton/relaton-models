@@ -327,7 +327,7 @@ draft = element draft { text }
 	# (attribute * { text } | Any)*
 #        Any*
 #}
-AnyElement = element * { ( text | AnyElement) }
+AnyElement = element * { ( text | AnyElement)+ }
 
 
 }
