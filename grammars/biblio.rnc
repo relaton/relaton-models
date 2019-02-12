@@ -17,6 +17,12 @@
 
 grammar {
 
+# https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+# iso8601date = xsd:string { pattern = "([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?" }
+# Somewhat dumbed down for XSD regex:
+ISO8601DateTime = xsd:string { pattern = "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+)?)?((:?)[0-5]\d([.,]\d+)?)?([zZ]|([\+\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?" }
+ISO8601Date = xsd:string { pattern = "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?" }
+
 status =
   element status { LocalizedString }
 
@@ -151,7 +157,7 @@ CitationType =
     attribute bibitemid { xsd:IDREF },
     locality*, date?
 
-date = element date { ( xsd:gYear | xsd:date )  }
+date = element date { ISO8601Date }
 
 locality =
   element locality { BibItemLocality }
@@ -204,14 +210,14 @@ btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
 formattedref = element formattedref { FormattedString }
 
-fetched = element fetched { xsd:dateTime | xsd:date }
+fetched = element fetched { ISO8601DateTime }
 
 validity = element validity {
   validityBegins?, validityEnds?, validityRevision?
 }
-validityBegins = element validityBegins { xsd:dateTime | xsd:date }
-validityEnds = element validityEnds { xsd:dateTime | xsd:date }
-validityRevision = element revision { xsd:dateTime | xsd:date }
+validityBegins = element validityBegins { ISO8601DateTime }
+validityEnds = element validityEnds { ISO8601DateTime }
+validityRevision = element revision { ISO8601DateTime }
 
 
 TypedTitleString = 
@@ -226,16 +232,16 @@ TypedUri =
 
 DateType =
   attribute text { text }?,
-  ( xsd:gYear | xsd:date )?
+  ( ISO8601Date )?
 
 bdate = element date {
   attribute type { ( "published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" | text ) },
   (
 (
-element from { ( xsd:gYear | xsd:date ) },
-element to { ( xsd:gYear | xsd:date ) }?
+element from { ISO8601Date },
+element to { ISO8601Date }?
 ) |
-element on { ( xsd:gYear | xsd:date ) }
+element on { ISO8601Date }
 )
 
 }
@@ -272,8 +278,8 @@ series = element series {
 }
 
 seriesorganization = element organization { text }
-seriesfrom = element from { xsd:dateTime | xsd:date | xsd:gYear }
-seriesto = element to { xsd:dateTime | xsd:date | xsd:gYear }
+seriesfrom = element from { ISO8601Date }
+seriesto = element to { ISO8601Date }
 seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
 
@@ -307,7 +313,7 @@ version =
 }
 
 vedition = element edition { xsd:int }
-revision-date = element revision-date { xsd:date }
+revision-date = element revision-date { ISO8601Date }
 draft = element draft { text }
 
 
