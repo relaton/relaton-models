@@ -25,10 +25,11 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
                 - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
 
-Hystory of changes:
+History of changes:
 > 12/01/2019: Add formattedAddress
-    -
-    -
+    - 20190228: Person/uri, Organization/uri: allow multiple
+    - 20190228: Populated ContactMethod, Address
+    - 20190228: Annotate ContactMethod, Address, FullName
 '/
 
 '******* CONFIGURATION ************************************************
@@ -43,25 +44,36 @@ class Contributor {
 together {
     class Person{
         +name: FullName[0..1]
-        +uri: TypeUri[0..1]
         +affiliation: Affiliation[0..*]
-        +identifiers: PersonalIdentifier[0..*]
-        +contacts: ContactMethod[0..*]
+        +identifier: PersonalIdentifier[0..*]
+        +contact: ContactMethod[0..*]
+        +uri: TypeUri[0..*]
     }
 
     class ContactMethod{
-        +ContactTBD
-        +formattedAddress: LocalizedString[0..1]
+        +address: Address[0..1]
+        +phone: String[0..1]
+        +email: String[0..1]
+        +uri: TypedUri[0..1]
     }
 
     class Organization{
         +name: LocalizedString
         +subdivision: LocalizedString[0..1]
-        +uri: TypedUri[0..1]
-        +identifiers: OrgIdentifier[0..*]
-        +contacts: ContactMethod[0..*]
         +abbreviation: LocalizedString[0..1]
+        +uri: TypedUri[0..*]
+        +identifier: OrgIdentifier[0..*]
+        +contact: ContactMethod[0..*]
     }
+
+class Address {
+    +formattedAddress: String[0..1]
+    +street: String[1..*]
+    +city: String
+    +state: String[0..1]
+    +country: String
+    +postcode: String[0..1]
+}
 }
 
 together {
@@ -91,11 +103,11 @@ together {
     }
 
     class FullName{
-        +forenames: LocalizedString[0..*]
-        +initials: LocalizedString[0..*]
-        +surname: LocalizedString
-        +additions: LocalizedString[0..*]
         +prefix: LocalizedString[0..*]
+        +forename: LocalizedString[0..*]
+        +initial: LocalizedString[0..*]
+        +surname: LocalizedString
+        +addition: LocalizedString[0..*]
         +completeName: LocalizedString[0..1]
         +note: LocalizedString[0..1]
     }
@@ -108,7 +120,9 @@ together {
 
 
 '******* NOTES ********************************************************
-note right of ContactMethod: to be populated; formattedAddress is intended\nas an alternative to address broken down by field.
+note right of ContactMethod: the four options are mutually exclusive
+note right of Address: may be revised in light of ISO 191606.\nformattedAddress is intended\nas an alternative to address broken down by field.
+note right of FullName: completeName is mutually exclusive with the other name components
 
 
 '******* CLASS RELATIONS **********************************************

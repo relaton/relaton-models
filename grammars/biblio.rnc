@@ -76,7 +76,7 @@ roledescription =
 
 person = 
   element person {
-    fullname?, affiliation*, person-identifier*, contact*, uri?
+    fullname?, affiliation*, person-identifier*, contact*, uri*
 }
 
 fullname =
@@ -103,7 +103,7 @@ affiliationdescription = element description { FormattedString }
 
 organization = 
   element organization {
-    orgname, subdivision?, abbreviation?, uri?, org-identifier*, contact*
+    orgname, subdivision?, abbreviation?, uri*, org-identifier*, contact*
 }
 
 orgname = element name { LocalizedString }
@@ -195,8 +195,8 @@ BibItemType |=
        "proceedings" | "presentation" | "thesis" | "techreport" |
        "standard" | "unpublished" | "map" | "electronic resource" | 
        "audiovisual" | "film" | "video" | "broadcast" |
-       "graphic work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" )
+       "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
+        "inproceedings" | "journal" )
  
 BibliographicItem =
     attribute type { BibItemType }?,
@@ -270,11 +270,11 @@ extent = element extent { BibItemLocality }
 
 series = element series {
   attribute type { "main" | "alt" }?,
-  ( btitle | formattedref ),
-  bplace?, seriesorganization?,
+  (formattedref |
+  (title, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
-  seriesnumber?, seriespartnumber?
+  seriesnumber?, seriespartnumber?))
 }
 
 seriesorganization = element organization { text }
@@ -302,14 +302,14 @@ docrelation =
     attribute type {
       ( "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
         "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" |
-        "instance" | "partOf" ) },
+        "instance" | "partOf" | "hasDraft" ) },
        element bibitem { BibliographicItem },
        locality*
 }
 
 version =
   element version {
-    vedition?, revision-date?, draft*
+    revision-date?, draft*
 }
 
 vedition = element edition { xsd:int }

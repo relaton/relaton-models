@@ -25,9 +25,9 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
                 - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
 
-Hystory of changes:
+History of changes:
 > DD/MM/YYYY
-    -
+    - 20190228: second annotation to Citation
     -
 '/
 
@@ -37,7 +37,7 @@ Hystory of changes:
 
 '******* CLASS DEFINITION *********************************************
 class Citation {
-    +date: Iso8601DateTiem[0..1]
+    +date: Iso8601DateTime[0..1]
     +bibLocality: BibItemLocality[0..*]
     +bibItem: BibliographicItem[0..1]
 }
@@ -69,6 +69,7 @@ enum SpecificLocalityType <<enumeration>>{
 
 '******* NOTES ********************************************************
 note right of Citation: date defaults to year,\nbut can specify month\nand/or day
+note right of Citation: bibItem realised in serialisation as crossreference to ID
 note right of BibItemLocality: 'referenceForm' identifies the\nthing that is being referred to,\ne.g., section "1.1"\nWhen referring to "Sections\n1.1 to 1.9" 'referenceFrom = \n1.2' and 'referenceTo = 1.9'
 note right of SpecificLocalityType: If SpecificLocalityType is\n'whole', BibItemLocality\n'identifier' should be empty.
 note bottom of SpecificLocalityType: locality_String: String\nprefixed with "locality:"

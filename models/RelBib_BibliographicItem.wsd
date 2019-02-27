@@ -25,10 +25,10 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
                 - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
 
-Hystory of changes:
+History of changes:
 > DD/MM/YYYY
     - 20181211 add VersionInfo
-    -
+    - 20190228 annotate BibliographicItem
 '/
 
 '******* CONFIGURATION ************************************************
@@ -37,24 +37,24 @@ Hystory of changes:
 
 '******* CLASS DEFINITION *********************************************
 class BibliographicItem {
+    +type: BibItemType[0..1]
     +fetched: DateTime[0..1]
     +title: TypedTitleString[0..*]
+    +formattedRef: FormattedString[0..1]
     +link: TypedUri[0..*]
-    +type: BibItemType[0..1]
     +docidentifier: DocumentIdentifier[0..*]
     +docnumber: String[0..1]
     +dates: BibliographicDate[0..*]
     +contributors: ContributionInfo[0..*]
     +edition: String[0..1]
     +version: VersionInfo[0..1]
-    +notes: FormattedString[0..*]
+    +note: FormattedString[0..*]
     +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
-    +formatedRef: FormattedString[0..1]
     +abstract: FormatedString[0..*]
     +status: DocumentStatus[0..1]
     +copyright: CopyrightAssociation[0..1]
-    +relations: DocumentRelation[0..*]
+    +relation: DocumentRelation[0..*]
     +series: SeriesType[0..*]
     +medium: MediumType[0..1]
     +place: String[0..*]
@@ -80,7 +80,7 @@ class CopyrightAssociation{
 }
 
 class MediumType{
-    +from: String[0..1]
+    +form: String[0..1]
     +size: String[0..1]
     +scale: String[0..1]
 }
@@ -91,8 +91,8 @@ class TypedTitleString{
 }
 
 class ValidityType{
-    +ValidityBegins: Iso8601DateTime[0..1]
-    +ValidityEnds: Iso8601DateTime[0..1]
+    +validityBegins: Iso8601DateTime[0..1]
+    +validityEnds: Iso8601DateTime[0..1]
     +revision: Iso8601DateTime[0..1]
 }
 
@@ -110,7 +110,7 @@ class VersionInfo{
 }
 
 '******* NOTES ********************************************************
-
+note right of BibliographicItem: formattedred and title are mutually exclusive.
 
 '******* CLASS RELATIONS **********************************************
 

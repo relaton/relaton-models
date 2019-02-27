@@ -27,7 +27,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 
 Hystory of changes:
 > DD/MM/YYYY
-    -
+    - 20190228: Annotated SeriesType
     -
 '/
 
@@ -38,13 +38,13 @@ Hystory of changes:
 '******* CLASS DEFINITION *********************************************
 class SeriesType {
     +type: SeriesTypeType[0..1]
+    +formattedref: FormattedString[0..1]
     +title: TypedTitleString[0..1]
     +place: String[0..1]
     +organization: String[0..1]
-    +formattedTitle: FormattedString[0..1]
-    +abbrev: FormattedString[0..1]
-    +dateFrom: DateTime[0..1]
-    +dateTo: DateTime[0..1]
+    +abbrev: LocalizedString[0..1]
+    +from: DateTime[0..1]
+    +to: DateTime[0..1]
     +number: String[0..1]
     +partnumber: String[0..1]
 }
@@ -55,7 +55,7 @@ enum SeriesTypeType <<enumeration>>{
 }
 
 '******* NOTES ********************************************************
-
+note right of SeriesType: formattedref is mutually exclusive with the remaining fields
 
 '******* CLASS RELATIONS **********************************************
 SeriesType <-- SeriesTypeType

@@ -91,13 +91,13 @@ class FormattedString{
 }
 
 enum StringFormat <<enumeration>>{
-    plain
-    html
-    docbook
-    tei
-    assciidoc
-    markdown
-    isodoc
+    text/plain
+    text/html
+    application/docbook+xml
+    application/tei+xml
+    text/x-asciidoc
+    text/markdown
+    application/x-isodoc+xml
 }
 
 enum BibItemType <<enumeration>>{

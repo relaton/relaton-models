@@ -25,9 +25,9 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/riboseinc/asciidoctor-csd (inheriting from isodoc)
                 - https://github.com/riboseinc/asciidoctor-gb (inheriting from isodoc)
 
-Hystory of changes:
+History of changes:
 > DD/MM/YYYY
-    -
+    - 20190228 Add RelatonCollection/@type
     -
 '/
 
@@ -37,13 +37,14 @@ Hystory of changes:
 
 '******* CLASS DEFINITION *********************************************
 class RelatonCollection {
+    +type: String[0..1]
     +title: TypedTitleString[0..*]
-    +contributors: ContributionInfo[0..*]
-    +relations: DocumentRelation[0..*]
+    +contributor: ContributionInfo[0..*]
+    +relation: DocumentRelation[0..*]
 }
 
 '******* NOTES ********************************************************
-note right of RelationCollection: Used to present a group of bibliographic items as a single group, e.g. when summarising the collection of standards created by a standards body. Not necessary for bibliographic exchange.
+note right of RelationCollection: Used to present a group of bibliographic items\nas a single group, e.g. when summarising\nthe collection of standards created\nby a standards body.\nNot necessary for bibliographic exchange.
 
 
 '******* CLASS RELATIONS **********************************************
