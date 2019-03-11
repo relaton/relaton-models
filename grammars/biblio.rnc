@@ -271,7 +271,7 @@ extent = element extent { BibItemLocality }
 series = element series {
   attribute type { SeriesType }?,
   (formattedref |
-  (title, bplace?, seriesorganization?,
+  (btitle, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
   seriesnumber?, seriespartnumber?))

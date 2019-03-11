@@ -746,7 +746,7 @@
       <choice>
         <ref name="formattedref"/>
         <group>
-          <ref name="title"/>
+          <ref name="btitle"/>
           <optional>
             <ref name="bplace"/>
           </optional>
