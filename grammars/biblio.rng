@@ -740,10 +740,7 @@
     <element name="series">
       <optional>
         <attribute name="type">
-          <choice>
-            <value>main</value>
-            <value>alt</value>
-          </choice>
+          <ref name="SeriesType"/>
         </attribute>
       </optional>
       <choice>
@@ -774,6 +771,12 @@
         </group>
       </choice>
     </element>
+  </define>
+  <define name="SeriesType">
+    <choice>
+      <value>main</value>
+      <value>alt</value>
+    </choice>
   </define>
   <define name="seriesorganization">
     <element name="organization">

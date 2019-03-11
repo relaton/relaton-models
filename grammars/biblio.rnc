@@ -269,13 +269,15 @@ accesslocation = element accesslocation { text }
 extent = element extent { BibItemLocality }
 
 series = element series {
-  attribute type { "main" | "alt" }?,
+  attribute type { SeriesType }?,
   (formattedref |
   (title, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
   seriesnumber?, seriespartnumber?))
 }
+
+SeriesType = ( "main" | "alt" )
 
 seriesorganization = element organization { text }
 seriesfrom = element from { ISO8601Date }
