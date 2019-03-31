@@ -53,7 +53,7 @@ class BibliographicItem {
     +note: FormattedString[0..*]
     +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
-    +abstract: FormatedString[0..*]
+    +abstract: FormattedString[0..*]
     +status: DocumentStatus[0..1]
     +copyright: CopyrightAssociation[0..1]
     +relation: DocumentRelation[0..*]
