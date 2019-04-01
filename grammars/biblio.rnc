@@ -299,14 +299,16 @@ to = element to { xsd:gYear }
 owner =
   element owner { ContributorInfo }
 
+DocRelationType =
+  "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
+        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" |
+        "instance" | "partOf" | "hasDraft"
+
 docrelation =
   element relation {
-    attribute type {
-      ( "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
-        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" |
-        "instance" | "partOf" | "hasDraft" ) },
-       element bibitem { BibliographicItem },
-       locality*
+    attribute type { DocRelationType },
+    element bibitem { BibliographicItem },
+    locality*
 }
 
 version =
