@@ -112,7 +112,7 @@ class VersionInfo{
 }
 
 '******* NOTES ********************************************************
-note right of BibliographicItem: formattedred and title are mutually exclusive.
+note right of BibliographicItem: formattedref and title are mutually exclusive.
 
 '******* CLASS RELATIONS **********************************************
 
