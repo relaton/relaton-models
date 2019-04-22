@@ -288,7 +288,10 @@ seriesto = element to { ISO8601Date }
 seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
 
-biblionote = element note { FormattedString }
+biblionote = element note { 
+  attribute type { text }?,
+  FormattedString 
+}
 abstract = element abstract { FormattedString }
 
 copyright =
