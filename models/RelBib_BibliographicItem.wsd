@@ -31,6 +31,7 @@ History of changes:
 > DD/MM/YYYY
     - 20181211 add VersionInfo
     - 20190228 annotate BibliographicItem
+    - 20190422 allow note/@type
 '/
 
 '******* CONFIGURATION ************************************************
@@ -50,7 +51,7 @@ class BibliographicItem {
     +contributors: ContributionInfo[0..*]
     +edition: String[0..1]
     +version: VersionInfo[0..1]
-    +note: FormattedString[0..*]
+    +note: TypedNote[0..*]
     +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
     +abstract: FormattedString[0..*]
@@ -64,6 +65,11 @@ class BibliographicItem {
     +accessLocation: String[0..*]
     +classification: DocumentIdentifier[0..*]
     +validity: ValidityType[0..1]
+}
+
+class TypedNote{
+    +type: String[0..1]
+    +content: FormattedString
 }
 
 class DocumentIdentifier{
@@ -123,6 +129,7 @@ BibliographicItem <-- MediumType
 BibliographicItem <-- TypedTitleString
 BibliographicItem <-- ValidityType
 BibliographicItem <-- VersionInfo
+BibliographicItem <-- TypedNote
 
 TypedTitleString <-- TitleType
 
