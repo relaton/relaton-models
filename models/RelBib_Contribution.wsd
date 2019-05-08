@@ -60,7 +60,7 @@ enum ContributorRoleTypes <<enumeration>>{
 }
 
 '******* NOTES ********************************************************
-note bottom of ContributorRoleTypes: ISO 690 gives these possible roles:\na) author, composer, librettist, mapping agency,\nsurveyor, cartographer, copyst, system designer of\nsoftware, patentee, patent applicant, artist, photographer,\ndraughtsman, graphic designer;\nb) conductor, performer of music, drama, etc., director of films, inventor;\nc) compiler, editor, reviser;\nd) translator, engraver, photographer of another creator's\nwork, copyst, arranger, software programmer;\ne) publisher, online information provider, production company;\nf) distributor, online host.
+note bottom of ContributorRoleTypes: ISO 690 gives these possible roles:\na) author, composer, librettist, mapping agency,\nsurveyor, cartographer, copyist, system designer of\nsoftware, patentee, patent applicant, artist, photographer,\ndraughtsman, graphic designer;\nb) conductor, performer of music, drama, etc., director of films, inventor;\nc) compiler, editor, reviser;\nd) translator, engraver, photographer of another creator's\nwork, copyist, arranger, software programmer;\ne) publisher, online information provider, production company;\nf) distributor, online host.
 
 '******* CLASS RELATIONS **********************************************
 ContributionInfo <-- ContributorRole

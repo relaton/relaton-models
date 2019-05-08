@@ -32,6 +32,7 @@ History of changes:
     - 20181211 add VersionInfo
     - 20190228 annotate BibliographicItem
     - 20190422 allow note/@type
+    - 20190508 change DocumentStatus model
 '/
 
 '******* CONFIGURATION ************************************************
@@ -78,7 +79,9 @@ class DocumentIdentifier{
 }
 
 class DocumentStatus{
-    +status: LocalizedString
+    +stage: LocalizedString
+    +substage: LocalizedString[0..1]
+    +iteration: LocalizedString[0..1]
 }
 
 class CopyrightAssociation{
