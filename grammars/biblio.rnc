@@ -209,7 +209,7 @@ BibliographicItem =
     fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
-    abstract?, status?, copyright?, docrelation*, series*, medium?, bplace*,
+    abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*,
     extent*, accesslocation*, bclassification?, validity?
 
 btitle = element title { TypedTitleString }
