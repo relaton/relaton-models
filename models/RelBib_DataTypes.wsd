@@ -27,9 +27,9 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - https://github.com/metanorma/metanorma-gb (inheriting from isodoc)
                 - And so on
 
-Hystory of changes:
+History of changes:
 > DD/MM/YYYY
-    -
+    - 20190522: Added website as BibItemType, with annotation
     -
 '/
 
@@ -127,10 +127,11 @@ enum BibItemType <<enumeration>>{
     incollection
     inproceedings
     journal
+    website
 }
 
 '******* NOTES ********************************************************
-note bottom of BibItemType: Types imported from\nISO 690 and BibTeX,\nwith the addition of\n"standard"
+note bottom of BibItemType: Types imported from\nISO 690 and BibTeX,\nwith the addition of\n"standard" and "website". While "electronic_resource"\nhas been retained, the distinction\nbetween offline and online resources\nshould be made through medium/form\n(electronic vs physical).
 note left of StringFormat: The corresponding MIME\ntypes, defaults to "text/plain"\n(docbook / asciidoc / isdoc\nare not registered types yet)
 
 '******* CLASS RELATIONS **********************************************

@@ -33,6 +33,7 @@ History of changes:
     - 20190228 annotate BibliographicItem
     - 20190422 allow note/@type
     - 20190508 change DocumentStatus model
+    - 20190522 annotate MediumType
 '/
 
 '******* CONFIGURATION ************************************************
@@ -122,6 +123,7 @@ class VersionInfo{
 
 '******* NOTES ********************************************************
 note right of BibliographicItem: formattedref and title are mutually exclusive.
+note right of MediumType: medium/form can be used to differentiate "electronic"\nfrom "physical" manifestations of a resource.
 
 '******* CLASS RELATIONS **********************************************
 
