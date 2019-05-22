@@ -127,6 +127,7 @@ enum BibItemType <<enumeration>>{
     inproceedings
     journal
     website
+    misc
 }
 
 '******* NOTES ********************************************************

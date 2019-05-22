@@ -202,7 +202,7 @@ BibItemType |=
        "standard" | "unpublished" | "map" | "electronic resource" | 
        "audiovisual" | "film" | "video" | "broadcast" |
        "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" | "journal" | "website" )
+        "inproceedings" | "journal" | "website" | "misc" )
  
 BibliographicItem =
     attribute type { BibItemType }?,

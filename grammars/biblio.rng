@@ -497,6 +497,7 @@
       <value>inproceedings</value>
       <value>journal</value>
       <value>website</value>
+      <value>misc</value>
     </choice>
   </define>
   <define name="BibliographicItem">
