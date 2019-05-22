@@ -197,7 +197,7 @@ relaton_collection =
 }
 
 BibItemType |=
-    (  "article" | "book" | "booklet" | "conference" | "manual" |
+    (  "article" | "book" | "booklet" | "manual" |
        "proceedings" | "presentation" | "thesis" | "techreport" |
        "standard" | "unpublished" | "map" | "electronic resource" | 
        "audiovisual" | "film" | "video" | "broadcast" |
