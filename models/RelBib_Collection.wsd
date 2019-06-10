@@ -46,7 +46,7 @@ class RelatonCollection {
 }
 
 '******* NOTES ********************************************************
-note right of RelationCollection: Used to present a group of bibliographic items\nas a single group, e.g. when summarising\nthe collection of standards created\nby a standards body.\nNot necessary for bibliographic exchange.
+note right of RelatonCollection: Used to present a group of bibliographic items\nas a single group, e.g. when summarising\nthe collection of standards created\nby a standards body.\nNot necessary for bibliographic exchange.
 
 
 '******* CLASS RELATIONS **********************************************

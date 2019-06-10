@@ -30,7 +30,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 History of changes:
 > DD/MM/YYYY
     - 20190522: Added website as BibItemType, with annotation
-    -
+    - 20190610: Added BibItemTypes dataset
 '/
 
 '******* CONFIGURATION ************************************************
@@ -58,6 +58,9 @@ together {
 
     class Iso15924Code <<dataType>> {
 
+    }
+
+    class Iso4217Code <<dataType>> {
     }
 
     class String <<primitiveType>> {
@@ -127,6 +130,7 @@ enum BibItemType <<enumeration>>{
     inproceedings
     journal
     website
+    dataset
     misc
 }
 
@@ -140,9 +144,9 @@ Iso8601DataTime -[hidden]- Iso8601Date
 Iso8601Date -[hidden]- Iso639Code
 Iso639Code -[hidden]- Iso15924Code
 Iso15924Code -[hidden]- String
-DateTime -[hidden]- TypedUri
 
 LocalizedString <|-- FormattedString
 FormattedString <|-- StringFormat
+Uri <-- TypedUri
 
 @enduml

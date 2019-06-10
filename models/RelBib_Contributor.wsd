@@ -107,7 +107,7 @@ together {
     class FullName{
         +prefix: LocalizedString[0..*]
         +forename: LocalizedString[0..*]
-        +initial: LocalizedString[0..*]
+        +initials: LocalizedString[0..*]
         +surname: LocalizedString
         +addition: LocalizedString[0..*]
         +completeName: LocalizedString[0..1]
@@ -123,16 +123,16 @@ together {
 
 '******* NOTES ********************************************************
 note right of ContactMethod: the four options are mutually exclusive
-note right of Address: may be revised in light of ISO 191606.\nformattedAddress is intended\nas an alternative to address broken down by field.
-note right of FullName: completeName is mutually exclusive with the other name components
+note top of Address: may be revised in light of ISO 191606.\nformattedAddress is intended\nas an alternative to address broken down by field.
+note bottom of FullName: completeName is mutually exclusive with the other name components
 
 
 '******* CLASS RELATIONS **********************************************
 Contributor <|-- Person
 Contributor <|-- Organization
 
-Person <-left- ContactMethod
-ContactMethod -right-> Organization
+Organization <-- ContactMethod
+ContactMethod --> Person
 
 Person <-- PersonIdentifier
 PersonIdentifier <-- PersonalIdentifierType
@@ -140,7 +140,7 @@ PersonIdentifier <-- PersonalIdentifierType
 Person <-left- Affiliation
 Affiliation -right-> Organization
 
-ContactMethod -[hidden]- Affiliation
+ContactMethod <-- Address
 
 Person <-- FullName
 

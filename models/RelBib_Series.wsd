@@ -30,7 +30,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 Hystory of changes:
 > DD/MM/YYYY
     - 20190228: Annotated SeriesType
-    -
+    - 20190610: Series-Run
 '/
 
 '******* CONFIGURATION ************************************************
@@ -49,6 +49,7 @@ class SeriesType {
     +to: DateTime[0..1]
     +number: String[0..1]
     +partnumber: String[0..1]
+    +run: String[0..1]
 }
 
 enum SeriesTypeType <<enumeration>>{

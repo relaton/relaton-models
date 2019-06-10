@@ -34,6 +34,7 @@ History of changes:
     - 20190422 allow note/@type
     - 20190508 change DocumentStatus model
     - 20190522 annotate MediumType
+    - 20190610 add price
 '/
 
 '******* CONFIGURATION ************************************************
@@ -51,7 +52,7 @@ class BibliographicItem {
     +docnumber: String[0..1]
     +dates: BibliographicDate[0..*]
     +contributors: ContributionInfo[0..*]
-    +edition: String[0..1]
+    +edition: Edition[0..1]
     +version: VersionInfo[0..1]
     +note: TypedNote[0..*]
     +language: Iso639Code[0..*]
@@ -63,10 +64,16 @@ class BibliographicItem {
     +series: SeriesType[0..*]
     +medium: MediumType[0..1]
     +place: String[0..*]
+    +price: PriceType[0..*]
     +extent: BiblItemLocality[0..*]
     +accessLocation: String[0..*]
     +classification: DocumentIdentifier[0..*]
     +validity: ValidityType[0..1]
+}
+
+class Edition{
+    +number: String[0..1]
+    +content: FormattedString
 }
 
 class TypedNote{
@@ -77,6 +84,7 @@ class TypedNote{
 class DocumentIdentifier{
     +id: String
     +type: String[0..1]
+    +scope: String[0..1]
 }
 
 class DocumentStatus{
@@ -95,6 +103,11 @@ class MediumType{
     +form: String[0..1]
     +size: String[0..1]
     +scale: String[0..1]
+}
+
+class PriceType{
+    +currency: Iso4217Code[0..1]
+    +content: String
 }
 
 class TypedTitleString{
@@ -123,18 +136,21 @@ class VersionInfo{
 
 '******* NOTES ********************************************************
 note right of BibliographicItem: formattedref and title are mutually exclusive.
-note right of MediumType: medium/form can be used to differentiate "electronic"\nfrom "physical" manifestations of a resource.
+note bottom of MediumType: medium/form can be used to\ndifferentiate "electronic"\nfrom "physical" manifestations\nof a resource.
+note bottom of Edition: the number attribute can be used for\nnumeric equivalent of the edition string
 
 '******* CLASS RELATIONS **********************************************
 
-BibliographicItem <-- DocumentIdentifier
-BibliographicItem <-- DocumentStatus
-BibliographicItem <-- CopyrightAssociation
-BibliographicItem <-- MediumType
+DocumentIdentifier --> BibliographicItem
+DocumentStatus --> BibliographicItem
+CopyrightAssociation --> BibliographicItem 
+MediumType --> BibliographicItem
+VersionInfo --> BibliographicItem
 BibliographicItem <-- TypedTitleString
 BibliographicItem <-- ValidityType
-BibliographicItem <-- VersionInfo
 BibliographicItem <-- TypedNote
+BibliographicItem <-- Edition
+BibliographicItem <-- PriceType
 
 TypedTitleString <-- TitleType
 

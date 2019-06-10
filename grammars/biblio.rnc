@@ -38,7 +38,10 @@ language = element language { text }
 script = element script { text }
 ## ISO-15924: Latn
 
-edition = element edition { text }
+edition = element edition { 
+   attribute number { text }?,
+   text
+}
 
 LocalizedString =
   # multiple languages and scripts possible: comma delimit them if so
@@ -202,14 +205,14 @@ BibItemType |=
        "standard" | "unpublished" | "map" | "electronic resource" | 
        "audiovisual" | "film" | "video" | "broadcast" |
        "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" | "journal" | "website" | "misc" )
+        "inproceedings" | "journal" | "website" | "dataset" | "misc" )
  
 BibliographicItem =
     attribute type { BibItemType }?,
     fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
-    abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*,
+    abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, accesslocation*, bclassification?, validity?
 
 btitle = element title { TypedTitleString }
@@ -257,6 +260,7 @@ element on { ISO8601Date }
 
 docidentifier = element docidentifier { 
   attribute type { text }?,
+  attribute scope { text }?,
   text 
 }
 docnumber = element docnumber { text }
@@ -267,6 +271,12 @@ bclassification = element classification {
 }
 
 bplace = element place { text }
+
+bprice = element price {
+   attribute currency { text },
+   text
+}
+
 medium = element medium { 
   form?, size?, scale?
 }
@@ -283,7 +293,7 @@ series = element series {
   (btitle, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
-  seriesnumber?, seriespartnumber?))
+  seriesnumber?, seriespartnumber?, seriesrun?))
 }
 
 SeriesType = ( "main" | "alt" )
@@ -293,6 +303,7 @@ seriesfrom = element from { ISO8601Date }
 seriesto = element to { ISO8601Date }
 seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
+seriesrun = element run { text }
 
 biblionote = element note { 
   attribute type { text }?,
@@ -312,9 +323,36 @@ owner =
   element owner { ContributorInfo }
 
 DocRelationType =
-  "obsoletes" | "updates" | "updatedBy" | "complements" | "derivedFrom" | "translatedFrom" |
-        "adoptedFrom" | "equivalent" | "identical" | "nonequivalent" | "includedIn" | "includes" |
-        "instance" | "partOf" | "hasDraft"
+    "obsoletes" |
+    "obsoletedBy" |
+    "supersedes" |
+    "supersededBy" |
+    "updates" |
+    "updatedBy" |
+    "complements" |
+    "derivedFrom" |
+    "translatedFrom" |
+    "hasTranslation" |
+    "adoptedFrom" |
+    "equivalent" |
+    "identical" |
+    "nonequivalent" |
+    "includedIn" |" |
+    "includes" |
+    "instance" |
+    "instanceOf" |
+    "partOf" |
+    "hasPart" |
+    "hasDraft" |
+    "draftOf" |
+    "merges" |
+    "splits" |
+    "amends" |
+    "amendedBy" |
+    "corrects" |
+    "correctedBy" |
+    "revises" |
+    "revisedBy"
 
 docrelation =
   element relation {

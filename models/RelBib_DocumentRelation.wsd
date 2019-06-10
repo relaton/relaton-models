@@ -29,7 +29,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 
 Hystory of changes:
 > DD/MM/YYYY
-    -
+    - 10/06/2019: add doc relation types
     -
 '/
 
@@ -46,11 +46,15 @@ class DocumentRelation {
 
 enum DocumentRelationType <<enumeration>>{
     obsoletes
+    obsoletedBy
+    supersedes
+    supersededBy
     updates
     updatedBy
     complements
     derivedFrom
     translatedFrom
+    hasTranslation
     adoptedFrom
     equivalent
     identical
@@ -58,8 +62,19 @@ enum DocumentRelationType <<enumeration>>{
     includedIn
     includes
     instance
+    instanceOf
     partOf
+    hasPart
     hasDraft
+    draftOf
+    splits
+    merges
+    amends
+    amendedBy
+    corrects
+    correctedBy
+    revises
+    revisedBy
 }
 
 '******* NOTES ********************************************************
