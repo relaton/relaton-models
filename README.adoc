@@ -43,6 +43,10 @@ document models, into HTML and Microsoft Word:
 
 image::images/RelBib_BibliographicItem.png[]
 
+=== Bibliographic Item Types
+
+image::images/RelBib_BibItemType.png[]
+
 === Citation
 
 image::images/RelBib_Citation.png[]
@@ -161,9 +165,9 @@ to the document in the relation, but is not equivalent to it in force and scope.
 It is typically a subclass of the `adoptedFrom` relation.
 includedIn:: The document described in the main record is a part (component) of the
 document in the relation (the host document); for example, chapter vs book, paper vs journal or
-proceedings, record track vs record. In general, text-based resources have components 
-that can be considered a 
-different kind of resource; components of non-textual resources are considered 
+proceedings, record track vs record. In general, text-based resources have components
+that can be considered a
+different kind of resource; components of non-textual resources are considered
 to be of the same type as their host.
 includes:: The document described in the main record contains the
 document in the relation. This is the inverse relation to `includedIn`.
@@ -176,7 +180,7 @@ ISO 690:2010.
 partOf:: The document described in the main record is a multi-part document,
 and the document described in the relation is one of those parts. For example,
 ISO 639 refers to the ISO standard for language names; it has three parts
-ISO 639-1 (two-letter codes), ISO 639-2 (three-letter codes for major languages), 
+ISO 639-1 (two-letter codes), ISO 639-2 (three-letter codes for major languages),
 and ISO 639-3 (three-letter codes for all natural languages). This relation
 is equivalent to `includes`, but is specific to multi-part textual documents, and
 understands the including and included documents to be of the same type.
@@ -191,8 +195,8 @@ in the one record.
 The relation between two items can include a locality element.
 This is used to indicate part of the first item is related to the second;
 for example, which part of the first item is superseded by the second.
-The locality in the relation element can be used with `includedIn` relations, 
-to indicate the extent of the 
+The locality in the relation element can be used with `includedIn` relations,
+to indicate the extent of the
 contained item within the host item; but for consistency, it is preferable to
 use the `extent` element in the contained item, which has the same meaning.
 
@@ -228,7 +232,7 @@ it supersedes.)
 Those attributes that are common to all three levels of description,
 such as the title and the publisher, are stated only once, at the top level; the attributes that apply at
 lower levels, such as edition and abstract for the edition, and circulation date and status for the draft,
-are stated once at the first level they apply to. If an 
+are stated once at the first level they apply to. If an
 attribute value is overridden between levels of description, such as docidentifier,
 both the base value and the override value are given in their respective levels.
 
@@ -236,7 +240,7 @@ both the base value and the override value are given in their respective levels.
 ----
 <bibitem type="international-standard" id="ISO20483-2013">
   <title format="text/plain" language="en" script="Latn">Cereals and pulses -- Determination of the nitrogen content and calculation of the crude protein content -- Kjeldahl method</title>
-  <title format="text/plain" language="fr" script="Latn">Céréales et légumineuses -- Détermination de la teneur en azote et calcul de la  
+  <title format="text/plain" language="fr" script="Latn">Céréales et légumineuses -- Détermination de la teneur en azote et calcul de la
 teneur en protéines brutes -- Méthode de Kjeldahl</title>
   <docidentifier type="ISO">ISO 20483</docidentifier>
   <contributor>
@@ -257,7 +261,7 @@ teneur en protéines brutes -- Méthode de Kjeldahl</title>
     <code>67.060</code>
     <text>Cereals, pulses and derived products</text>
   </ics>
-  
+
   <relation type="instance">
     <bibitem type="international-standard" id="ISO20483-2013">
       <uri type="src">https://www.iso.org/standard/59162.html</uri>
@@ -285,7 +289,7 @@ teneur en protéines brutes -- Méthode de Kjeldahl</title>
           <formattedref>ISO 20483:2006</formattedref>
         </bibitem>
       </relation>
-      
+
       <relation type="instance">
         <bibitem type="international-standard" id="ISO20483-2013">
           <docidentifier type="ISO">ISO 20483 (WD):2013</docidentifier>
@@ -298,7 +302,7 @@ teneur en protéines brutes -- Méthode de Kjeldahl</title>
           </status>
         </bibitem>
       </relation>
-    </bibitem>  
+    </bibitem>
   </relation>
 </bibitem>
 ----
