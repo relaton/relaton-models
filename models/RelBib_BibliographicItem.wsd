@@ -35,6 +35,7 @@ History of changes:
     - 20190508 change DocumentStatus model
     - 20190522 annotate MediumType
     - 20190610 add price
+    - 20190612 add keyword
 '/
 
 '******* CONFIGURATION ************************************************
@@ -67,7 +68,9 @@ class BibliographicItem {
     +price: PriceType[0..*]
     +extent: BiblItemLocality[0..*]
     +accessLocation: String[0..*]
+    +license: String[0..*]
     +classification: DocumentIdentifier[0..*]
+    +keyword: KeywordType[0..*]
     +validity: ValidityType[0..1]
 }
 

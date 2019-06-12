@@ -213,11 +213,12 @@ BibliographicItem =
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
     abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, accesslocation*, bclassification?, validity?
+    extent*, accesslocation*, license,* bclassification?, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
 formattedref = element formattedref { FormattedString }
+license = element license { text }
 
 fetched = element fetched { ISO8601DateTime }
 
@@ -370,6 +371,24 @@ vedition = element edition { xsd:int }
 revision-date = element revision-date { ISO8601Date }
 draft = element draft { text }
 
+bkeyword = element keyword {
+    LocalizedString |
+    ( 
+       element vocab { LocalizedString },
+       vocabid+
+    ) |
+    ( 
+       element taxon { LocalizedString }+,
+       vocabid+
+    )
+}
+
+vocabid = element vocabid {
+    attribute type { text },
+    attribute uri { xsd:anyURI }?,
+    element code { text }?
+    element term { text }?
+}
 
 #Anycontents = mixed {
 # https://github.com/relaxng/jing-trang/issues/211

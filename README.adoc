@@ -64,6 +64,10 @@ image::images/RelBib_DocumentRelation.png[]
 
 image::images/RelBib_Series.png[]
 
+=== Keyword
+
+image::images/RelBib_Keyword.png[]
+
 === Data Types
 
 image::images/RelBib_DataTypes.png[]
