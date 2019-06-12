@@ -35,7 +35,7 @@ History of changes:
     - 20190508 change DocumentStatus model
     - 20190522 annotate MediumType
     - 20190610 add price
-    - 20190612 add keyword
+    - 20190612 add keyword, license
 '/
 
 '******* CONFIGURATION ************************************************
