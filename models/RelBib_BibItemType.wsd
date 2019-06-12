@@ -1,4 +1,4 @@
-@startuml RelBib_DataTypes
+@startuml RelBib_BibItemType
 /'
 Diagram:        RelBib_Series
 DateCreate:     30/08/2018
@@ -28,6 +28,9 @@ Description:    These bibliographic models are developed to consolidate and stan
                 - And so on
 
 History of changes:
+> DD/MM/YYYY
+    - 20190522: Added website as BibItemType, with annotation
+    - 20190610: Added BibItemTypes dataset
 '/
 
 '******* CONFIGURATION ************************************************
@@ -36,84 +39,38 @@ History of changes:
 
 '******* CLASS DEFINITION *********************************************
 
-together {
-
-    class Uri <<dataType>> {
-    }
-
-    class Iso8601DataTime <<dataType>> {
-
-    }
-
-    class Iso8601Date <<dataType>> {
-
-    }
-
-    class Iso639Code <<dataType>> {
-
-    }
-
-    class Iso15924Code <<dataType>> {
-
-    }
-
-    class Iso4217Code <<dataType>> {
-    }
-
-    class String <<primitiveType>> {
-
-    }
-
-}
-
-together {
-
-    class DateTime{
-        +text:String[0..1]
-        +content: Iso8601DateTime[0..1]
-    }
-
-    class TypedUri{
-        +type: String[0..1]
-        +content: Uri
-    }
-
-
-}
-
-class LocalizedString{
-    +language: Iso639Code[0..*]
-    +script: Iso15924Code[0..*]
-    +content: String
-}
-
-
-class FormattedString{
-    +type: StringFormat
-}
-
-enum StringFormat <<enumeration>>{
-    text/plain
-    text/html
-    application/docbook+xml
-    application/tei+xml
-    text/x-asciidoc
-    text/markdown
-    application/x-isodoc+xml
+enum BibItemType <<enumeration>>{
+    article
+    book
+    booklet
+    manual
+    proceedings
+    presentation
+    thesis
+    techreport
+    standard
+    unpublished
+    map
+    electronic_resource
+    audiovisual
+    film
+    video
+    broadcast
+    graphic_work
+    music
+    patent
+    inbook
+    incollection
+    inproceedings
+    journal
+    website
+    dataset
+    misc
 }
 
 '******* NOTES ********************************************************
-note left of StringFormat: The corresponding MIME\ntypes, defaults to "text/plain"\n(docbook / asciidoc / isdoc\nare not registered types yet)
+note bottom of BibItemType: Types imported from\nISO 690 and BibTeX,\nwith the addition of\n"standard" and "website". While "electronic_resource"\nhas been retained, the distinction\nbetween offline and online resources\nshould be made through medium/form\n(electronic vs physical).
 
 '******* CLASS RELATIONS **********************************************
-Uri -[hidden]- Iso8601DataTime
-Iso8601DataTime -[hidden]- Iso8601Date
-Iso8601Date -[hidden]- Iso639Code
-Iso639Code -[hidden]- Iso15924Code
-Iso15924Code -[hidden]- String
-
-LocalizedString <|-- FormattedString
-FormattedString <|-- StringFormat
-Uri <-- TypedUri
 
 @enduml
