@@ -213,7 +213,7 @@ BibliographicItem =
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
     abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, accesslocation*, license,* bclassification?, bkeyword*, validity?
+    extent*, accesslocation*, license*, bclassification?, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
@@ -245,7 +245,7 @@ DateType =
   ( ISO8601Date )?
 
 BibliographicDateType =
-"published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" 
+"published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" | "adapted"
 
 bdate = element date {
   attribute type { ( BibliographicDateType | text ) },
@@ -338,7 +338,7 @@ DocRelationType =
     "equivalent" |
     "identical" |
     "nonequivalent" |
-    "includedIn" |" |
+    "includedIn" |
     "includes" |
     "instance" |
     "instanceOf" |
@@ -386,7 +386,7 @@ bkeyword = element keyword {
 vocabid = element vocabid {
     attribute type { text },
     attribute uri { xsd:anyURI }?,
-    element code { text }?
+    element code { text }?,
     element term { text }?
 }
 

@@ -73,6 +73,9 @@
   <define name="edition">
     <a:documentation>ISO-15924: Latn</a:documentation>
     <element name="edition">
+      <optional>
+        <attribute name="number"/>
+      </optional>
       <text/>
     </element>
   </define>
@@ -497,6 +500,7 @@
       <value>inproceedings</value>
       <value>journal</value>
       <value>website</value>
+      <value>dataset</value>
       <value>misc</value>
     </choice>
   </define>
@@ -567,14 +571,23 @@
       <ref name="bplace"/>
     </zeroOrMore>
     <zeroOrMore>
+      <ref name="bprice"/>
+    </zeroOrMore>
+    <zeroOrMore>
       <ref name="extent"/>
     </zeroOrMore>
     <zeroOrMore>
       <ref name="accesslocation"/>
     </zeroOrMore>
+    <zeroOrMore>
+      <ref name="license"/>
+    </zeroOrMore>
     <optional>
       <ref name="bclassification"/>
     </optional>
+    <zeroOrMore>
+      <ref name="bkeyword"/>
+    </zeroOrMore>
     <optional>
       <ref name="validity"/>
     </optional>
@@ -592,6 +605,11 @@
   <define name="formattedref">
     <element name="formattedref">
       <ref name="FormattedString"/>
+    </element>
+  </define>
+  <define name="license">
+    <element name="license">
+      <text/>
     </element>
   </define>
   <define name="fetched">
@@ -672,6 +690,7 @@
       <value>copied</value>
       <value>unchanged</value>
       <value>circulated</value>
+      <value>adapted</value>
     </choice>
   </define>
   <define name="bdate">
@@ -704,6 +723,9 @@
       <optional>
         <attribute name="type"/>
       </optional>
+      <optional>
+        <attribute name="scope"/>
+      </optional>
       <text/>
     </element>
   </define>
@@ -722,6 +744,12 @@
   </define>
   <define name="bplace">
     <element name="place">
+      <text/>
+    </element>
+  </define>
+  <define name="bprice">
+    <element name="price">
+      <attribute name="currency"/>
       <text/>
     </element>
   </define>
@@ -795,6 +823,9 @@
           <optional>
             <ref name="seriespartnumber"/>
           </optional>
+          <optional>
+            <ref name="seriesrun"/>
+          </optional>
         </group>
       </choice>
     </element>
@@ -827,6 +858,11 @@
   </define>
   <define name="seriespartnumber">
     <element name="partnumber">
+      <text/>
+    </element>
+  </define>
+  <define name="seriesrun">
+    <element name="run">
       <text/>
     </element>
   </define>
@@ -870,11 +906,15 @@
   <define name="DocRelationType">
     <choice>
       <value>obsoletes</value>
+      <value>obsoletedBy</value>
+      <value>supersedes</value>
+      <value>supersededBy</value>
       <value>updates</value>
       <value>updatedBy</value>
       <value>complements</value>
       <value>derivedFrom</value>
       <value>translatedFrom</value>
+      <value>hasTranslation</value>
       <value>adoptedFrom</value>
       <value>equivalent</value>
       <value>identical</value>
@@ -882,8 +922,19 @@
       <value>includedIn</value>
       <value>includes</value>
       <value>instance</value>
+      <value>instanceOf</value>
       <value>partOf</value>
+      <value>hasPart</value>
       <value>hasDraft</value>
+      <value>draftOf</value>
+      <value>merges</value>
+      <value>splits</value>
+      <value>amends</value>
+      <value>amendedBy</value>
+      <value>corrects</value>
+      <value>correctedBy</value>
+      <value>revises</value>
+      <value>revisedBy</value>
     </choice>
   </define>
   <define name="docrelation">
@@ -922,6 +973,51 @@
   <define name="draft">
     <element name="draft">
       <text/>
+    </element>
+  </define>
+  <define name="bkeyword">
+    <element name="keyword">
+      <choice>
+        <ref name="LocalizedString"/>
+        <group>
+          <element name="vocab">
+            <ref name="LocalizedString"/>
+          </element>
+          <oneOrMore>
+            <ref name="vocabid"/>
+          </oneOrMore>
+        </group>
+        <group>
+          <oneOrMore>
+            <element name="taxon">
+              <ref name="LocalizedString"/>
+            </element>
+          </oneOrMore>
+          <oneOrMore>
+            <ref name="vocabid"/>
+          </oneOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="vocabid">
+    <element name="vocabid">
+      <attribute name="type"/>
+      <optional>
+        <attribute name="uri">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <optional>
+        <element name="code">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="term">
+          <text/>
+        </element>
+      </optional>
     </element>
   </define>
   <!--

@@ -29,7 +29,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 
 Hystory of changes:
 > DD/MM/YYYY
-    -
+    - 20190618: add adapted date
     -
 '/
 
@@ -57,6 +57,7 @@ enum BibliographicDateType <<enumeration>>{
     copied
     unchanged
     circulated
+    adapted
 }
 
 '******* NOTES ********************************************************
