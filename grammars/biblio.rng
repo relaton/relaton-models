@@ -515,6 +515,7 @@
       <value>journal</value>
       <value>website</value>
       <value>dataset</value>
+      <value>archival</value>
       <value>misc</value>
     </choice>
   </define>
@@ -763,6 +764,14 @@
   </define>
   <define name="bplace">
     <element name="place">
+      <optional>
+        <attribute name="uri">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="region"/>
+      </optional>
       <text/>
     </element>
   </define>
@@ -775,7 +784,13 @@
   <define name="medium">
     <element name="medium">
       <optional>
+        <ref name="content"/>
+      </optional>
+      <optional>
         <ref name="form"/>
+      </optional>
+      <optional>
+        <ref name="carrier"/>
       </optional>
       <optional>
         <ref name="size"/>
@@ -785,8 +800,18 @@
       </optional>
     </element>
   </define>
+  <define name="content">
+    <element name="content">
+      <text/>
+    </element>
+  </define>
   <define name="form">
     <element name="form">
+      <text/>
+    </element>
+  </define>
+  <define name="carrier">
+    <element name="carrier">
       <text/>
     </element>
   </define>

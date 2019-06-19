@@ -211,7 +211,7 @@ BibItemType |=
        "standard" | "unpublished" | "map" | "electronic resource" | 
        "audiovisual" | "film" | "video" | "broadcast" |
        "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" | "journal" | "website" | "dataset" | "misc" )
+        "inproceedings" | "journal" | "website" | "dataset" | "archival" | "misc" )
  
 BibliographicItem =
     attribute type { BibItemType }?,
@@ -278,7 +278,11 @@ bclassification = element classification {
   text 
 }
 
-bplace = element place { text }
+bplace = element place { 
+  attribute uri { xsd:anyURI }?,
+  attribute region { text }?,
+  text 
+}
 
 bprice = element price {
    attribute currency { text },
@@ -286,9 +290,11 @@ bprice = element price {
 }
 
 medium = element medium { 
-  form?, size?, scale?
+  content?, form?, carrier?, size?, scale?
 }
+content = element content { text }
 form = element form { text }
+carrier = element carrier { text }
 size = element size { text }
 scale = element scale { text }
 accesslocation = element accesslocation { text }

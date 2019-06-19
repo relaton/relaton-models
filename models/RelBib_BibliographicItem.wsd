@@ -36,6 +36,7 @@ History of changes:
     - 20190522 annotate MediumType
     - 20190610 add price
     - 20190612 add keyword, license
+    - 20190619 refine medium, place
 '/
 
 '******* CONFIGURATION ************************************************
@@ -64,7 +65,7 @@ class BibliographicItem {
     +relation: DocumentRelation[0..*]
     +series: SeriesType[0..*]
     +medium: MediumType[0..1]
-    +place: String[0..*]
+    +place: PlaceType[0..*]
     +price: PriceType[0..*]
     +extent: BiblItemLocality[0..*]
     +accessLocation: String[0..*]
@@ -103,7 +104,9 @@ class CopyrightAssociation{
 }
 
 class MediumType{
+    +content: String[0..1]
     +form: String[0..1]
+    +carrier: String[0..1]
     +size: String[0..1]
     +scale: String[0..1]
 }
@@ -137,6 +140,12 @@ class VersionInfo{
     +draft: String[0..1]
 }
 
+class PlaceType{
+    +region: String[0..1],
+    +uri: String[0..1],
+    +content: String
+}
+
 '******* NOTES ********************************************************
 note right of BibliographicItem: formattedref and title are mutually exclusive.
 note bottom of MediumType: medium/form can be used to\ndifferentiate "electronic"\nfrom "physical" manifestations\nof a resource.
@@ -154,6 +163,7 @@ BibliographicItem <-- ValidityType
 BibliographicItem <-- TypedNote
 BibliographicItem <-- Edition
 BibliographicItem <-- PriceType
+BibliographicItem <-- Place Type
 
 TypedTitleString <-- TitleType
 

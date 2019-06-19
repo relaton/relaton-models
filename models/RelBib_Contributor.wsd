@@ -50,7 +50,7 @@ together {
         +affiliation: Affiliation[0..*]
         +identifier: PersonalIdentifier[0..*]
         +contact: ContactMethod[0..*]
-        +uri: TypeUri[0..*]
+        +uri: TypedUri[0..*]
     }
 
     class ContactMethod{

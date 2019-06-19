@@ -30,7 +30,8 @@ Description:    These bibliographic models are developed to consolidate and stan
 History of changes:
 > DD/MM/YYYY
     - 20190522: Added website as BibItemType, with annotation
-    - 20190610: Added BibItemTypes dataset
+    - 20190610: Added BibItemTypes dataset, wesbite
+    - 20190619: Added BibItemType archival
 '/
 
 '******* CONFIGURATION ************************************************
@@ -65,6 +66,7 @@ enum BibItemType <<enumeration>>{
     journal
     website
     dataset
+    archival
     misc
 }
 
