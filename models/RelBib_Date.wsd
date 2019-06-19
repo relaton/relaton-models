@@ -30,7 +30,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 Hystory of changes:
 > DD/MM/YYYY
     - 20190618: add adapted date
-    -
+    - 20190619: add @text
 '/
 
 '******* CONFIGURATION ************************************************
@@ -38,7 +38,8 @@ Hystory of changes:
 
 '******* CLASS DEFINITION *********************************************
 class BibliographicDate {
-    +type: BibliographicDateType | text
+    +type: BibliographicDateType | String
+    +text: String[0..1]
     +from: DateTime[0..1]
     +to: DateTime[0..1]
     +on: DateTime[0..1]

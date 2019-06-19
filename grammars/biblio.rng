@@ -187,28 +187,34 @@
   </define>
   <define name="fullname">
     <element name="name">
-      <choice>
-        <group>
-          <zeroOrMore>
-            <ref name="prefix"/>
-          </zeroOrMore>
-          <zeroOrMore>
-            <ref name="forename"/>
-          </zeroOrMore>
-          <zeroOrMore>
-            <ref name="initial"/>
-          </zeroOrMore>
-          <ref name="surname"/>
-          <zeroOrMore>
-            <ref name="addition"/>
-          </zeroOrMore>
-        </group>
-        <ref name="completeName"/>
-      </choice>
-      <zeroOrMore>
-        <ref name="biblionote"/>
-      </zeroOrMore>
+      <ref name="FullNameType"/>
     </element>
+  </define>
+  <define name="FullNameType">
+    <choice>
+      <group>
+        <zeroOrMore>
+          <ref name="prefix"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="forename"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="initial"/>
+        </zeroOrMore>
+        <ref name="surname"/>
+        <zeroOrMore>
+          <ref name="addition"/>
+        </zeroOrMore>
+      </group>
+      <ref name="completeName"/>
+    </choice>
+    <zeroOrMore>
+      <ref name="biblionote"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="variantname"/>
+    </zeroOrMore>
   </define>
   <define name="prefix">
     <element name="prefix">
@@ -238,6 +244,12 @@
   <define name="completeName">
     <element name="completename">
       <ref name="LocalizedString"/>
+    </element>
+  </define>
+  <define name="variantname">
+    <element name="variantname">
+      <attribute name="type"/>
+      <ref name="FullNameType"/>
     </element>
   </define>
   <define name="affiliation">
@@ -426,7 +438,9 @@
     <attribute name="type">
       <ref name="LocalityType"/>
     </attribute>
-    <ref name="referenceFrom"/>
+    <optional>
+      <ref name="referenceFrom"/>
+    </optional>
     <optional>
       <ref name="referenceTo"/>
     </optional>
@@ -701,21 +715,26 @@
           <text/>
         </choice>
       </attribute>
-      <choice>
-        <group>
-          <element name="from">
-            <ref name="ISO8601Date"/>
-          </element>
-          <optional>
-            <element name="to">
+      <optional>
+        <attribute name="text"/>
+      </optional>
+      <optional>
+        <choice>
+          <group>
+            <element name="from">
               <ref name="ISO8601Date"/>
             </element>
-          </optional>
-        </group>
-        <element name="on">
-          <ref name="ISO8601Date"/>
-        </element>
-      </choice>
+            <optional>
+              <element name="to">
+                <ref name="ISO8601Date"/>
+              </element>
+            </optional>
+          </group>
+          <element name="on">
+            <ref name="ISO8601Date"/>
+          </element>
+        </choice>
+      </optional>
     </element>
   </define>
   <define name="docidentifier">

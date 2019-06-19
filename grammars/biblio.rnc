@@ -89,10 +89,11 @@ person =
 }
 
 fullname =
-  element name {
+  element name { FullNameType }
+
+FullNameType = 
     (( prefix*, forename*, initial*, surname, addition* ) | completeName ),
-    biblionote*
-}
+    biblionote*, variantname*
 
 prefix = element prefix { LocalizedString }
 initial = element initial { LocalizedString }
@@ -100,6 +101,11 @@ addition = element addition { LocalizedString }
 surname = element surname { LocalizedString }
 forename = element forename { LocalizedString }
 completeName = element completename { LocalizedString }
+
+variantname = element variantname {
+  attribute type { text },
+  FullNameType
+}
 
 affiliation =
   element affiliation { 
@@ -173,7 +179,7 @@ locality =
 
 BibItemLocality =
     attribute type { LocalityType },
-    referenceFrom, referenceTo?
+    referenceFrom?, referenceTo?
 
 LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|whole|table|annex|figure|note|list|example|volume|issue|locality:[a-zA-Z0-9_]+" } 
 
@@ -249,13 +255,14 @@ BibliographicDateType =
 
 bdate = element date {
   attribute type { ( BibliographicDateType | text ) },
+  attribute text { text }?,
   (
 (
 element from { ISO8601Date },
 element to { ISO8601Date }?
 ) |
 element on { ISO8601Date }
-)
+)?
 
 }
 

@@ -32,6 +32,7 @@ History of changes:
     - 20190228: Person/uri, Organization/uri: allow multiple
     - 20190228: Populated ContactMethod, Address
     - 20190228: Annotate ContactMethod, Address, FullName
+    - 20190619: Variant names
 '/
 
 '******* CONFIGURATION ************************************************
@@ -112,6 +113,12 @@ together {
         +addition: LocalizedString[0..*]
         +completeName: LocalizedString[0..1]
         +note: LocalizedString[0..1]
+        +variant: VariantName[0..*]
+    }
+
+    class VariantName{
+       +type: String
+       +content: FullName
     }
 
     enum OrgIdentifierType <<enumeration>>{
@@ -146,5 +153,7 @@ Person <-- FullName
 
 Organization <-- OrgIdentifier
 OrgIdentifier <-- OrgIdentifierType
+
+FullName <-- VariantName
 
 @enduml

@@ -46,7 +46,7 @@ class Citation {
 
 class BibItemLocality{
     +type: SpecificLocalityType
-    +referenceFrom: LocalizedString
+    +referenceFrom: LocalizedString[0..1]
     +referenceTo: LocalizedString[0..1]
 }
 
