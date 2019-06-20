@@ -247,7 +247,7 @@
     </element>
   </define>
   <define name="variantname">
-    <element name="variantname">
+    <element name="variant">
       <attribute name="type"/>
       <ref name="FullNameType"/>
     </element>
@@ -295,13 +295,40 @@
   </define>
   <define name="orgname">
     <element name="name">
-      <ref name="LocalizedString"/>
+      <choice>
+        <ref name="LocalizedString"/>
+        <ref name="NameWithVariants"/>
+      </choice>
     </element>
   </define>
   <define name="subdivision">
     <element name="subdivision">
+      <choice>
+        <ref name="LocalizedString"/>
+        <ref name="NameWithVariants"/>
+      </choice>
+    </element>
+  </define>
+  <define name="NameWithVariants">
+    <element name="primary">
       <ref name="LocalizedString"/>
     </element>
+    <zeroOrMore>
+      <element name="variant">
+        <ref name="NameWithVariants1"/>
+      </element>
+    </zeroOrMore>
+  </define>
+  <define name="NameWithVariants1">
+    <attribute name="type"/>
+    <element name="primary">
+      <ref name="LocalizedString"/>
+    </element>
+    <zeroOrMore>
+      <element name="variant">
+        <ref name="NameWithVariants1"/>
+      </element>
+    </zeroOrMore>
   </define>
   <define name="abbreviation">
     <element name="abbreviation">
@@ -506,6 +533,7 @@
       <value>film</value>
       <value>video</value>
       <value>broadcast</value>
+      <value>software</value>
       <value>graphic_work</value>
       <value>music</value>
       <value>patent</value>
@@ -514,6 +542,7 @@
       <value>inproceedings</value>
       <value>journal</value>
       <value>website</value>
+      <value>webresource</value>
       <value>dataset</value>
       <value>archival</value>
       <value>misc</value>

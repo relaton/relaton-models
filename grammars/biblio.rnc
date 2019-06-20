@@ -102,7 +102,7 @@ surname = element surname { LocalizedString }
 forename = element forename { LocalizedString }
 completeName = element completename { LocalizedString }
 
-variantname = element variantname {
+variantname = element variant {
   attribute type { text },
   FullNameType
 }
@@ -121,8 +121,17 @@ organization =
     orgname, subdivision?, abbreviation?, uri*, org-identifier*, contact*
 }
 
-orgname = element name { LocalizedString }
-subdivision = element subdivision { LocalizedString }
+orgname = element name { LocalizedString | NameWithVariants }
+subdivision = element subdivision { LocalizedString | NameWithVariants }
+
+NameWithVariants =
+  element primary { LocalizedString },
+  element variant { NameWithVariants1 }*
+
+NameWithVariants1 =
+  attribute type { text },
+  element primary { LocalizedString },
+  element variant { NameWithVariants1 }*
 
 abbreviation =
   element abbreviation { LocalizedString }
@@ -209,9 +218,9 @@ BibItemType |=
     (  "article" | "book" | "booklet" | "manual" |
        "proceedings" | "presentation" | "thesis" | "techreport" |
        "standard" | "unpublished" | "map" | "electronic resource" | 
-       "audiovisual" | "film" | "video" | "broadcast" |
+       "audiovisual" | "film" | "video" | "broadcast" | "software" |
        "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" | "journal" | "website" | "dataset" | "archival" | "misc" )
+        "inproceedings" | "journal" | "website" |"webresource"| "dataset" | "archival" | "misc" )
  
 BibliographicItem =
     attribute type { BibItemType }?,

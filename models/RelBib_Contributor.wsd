@@ -61,13 +61,24 @@ together {
     }
 
     class Organization{
-        +name: LocalizedString
-        +subdivision: LocalizedString[0..1]
+        +name: LocalizedString | NameWithVariants
+        +subdivision: (LocalizedString | NameWithVariants)[0..1]
         +abbreviation: LocalizedString[0..1]
         +uri: TypedUri[0..*]
         +identifier: OrgIdentifier[0..*]
         +contact: ContactMethod[0..*]
     }
+
+    class NameWithVariants{
+        +primary: LocalizedString
+        +variant: NameWithVariants1[0..*]
+    }
+
+   class NameWithVariants1{
+        +type: String
+        +primary: LocalizedString
+        +variant: NameWithVariants1[0..*]
+   }
 
 class Address {
     +formattedAddress: String[0..1]
@@ -113,10 +124,10 @@ together {
         +addition: LocalizedString[0..*]
         +completeName: LocalizedString[0..1]
         +note: LocalizedString[0..1]
-        +variant: VariantName[0..*]
+        +variant: VariantFullName[0..*]
     }
 
-    class VariantName{
+    class VariantFullName{
        +type: String
        +content: FullName
     }
@@ -152,8 +163,10 @@ ContactMethod <-- Address
 Person <-- FullName
 
 Organization <-- OrgIdentifier
+Organization <-- NameWithVariants
+NameWithVariants <-- NameWithVariants1
 OrgIdentifier <-- OrgIdentifierType
 
-FullName <-- VariantName
+FullName <-- VariantFullName
 
 @enduml

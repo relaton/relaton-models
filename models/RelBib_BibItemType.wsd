@@ -65,8 +65,10 @@ enum BibItemType <<enumeration>>{
     inproceedings
     journal
     website
+    webresource
     dataset
     archival
+    software
     misc
 }
 
