@@ -30,7 +30,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 History of changes:
 > DD/MM/YYYY
     - 20190228: second annotation to Citation
-    -
+    - 20190620: add time locality
 '/
 
 '******* CONFIGURATION ************************************************
@@ -66,6 +66,7 @@ enum SpecificLocalityType <<enumeration>>{
     example
     volume
     issue
+    time
     locality_String
 }
 
