@@ -141,8 +141,8 @@ class VersionInfo{
 }
 
 class PlaceType{
-    +region: String[0..1],
-    +uri: String[0..1],
+    +region: String[0..1]
+    +uri: String[0..1]
     +content: String
 }
 
@@ -163,7 +163,7 @@ BibliographicItem <-- ValidityType
 BibliographicItem <-- TypedNote
 BibliographicItem <-- Edition
 BibliographicItem <-- PriceType
-BibliographicItem <-- Place Type
+BibliographicItem <-- PlaceType
 
 TypedTitleString <-- TitleType
 
