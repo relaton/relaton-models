@@ -299,9 +299,10 @@ bprice = element price {
 }
 
 medium = element medium { 
-  content?, form?, carrier?, size?, scale?
+  content?, genre?, form?, carrier?, size?, scale?
 }
 content = element content { text }
+genre = element genre { text }
 form = element form { text }
 carrier = element carrier { text }
 size = element size { text }

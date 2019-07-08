@@ -37,6 +37,7 @@ History of changes:
     - 20190610 add price
     - 20190612 add keyword, license
     - 20190619 refine medium, place
+    - 20190708 refine medium
 '/
 
 '******* CONFIGURATION ************************************************
@@ -105,6 +106,7 @@ class CopyrightAssociation{
 
 class MediumType{
     +content: String[0..1]
+    +genre: String[0..1]
     +form: String[0..1]
     +carrier: String[0..1]
     +size: String[0..1]

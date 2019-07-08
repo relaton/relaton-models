@@ -816,6 +816,9 @@
         <ref name="content"/>
       </optional>
       <optional>
+        <ref name="genre"/>
+      </optional>
+      <optional>
         <ref name="form"/>
       </optional>
       <optional>
@@ -831,6 +834,11 @@
   </define>
   <define name="content">
     <element name="content">
+      <text/>
+    </element>
+  </define>
+  <define name="genre">
+    <element name="genre">
       <text/>
     </element>
   </define>
