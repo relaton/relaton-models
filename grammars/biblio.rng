@@ -545,6 +545,10 @@
       <value>webresource</value>
       <value>dataset</value>
       <value>archival</value>
+      <value>social_media</value>
+      <value>alert</value>
+      <value>message</value>
+      <value>conversation</value>
       <value>misc</value>
     </choice>
   </define>

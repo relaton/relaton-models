@@ -32,6 +32,7 @@ History of changes:
     - 20190522: Added website as BibItemType, with annotation
     - 20190610: Added BibItemTypes dataset, wesbite
     - 20190619: Added BibItemType archival
+    - 20190709: Added BibItemType socialmedia, alert, message, conversation
 '/
 
 '******* CONFIGURATION ************************************************
@@ -69,6 +70,10 @@ enum BibItemType <<enumeration>>{
     dataset
     archival
     software
+    social_media
+    alert
+    message
+    conversation
     misc
 }
 
