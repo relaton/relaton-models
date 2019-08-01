@@ -300,9 +300,9 @@ bprice = element price {
 }
 
 medium = element medium { 
-  content?, genre?, form?, carrier?, size?, scale?
+  bcontent?, genre?, form?, carrier?, size?, scale?
 }
-content = element content { text }
+bcontent = element content { text }
 genre = element genre { text }
 form = element form { text }
 carrier = element carrier { text }
