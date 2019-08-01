@@ -598,7 +598,7 @@
       <ref name="script"/>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="abstract"/>
+      <ref name="bibabstract"/>
     </zeroOrMore>
     <optional>
       <ref name="status"/>
@@ -959,7 +959,7 @@
       <ref name="FormattedString"/>
     </element>
   </define>
-  <define name="abstract">
+  <define name="bibabstract">
     <element name="abstract">
       <ref name="FormattedString"/>
     </element>

@@ -228,7 +228,7 @@ BibliographicItem =
     fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
-    abstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
+    bibabstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, accesslocation*, license*, bclassification?, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
@@ -334,7 +334,7 @@ biblionote = element note {
   attribute type { text }?,
   FormattedString 
 }
-abstract = element abstract { FormattedString }
+bibabstract = element abstract { FormattedString }
 
 copyright =
   element copyright {
