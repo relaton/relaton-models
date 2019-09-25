@@ -1,0 +1,503 @@
+{
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "status": {
+      "@id" : "http://relaton.com/status",
+      "@type" : "xsd:string"
+    },
+    "substage": {
+      "@id" : "http://relaton.com/substage",
+      "@type" : "xsd:string"
+    },
+    "iteration": {
+      "@id" : "http://relaton.com/iteration",
+      "@type" : "xsd:string"
+    },
+    "stage": {
+      "@id" : "http://relaton.com/stage",
+      "@type" : "xsd:string"
+    },
+    "language": {
+      "@id" : "http://relaton.com/language",
+      "@type" : "xsd:string"
+    },
+    "script": {
+      "@id" : "http://relaton.com/script",
+      "@type" : "xsd:string"
+    },
+    "edition": {
+      "@id" : "http://relaton.com/edition",
+      "@type" : "xsd:string"
+    },
+    "number": {
+      "@id" : "http://relaton.com/number",
+      "@type" : "xsd:string"
+    },
+    "language": {
+      "@id" : "http://relaton.com/language",
+      "@type" : "xsd:string"
+    },
+    "script": {
+      "@id" : "http://relaton.com/script",
+      "@type" : "xsd:string"
+    },
+    "format": {
+      "@id" : "http://relaton.com/format",
+      "@type" : "xsd:string"
+    },
+    "contributor": {
+      "@id" : "http://relaton.com/contributor",
+      "@type" : "xsd:string"
+    },
+    "role": {
+      "@id" : "http://relaton.com/role",
+      "@type" : "xsd:string"
+    },
+    "roletype": {
+      "@id" : "http://relaton.com/roletype",
+      "@type" : "xsd:string"
+    },
+    "roledescription": {
+      "@id" : "http://relaton.com/roledescription",
+      "@type" : "xsd:string"
+    },
+    "person": {
+      "@id" : "http://relaton.com/person",
+      "@type" : "xsd:string"
+    },
+    "fillname": {
+      "@id" : "http://relaton.com/fillname",
+      "@type" : "xsd:string"
+    },
+    "prefix": {
+      "@id" : "http://relaton.com/prefix",
+      "@type" : "xsd:string"
+    },
+    "initial": {
+      "@id" : "http://relaton.com/initial",
+      "@type" : "xsd:string"
+    },
+    "addition": {
+      "@id" : "http://relaton.com/addition",
+      "@type" : "xsd:string"
+    },
+    "surname": {
+      "@id" : "http://relaton.com/surname",
+      "@type" : "xsd:string"
+    },
+    "forename": {
+      "@id" : "http://relaton.com/forename",
+      "@type" : "xsd:string"
+    },
+    "completename": {
+      "@id" : "http://relaton.com/completename",
+      "@type" : "xsd:string"
+    },
+    "variantname": {
+      "@id" : "http://relaton.com/variantname",
+      "@type" : "xsd:string"
+    },
+    "variantnametype": {
+      "@id" : "http://relaton.com/variantnametype",
+      "@type" : "xsd:string"
+    },
+    "affiliationname": {
+      "@id" : "http://relaton.com/affiliationname",
+      "@type" : "xsd:string"
+    },
+    "affiliationdescription": {
+      "@id" : "http://relaton.com/affiliationdescription",
+      "@type" : "xsd:string"
+    },
+    "organization": {
+      "@id" : "http://relaton.com/organization",
+      "@type" : "xsd:string"
+    },
+    "orgname": {
+      "@id" : "http://relaton.com/orgname",
+      "@type" : "xsd:string"
+    },
+    "subdivision": {
+      "@id" : "http://relaton.com/subdivision",
+      "@type" : "xsd:string"
+    },
+    "primary": {
+      "@id" : "http://relaton.com/primary",
+      "@type" : "xsd:string"
+    },
+    "variant": {
+      "@id" : "http://relaton.com/variant",
+      "@type" : "xsd:string"
+    },
+    "namewithvariantstype": {
+      "@id" : "http://relaton.com/namewithvariantstype",
+      "@type" : "xsd:string"
+    },
+    "abbreviation": {
+      "@id" : "http://relaton.com/abbreviation",
+      "@type" : "xsd:string"
+    },
+    "uri": {
+      "@id" : "http://relaton.com/uri",
+      "@type" : "xsd:string"
+    },
+    "uritype": {
+      "@id" : "http://relaton.com/uritype",
+      "@type" : "xsd:string"
+    },
+    "phone": {
+      "@id" : "http://relaton.com/phone",
+      "@type" : "xsd:string"
+    },
+    "email": {
+      "@id" : "http://relaton.com/email",
+      "@type" : "xsd:string"
+    },
+    "address": {
+      "@id" : "http://relaton.com/address",
+      "@type" : "xsd:string"
+    },
+    "street": {
+      "@id" : "http://relaton.com/street",
+      "@type" : "xsd:string"
+    },
+    "city": {
+      "@id" : "http://relaton.com/city",
+      "@type" : "xsd:string"
+    },
+    "state": {
+      "@id" : "http://relaton.com/state",
+      "@type" : "xsd:string"
+    },
+    "country": {
+      "@id" : "http://relaton.com/country",
+      "@type" : "xsd:string"
+    },
+    "postcode": {
+      "@id" : "http://relaton.com/postcode",
+      "@type" : "xsd:string"
+    },
+    "formattedaddress": {
+      "@id" : "http://relaton.com/formattedaddress",
+      "@type" : "xsd:string"
+    },
+    "personidentifier": {
+      "@id" : "http://relaton.com/personidentifier",
+      "@type" : "xsd:string"
+    },
+    "personidentifiertype": {
+      "@id" : "http://relaton.com/personidentifiertype",
+      "@type" : "xsd:string"
+    },
+    "orgidentifier": {
+      "@id" : "http://relaton.com/orgidentifier",
+      "@type" : "xsd:string"
+    },
+    "orgidentifiertype": {
+      "@id" : "http://relaton.com/orgidentifiertype",
+      "@type" : "xsd:string"
+    },
+    "citation": {
+      "@id" : "http://relaton.com/citation",
+      "@type" : "xsd:string"
+    },
+    "bibitemid": {
+      "@id" : "http://relaton.com/bibitemid",
+      "@type" : "xsd:string"
+    },
+    "date": {
+      "@id" : "http://relaton.com/date",
+      "@type" : "xsd:string"
+    },
+    "locality": {
+      "@id" : "http://relaton.com/locality",
+      "@type" : "xsd:string"
+    },
+    "localitytype": {
+      "@id" : "http://relaton.com/localitytype",
+      "@type" : "xsd:string"
+    },
+    "referencefrom": {
+      "@id" : "http://relaton.com/referencefrom",
+      "@type" : "xsd:string"
+    },
+    "referenceto": {
+      "@id" : "http://relaton.com/referenceto",
+      "@type" : "xsd:string"
+    },
+    "bibitem": {
+      "@id" : "http://relaton.com/bibitem",
+      "@type" : "xsd:string"
+    },
+    "bibitemid": {
+      "@id" : "http://relaton.com/bibitemid",
+      "@type" : "xsd:string"
+    },
+    "relatoncollection": {
+      "@id" : "http://relaton.com/relatoncollection",
+      "@type" : "xsd:string"
+    },
+    "relatoncollectiontype": {
+      "@id" : "http://relaton.com/relatoncollectiontype",
+      "@type" : "xsd:string"
+    },
+    "btitle": {
+      "@id" : "http://relaton.com/btitle",
+      "@type" : "xsd:string"
+    },
+    "bsource": {
+      "@id" : "http://relaton.com/bsource",
+      "@type" : "xsd:string"
+    },
+    "formattedref": {
+      "@id" : "http://relaton.com/formattedref",
+      "@type" : "xsd:string"
+    },
+    "license": {
+      "@id" : "http://relaton.com/license",
+      "@type" : "xsd:string"
+    },
+    "fetched": {
+      "@id" : "http://relaton.com/fetched",
+      "@type" : "xsd:string"
+    },
+    "validity": {
+      "@id" : "http://relaton.com/validity",
+      "@type" : "xsd:string"
+    },
+    "validitybegins": {
+      "@id" : "http://relaton.com/validitybegins",
+      "@type" : "xsd:string"
+    },
+    "validityends": {
+      "@id" : "http://relaton.com/validityends",
+      "@type" : "xsd:string"
+    },
+    "validityrevision": {
+      "@id" : "http://relaton.com/validityrevision",
+      "@type" : "xsd:string"
+    },
+    "titletype": {
+      "@id" : "http://relaton.com/titletype",
+      "@type" : "xsd:string"
+    },
+    "uritype": {
+      "@id" : "http://relaton.com/uritype",
+      "@type" : "xsd:string"
+    },
+    "datetype": {
+      "@id" : "http://relaton.com/datetype",
+      "@type" : "xsd:string"
+    },
+    "datefrom": {
+      "@id" : "http://relaton.com/datefrom",
+      "@type" : "xsd:string"
+    },
+    "dateto": {
+      "@id" : "http://relaton.com/dateto",
+      "@type" : "xsd:string"
+    },
+    "dateon": {
+      "@id" : "http://relaton.com/dateon",
+      "@type" : "xsd:string"
+    },
+    "docidentifier": {
+      "@id" : "http://relaton.com/docidentifier",
+      "@type" : "xsd:string"
+    },
+    "docidentifiertype": {
+      "@id" : "http://relaton.com/docidentifiertype",
+      "@type" : "xsd:string"
+    },
+    "docidentifierscope": {
+      "@id" : "http://relaton.com/docidentifierscope",
+      "@type" : "xsd:string"
+    },
+    "docnumber": {
+      "@id" : "http://relaton.com/docnumber",
+      "@type" : "xsd:string"
+    },
+    "bclassification": {
+      "@id" : "http://relaton.com/bclassification",
+      "@type" : "xsd:string"
+    },
+    "bclassificationtype": {
+      "@id" : "http://relaton.com/bclassificationtype",
+      "@type" : "xsd:string"
+    },
+    "bplace": {
+      "@id" : "http://relaton.com/bplace",
+      "@type" : "xsd:string"
+    },
+    "bplaceuri": {
+      "@id" : "http://relaton.com/bplaceuri",
+      "@type" : "xsd:string"
+    },
+    "bplaceregion": {
+      "@id" : "http://relaton.com/bplaceregion",
+      "@type" : "xsd:string"
+    },
+    "bprice": {
+      "@id" : "http://relaton.com/bprice",
+      "@type" : "xsd:string"
+    },
+    "bpricecurrency": {
+      "@id" : "http://relaton.com/bpricecurrency",
+      "@type" : "xsd:string"
+    },
+    "medium": {
+      "@id" : "http://relaton.com/medium",
+      "@type" : "xsd:string"
+    },
+    "bcontent": {
+      "@id" : "http://relaton.com/bcontent",
+      "@type" : "xsd:string"
+    },
+    "genre": {
+      "@id" : "http://relaton.com/genre",
+      "@type" : "xsd:string"
+    },
+    "form": {
+      "@id" : "http://relaton.com/form",
+      "@type" : "xsd:string"
+    },
+    "carrier": {
+      "@id" : "http://relaton.com/carrier",
+      "@type" : "xsd:string"
+    },
+    "size": {
+      "@id" : "http://relaton.com/size",
+      "@type" : "xsd:string"
+    },
+    "scale": {
+      "@id" : "http://relaton.com/scale",
+      "@type" : "xsd:string"
+    },
+    "accesslocation": {
+      "@id" : "http://relaton.com/accesslocation",
+      "@type" : "xsd:string"
+    },
+    "extent": {
+      "@id" : "http://relaton.com/extent",
+      "@type" : "xsd:string"
+    },
+    "series": {
+      "@id" : "http://relaton.com/series",
+      "@type" : "xsd:string"
+    },
+    "seriestype": {
+      "@id" : "http://relaton.com/seriestype",
+      "@type" : "xsd:string"
+    },
+    "seriesorganization": {
+      "@id" : "http://relaton.com/seriesorganization",
+      "@type" : "xsd:string"
+    },
+    "seriesfrom": {
+      "@id" : "http://relaton.com/seriesfrom",
+      "@type" : "xsd:string"
+    },
+    "seriesto": {
+      "@id" : "http://relaton.com/seriesto",
+      "@type" : "xsd:string"
+    },
+    "seriesnumber": {
+      "@id" : "http://relaton.com/seriesnumber",
+      "@type" : "xsd:string"
+    },
+    "serierspartnumber": {
+      "@id" : "http://relaton.com/serierspartnumber",
+      "@type" : "xsd:string"
+    },
+    "seriesrun": {
+      "@id" : "http://relaton.com/seriesrun",
+      "@type" : "xsd:string"
+    },
+    "biblionote": {
+      "@id" : "http://relaton.com/biblionote",
+      "@type" : "xsd:string"
+    },
+    "biblionotetype": {
+      "@id" : "http://relaton.com/biblionotetype",
+      "@type" : "xsd:string"
+    },
+    "bibabstract": {
+      "@id" : "http://relaton.com/bibabstract",
+      "@type" : "xsd:string"
+    },
+    "copyright": {
+      "@id" : "http://relaton.com/copyright",
+      "@type" : "xsd:string"
+    },
+    "copyrightfrom": {
+      "@id" : "http://relaton.com/copyrightfrom",
+      "@type" : "xsd:string"
+    },
+    "copyrightto": {
+      "@id" : "http://relaton.com/copyrightto",
+      "@type" : "xsd:string"
+    },
+    "owner": {
+      "@id" : "http://relaton.com/owner",
+      "@type" : "xsd:string"
+    },
+    "docrelation": {
+      "@id" : "http://relaton.com/docrelation",
+      "@type" : "xsd:string"
+    },
+    "docrelationtype": {
+      "@id" : "http://relaton.com/docrelationtype",
+      "@type" : "xsd:string"
+    },
+    "docrelationbibitem": {
+      "@id" : "http://relaton.com/docrelationbibitem",
+      "@type" : "xsd:string"
+    },
+    "version": {
+      "@id" : "http://relaton.com/version",
+      "@type" : "xsd:string"
+    },
+    "vedition": {
+      "@id" : "http://relaton.com/vedition",
+      "@type" : "xsd:string"
+    },
+    "revisiondate": {
+      "@id" : "http://relaton.com/revisiondate",
+      "@type" : "xsd:string"
+    },
+    "draft": {
+      "@id" : "http://relaton.com/draft",
+      "@type" : "xsd:string"
+    },
+    "bkeyword": {
+      "@id" : "http://relaton.com/bkeyword",
+      "@type" : "xsd:string"
+    },
+    "vocab": {
+      "@id" : "http://relaton.com/vocab",
+      "@type" : "xsd:string"
+    },
+    "taxon": {
+      "@id" : "http://relaton.com/taxon",
+      "@type" : "xsd:string"
+    },
+    "vocabid": {
+      "@id" : "http://relaton.com/vocabid",
+      "@type" : "xsd:string"
+    },
+    "vocabidtype": {
+      "@id" : "http://relaton.com/vocabidtype",
+      "@type" : "xsd:string"
+    },
+    "vocabiduri": {
+      "@id" : "http://relaton.com/vocabiduri",
+      "@type" : "xsd:string"
+    },
+    "vocabcode": {
+      "@id" : "http://relaton.com/vocabcode",
+      "@type" : "xsd:string"
+    },
+    "vocabterm": {
+      "@id" : "http://relaton.com/vocabterm",
+      "@type" : "xsd:string"
+    }
+}
