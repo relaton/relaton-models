@@ -817,7 +817,7 @@
   <define name="medium">
     <element name="medium">
       <optional>
-        <ref name="content"/>
+        <ref name="bcontent"/>
       </optional>
       <optional>
         <ref name="genre"/>
@@ -836,7 +836,7 @@
       </optional>
     </element>
   </define>
-  <define name="content">
+  <define name="bcontent">
     <element name="content">
       <text/>
     </element>
@@ -919,6 +919,7 @@
     <choice>
       <value>main</value>
       <value>alt</value>
+      <text/>
     </choice>
   </define>
   <define name="seriesorganization">

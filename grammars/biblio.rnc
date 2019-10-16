@@ -321,7 +321,7 @@ series = element series {
   seriesnumber?, seriespartnumber?, seriesrun?))
 }
 
-SeriesType = ( "main" | "alt" )
+SeriesType = ( "main" | "alt" | text )
 
 seriesorganization = element organization { text }
 seriesfrom = element from { ISO8601Date }
