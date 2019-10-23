@@ -75,6 +75,7 @@ enum DocumentRelationType <<enumeration>>{
     correctedBy
     revises
     revisedBy
+    related
 }
 
 '******* NOTES ********************************************************
