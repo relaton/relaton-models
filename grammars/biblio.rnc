@@ -148,7 +148,10 @@ uri =
 contact =
   ( address | phone | email | uri )
 
-phone = element phone { text }
+phone = element phone { 
+  attribute type { text },
+  text }
+
 email = element email { text }
 
 address =
@@ -379,7 +382,9 @@ DocRelationType =
     "corrects" |
     "correctedBy" |
     "revises" |
-    "revisedBy"
+    "revisedBy" |
+    "describes" |
+    "describedBy"
 
 docrelation =
   element relation {

@@ -33,6 +33,7 @@ History of changes:
     - 20190228: Populated ContactMethod, Address
     - 20190228: Annotate ContactMethod, Address, FullName
     - 20190619: Variant names
+    - 20191202: Phone type
 '/
 
 '******* CONFIGURATION ************************************************
@@ -55,9 +56,14 @@ together {
 
     class ContactMethod{
         +address: Address[0..1]
-        +phone: String[0..1]
+        +phone: Phone[0..*]
         +email: String[0..1]
         +uri: TypedUri[0..1]
+    }
+
+    class Phone{
+        +type: String[0..1]
+        +content: String
     }
 
     class Organization{

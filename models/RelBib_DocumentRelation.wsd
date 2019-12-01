@@ -30,7 +30,7 @@ Description:    These bibliographic models are developed to consolidate and stan
 Hystory of changes:
 > DD/MM/YYYY
     - 10/06/2019: add doc relation types
-    -
+    - 02/12.2019: ditto
 '/
 
 '******* CONFIGURATION ************************************************
@@ -75,6 +75,8 @@ enum DocumentRelationType <<enumeration>>{
     correctedBy
     revises
     revisedBy
+    describes
+    describedBy
     related
 }
 
