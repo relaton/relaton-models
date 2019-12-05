@@ -299,7 +299,9 @@
   <define name="orgname">
     <element name="name">
       <choice>
-        <ref name="LocalizedString"/>
+        <oneOrMore>
+          <ref name="LocalizedString"/>
+        </oneOrMore>
         <ref name="NameWithVariants"/>
       </choice>
     </element>
@@ -313,9 +315,11 @@
     </element>
   </define>
   <define name="NameWithVariants">
-    <element name="primary">
-      <ref name="LocalizedString"/>
-    </element>
+    <oneOrMore>
+      <element name="primary">
+        <ref name="LocalizedString"/>
+      </element>
+    </oneOrMore>
     <zeroOrMore>
       <element name="variant">
         <ref name="NameWithVariants1"/>
@@ -324,9 +328,11 @@
   </define>
   <define name="NameWithVariants1">
     <attribute name="type"/>
-    <element name="primary">
-      <ref name="LocalizedString"/>
-    </element>
+    <oneOrMore>
+      <element name="primary">
+        <ref name="LocalizedString"/>
+      </element>
+    </oneOrMore>
     <zeroOrMore>
       <element name="variant">
         <ref name="NameWithVariants1"/>

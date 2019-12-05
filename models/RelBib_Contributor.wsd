@@ -34,6 +34,7 @@ History of changes:
     - 20190228: Annotate ContactMethod, Address, FullName
     - 20190619: Variant names
     - 20191202: Phone type
+    - 20191206: Name cardinalities
 '/
 
 '******* CONFIGURATION ************************************************
@@ -67,7 +68,7 @@ together {
     }
 
     class Organization{
-        +name: LocalizedString | NameWithVariants
+        +name: LocalizedString[1..*] | NameWithVariants
         +subdivision: (LocalizedString | NameWithVariants)[0..1]
         +abbreviation: LocalizedString[0..1]
         +uri: TypedUri[0..*]
@@ -76,13 +77,13 @@ together {
     }
 
     class NameWithVariants{
-        +primary: LocalizedString
+        +primary: LocalizedString[1..*]
         +variant: NameWithVariants1[0..*]
     }
 
    class NameWithVariants1{
         +type: String
-        +primary: LocalizedString
+        +primary: LocalizedString[1..*]
         +variant: NameWithVariants1[0..*]
    }
 
