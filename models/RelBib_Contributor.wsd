@@ -69,7 +69,7 @@ together {
 
     class Organization{
         +name: LocalizedString[1..*] | NameWithVariants
-        +subdivision: (LocalizedString | NameWithVariants)[0..1]
+        +subdivision: LocalizedString[0..*] | NameWithVariants
         +abbreviation: LocalizedString[0..1]
         +uri: TypedUri[0..*]
         +identifier: OrgIdentifier[0..*]

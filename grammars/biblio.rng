@@ -278,10 +278,12 @@
   </define>
   <define name="organization">
     <element name="organization">
-      <ref name="orgname"/>
-      <optional>
+      <oneOrMore>
+        <ref name="orgname"/>
+      </oneOrMore>
+      <zeroOrMore>
         <ref name="subdivision"/>
-      </optional>
+      </zeroOrMore>
       <optional>
         <ref name="abbreviation"/>
       </optional>
@@ -299,9 +301,7 @@
   <define name="orgname">
     <element name="name">
       <choice>
-        <oneOrMore>
-          <ref name="LocalizedString"/>
-        </oneOrMore>
+        <ref name="LocalizedString"/>
         <ref name="NameWithVariants"/>
       </choice>
     </element>
@@ -315,11 +315,9 @@
     </element>
   </define>
   <define name="NameWithVariants">
-    <oneOrMore>
-      <element name="primary">
-        <ref name="LocalizedString"/>
-      </element>
-    </oneOrMore>
+    <element name="primary">
+      <ref name="LocalizedString"/>
+    </element>
     <zeroOrMore>
       <element name="variant">
         <ref name="NameWithVariants1"/>
@@ -328,11 +326,9 @@
   </define>
   <define name="NameWithVariants1">
     <attribute name="type"/>
-    <oneOrMore>
-      <element name="primary">
-        <ref name="LocalizedString"/>
-      </element>
-    </oneOrMore>
+    <element name="primary">
+      <ref name="LocalizedString"/>
+    </element>
     <zeroOrMore>
       <element name="variant">
         <ref name="NameWithVariants1"/>

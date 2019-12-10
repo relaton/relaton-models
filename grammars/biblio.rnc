@@ -120,19 +120,19 @@ affiliationdescription = element description { FormattedString }
 
 organization = 
   element organization {
-    orgname, subdivision?, abbreviation?, uri*, org-identifier*, contact*
+    orgname+, subdivision*, abbreviation?, uri*, org-identifier*, contact*
 }
 
-orgname = element name { LocalizedString+ | NameWithVariants }
+orgname = element name { LocalizedString | NameWithVariants }
 subdivision = element subdivision { LocalizedString | NameWithVariants }
 
 NameWithVariants =
-  element primary { LocalizedString }+,
+  element primary { LocalizedString },
   element variant { NameWithVariants1 }*
 
 NameWithVariants1 =
   attribute type { text },
-  element primary { LocalizedString }+,
+  element primary { LocalizedString },
   element variant { NameWithVariants1 }*
 
 abbreviation =
