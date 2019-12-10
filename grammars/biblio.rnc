@@ -149,7 +149,7 @@ contact =
   ( address | phone | email | uri )
 
 phone = element phone { 
-  attribute type { text },
+  attribute type { text }?,
   text }
 
 email = element email { text }
