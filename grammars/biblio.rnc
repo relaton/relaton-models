@@ -234,7 +234,7 @@ BibliographicItem =
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
     bibabstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, accesslocation*, license*, bclassification?, bkeyword*, validity?
+    extent*, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
