@@ -252,10 +252,10 @@ validityRevision = element revision { ISO8601DateTime }
 
 
 TypedTitleString = 
-  attribute type { TitleType }?,
+  attribute type { text }?,
   FormattedString  
 
-TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
+# TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
 
 TypedUri =
   attribute type { text }?,
