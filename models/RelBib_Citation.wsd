@@ -41,6 +41,7 @@ History of changes:
 class Citation {
     +date: Iso8601DateTime[0..1]
     +bibLocality: BibItemLocality[0..*]
+    +bibLocalityStack: LocalityStack[0..*]
     +bibItem: BibliographicItem[0..1]
 }
 
@@ -48,6 +49,10 @@ class BibItemLocality{
     +type: SpecificLocalityType
     +referenceFrom: LocalizedString[0..1]
     +referenceTo: LocalizedString[0..1]
+}
+
+class LocalityStack{
+    +bibLocality: BibItemLocality[0..*]
 }
 
 enum SpecificLocalityType <<enumeration>>{
@@ -71,14 +76,17 @@ enum SpecificLocalityType <<enumeration>>{
 }
 
 '******* NOTES ********************************************************
-note right of Citation: date defaults to year,\nbut can specify month\nand/or day
+note bottom of Citation: date defaults to year,\nbut can specify month\nand/or day
 note right of Citation: bibItem realised in serialisation as crossreference to ID
-note right of BibItemLocality: 'referenceForm' identifies the\nthing that is being referred to,\ne.g., section "1.1"\nWhen referring to "Sections\n1.1 to 1.9" 'referenceFrom = \n1.2' and 'referenceTo = 1.9'
+note right of BibItemLocality: A sequence of locality elements is meant to indicate\nhierarchical ordering, from greater to smaller,\ne.g. chapter then page then paragraph.\nIt is legal for two adjacent localities\nto have the same type, indicating a discontinuous range.
+note bottom of BibItemLocality: bibLocality and bibLocalityStack are mutually exclusive
 note right of SpecificLocalityType: If SpecificLocalityType is\n'whole', BibItemLocality\n'identifier' should be empty.
 note bottom of SpecificLocalityType: locality_String: String\nprefixed with "locality:"
 
 '******* CLASS RELATIONS **********************************************
 Citation <-- BibItemLocality
+Citation <-- LocalityStack
+LocalityStack o-- BibItemLocality
 BibItemLocality <-- SpecificLocalityType
 
 

@@ -30,7 +30,8 @@ Description:    These bibliographic models are developed to consolidate and stan
 Hystory of changes:
 > DD/MM/YYYY
     - 10/06/2019: add doc relation types
-    - 02/12.2019: ditto
+    - 02/12/2019: ditto
+    - 06/04/2020: elaborate DocumentRelation: description, sourceLocality
 '/
 
 '******* CONFIGURATION ************************************************
@@ -40,8 +41,10 @@ Hystory of changes:
 '******* CLASS DEFINITION *********************************************
 class DocumentRelation {
     +type: DocumentRelationType
+    +description: FormattedString[0..*]
     +bibitem: BibliographicItem
-    +bibLocality: BibItemLocality[0..*]
+    +bibLocality: BibItemLocality[0..*] | LocalityStack[0..*]
+    +bibSourceLocality: BibItemLocality[0..*]  | LocalityStack[0..*]
 }
 
 enum DocumentRelationType <<enumeration>>{

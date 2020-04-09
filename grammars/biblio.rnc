@@ -184,12 +184,21 @@ citation =
 
 CitationType = 
     attribute bibitemid { xsd:IDREF },
-    locality*, date?
+    (locality* | localityStack*), date?
 
 date = element date { ISO8601Date }
 
 locality =
   element locality { BibItemLocality }
+
+localityStack =
+  element localityStack { locality* }
+
+sourceLocality =
+  element sourceLocality { BibItemLocality }
+
+sourceLocalityStack =
+  element sourceLocalityStack { sourceLocality* }
 
 BibItemLocality =
     attribute type { LocalityType },
@@ -389,8 +398,10 @@ DocRelationType =
 docrelation =
   element relation {
     attribute type { DocRelationType },
+    element description { FormattedString },
     element bibitem { BibliographicItem },
-    locality*
+    (locality* | localityStack*),
+    (sourceLocality* | sourceLocalityStack*)
 }
 
 version =
