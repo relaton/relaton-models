@@ -30,8 +30,16 @@ status =
      ( stage, substage?, iteration? )
 }
 
-stage = element stage { text }
-substage = element substage { text }
+stage = element stage { 
+  attribute abbreviation { text }?,
+  text
+}
+
+substage = element substage { 
+  attribute abbreviation { text }?,
+  text
+}
+
 iteration = element iteration { text }
 
 language = element language { text }

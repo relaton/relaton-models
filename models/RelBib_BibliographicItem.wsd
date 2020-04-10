@@ -38,6 +38,7 @@ History of changes:
     - 20190612 add keyword, license
     - 20190619 refine medium, place
     - 20190708 refine medium
+    - 20200411 add stage and substage abbreviations
 '/
 
 '******* CONFIGURATION ************************************************
@@ -94,7 +95,9 @@ class DocumentIdentifier{
 
 class DocumentStatus{
     +stage: LocalizedString
+    +stage_abbreviation: LocalizedString[0..1]
     +substage: LocalizedString[0..1]
+    +substage_abbreviation: LocalizedString[0..1]
     +iteration: LocalizedString[0..1]
 }
 
