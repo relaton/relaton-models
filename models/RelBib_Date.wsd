@@ -59,6 +59,8 @@ enum BibliographicDateType <<enumeration>>{
     unchanged
     circulated
     adapted
+    vote_started
+    vote_ended
 }
 
 '******* NOTES ********************************************************
