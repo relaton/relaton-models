@@ -378,7 +378,7 @@ DocRelationType =
 "mergedInto" | 
 "splits" | 
 "splitInto" | 
-"instanceOf" | 
+"instance" | 
 "hasInstance" | 
 "exemplarOf" | 
 "hasExemplar" | 

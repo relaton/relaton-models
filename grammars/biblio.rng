@@ -1029,7 +1029,7 @@
       <value>mergedInto</value>
       <value>splits</value>
       <value>splitInto</value>
-      <value>instanceOf</value>
+      <value>instance</value>
       <value>hasInstance</value>
       <value>exemplarOf</value>
       <value>hasExemplar</value>
