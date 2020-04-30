@@ -370,38 +370,63 @@ owner =
   element owner { ContributorInfo }
 
 DocRelationType =
-    "obsoletes" |
-    "obsoletedBy" |
-    "supersedes" |
-    "supersededBy" |
-    "updates" |
-    "updatedBy" |
-    "complements" |
-    "derivedFrom" |
-    "translatedFrom" |
-    "hasTranslation" |
-    "adoptedFrom" |
-    "equivalent" |
-    "identical" |
-    "nonequivalent" |
-    "includedIn" |
-    "includes" |
-    "instance" |
-    "instanceOf" |
-    "partOf" |
-    "hasPart" |
-    "hasDraft" |
-    "draftOf" |
-    "merges" |
-    "splits" |
-    "amends" |
-    "amendedBy" |
-    "corrects" |
-    "correctedBy" |
-    "revises" |
-    "revisedBy" |
-    "describes" |
-    "describedBy"
+"includes" | 
+"includedIn" | 
+"hasPart" | 
+"partOf" | 
+"merges" | 
+"mergedInto" | 
+"splits" | 
+"splitInto" | 
+"instanceOf" | 
+"hasInstance" | 
+"exemplarOf" | 
+"hasExemplar" | 
+"manifestationOf" | 
+"hasManifestation" | 
+"reproductionOf" | 
+"hasReproduction" | 
+"reprintOf" | 
+"hasReprint" | 
+"expressionOf" | 
+"hasExpression" | 
+"translatedFrom" | 
+"hasTranslation" | 
+"arrangementOf" | 
+"hasArrangement" | 
+"abridgementOf" | 
+"hasAbridgement" | 
+"annotationOf" | 
+"hasAnnotation" | 
+"draftOf" | 
+"hasDraft" | 
+"editionOf" | 
+"hasEdition" | 
+"updates" | 
+"updatedBy" | 
+"derivedFrom" | 
+"derives" | 
+"describes" | 
+"describedBy" | 
+"catalogues" | 
+"cataloguedBy" | 
+"hasSuccessor" | 
+"successorOf" | 
+"adaptedFrom" | 
+"hasAdaptation" | 
+"adoptedFrom" | 
+"adoptedAs" | 
+"reviewOf" | 
+"hasReview" | 
+"commentaryOf" | 
+"hasCommentary" | 
+"related" | 
+"complements" | 
+"complementOf" | 
+"obsoletes" | 
+"obsoletedBy" | 
+"cited" | 
+"isCitedIn" 
 
 docrelation =
   element relation {

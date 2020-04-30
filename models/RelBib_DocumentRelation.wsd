@@ -32,6 +32,7 @@ Hystory of changes:
     - 10/06/2019: add doc relation types
     - 02/12/2019: ditto
     - 06/04/2020: elaborate DocumentRelation: description, sourceLocality
+    - 01/05/2020: overhauled list
 '/
 
 '******* CONFIGURATION ************************************************
@@ -48,43 +49,67 @@ class DocumentRelation {
 }
 
 enum DocumentRelationType <<enumeration>>{
-    obsoletes
-    obsoletedBy
-    supersedes
-    supersededBy
-    updates
-    updatedBy
-    complements
-    derivedFrom
-    translatedFrom
-    hasTranslation
-    adoptedFrom
-    equivalent
-    identical
-    nonequivalent
-    includedIn
-    includes
-    instance
-    instanceOf
-    partOf
-    hasPart
-    hasDraft
-    draftOf
-    splits
-    merges
-    amends
-    amendedBy
-    corrects
-    correctedBy
-    revises
-    revisedBy
-    describes
-    describedBy
-    related
+includes
+includedIn
+hasPart
+partOf
+merges
+mergedInto
+splits
+splitInto
+instanceOf
+hasInstance
+exemplarOf
+hasExemplar
+manifestationOf
+hasManifestation
+reproductionOf
+hasReproduction
+reprintOf
+hasReprint
+expressionOf
+hasExpression
+translatedFrom
+hasTranslation
+arrangementOf
+hasArrangement
+abridgementOf
+hasAbridgement
+annotationOf
+hasAnnotation
+draftOf
+hasDraft
+editionOf
+hasEdition
+updates
+updatedBy
+derivedFrom
+derives
+describes
+describedBy
+catalogues
+cataloguedBy
+hasSuccessor
+successorOf
+adaptedFrom
+hasAdaptation
+adoptedFrom
+adoptedAs
+reviewOf
+hasReview
+commentaryOf
+hasCommentary
+related
+complements
+complementOf
+obsoletes
+obsoletedBy
+cited
+isCitedIn
 }
 
 '******* NOTES ********************************************************
-note right of DocumentRelationType: DocumentRelationType should\nbe some namespaced URI so\neveryone can create their own\nDocumentRelationType for their\nown purpose, e.g., GB\nStandard's NEQ, IND, EQV.
+note right of DocumentRelationType: description allows restriction of type
 
 '******* CLASS RELATIONS **********************************************
 DocumentRelation <-- DocumentRelationType
