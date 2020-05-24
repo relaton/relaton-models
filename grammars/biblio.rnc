@@ -53,11 +53,15 @@ edition = element edition {
    text
 }
 
-LocalizedString =
+LocalizedString1 =
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
   attribute script { text }?,
   text 
+
+LocalizedString = 
+  LocalizedString1 | 
+  element variant { LocalizedString1 }+
 
 # Unlike UML, change type to format: type is overloaded
 # Would be need if plain were default value and could omit the attribute
@@ -73,6 +77,10 @@ LocalizedStringOrXsAny =
   attribute language { text }?,
   attribute script { text }?,
   ( text | AnyElement )+
+
+LocalizedStringOrXsAny = 
+  LocalizedStringOrXsAny1 | 
+  element variant { LocalizedStringOrXsAny1 }+
 
 
 contributor = 

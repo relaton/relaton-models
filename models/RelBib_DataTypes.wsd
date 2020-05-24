@@ -85,6 +85,7 @@ class LocalizedString{
     +language: Iso639Code[0..*]
     +script: Iso15924Code[0..*]
     +content: String
+    +variant: LocalizedString[0..*]
 }
 
 
@@ -104,6 +105,7 @@ enum StringFormat <<enumeration>>{
 
 '******* NOTES ********************************************************
 note left of StringFormat: The corresponding MIME\ntypes, defaults to "text/plain"\n(docbook / asciidoc / isdoc\nare not registered types yet)
+note left of LocalizedString: type is either a single variant,\nor multiple variants wrapped in "variant" tag
 
 '******* CLASS RELATIONS **********************************************
 Uri -[hidden]- Iso8601DataTime
