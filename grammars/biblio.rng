@@ -131,7 +131,7 @@
     </optional>
     <ref name="LocalizedStringOrXsAny"/>
   </define>
-  <define name="LocalizedStringOrXsAny">
+  <define name="LocalizedStringOrXsAny1">
     <optional>
       <!-- multiple languages and scripts possible: comma delimit them if so -->
       <attribute name="language"/>

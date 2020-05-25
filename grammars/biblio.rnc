@@ -72,7 +72,7 @@ FormattedString =
     "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-isodoc+xml" | text ) }?,
   LocalizedStringOrXsAny
 
-LocalizedStringOrXsAny =
+LocalizedStringOrXsAny1 =
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
   attribute script { text }?,
