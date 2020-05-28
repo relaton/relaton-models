@@ -368,7 +368,7 @@ bibabstract = element abstract { FormattedString }
 
 copyright =
   element copyright {
-    from, to?, owner
+    from, to?, owner+
 }
 
 from = element from { xsd:gYear }

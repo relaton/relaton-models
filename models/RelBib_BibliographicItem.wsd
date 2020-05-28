@@ -104,7 +104,7 @@ class DocumentStatus{
 class CopyrightAssociation{
     +from: DateTime
     +to: DateTime[0..1]
-    +owner: Contributor
+    +owner: Contributor[1..*]
 }
 
 class MediumType{
