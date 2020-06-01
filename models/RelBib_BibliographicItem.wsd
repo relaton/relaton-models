@@ -39,6 +39,7 @@ History of changes:
     - 20190619 refine medium, place
     - 20190708 refine medium
     - 20200411 add stage and substage abbreviations
+    - 20200601 copyright modelling
 '/
 
 '******* CONFIGURATION ************************************************
@@ -63,7 +64,7 @@ class BibliographicItem {
     +script: Iso15924Code[0..*]
     +abstract: FormattedString[0..*]
     +status: DocumentStatus[0..1]
-    +copyright: CopyrightAssociation[0..1]
+    +copyright: CopyrightAssociation[0..*]
     +relation: DocumentRelation[0..*]
     +series: SeriesType[0..*]
     +medium: MediumType[0..1]
@@ -105,6 +106,7 @@ class CopyrightAssociation{
     +from: DateTime
     +to: DateTime[0..1]
     +owner: Contributor[1..*]
+    +scope: String[0..1]
 }
 
 class MediumType{

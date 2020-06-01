@@ -258,7 +258,7 @@ BibliographicItem =
     fetched?,
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
-    bibabstract*, status?, copyright?, docrelation*, series*, medium?, bplace*, bprice*,
+    bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
@@ -368,8 +368,10 @@ bibabstract = element abstract { FormattedString }
 
 copyright =
   element copyright {
-    from, to?, owner+
+    from, to?, owner+, copyright_scope?
 }
+
+copyright_scope = element scope { text }
 
 from = element from { xsd:gYear }
 to = element to { xsd:gYear }
