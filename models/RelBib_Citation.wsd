@@ -31,6 +31,7 @@ History of changes:
 > DD/MM/YYYY
     - 20190228: second annotation to Citation
     - 20190620: add time locality
+    - 20200611: add anchor locality
 '/
 
 '******* CONFIGURATION ************************************************
@@ -72,6 +73,7 @@ enum SpecificLocalityType <<enumeration>>{
     volume
     issue
     time
+    anchor
     locality_String
 }
 
