@@ -1,9 +1,15 @@
+#!make
+
 SRC := $(wildcard models/*.wsd)
 PNG := $(patsubst models/%.wsd,images/%.png,$(SRC))
 
 FORMATS := png
 
+ifeq ($(OS),Windows_NT)
+SHELL := cmd
+else
 SHELL := /bin/bash
+endif
 
 _OUT_FILES := $(foreach FORMAT,$(FORMATS),$(shell echo $(FORMAT) | tr '[:lower:]' '[:upper:]'))
 OUT_FILES  := $(foreach F,$(_OUT_FILES),$($F))
