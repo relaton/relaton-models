@@ -1,0 +1,170 @@
+enum DocumentRelationType  {
+  definition {
+    Type of the document relationship.
+  }
+
+  The document relation types are to be understood as follows:
+
+
+
+
+
+  includes {
+    definition {
+      The document described in the main record contains the
+      document in the relation. This is the inverse relation to `includedIn`.
+    }
+  }
+  includedIn {
+    definition {
+      The document described in the main record is a part (component) of the
+      document in the relation (the host document); for example, chapter vs book, paper vs journal or
+      proceedings, record track vs record. In general, text-based resources have components
+      that can be considered a
+      different kind of resource; components of non-textual resources are considered
+      to be of the same type as their host.
+    }
+  }
+  hasPart
+  partOf {
+    definition {
+      The document described in the main record is a multi-part document,
+      and the document described in the relation is one of those parts. For example,
+      ISO 639 refers to the ISO standard for language names; it has three parts
+      ISO 639-1 (two-letter codes), ISO 639-2 (three-letter codes for major languages),
+      and ISO 639-3 (three-letter codes for all natural languages). This relation
+      is equivalent to `includes`, but is specific to multi-part textual documents, and
+      understands the including and included documents to be of the same type.
+    }
+  }
+  merges
+  mergedInto
+  splits
+  splitInto
+  instanceOf {
+    definition {
+      instance:: The document described in the main record is a generic reference
+      to a work, and the document described in the relation is an instance of that
+      work; for example, a specific edition or version of the main record.
+      This is used for example to represent the relation bewteen generic ISO standards,
+      and references to a particular edition of a standard, such as ISO 690 vs
+      ISO 690:2010.
+    }
+  }
+  hasInstance
+  exemplarOf
+  hasExemplar
+  manifestationOf
+  hasManifestation
+  reproductionOf
+  hasReproduction
+  reprintOf
+  hasReprint
+  expressionOf
+  hasExpression
+  translatedFrom {
+    definition {
+      The document described in the main record is a
+      translation of the document in the relation.
+    }
+  }
+  hasTranslation
+  arrangementOf
+  hasArrangement
+  abridgementOf
+  hasAbridgement
+  annotationOf
+  hasAnnotation
+  draftOf
+  hasDraft {
+    definition {
+      The document described in the main record is a generic reference
+      to a work (whether published or pre-published), and the document described
+      in the relation is specific pre-publication version of the work. Is used to
+      collect information about different drafts of a work, and gateway stages of standards,
+      in the one record.
+    }
+  }
+  editionOf
+  hasEdition
+  updates {
+    definition {
+      The document described in the main record is an update
+      of the document in the relation, which may or may not still be valid.
+      (By default in the standards world, it is not.)
+    }
+  }
+  updatedBy {
+    definition {
+      The document described in the main record is updated by
+      the document in the relation.
+    }
+  }
+  derivedFrom {
+    definition {
+      The document described in the main record is
+      derived from the document in the relation.
+    }
+  }
+  derives
+  describes
+  describedBy
+  catalogues
+  cataloguedBy
+  hasSuccessor
+  successorOf
+  adaptedFrom
+  hasAdaptation
+  adoptedFrom {
+    definition {
+      The document described in the main record corresponds
+      to the document in the relation, and has been adopted in response to it.
+      Typically it is a national standard body's counterpart to an international
+      standard.
+    }
+  }
+  adoptedAs
+  reviewOf
+  hasReview
+  commentaryOf
+  hasCommentary
+
+  identical {
+    definition {
+      The document described in the main record corresponds
+      to the document in the relation, is equivalent to it in force and scope,
+      and is identical to it in content. It is typically a subclass of the `adoptedFrom` relation.
+    }
+  }
+
+  nonequivalent:: The document described in the main record corresponds
+  to the document in the relation, but is not equivalent to it in force and scope.
+  It is typically a subclass of the `adoptedFrom` relation.
+
+
+  equivalent {
+    definition {
+      The document described in the main record corresponds
+      to the document in the relation, and is equivalent to it in force and scope,
+      though not in content. It is typically a subclass of the `adoptedFrom` relation.
+    }
+  }
+  related
+  complements {
+    definition {
+      The document described in the main record is
+      complementary to the document in the relation, and provides additional
+      or contextual information to help understand the document in the relation.
+    }
+  }
+  complementOf
+  obsoletes {
+    definition {
+      The document described in the main record supersedes
+      the document in the relation, which is no longer valid.
+    }
+  }
+  obsoletedBy
+  cited
+  isCitedIn
+}

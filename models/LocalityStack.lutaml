@@ -1,0 +1,3 @@
+class LocalityStack{
+  +bibLocality: BibItemLocality[0..*]
+}

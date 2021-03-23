@@ -1,0 +1,8 @@
+class Address {
+  +formattedAddress: String[0..1]
+  +street: String[1..*]
+  +city: String
+  +state: String[0..1]
+  +country: String
+  +postcode: String[0..1]
+}

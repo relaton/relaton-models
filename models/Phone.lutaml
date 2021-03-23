@@ -1,0 +1,4 @@
+class Phone{
+  +type: String[0..1]
+  +content: String
+}

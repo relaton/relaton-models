@@ -1,0 +1,9 @@
+class FormattedString{
+  +type: StringFormat {
+    definition {
+      The corresponding MIME types, defaults to "text/plain".
+
+      NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types.
+    }
+  }
+}

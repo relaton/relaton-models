@@ -1,0 +1,4 @@
+class DateTime{
+  +text:String[0..1]
+  +content: Iso8601DateTime[0..1]
+}

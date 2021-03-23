@@ -1,0 +1,9 @@
+class DocumentRelation {
+  +type: DocumentRelationType
+  +description: FormattedString[0..*]
+  +bibitem: BibliographicItem
+  +bibLocality: BibItemLocality[0..*]
+    ** | LocalityStack[0..*]
+  +bibSourceLocality: BibItemLocality[0..*]
+    ** | LocalityStack[0..*]
+}

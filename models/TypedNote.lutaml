@@ -1,0 +1,4 @@
+class TypedNote{
+  +type: String[0..1]
+  +content: FormattedString
+}

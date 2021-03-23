@@ -1,0 +1,32 @@
+enum SpecificLocalityType <<enumeration>>{
+  definition {
+    Type of locality indicator.
+
+    When the value `whole` is used, the corresponding `BibItemLocality`
+    attribute `identifier` should be empty.
+  }
+
+  section
+  clause
+  part
+  paragraph
+  chapter
+  page
+  whole
+  table
+  annex
+  figure
+  note
+  list
+  example
+  volume
+  issue
+  time
+  anchor
+
+  locality_string {
+    definition {
+      A free-form text string prefixed with locality information that is human-readable.
+    }
+  }
+}

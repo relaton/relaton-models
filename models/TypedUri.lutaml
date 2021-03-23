@@ -1,0 +1,4 @@
+class TypedUri{
+  +type: String[0..1]
+  +content: Uri
+}

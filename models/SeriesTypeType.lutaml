@@ -1,0 +1,4 @@
+enum SeriesTypeType {
+  main
+  alt
+}

@@ -1,0 +1,4 @@
+class ContributorRole{
+  +description: FormattedString[0..*]
+  +type: ContributorRoleTypes[0..1]
+}

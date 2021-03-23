@@ -1,0 +1,11 @@
+diagram RelBib_Date {
+
+  include ../models/BibliographicDate.lutaml
+  include ../models/BibliographicDateType.lutaml
+
+  association {
+    owner BibliographicDate
+    member BibliographicDateType
+    owner_type direct
+  }
+}

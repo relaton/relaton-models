@@ -1,0 +1,11 @@
+diagram RelBib_DocumentRelation {
+
+  include ../models/DocumentRelation.lutaml
+  include ../models/DocumentRelationType.lutaml
+
+  association {
+    owner DocumentRelation
+    member DocumentRelationType
+    owner_type direct
+  }
+}

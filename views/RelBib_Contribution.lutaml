@@ -1,0 +1,17 @@
+diagram RelBib_Contribution {
+
+  include ../models/ContributionInfo.lutaml
+  include ../models/ContributorRole.lutaml
+  include ../models/ContributorRoleTypes.lutaml
+
+  association {
+    owner ContributionInfo
+    member ContributorRole
+    owner_type direct
+  }
+  association {
+    owner ContributorRole
+    member ContributorRoleTypes
+    owner_type direct
+  }
+}

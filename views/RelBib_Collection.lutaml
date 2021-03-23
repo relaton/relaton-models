@@ -1,0 +1,5 @@
+diagram RelBib_Collection {
+
+  include ../models/RelatonCollection.lutaml
+
+}

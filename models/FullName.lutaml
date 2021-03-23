@@ -1,0 +1,10 @@
+class FullName{
+  +prefix: LocalizedString[0..*]
+  +forename: LocalizedString[0..*]
+  +initials: LocalizedString[0..*]
+  +surname: LocalizedString
+  +addition: LocalizedString[0..*]
+  +completeName: LocalizedString[0..1]
+  +note: LocalizedString[0..1]
+  +variant: VariantFullName[0..*]
+}

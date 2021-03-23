@@ -1,0 +1,7 @@
+enum TitleType {
+  alternative
+  original
+  unofficial
+  subtitle
+  main
+}

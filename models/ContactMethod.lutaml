@@ -1,0 +1,6 @@
+class ContactMethod{
+  +address: Address[0..1]
+  +phone: Phone[0..*]
+  +email: String[0..1]
+  +uri: TypedUri[0..1]
+}

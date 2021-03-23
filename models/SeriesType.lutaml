@@ -1,0 +1,19 @@
+class SeriesType {
+  +type: SeriesTypeType[0..1]
+  +formattedref: FormattedString[0..1] {
+    definition {
+      Fully formatted human-readable reference for the subject series.
+
+      NOTE: `formattedref` is mutually exclusive with other attributes in SeriesType.
+    }
+  }
+  +title: TypedTitleString[0..1]
+  +place: String[0..1]
+  +organization: String[0..1]
+  +abbrev: LocalizedString[0..1]
+  +from: DateTime[0..1]
+  +to: DateTime[0..1]
+  +number: String[0..1]
+  +partnumber: String[0..1]
+  +run: String[0..1]
+}

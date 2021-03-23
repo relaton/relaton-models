@@ -1,0 +1,42 @@
+diagram RelBib_Keyword {
+
+  class KeywordType {
+  }
+
+  class KeywordString {
+    +content: String
+  }
+
+  class KeywordWithIdentifiers {
+    +content: String
+    +vocabid: VocabId[1..*]
+  }
+
+  class VocabId {
+    +type: String
+    +uri: String[0..1]
+    +code: String[0..1]
+    +term: String[0..1]
+  }
+
+  class HierarchicalKeywordWithIdentifiers {
+    +taxon: String[1..*]
+    +vocabid: VocabId[1..*]
+  }
+
+  association {
+    owner KeywordType
+    member KeywordString
+    owner_type inheritance
+  }
+  association {
+    owner KeywordType
+    member KeywordWithIdentifiers
+    owner_type inheritance
+  }
+  association {
+    owner KeywordType
+    member HierarchicalKeywordWithIdentifiers
+    owner_type inheritance
+  }
+}

@@ -1,0 +1,30 @@
+enum ContributorRoleTypes {
+  definition {
+    Represents roles described by ISO 690 as follows:
+
+    . author, composer, librettist, mapping agency, surveyor,
+    cartographer, copyist, system designer of software, patentee,
+    patent applicant, artist, photographer, draughtsman, graphic
+    designer;
+
+    . conductor, performer of music, drama, etc., director of
+    films, inventor;
+
+    . compiler, editor, reviser;
+
+    . translator, engraver, photographer of another creator's
+    work, copyist, arranger, software programmer;
+
+    . publisher, online information provider, production company;
+
+    . distributor, online host.
+  }
+
+  author
+  performer
+  editor
+  adapter
+  translator
+  publisher
+  distributor
+}

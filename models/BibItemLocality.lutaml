@@ -1,0 +1,15 @@
+class BibItemLocality{
+  definition {
+    A sequence of locality elements is meant to indicate hierarchical ordering,
+    from greater to smaller.
+
+    [example]
+    Chapter, then page, then paragraph.
+
+    A discontinuous range can be represented by using two adjacent localities
+    with the same type.
+  }
+  +type: SpecificLocalityType
+  +referenceFrom: LocalizedString[0..1]
+  +referenceTo: LocalizedString[0..1]
+}

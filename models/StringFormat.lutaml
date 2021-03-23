@@ -1,0 +1,9 @@
+enum StringFormat {
+  text/plain
+  text/html
+  application/docbook+xml
+  application/tei+xml
+  text/x-asciidoc
+  text/markdown
+  application/x-isodoc+xml
+}

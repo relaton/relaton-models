@@ -1,0 +1,47 @@
+class Citation {
+  ** bibItem realised in serialisation as crossreference to ID
+
+  definition {
+    Representation of citation information.
+  }
+
+  +date: Iso8601DateTime[0..1] {
+    definition {
+    	Date of citation. A combination of the date time elements
+    	year, month and day should be specified.
+
+      Specification of month and day are optional.
+    }
+  }
+
+  +bibLocality: BibItemLocality[0..*] {
+    definition {
+      Describes the location of the cited information resource within
+      the subject of the bibliographic item.
+
+      NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
+    }
+  }
+
+  +bibLocalityStack: LocalityStack[0..*] {
+    definition {
+      Describes the location of the cited information resource within
+      the subject of the bibliographic item in a multi-level manner.
+
+      NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
+    }
+
+  }
+
+  +bibItem: BibliographicItem[0..1] {
+    definition {
+      Bibliographic items where the citation applies to.
+
+      A single citation may span multiple bibliographic items.
+
+      [example]
+      A contiguous or disjoint range of volumes can be represented with an
+      aggregatation of multiple bibliographic items.
+    }
+  }
+}

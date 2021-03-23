@@ -1,0 +1,5 @@
+class ValidityType{
+  +validityBegins: Iso8601DateTime[0..1]
+  +validityEnds: Iso8601DateTime[0..1]
+  +revision: Iso8601DateTime[0..1]
+}

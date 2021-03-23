@@ -1,0 +1,51 @@
+class BibliographicItem {
+  +type: BibItemType[0..1]
+  +fetched: DateTime[0..1]
+  +title: TypedTitleString[0..*] {
+    definition {
+      Title of the subject.
+
+      NOTE: `formattedRef` and `title` are mutually exclusive.
+    }
+  }
+  +formattedRef: FormattedString[0..1] {
+    definition {
+      Full reference identifier rendered for human reading.
+
+      NOTE: `formattedRef` and `title` are mutually exclusive.
+    }
+  }
+  +link: TypedUri[0..*]
+  +docidentifier: DocumentIdentifier[0..*]
+  +docnumber: String[0..1]
+  +dates: BibliographicDate[0..*]
+  +contributors: ContributionInfo[0..*]
+  +edition: Edition[0..1]
+  +version: VersionInfo[0..1]
+  +note: TypedNote[0..*]
+  +language: Iso639Code[0..*]
+  +script: Iso15924Code[0..*]
+  +abstract: FormattedString[0..*]
+  +status: DocumentStatus[0..1]
+  +copyright: CopyrightAssociation[0..*]
+  +relation: DocumentRelation[0..*]
+  +series: SeriesType[0..*]
+
+  +medium: MediumType[0..1] {
+    definition {
+      The medium the subject is realized on.
+
+      Medium can be used to differentiate between "electronic" and
+      "physical" manifestations of an information resource.
+    }
+  }
+
+  +place: PlaceType[0..*]
+  +price: PriceType[0..*]
+  +extent: BiblItemLocality[0..*]
+  +accessLocation: String[0..*]
+  +license: String[0..*]
+  +classification: DocumentIdentifier[0..*]
+  +keyword: KeywordType[0..*]
+  +validity: ValidityType[0..1]
+}

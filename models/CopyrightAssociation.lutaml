@@ -1,0 +1,6 @@
+class CopyrightAssociation{
+  +from: DateTime
+  +to: DateTime[0..1]
+  +owner: Contributor[1..*]
+  +scope: String[0..1]
+}

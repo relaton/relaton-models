@@ -1,0 +1,12 @@
+class MediumType{
+  definition {
+    Type of medium.
+  }
+
+  +content: String[0..1]
+  +genre: String[0..1]
+  +form: String[0..1]
+  +carrier: String[0..1]
+  +size: String[0..1]
+  +scale: String[0..1]
+}

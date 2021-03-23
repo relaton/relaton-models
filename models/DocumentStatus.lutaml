@@ -1,0 +1,7 @@
+class DocumentStatus{
+  +stage: LocalizedString
+  +stage_abbreviation: LocalizedString[0..1]
+  +substage: LocalizedString[0..1]
+  +substage_abbreviation: LocalizedString[0..1]
+  +iteration: LocalizedString[0..1]
+}

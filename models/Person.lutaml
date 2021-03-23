@@ -1,0 +1,7 @@
+class Person{
+  +name: FullName[0..1]
+  +affiliation: Affiliation[0..*]
+  +identifier: PersonalIdentifier[0..*]
+  +contact: ContactMethod[0..*]
+  +uri: TypedUri[0..*]
+}

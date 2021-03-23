@@ -1,0 +1,2 @@
+class Iso8601DateTime <<dataType>> {
+}

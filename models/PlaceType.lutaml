@@ -1,0 +1,5 @@
+class PlaceType{
+  +region: String[0..1]
+  +uri: String[0..1]
+  +content: String
+}

@@ -1,0 +1,94 @@
+diagram RelBib_Contributor {
+
+  include ../models/Contributor.lutaml
+  include ../models/Person.lutaml
+  include ../models/ContactMethod.lutaml
+  include ../models/Phone.lutaml
+  include ../models/Organization.lutaml
+  include ../models/NameVariantSet.lutaml
+  include ../models/NameVariant.lutaml
+  include ../models/Address.lutaml
+  include ../models/PersonIdentifier.lutaml
+  include ../models/Affiliation.lutaml
+  include ../models/OrgIdentifier.lutaml
+  include ../models/PersonalIdentifierType.lutaml
+  include ../models/FullName.lutaml
+  include ../models/VariantFullName.lutaml
+  include ../models/OrgIdentifierType.lutaml
+
+  association {
+    owner Contributor
+    member Person
+    owner_type inheritance
+  }
+  association {
+    owner Contributor
+    member Organization
+    owner_type inheritance
+  }
+  association {
+    owner Organization
+    member ContactMethod
+    owner_type direct
+  }
+  association {
+    owner ContactMethod
+    member Person
+    member_type direct
+  }
+  association {
+    owner Person
+    member PersonIdentifier
+    owner_type direct
+  }
+  association {
+    owner PersonIdentifier
+    member PersonalIdentifierType
+    owner_type direct
+  }
+  association {
+    owner Person
+    member Affiliation
+    owner_type direct
+  }
+  association {
+    owner Affiliation
+    member Organization
+    member_type direct
+  }
+  association {
+    owner ContactMethod
+    member Address
+    owner_type direct
+  }
+  association {
+    owner Person
+    member FullName
+    owner_type direct
+  }
+  association {
+    owner Organization
+    member OrgIdentifier
+    owner_type direct
+  }
+  association {
+    owner Organization
+    member NameVariantSet
+    owner_type direct
+  }
+  association {
+    owner NameVariantSet
+    member NameVariant
+    owner_type direct
+  }
+  association {
+    owner OrgIdentifier
+    member OrgIdentifierType
+    owner_type direct
+  }
+  association {
+    owner FullName
+    member VariantFullName
+    owner_type direct
+  }
+}

@@ -1,0 +1,4 @@
+class ContributionInfo{
+  +role: ContributorRole[0..*]
+  +entity: Contributor
+}

@@ -1,0 +1,11 @@
+class LocalizedString{
+  +language: Iso639Code[0..*]
+  +script: Iso15924Code[0..*]
+  +content: String
+  +variant: LocalizedString[0..*] {
+    definition {
+      A single value indicates a single variant;
+      multiple values indicate multiple variants.
+    }
+  }
+}

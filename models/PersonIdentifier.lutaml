@@ -1,0 +1,4 @@
+class PersonIdentifier {
+  +type: PersonalIdentifierType
+  +value: String
+}

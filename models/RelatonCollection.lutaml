@@ -1,0 +1,16 @@
+class RelatonCollection {
+
+  definition {
+    Used to present a group of bibliographic items as a single group.
+
+    [example]
+    When summarising the collection of standards created by a standards body.
+
+    A collection may be used for bibliographic exchange but is
+    typically not necesary for citation purposes.
+  }
+  +type: String[0..1]
+  +title: TypedTitleString[0..*]
+  +contributor: ContributionInfo[0..*]
+  +relation: DocumentRelation[0..*]
+}

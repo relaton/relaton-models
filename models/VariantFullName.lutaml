@@ -1,0 +1,4 @@
+class VariantFullName{
+  +type: String
+  +content: FullName
+}

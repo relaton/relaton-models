@@ -1,0 +1,62 @@
+enum BibliographicDateType {
+  definition {
+    Indicates type of date within a bibliographic lifecycle.
+
+    NOTE: Typically only the `published` date is of interest.
+  }
+
+  published {
+    definition {
+      The date on which the standard was published (distributed by the publisher).
+    }
+  }
+  accessed
+  created {
+    definition {
+      The date on which the first version of the standard was created.
+    }
+  }
+  implemented {
+    definition {
+      The date on which the standard became active.
+    }
+  }
+  obsoleted {
+    definition {
+      The date on which the standard was obsoleted/revoked.
+    }
+  }
+  confirmed {
+    definition {
+      The date on which the standard was reviewed and approved by the issuing authority.
+    }
+  }
+  updated {
+    definition {
+      The date on which the current version of the standard was updated.
+    }
+  }
+  issued {
+    definition {
+      The date on which the standard was issued (authorised for publication by the issuing authority).
+    }
+  }
+  transmitted
+  copied
+  unchanged {
+    definition {
+      The date on which the standard was last renewed without any changes in content.
+    }
+  }
+  circulated {
+    definition {
+      The date on which the unpublished standard was last circulated
+      officially as a preprint. For standards, this is associated
+      with the latest transition to a formally defined preparation
+      stage, such as Working Draft or Committee Draft.
+    }
+  }
+  adapted
+  vote_started
+  vote_ended
+}

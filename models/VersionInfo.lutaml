@@ -1,0 +1,4 @@
+class VersionInfo{
+  +revision-date: Iso8601DateTime[0..1]
+  +draft: String[0..1]
+}

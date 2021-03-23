@@ -1,0 +1,4 @@
+class PriceType{
+  +currency: Iso4217Code[0..1]
+  +content: String
+}

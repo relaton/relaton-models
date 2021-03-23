@@ -1,0 +1,4 @@
+class TypedTitleString{
+  +type: TitleType[0..1]
+  +content: FormattedString
+}

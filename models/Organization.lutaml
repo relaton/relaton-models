@@ -1,0 +1,8 @@
+class Organization{
+  +name: LocalizedString[1..*]
+  +subdivision: LocalizedString[0..*]
+  +abbreviation: LocalizedString[0..1]
+  +uri: TypedUri[0..*]
+  +identifier: OrgIdentifier[0..*]
+  +contact: ContactMethod[0..*]
+}

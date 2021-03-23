@@ -1,0 +1,77 @@
+diagram RelBib_BibliographicItem {
+
+  include ../models/BibliographicItem.lutaml
+  include ../models/Edition.lutaml
+  include ../models/TypedNote.lutaml
+  include ../models/DocumentIdentifier.lutaml
+  include ../models/DocumentStatus.lutaml
+  include ../models/CopyrightAssociation.lutaml
+  include ../models/MediumType.lutaml
+  include ../models/PriceType.lutaml
+  include ../models/TypedTitleString.lutaml
+  include ../models/ValidityType.lutaml
+  include ../models/TitleType.lutaml
+  include ../models/VersionInfo.lutaml
+  include ../models/PlaceType.lutaml
+
+  association {
+    owner DocumentIdentifier
+    member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner DocumentStatus
+    member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner CopyrightAssociation
+    member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner MediumType
+    member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner VersionInfo
+    member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member TypedTitleString
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member ValidityType
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member TypedNote
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Edition
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member PriceType
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member PlaceType
+    owner_type direct
+  }
+  association {
+    owner TypedTitleString
+    member TitleType
+    owner_type direct
+  }
+}

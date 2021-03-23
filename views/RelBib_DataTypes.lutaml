@@ -1,0 +1,30 @@
+diagram RelBib_DataTypes {
+
+  include ../models/Uri.lutaml
+  include ../models/Iso8601DateTime.lutaml
+  include ../models/Iso8601Date.lutaml
+  include ../models/Iso639Code.lutaml
+  include ../models/Iso15924Code.lutaml
+  include ../models/Iso4217Code.lutaml
+  include ../models/DateTime.lutaml
+  include ../models/TypedUri.lutaml
+  include ../models/LocalizedString.lutaml
+  include ../models/FormattedString.lutaml
+  include ../models/StringFormat.lutaml
+
+  association {
+    owner LocalizedString
+    member FormattedString
+    owner_type inheritance
+  }
+  association {
+    owner FormattedString
+    member StringFormat
+    owner_type inheritance
+  }
+  association {
+    owner Uri
+    member TypedUri
+    owner_type direct
+  }
+}

@@ -1,0 +1,20 @@
+class Edition {
+  definition {
+    Edition of the subject.
+  }
+
+  +number: String[0..1] {
+    definition {
+      Number of edition.
+
+      NOTE: The number attribute can be used to represent the numeric equivalent
+      of the edition string.
+    }
+  }
+
+  +content: FormattedString {
+    definition {
+      Formatted edition string for human reading.
+    }
+  }
+}

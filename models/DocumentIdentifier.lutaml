@@ -1,0 +1,5 @@
+class DocumentIdentifier{
+  +id: String
+  +type: String[0..1]
+  +scope: String[0..1]
+}

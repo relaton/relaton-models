@@ -1,0 +1,10 @@
+class BibliographicDate {
+  definition {
+    Memorable date in the lifecycle of the bibliographic item subject.
+  }
+  +type: BibliographicDateType
+  +text: String[0..1]
+  +from: DateTime[0..1]
+  +to: DateTime[0..1]
+  +on: DateTime[0..1]
+}

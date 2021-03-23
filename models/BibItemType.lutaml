@@ -1,0 +1,50 @@
+enum BibItemType {
+  definition {
+    Type of bibliographic item.
+
+    The value list complies with the types provided ISO 690:2021.
+
+    NOTE: These values represent a strict superset to BibTeX
+    publication types, and therefore any BibTeX type value can be
+    mapped to these values. Some values here do not have a corresponding
+    entry in BibTeX, for instance, "standard" and "website".
+
+    NOTE: While the value of "electronic_resource" exists, the
+    distinction between offline and online resources
+    should be made through medium (electronic vs physical).
+  }
+
+  article
+  book
+  booklet
+  manual
+  proceedings
+  presentation
+  thesis
+  techreport
+  standard
+  unpublished
+  map
+  electronic_resource
+  audiovisual
+  film
+  video
+  broadcast
+  graphic_work
+  music
+  patent
+  inbook
+  incollection
+  inproceedings
+  journal
+  website
+  webresource
+  dataset
+  archival
+  software
+  social_media
+  alert
+  message
+  conversation
+  misc
+}

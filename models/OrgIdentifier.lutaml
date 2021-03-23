@@ -1,0 +1,4 @@
+class OrgIdentifier{
+  +type: OrgIdentifierType
+  +value: String
+}
