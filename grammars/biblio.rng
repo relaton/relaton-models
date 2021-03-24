@@ -452,6 +452,7 @@
       <attribute name="type">
         <choice>
           <value>isni</value>
+          <value>orcid</value>
           <value>uri</value>
         </choice>
       </attribute>
@@ -461,10 +462,7 @@
   <define name="org-identifier">
     <element name="identifier">
       <attribute name="type">
-        <choice>
-          <value>orcid</value>
-          <value>uri</value>
-        </choice>
+        <data type="string" datatypeLibrary=""/>
       </attribute>
       <text/>
     </element>

@@ -1,0 +1,30 @@
+class KeywordType {
+  definition {
+    Keyword for a bibliographic item. 
+    Is represented in one of three ways: as a string (uncontrolled vocabulary);
+    as a string with associated identifiers (controlled vocabulary);
+    or as a hierarchical sequence of strings with associated identifiers (taxonomy).
+  }
+  +content: String[0..1] {
+    definition {
+      The keyword as an uncontrolled vocabulary term.
+    }
+  }
+  +vocab: LocalizedString[0..1] {
+    definition {
+      The keyword as an controlled vocabulary term.
+    }
+  }
+  +taxon: String[0..*] {
+    definition {
+      The keyword as a taxonomy. For example, the sequence of `taxon` elements
+      `pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic
+      classification.
+    }
+  }
+  +vocabid: VocabIdType[0..*] {
+    definition {
+      Identifiers for the keyword as a controlled vocabulary (including entries in taxonomies).
+    }
+  }
+}

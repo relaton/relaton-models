@@ -185,13 +185,13 @@ formattedAddress = element formattedAddress { text }
 
 person-identifier =
   element identifier {
-    attribute type { ("isni" | "uri") },
+    attribute type { ("isni" | "orcid" | "uri") },
     text
   }
 
 org-identifier =
   element identifier {
-    attribute type { ("orcid" | "uri") },
+    attribute type { string },
     text
   }
 
