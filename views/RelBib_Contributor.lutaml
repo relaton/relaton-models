@@ -5,8 +5,7 @@ diagram RelBib_Contributor {
   include ../models/ContactMethod.lutaml
   include ../models/Phone.lutaml
   include ../models/Organization.lutaml
-  include ../models/NameVariantSet.lutaml
-  include ../models/NameVariant.lutaml
+  include ../models/VariantOrgName.lutaml
   include ../models/Address.lutaml
   include ../models/PersonIdentifier.lutaml
   include ../models/Affiliation.lutaml
@@ -14,7 +13,6 @@ diagram RelBib_Contributor {
   include ../models/PersonalIdentifierType.lutaml
   include ../models/FullName.lutaml
   include ../models/VariantFullName.lutaml
-  include ../models/OrgIdentifierType.lutaml
 
   association {
     owner Contributor
@@ -68,17 +66,7 @@ diagram RelBib_Contributor {
   }
   association {
     owner Organization
-    member OrgIdentifier
-    owner_type direct
-  }
-  association {
-    owner Organization
-    member NameVariantSet
-    owner_type direct
-  }
-  association {
-    owner NameVariantSet
-    member NameVariant
+    member VariantOrgName
     owner_type direct
   }
   association {

@@ -25,6 +25,6 @@ diagram RelBib_DataTypes {
   association {
     owner Uri
     member TypedUri
-    owner_type direct
+    owner_type inheritance
   }
 }
