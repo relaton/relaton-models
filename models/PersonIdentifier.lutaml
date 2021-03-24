@@ -1,4 +1,15 @@
 class PersonIdentifier {
-  +type: PersonalIdentifierType
-  +value: String
+  definition {
+    An identifier of a person according to an international identifier scheme.
+  }
+  +type: PersonalIdentifierType {
+    definition {
+      The international identifier scheme for the identifier of the person.
+    }
+  }
+  +value: String {
+    definition {
+      The identifier value.
+    }
+  }
 }

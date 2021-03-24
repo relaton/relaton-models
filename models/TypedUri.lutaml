@@ -1,4 +1,16 @@
 class TypedUri{
-  +type: String[0..1]
-  +content: Uri
+  definition {
+    URI associated with a type. 
+  }
+  +type: String[0..1] {
+    definition {
+      The types of URI are open-ended, but include
+      the IANA link relations specified in <<rfc8288>>.
+    }
+  }
+  +content: Uri {
+    definition {
+      URI.
+    }
+  }
 }

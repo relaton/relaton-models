@@ -1,4 +1,15 @@
 class PriceType{
-  +currency: Iso4217Code[0..1]
-  +content: String
+  definition {
+    The price set on accessing the bibliographic item.   
+  }
+  +currency: Iso4217Code[0..1] {
+    definition {
+      The currency denomination for the price.
+    }
+  }
+  +content: String {
+    definition {
+      The currency amount for the price.
+    }
+  }
 }

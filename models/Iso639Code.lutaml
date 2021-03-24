@@ -1,2 +1,7 @@
 class Iso639Code <<dataType>> {
+  definition { 
+    Code for language or language family, as specified in <<iso639>>.
+    The specification is open as to whether the two-letter code or the three-letter
+    code for languages is used.
+  }
 }

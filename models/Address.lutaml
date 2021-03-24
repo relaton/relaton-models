@@ -1,8 +1,37 @@
 class Address {
-  +formattedAddress: String[0..1]
-  +street: String[1..*]
-  +city: String
-  +state: String[0..1]
-  +country: String
-  +postcode: String[0..1]
+  definition {
+    An address for a person or organization.
+  }
+  +formattedAddress: String[0..1] {
+    definition {
+      Preformatted version of the address, not decomposed into its component parts.
+
+      NOTE: `formattedAddress` is mutually exclusive with `street`, `city`, `state`, `country`, and `postcode`.
+    }
+  }
+  +street: String[0..*] {
+    definition {
+      The street and street number or equivalent in the address.
+    }
+  }
+  +city: String[0..1] {
+    definition {
+      The settlement or municipality in the address.
+    }
+  }
+  +state: String[0..1] {
+    definition {
+      The region of the country in the address.
+    }
+  }
+  +country: String[0..1] {
+    definition {
+      The country in the address.
+    }
+  }
+  +postcode: String[0..1] {
+    definition {
+      The postal code or equivalent in the address.
+    }
+  }
 }

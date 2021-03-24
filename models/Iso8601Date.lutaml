@@ -1,2 +1,5 @@
 class Iso8601Date <<dataType>> {
+  definition {
+    Gregorian date, as specified in <<iso8601>>.
+  }
 }

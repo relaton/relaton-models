@@ -1,5 +1,22 @@
 class PlaceType{
-  +region: String[0..1]
-  +uri: String[0..1]
-  +content: String
+  definition {
+    Place associated with the production of a bibliographic item.
+  }
+  +region: String[0..1] {
+    definition {
+      Region or country within which the place is located, given for disambiguation purposes.
+
+      Using an ISO 3166 code for a country or subnational region is recommended.
+    }
+  }
+  +uri: String[0..1] {
+    definition {
+      URI in a geographical registry identifying the place.
+    }
+  }
+  +content: String {
+    definition {
+      Name of the place.
+    }
+  }
 }

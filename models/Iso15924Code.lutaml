@@ -1,2 +1,5 @@
 class Iso15924Code <<dataType>> {
+  definition {
+    Code for writing scripts, as specified in <<iso15924>>.
+  }
 }

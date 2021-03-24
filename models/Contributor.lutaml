@@ -1,2 +1,5 @@
 class Contributor {
+  definition {
+    The contributor involved in the production of a bibliographic item; may be either a person or an organization.
+  }
 }

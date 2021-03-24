@@ -1,10 +1,31 @@
 class BibliographicDate {
   definition {
-    Memorable date in the lifecycle of the bibliographic item subject.
+    Significant date in the lifecycle of the bibliographic item,
+    including its production and its access.
   }
-  +type: BibliographicDateType
-  +text: String[0..1]
-  +from: DateTime[0..1]
-  +to: DateTime[0..1]
-  +on: DateTime[0..1]
+  +type: BibliographicDateType {
+    definition {
+      The phase of the production of or access to a bibliographic item.
+    }
+  }
+  +text: String[0..1] {
+    definition {
+      An optional textual description of the date, especially when a Gregorian date is not applicable.
+    }
+  }
+  +from: DateTime[0..1] {
+    definition {
+      The start of the date range described.
+    }
+  }
+  +to: DateTime[0..1] {
+    definition {
+      The end of the date range described.
+    }
+  }
+  +on: DateTime[0..1] {
+    definition {
+      The point date described (mutually exclusive with date range).
+    }
+  }
 }

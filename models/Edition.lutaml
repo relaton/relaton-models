@@ -1,6 +1,6 @@
 class Edition {
   definition {
-    Edition of the subject.
+    Edition of a bibliographic item.
   }
 
   +number: String[0..1] {

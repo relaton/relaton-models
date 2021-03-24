@@ -7,56 +7,91 @@ enum BibliographicDateType {
 
   published {
     definition {
-      The date on which the standard was published (distributed by the publisher).
+      The date on which the document was published (distributed by the publisher).
     }
   }
-  accessed
+  accessed {
+    definition {
+      Date a document was last accessed by the compiler of the bibliographic record;
+      routinely used for online publications. 
+
+      NOTE: Unlike in <<iso690>>, no distinction is made between
+      "viewed" and "accessed" based on whether the resource is human-readable or
+      machine-readable.)
+    }
+  }
   created {
     definition {
-      The date on which the first version of the standard was created.
+      The date on which the first version of the document was created.
     }
   }
   implemented {
     definition {
-      The date on which the standard became active.
+      The date on which the document takes effect. Applies to normative documents.
     }
   }
   obsoleted {
     definition {
-      The date on which the standard was obsoleted/revoked.
+      The date on which the document was obsoleted/revoked.
     }
   }
   confirmed {
     definition {
-      The date on which the standard was reviewed and approved by the issuing authority.
+      The date on which the document was reviewed and approved by the issuing authority.
     }
   }
   updated {
     definition {
-      The date on which the current version of the standard was updated.
+      The date on which the current version of the document was updated.
     }
   }
   issued {
     definition {
-      The date on which the standard was issued (authorised for publication by the issuing authority).
+      The date on which the document was issued (authorised for publication by the issuing authority).
+      Is typically differentiated from `published` for normative documents, such as
+      standards and legislation.
     }
   }
-  transmitted
-  copied
+  transmitted {
+    definition {
+      The date on which the document was broadcast.
+    }
+  }
+  copied {
+    definition {
+      The date on which the document physically copied, or recreated without any substantial
+      change in content (allowing for change in medium).
+    }
+  }
   unchanged {
     definition {
-      The date on which the standard was last renewed without any changes in content.
+      The date on which the document was last renewed or reprinted without any changes in content.
     }
   }
   circulated {
     definition {
-      The date on which the unpublished standard was last circulated
+      The date on which the unpublished document was last circulated
       officially as a preprint. For standards, this is associated
       with the latest transition to a formally defined preparation
       stage, such as Working Draft or Committee Draft.
     }
   }
-  adapted
-  vote_started
-  vote_ended
+  adapted {
+    definition {
+       The date on which a document adapted for a new purpose or audience, with some change
+       in content (includes translation).
+    }
+  }
+  vote_started {
+    definition {
+       The date on which a formal process for approval of a document was initiated.
+       Typically applies to standards documents in draft.
+    }
+  }
+  vote_ended {
+    definition {
+       The date on which a formal process for approval of a document was closed.
+       Typically applies to standards documents in draft.
+    }
+  }
 }

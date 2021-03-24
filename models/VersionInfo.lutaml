@@ -1,4 +1,15 @@
 class VersionInfo{
-  +revision-date: Iso8601DateTime[0..1]
-  +draft: String[0..1]
+  definition {
+    A version of the bibliographic item (within an edition). Can be used for drafts.
+  }
+  +revision-date: Iso8601DateTime[0..1] {
+    definition {
+      The date at which the current version of the bibliographic item was produced.
+    }
+  }
+  +draft: String[0..1] {
+    definition {
+      The identifier for the current draft of the bibliographic item.
+    }
+  }
 }

@@ -1,5 +1,22 @@
 class ValidityType{
-  +validityBegins: Iso8601DateTime[0..1]
-  +validityEnds: Iso8601DateTime[0..1]
-  +revision: Iso8601DateTime[0..1]
+  definition {
+    The time interval for which a bibliographic item
+    is determined valid, and the associated revision date.
+  }
+  +validityBegins: Iso8601DateTime[0..1] {
+    definition {
+      The date and time when this bibliographic item becomes valid.
+    }
+  }
+  +validityEnds: Iso8601DateTime[0..1] {
+    definition {
+      The date and time when this bibliographic item becomes invalid.
+    }
+  }
+  +revision: Iso8601DateTime[0..1] {
+    definition {
+      The date and time of issuance of the version of the document
+      for which this claim of validity is made, if applicable.
+    }
+  }
 }

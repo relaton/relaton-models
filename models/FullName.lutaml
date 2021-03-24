@@ -1,10 +1,45 @@
 class FullName{
-  +prefix: LocalizedString[0..*]
-  +forename: LocalizedString[0..*]
-  +initials: LocalizedString[0..*]
-  +surname: LocalizedString
-  +addition: LocalizedString[0..*]
-  +completeName: LocalizedString[0..1]
-  +note: LocalizedString[0..1]
-  +variant: VariantFullName[0..*]
+  definition {
+    The name of a person.
+  }
+  +prefix: LocalizedString[0..*] {
+    definition {
+      A prefixed addition to the name of the person, such as "Dr".
+    }
+  }
+  +forename: LocalizedString[0..*] {
+    definition {
+      A forename or given name of the person. Includes middle names.
+    }
+  }
+  +initials: LocalizedString[0..*] {
+    definition {
+      The initials of the person: can be used instead of forenames.
+    }
+  }
+  +surname: LocalizedString {
+    definition {
+      The surname, family name, or equivalent of the person.
+    }
+  }
+  +addition: LocalizedString[0..*] {
+    definition {
+      A suffixed addition to the name of the person, such as "Jr".
+    }
+  }
+  +completeName: LocalizedString[0..1] {
+    definition {
+      A preformatted version of the name of the person, not broken down into its component parts.
+    }
+  }
+  +note: LocalizedString[0..1] {
+    definition {
+      An additional note about the name of the person.
+    }
+  }
+  +variant: VariantFullName[0..*] {
+    definition {
+      A variant name of the person.
+    }
+  }
 }

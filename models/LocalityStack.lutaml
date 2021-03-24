@@ -1,3 +1,12 @@
 class LocalityStack{
-  +bibLocality: BibItemLocality[0..*]
+  definition {
+    Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item.
+  }
+  +bibLocality: BibItemLocality[0..*] {
+    definition {
+      Component bibliographic localities which group together to designate a single span of text.
+      Earlier localities are assumed to include later localities, and be of different types;
+      e.g. "Chapter 7, paragraph 9–11".
+    }
+  }
 }

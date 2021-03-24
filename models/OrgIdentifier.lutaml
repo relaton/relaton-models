@@ -1,4 +1,16 @@
 class OrgIdentifier{
-  +type: OrgIdentifierType
-  +value: String
+  definition {
+    An identifier of an organization according to an international identifier scheme.
+  }
+  +type: String {
+    definition {
+      The international identifier scheme for the identifier of the organization.
+      Examples include GRID, LEI, CrossRef, and Ringgold.
+    }
+  }
+  +value: String {
+    definition {
+      The identifier value.
+    }
+  }
 }

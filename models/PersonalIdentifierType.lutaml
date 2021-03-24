@@ -1,4 +1,20 @@
 enum PersonalIdentifierType {
-  Isni
-  Uri
+  definition {
+    The international identifier scheme for the identifier of a person.
+  }
+  Isni {
+    definition {
+      The International Standard Name Identifier (ISNI).
+    }
+  }
+  Orcid {
+    definition {
+      The Open Researcher and Contributor ID (ORCID).
+    }
+  }
+  Uri {
+    definition {
+      A URI for the person.
+    }
+  }
 }

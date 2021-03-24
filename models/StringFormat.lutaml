@@ -1,9 +1,40 @@
 enum StringFormat {
-  text/plain
-  text/html
-  application/docbook+xml
-  application/tei+xml
-  text/x-asciidoc
-  text/markdown
-  application/x-isodoc+xml
+  definition {
+    The MIME type for a formatted string.
+  }
+  text/plain {
+    definition {
+      Plain text.
+    }
+  }
+  text/html {
+    definition {
+      HTML.
+    }
+  }
+  application/docbook+xml {
+    definition {
+      DocBook.
+    }
+  }
+  application/tei+xml {
+    definition {
+      TEI (Text Encoding Initiative).
+    }
+  }
+  text/x-asciidoc {
+    definition {
+      AsciiDoc.
+    }
+  }
+  text/markdown {
+    definition {
+      Markdown.
+    }
+  }
+  application/x-metanorma+xml {
+    definition {
+      Metanorma.
+    }
+  }
 }

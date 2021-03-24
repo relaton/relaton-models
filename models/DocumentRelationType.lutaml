@@ -1,170 +1,416 @@
 enum DocumentRelationType  {
   definition {
-    Type of the document relationship.
+    Type of the relationship between a main document (described in `BibliographicItem`) 
+    and a target document.
   }
-
-  The document relation types are to be understood as follows:
-
-
-
-
 
   includes {
     definition {
-      The document described in the main record contains the
-      document in the relation. This is the inverse relation to `includedIn`.
+      The main document contains the target document. Inverse of `includedIn` relation.
     }
   }
   includedIn {
     definition {
-      The document described in the main record is a part (component) of the
-      document in the relation (the host document); for example, chapter vs book, paper vs journal or
+      The main document is a part (component) of the
+      target document (host document); for example, chapter vs book, paper vs journal or
       proceedings, record track vs record. In general, text-based resources have components
       that can be considered a
       different kind of resource; components of non-textual resources are considered
-      to be of the same type as their host.
+      to be of the same type as their host. The main and target documents have distinct
+      authorship and metadata.
     }
   }
-  hasPart
+  hasPart  { 
+    definition {
+      The main document is a part of a multi-part target document. Inverse of `partOf` relation.
+    }
+  }
   partOf {
     definition {
-      The document described in the main record is a multi-part document,
-      and the document described in the relation is one of those parts. For example,
+      The main document is a multi-part document, and the target document is one of those parts. 
+      This relation
+      is equivalent to `includedIn`, but is specific to multi-part textual documents. 
+      The main document and the target document are not considered to have distinct authorship
+      and metadata, and are unerstood to be of the same type.
+
+      [example]
       ISO 639 refers to the ISO standard for language names; it has three parts
       ISO 639-1 (two-letter codes), ISO 639-2 (three-letter codes for major languages),
-      and ISO 639-3 (three-letter codes for all natural languages). This relation
-      is equivalent to `includes`, but is specific to multi-part textual documents, and
-      understands the including and included documents to be of the same type.
+      and ISO 639-3 (three-letter codes for all natural languages). 
     }
   }
-  merges
-  mergedInto
-  splits
-  splitInto
+  merges {
+    definition {
+      The main document results from a merger of earlier target documents. Inverse of `mergedInto` relation.
+    }
+  }
+  mergedInto {
+    definition {
+      The main document is one of the documents merged into the later target document.
+    }
+  }
+  splits {
+    definition {
+      The main document is split off from an earlier target document. Inverse of `splitInto` relation.
+    }
+  }
+  splitInto {
+    definition {
+      The main document was split into several later target documents.
+    }
+  }
   instanceOf {
     definition {
-      instance:: The document described in the main record is a generic reference
-      to a work, and the document described in the relation is an instance of that
-      work; for example, a specific edition or version of the main record.
-      This is used for example to represent the relation bewteen generic ISO standards,
+      The main document is a generic reference
+      to a bibliographic item, and the target document is a more specific reference to that
+      item; for example, a specific edition, version, format, or copy of the main document.
+      Inverse of `hasInstance` relation. This is a cover-all for the
+      more specific relations `exemplarOf`, `manifestationOf`, and `expressionOf`.
+
+      [example]
+      This is used to represent the relation bewteen generic ISO standards,
       and references to a particular edition of a standard, such as ISO 690 vs
       ISO 690:2010.
     }
   }
-  hasInstance
-  exemplarOf
-  hasExemplar
-  manifestationOf
-  hasManifestation
-  reproductionOf
-  hasReproduction
-  reprintOf
-  hasReprint
-  expressionOf
-  hasExpression
-  translatedFrom {
+  hasInstance {
     definition {
-      The document described in the main record is a
-      translation of the document in the relation.
+      The main document is a more specific reference to the bibliographic item, and
+      the target document is a more generic reference.
     }
   }
-  hasTranslation
-  arrangementOf
-  hasArrangement
-  abridgementOf
-  hasAbridgement
-  annotationOf
-  hasAnnotation
-  draftOf
+  exemplarOf {
+    definition {
+      The main document is a single physical instance of the bibliographic item,
+      which is more generically referred to in the target document.
+      This corresponds to _Item_ in the Functional Requirements for Bibliographic Records (FRBR) model.
+      Inverse of `hasExemplar` relation.
+    }
+  }
+  hasExemplar {
+    definition {
+      The main document is a more generic reference to the bibliographic item, of which
+      the target document is a single physical instance. The main document may be a
+      _Work_, _Expression_ or _Manifestation_ under the Functional Requirements for Bibliographic Records (FRBR) model.
+    }
+  }
+  manifestationOf {
+    definition {
+      The main document is an embodiment in a particular medium of the content of a bibliographic item.
+      which is more generically referred to in the target document.
+      This corresponds to _Manifestation_ in the Functional Requirements for Bibliographic Records (FRBR) model.
+      Inverse of `hasManifestation` relation. Includes the more specific relations `reproductionOf` and `reprintOf`.
+    }
+  }
+  hasManifestation {
+    definition {
+      The main document is a more generic reference to the bibliographic item, of which
+      the target document is an embodiment in a particular medium. The main document may be a
+      _Work_ or _Expression_ under the Functional Requirements for Bibliographic Records (FRBR) model.
+    }
+  }
+  reproductionOf {
+    definition {
+      The main document presents the same content as the target document, and the main document
+      has been created to reproduce the target document faithfully. The main and target document are not necessarily
+      in the same medium. Inverse of `hasReproduction` relation. Includes the more specific relation `reprintOf`.
+    }
+  }
+  hasReproduction {
+    definition {
+      The main document presents the same content as the target document, and the target document
+      has been created to reproduce the main document faithfully. The main and target document are not necessarily 
+      in the same medium. 
+    }
+  }
+  reprintOf {
+    definition {
+      The main document presents the same content as the target document, and the main document
+      has been created to reproduce the target document faithfully. The main and target document are both
+      print publications. Inverse of `hasReprint` relation. 
+    }
+  }
+  hasReprint {
+    definition {
+      The main document presents the same content as the target document, and the target document
+      has been created to reproduce the main document faithfully. The main and target document are both
+      print publications. 
+    }
+  }
+  expressionOf {
+    definition {
+      The main document is a particular realisation of the intellectual or artistic content of the
+      bibliographic item, which is more generically referred to in the target document. 
+      This corresponds to _Expression_ in the Functional Requirements for Bibliographic Records (FRBR) model.
+      Inverse of `hasExpression` relation.
+    }
+  }
+  hasExpression {
+    definition {
+      The main document is a more generic reference to the bibliographic item, whose intellectual or artistic content
+      the target document realises. The main document may be a
+      _Work_ under the Functional Requirements for Bibliographic Records (FRBR) model.
+    }
+  }
+  translatedFrom {
+    definition {
+      The main document is a translation of the target document. Inverse of `hasTranslation` relation.
+    }
+  }
+  hasTranslation {
+    definition {
+      The main document is translated as the target document.
+    }
+  }
+  arrangementOf {
+    definition {
+      The main document has the same intellectual or artistic content as the target document, and the main
+      document has been created to realise that content through different resources than the target document.
+      Is typically understood 
+      to involve the realisation of a musical work with different instruments than the original. Inverse of
+      `hasArrangement` relation.
+    }
+  }
+  hasArrangement {
+    definition {
+      The main document has the same intellectual or artistic content as the target document, and the target
+      document has been created to realise that content through different resources than the main document. 
+      Is typically understood 
+      to involve the realisation of a musical work with different instruments than the original. 
+    }
+  }
+  abridgementOf {
+    definition {
+      The main document presents a subset of the intellectual or artistic content of the target document,
+      but is still intended as a complete work, presenting a shortened version of the original.
+      Inverse of `hasAbridgement` relation.
+    }
+  }
+  hasAbridgement {
+    definition {
+      The main document has a target document which presents a subset of its intellectual or artistic content,
+      but which is still intended as a complete work, presenting a shortened version of the original.
+    }
+  }
+  annotationOf {
+    definition {
+      The main document incorporates part or all of the target document, and enhances it with
+      explanatory commentary. Inverse of `hasAnnotation` relation.
+    }
+  }
+  hasAnnotation {
+    definition {
+      The main document has a target document which incorporates part or all of it, and which
+      enhances it with explanatory commentary.
+    }
+  }
+  draftOf {
+    definition {
+      The main document is a specific pre-publication version of the work represented
+      by the target document (whether the target document published or pre-published). 
+      Inverse of `hasDraft` relation.
+    }
+  }
   hasDraft {
     definition {
-      The document described in the main record is a generic reference
-      to a work (whether published or pre-published), and the document described
-      in the relation is specific pre-publication version of the work. Is used to
+      The main document is a generic reference
+      to a work (whether published or pre-published), and the target document 
+      is a specific pre-publication version of the work. Is used to
       collect information about different drafts of a work, and gateway stages of standards,
       in the one record.
     }
   }
-  editionOf
-  hasEdition
+  editionOf {
+    definition {
+      The main document is a specific published version of the work represented
+      by the target document. Inverse of `hasEdition` relation.
+    }
+  }
+  hasEdition {
+    definition {
+      The main document is a generic reference to a work, and the target document
+      is a specific published version of the work.
+    }
+  }
   updates {
     definition {
-      The document described in the main record is an update
-      of the document in the relation, which may or may not still be valid.
-      (By default in the standards world, it is not.)
+      The main document is an update of the target document. Unlike the `obsoletes` relation,
+      the target document may still remain valid after the main document appears.
+      (However by default in the standards world, it does not.) Inverse of `updatedBy` relation.
     }
   }
   updatedBy {
     definition {
-      The document described in the main record is updated by
-      the document in the relation.
+      The main document is updated by the target document. Unlike the `obsoletedBy` relation,
+      the main document may still remain valid after the target document appears.
+      (However by default in the standards world, it does not.)
     }
   }
   derivedFrom {
     definition {
-      The document described in the main record is
-      derived from the document in the relation.
+      The main document is derived from the target document, depending on it for at least some
+      of its content. Inverse of `derives` relation.
     }
   }
-  derives
-  describes
-  describedBy
-  catalogues
-  cataloguedBy
-  hasSuccessor
-  successorOf
-  adaptedFrom
-  hasAdaptation
+  derives {
+    definition {
+      The main document is the original work from which the target document is derived.
+    }
+  }
+  describes {
+    definition {
+      The main document includes a description of the target document. Inverse of `describedBy` relation.
+      Includes the more specific `catalogues` relation.
+    }
+  }
+  describedBy {
+    definition {
+      The main document is described by the target document.
+    }
+  }
+  catalogues {
+    definition {
+      The main document includes a bibliographic record of the target document. Inverse of `cataloguedBy` relation.
+    }
+  }
+  cataloguedBy {
+    definition {
+      The main document has its bibliographic record included in the target document.
+    }
+  }
+  hasSuccessor {
+    definition {
+      The main document has ceased fulfilling some function, and the target document has assumed that
+      function in its stead. Typically applies when the main document is a periodical publication 
+      which has ceased publication, and the target document is a new periodical publication,
+      designated as the continuation of the main document. Inverse of `successorOf` relation.
+    }
+  }
+  successorOf {
+    definition {
+      The main document has assumed the function of the target dcoument, which has ceased fulfilling
+      that function. Typically applies when the target document is a periodical publication 
+      which has ceased publication, and the main document is a new periodical publication, 
+      designated as the continuation of the target document. 
+    }
+  }
+  adaptedFrom {
+    definition {
+      The main document has its intellectual or artistic content derived from the target document,
+      and has modified it to match the requirements of a different medium. Is typically applied to
+      textual originals, whereas `arrangementOf` is typically applied to musical originals. Inverse of
+      `hasAdaptation` relation.
+    }
+  }
+  hasAdaptation {
+    definition {
+      The main document has been modified in the target document, to present its content matching
+      the requirements of a different medium. Is typically applied to
+      textual originals, whereas `hasArrangement` is typically applied to musical originals.
+    }
+  }
   adoptedFrom {
     definition {
-      The document described in the main record corresponds
-      to the document in the relation, and has been adopted in response to it.
+      The main document has its content derived from the target document, and has been adopted in response to it.
       Typically it is a national standard body's counterpart to an international
-      standard.
+      standard. Inverse of `adoptedAs` relation. Includes more specific relations `identical`, `equivalent`,
+      and `nonequivalent`.
     }
   }
-  adoptedAs
-  reviewOf
-  hasReview
-  commentaryOf
-  hasCommentary
+  adoptedAs {
+    definition {
+      The main document has a counterpart in the target document, which derives it content from the main document,
+      and has been adopted in response to the main document.
+      Typically it is an international standard which has had national standard bodies formulate
+      a local counterpart.
+    }
+  }
+  reviewOf {
+    definition {
+      The main document is an evaluation of the target document. Inverse of `hasReview`.
+    }
+  }
+  hasReview {
+    definition {
+      The main document is evaluated in the target document.
+    }
+  }
+  commentaryOf {
+    definition {
+      The main document provides explanatory commentary on the target document. Unlike `annotationOf`,
+      the main document does not incorporate the complete text of the target document, and so
+      cannot be read independently of the original. Inverse of `hasCommentary`.
+    }
+  }
+  hasCommentary {
+    definition {
+      The main document is given explanatory commentary in the target document. Unlike `hasAnnotation`,
+      the target document does not incorporate the complete text of the main document, and so
+      cannot be read independently of the original.
+    }
+  }
 
   identical {
     definition {
-      The document described in the main record corresponds
-      to the document in the relation, is equivalent to it in force and scope,
-      and is identical to it in content. It is typically a subclass of the `adoptedFrom` relation.
+      The main document corresponds
+      to the target document, is equivalent to it in force and scope,
+      and is identical to it in content. This is typically a subclass of the `adoptedFrom` relation.
     }
   }
 
-  nonequivalent:: The document described in the main record corresponds
-  to the document in the relation, but is not equivalent to it in force and scope.
-  It is typically a subclass of the `adoptedFrom` relation.
+  nonequivalent {
+    definition {
+      The main document corresponds
+      to the target document, but is not equivalent to it in force and scope.
+      This is typically a subclass of the `adoptedFrom` relation.
+    }
+  }
 
 
   equivalent {
     definition {
-      The document described in the main record corresponds
-      to the document in the relation, and is equivalent to it in force and scope,
-      though not in content. It is typically a subclass of the `adoptedFrom` relation.
+      The main document corresponds
+      to the target document, and is equivalent to it in force and scope,
+      though not in content. This is typically a subclass of the `adoptedFrom` relation.
     }
   }
-  related
+  related {
+    definition {
+      The main document is related to the target document in an otherwise unspecified fashion.
+    }
+  }
   complements {
     definition {
-      The document described in the main record is
-      complementary to the document in the relation, and provides additional
-      or contextual information to help understand the document in the relation.
+      The main document is complementary to the target document, and provides additional
+      or contextual information to help understand the target document. Inverse of `complementOf` relation.
     }
   }
-  complementOf
+  complementOf {
+    definition {
+      The main document has additional or contextual information provided in the the target document,
+      to help understand the main document. The target document is complementary to the main document.
+    }
+  }
   obsoletes {
     definition {
-      The document described in the main record supersedes
-      the document in the relation, which is no longer valid.
+      The main document supersedes the target document, which is no longer valid (unlike the `updates` relation,
+      which leaves the validity of the target document open). Inverse of `obsoletedBy` relation.
     }
   }
-  obsoletedBy
-  cited
-  isCitedIn
+  obsoletedBy {
+    definition {
+      The main document is superseded by the target document, and is no longer valid (unlike the `updatedBy` relation,
+      which leaves the validity of the main document open).
+    }
+  }
+  cites {
+    definition {
+      The main document references the target document. Inverse of `isCitedIn` relation.
+    }
+  }
+  isCitedIn {
+    definition {
+      The main document is referenced in the target document. 
+    }
+  }
 }

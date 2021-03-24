@@ -1,4 +1,15 @@
 class ContributionInfo{
-  +role: ContributorRole[0..*]
-  +entity: Contributor
+  definition {
+    Description of a contributor to the production of the bibliographic item.
+  }
+  +role: ContributorRole[0..*] {
+    definition {
+       A description of the role of the contributor in the production of the bibliographic item.
+    }
+  }
+  +entity: Contributor {
+    definition {
+      The contributor involved in the production of the bibliographic item.
+    }
+  }
 }

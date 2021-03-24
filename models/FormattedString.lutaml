@@ -1,4 +1,8 @@
 class FormattedString{
+  definition {
+    String which is formatted according to conventions specified
+    in a named MIME type (<<rfc2046>>).
+  }
   +type: StringFormat {
     definition {
       The corresponding MIME types, defaults to "text/plain".

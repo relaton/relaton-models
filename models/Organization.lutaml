@@ -1,8 +1,45 @@
 class Organization{
-  +name: LocalizedString[1..*]
-  +subdivision: LocalizedString[0..*]
-  +abbreviation: LocalizedString[0..1]
-  +uri: TypedUri[0..*]
-  +identifier: OrgIdentifier[0..*]
-  +contact: ContactMethod[0..*]
+  definition {
+    Organization associated with a bibliographic item.
+  }
+  +name: LocalizedString[1..*] {
+    definition {
+      The name of the organization.
+    }
+  }
+  +variant: VariantOrgName[0..*] {
+    definition {
+      A variant name of the organization.
+    }
+  }
+  +subdivision: LocalizedString[0..*] {
+    definition {
+      The subdivision of the organization directly involved with the production of the bibliographic item.
+    }
+  }
+  +variant_subdivision: VariantOrgName[0..*] {
+    definition {
+      A variant name of the subdivision.
+    }
+  }
+  +abbreviation: LocalizedString[0..1] {
+    definition {
+      Abbreviation under which the organization is known.
+    }
+  }
+  +uri: TypedUri[0..*] {
+    definition {
+      A URI with information about the organization.
+    }
+  }
+  +identifier: OrgIdentifier[0..*] {
+    definition {
+      An identifier of the organization according to an international identifier scheme.
+    }
+  }
+  +contact: ContactMethod[0..*] {
+    definition {
+      Contact information for the organization, including address, phone number, and email.
+    }
+  }
 }

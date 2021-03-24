@@ -1,28 +1,96 @@
 enum SpecificLocalityType <<enumeration>>{
   definition {
-    Type of locality indicator.
+    Type of indicator of a location or extent within a bibliographic item.
 
     When the value `whole` is used, the corresponding `BibItemLocality`
     attribute `identifier` should be empty.
   }
 
-  section
-  clause
-  part
-  paragraph
-  chapter
-  page
-  whole
-  table
-  annex
-  figure
-  note
-  list
-  example
-  volume
-  issue
-  time
-  anchor
+  section {
+    definition {
+      Section.
+    }
+  }
+  clause {
+    definition {
+      Clause.
+    }
+  }
+  part {
+    definition {
+      Part.
+    }
+  }
+  paragraph {
+    definition {
+      Paragraph.
+    }
+  }
+  chapter {
+    definition {
+      Chapter.
+    }
+  }
+  page {
+    definition {
+      Page.
+    }
+  }
+  whole {
+    definition {
+      The entirety of the document.
+    }
+  }
+  table {
+    definition {
+      Table.
+    }
+  }
+  annex {
+    definition {
+      Annex or Appendix.
+    }
+  }
+  figure {
+    definition {
+      Figure.
+    }
+  }
+  note {
+    definition {
+      Note.
+    }
+  }
+  list {
+    definition {
+      List (used for ordered lists in some standards documents).
+    }
+  }
+  example {
+    definition {
+      Example.
+    }
+  }
+  volume {
+    definition {
+      Volume.
+    }
+  }
+  issue {
+    definition {
+      Issue.
+    }
+  }
+  time {
+    definition {
+      Time (used for timestamps in audio and visual media).
+    }
+  }
+  anchor {
+    definition {
+      Anchor (used for locations within web pages).
+    }
+  }
 
   locality_string {
     definition {

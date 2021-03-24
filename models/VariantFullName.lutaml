@@ -1,4 +1,18 @@
 class VariantFullName{
-  +type: String
-  +content: FullName
+  definition {
+    A variant name of a person.
+  }
+  +type: String {
+    definition {
+      The type of variant name for the person. Examples include
+      pseudonyms; user names (online);
+      real names (if the person is named with a pseudonym or user name);
+      previous legal names.
+    }
+  }
+  +content: FullName {
+    definition {
+      The variant name itself.
+    }
+  }
 }

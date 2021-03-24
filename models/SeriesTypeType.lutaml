@@ -1,4 +1,15 @@
 enum SeriesTypeType {
-  main
-  alt
+  definition {
+    The type of series description given.
+  }
+  main {
+    definition {
+      Default type: The current, authoritative series description.
+    }
+  }
+  alt {
+    definition {
+      An alternative, potentially historical series description.
+    }
+  }
 }

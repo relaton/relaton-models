@@ -1,4 +1,15 @@
 class Phone{
-  +type: String[0..1]
-  +content: String
+  definition {
+    The phone number associated with a person or organization.
+  }
+  +type: String[0..1] {
+    definition {
+      The type of phone number; can include "Fax" and "Mobile".
+    }
+  }
+  +content: String {
+    definition {
+      The phone number itself.
+    }
+  }
 }

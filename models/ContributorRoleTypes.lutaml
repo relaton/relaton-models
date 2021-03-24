@@ -1,30 +1,56 @@
-enum ContributorRoleTypes {
+enum ContributorRoleType {
   definition {
-    Represents roles described by ISO 690 as follows:
-
-    . author, composer, librettist, mapping agency, surveyor,
-    cartographer, copyist, system designer of software, patentee,
-    patent applicant, artist, photographer, draughtsman, graphic
-    designer;
-
-    . conductor, performer of music, drama, etc., director of
-    films, inventor;
-
-    . compiler, editor, reviser;
-
-    . translator, engraver, photographer of another creator's
-    work, copyist, arranger, software programmer;
-
-    . publisher, online information provider, production company;
-
-    . distributor, online host.
+    The broad class of role of a contributor to the production of a bibliographic item.
+    Taken from <<iso690>>.
+    The vocabulary is deliberately kept general for ease of processing; more detailed
+    descriptions of the role can be given elsewhere.
   }
 
-  author
-  performer
-  editor
-  adapter
-  translator
-  publisher
-  distributor
+  author {
+    definition {
+      Creator of the intellectual content of the bibliographic item.
+      Includes: composer, librettist, mapping agency, surveyor,
+      cartographer, copyist, system designer of software, patentee,
+      patent applicant, artist, photographer, draughtsman, graphic
+      designer.
+    }
+  }
+  performer {
+    definition {
+      Realiser of the intellectual content of the bibliographic item.
+      Includes: conductor, performer of music, drama, etc., director of
+      films, inventor.
+    }
+  }
+  editor {
+    definition {
+      Party imposing structure on the intellectual content of the bibliographic item.
+      Includes: compiler, editor, reviser.
+    }
+  }
+  adapter {
+    definition {
+      Party converting the intellectual content of the bibliographic item into
+      a different medium. Includes: engraver, photographer of another creator's
+      work, copyist, arranger, software programmer.
+    }
+  }
+  translator {
+    definition {
+      Party converting the intellectual content of the bibliographic item into
+      a different language.
+    }
+  }
+  publisher {
+    definition {
+      Party responsible for the bibliographic item becoming publicly available.
+      Includes: publisher, online information provider, production company.
+    }
+  }
+  distributor {
+    definition {
+      Party arranging for the bibliographic item to become publicly accessible.
+      Includes: distributor, online host, sponsoring organization.
+    }
+  }
 }

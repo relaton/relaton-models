@@ -1,5 +1,7 @@
 class BibItemLocality{
   definition {
+    The extent or location of a bibliographic item being referred to.
+
     A sequence of locality elements is meant to indicate hierarchical ordering,
     from greater to smaller.
 
@@ -9,7 +11,19 @@ class BibItemLocality{
     A discontinuous range can be represented by using two adjacent localities
     with the same type.
   }
-  +type: SpecificLocalityType
-  +referenceFrom: LocalizedString[0..1]
-  +referenceTo: LocalizedString[0..1]
+  +type: SpecificLocalityType {
+    definition {
+      The type of extent (e.g. section, clause, page).
+    }
+  }
+  +referenceFrom: LocalizedString[0..1] {
+    definition {
+      The starting value of the extent, or point location.
+    }
+  }
+  +referenceTo: LocalizedString[0..1] {
+    definition {
+      The end value of the extent as a range, if applicable.
+    }
+  }
 }

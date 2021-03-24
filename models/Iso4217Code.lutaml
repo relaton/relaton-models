@@ -1,2 +1,5 @@
 class Iso4217Code <<dataType>> {
+  definition {
+    Code for currencies, as specified in <<iso4217>>.
+  }
 }

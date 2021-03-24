@@ -1,4 +1,15 @@
 class ContributorRole{
-  +description: FormattedString[0..*]
-  +type: ContributorRoleTypes[0..1]
+  definition {
+    A description of the role of the contributor in the production of a bibliographic item.
+  }
+  +type: ContributorRoleType[0..1] {
+    definition {
+      The broad class of role of the contributor. 
+    }
+  }
+  +description: FormattedString[0..*] {
+    definition {
+      A more detailed description of the role of the contributor.
+    }
+  }
 }

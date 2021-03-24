@@ -1,6 +1,25 @@
 class ContactMethod{
-  +address: Address[0..1]
-  +phone: Phone[0..*]
-  +email: String[0..1]
-  +uri: TypedUri[0..1]
+  definition {
+    Contact information for a person or organization.
+  }
+  +address: Address[0..1] {
+    definition {
+      Address.
+    }
+  }
+  +phone: Phone[0..*] {
+    definition {
+      Telephone number.
+    }
+  }
+  +email: String[0..1] {
+    definition {
+      Email address.
+    }
+  }
+  +uri: TypedUri[0..1] {
+    definition {
+      URI.
+    }
+  }
 }

@@ -1,7 +1,30 @@
 class DocumentStatus{
-  +stage: LocalizedString
-  +stage_abbreviation: LocalizedString[0..1]
-  +substage: LocalizedString[0..1]
-  +substage_abbreviation: LocalizedString[0..1]
-  +iteration: LocalizedString[0..1]
+  definition {
+    The publication or preparation status of a document.
+  }
+  +stage: LocalizedString {
+    definition {
+      The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint".
+    }
+  }
+  +stage_abbreviation: LocalizedString[0..1] {
+    definition {
+      A canonical abbreviation of the document status.
+    }
+  }
+  +substage: LocalizedString[0..1] {
+    definition {
+      The substage of the document status. These are used particularly in Standards Defining Organizations.
+    }
+  }
+  +substage_abbreviation: LocalizedString[0..1] {
+    definition {
+      A canonical abbreviation of the document substage.
+    }
+  }
+  +iteration: LocalizedString[0..1] {
+    definition {
+      The iteration of the given status that the document is currently in (e.g. "3" for a third draft).
+    }
+  }
 }

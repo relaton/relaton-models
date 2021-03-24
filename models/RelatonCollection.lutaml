@@ -1,5 +1,4 @@
 class RelatonCollection {
-
   definition {
     Used to present a group of bibliographic items as a single group.
 
@@ -9,8 +8,30 @@ class RelatonCollection {
     A collection may be used for bibliographic exchange but is
     typically not necesary for citation purposes.
   }
-  +type: String[0..1]
-  +title: TypedTitleString[0..*]
-  +contributor: ContributionInfo[0..*]
-  +relation: DocumentRelation[0..*]
+  +type: String[0..1] {
+    definition {
+      The type of grouping of bibliographic items.
+    }
+  }
+  +title: TypedTitleString[0..*] {
+    definition {
+      The title given to the grouping of bibliographic items.
+    }
+  }
+  +contributor: ContributionInfo[0..*] {
+    definition {
+      Contributors to the production of the bibliographic items as a grouping,
+      with corporate responsibility for all the items in the group (e.g. as compilers
+      of a collection or corporate authors).
+    }
+  }
+  +relation: DocumentRelation[0..*] {
+    definition {
+      The individual items which constitute the group, expressed as relations to the
+      document group. The `type` attribute
+      of each relation is expected to be either `includes` or `hasPart`, 
+      depending on whether the items exist as independent documents, or
+      are parts of a multi-part document.
+    }
+  }
 }

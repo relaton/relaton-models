@@ -1,9 +1,32 @@
 class DocumentRelation {
-  +type: DocumentRelationType
-  +description: FormattedString[0..*]
-  +bibitem: BibliographicItem
-  +bibLocality: BibItemLocality[0..*]
-    ** | LocalityStack[0..*]
-  +bibSourceLocality: BibItemLocality[0..*]
-    ** | LocalityStack[0..*]
+  definition {
+    Relation between a bibliographic item and another bibliographic item.
+  }
+  +type: DocumentRelationType {
+    definition {
+      The type of document relation described, using a controlled vocabulary.
+    }
+  }
+  +description: FormattedString[0..*] {
+    definition {
+      A more complete description of the type of document relation described.
+    }
+  }
+  +bibitem: BibliographicItem {
+    definition {
+      The target bibliographic item to which this bibliographic item is described as related to.
+    }
+  }
+  +bibLocality: LocalityStack[0..*] {
+    definition {
+      The extent of the target bibliographic item which is related to this bibliographic item,
+      provided that it is not the entire bibliographic item that is so related.
+    }
+  }
+  +bibSourceLocality: LocalityStack[0..*] {
+    definition {
+      The extent of this bibliographic item which is related to the target bibliographic item,
+      provided that it is not the entire bibliographic item that is so related.
+    }
+  }
 }

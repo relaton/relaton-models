@@ -124,7 +124,7 @@
           <value>application/tei+xml</value>
           <value>text/x-asciidoc</value>
           <value>text/markdown</value>
-          <value>application/x-isodoc+xml</value>
+          <value>application/x-metanorma+xml</value>
           <text/>
         </choice>
       </attribute>

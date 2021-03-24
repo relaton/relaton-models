@@ -1,16 +1,17 @@
 class Citation {
-  ** bibItem realised in serialisation as crossreference to ID
-
   definition {
-    Representation of citation information.
+    Representation of a citation of a bibliographic item, typically within a document.
   }
 
   +date: Iso8601DateTime[0..1] {
     definition {
-    	Date of citation. A combination of the date time elements
+    	Date of the citation, typically date of publication. A combination of the date time elements
     	year, month and day should be specified.
+        Specification of month and day are optional.
 
-      Specification of month and day are optional.
+        This date is not intended for disambiguation, since `bibitemid`
+        already identifies the source unambiguously; it is added for ease of processing, in case author-date
+        citations cannot straightforwardly extract the date from the bibliographic source.
     }
   }
 
@@ -18,6 +19,7 @@ class Citation {
     definition {
       Describes the location of the cited information resource within
       the subject of the bibliographic item.
+      Multiple ``bibLocality``s are interpreted as discontinuous references.
 
       NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
     }
@@ -27,6 +29,11 @@ class Citation {
     definition {
       Describes the location of the cited information resource within
       the subject of the bibliographic item in a multi-level manner.
+      For example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" 
+      is represented as a single `bibLocalityStack`, composed of those three localities
+      (as opposed to three `bibLocality` references, which would be treated as
+      three discontinuous references).
+      Multiple ``bibLocalityStack``s are themselves interpreted as discontinuous references.
 
       NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
     }
@@ -35,7 +42,10 @@ class Citation {
 
   +bibItem: BibliographicItem[0..1] {
     definition {
-      Bibliographic items where the citation applies to.
+      Bibliographic item that the citation applies to.
+
+      NOTE: `bibItem` is realised in serialisation as a crossreference to a complete
+      `bibItem` record elsewhere in a document.
 
       A single citation may span multiple bibliographic items.
 

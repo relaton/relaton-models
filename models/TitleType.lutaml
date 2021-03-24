@@ -1,7 +1,31 @@
 enum TitleType {
-  alternative
-  original
-  unofficial
-  subtitle
-  main
+  definition {
+    Type of title given to a bibliographic item.
+  }
+  alternative {
+    definition {
+      Alternate title for the item.
+    }
+  }
+  original {
+    definition {
+      The original title of the item. Includes the source language title of a translated item.
+    }
+  }
+  unofficial {
+    definition {
+      A title that has become prevalent but has never been the official or intended title
+      of the item.
+    }
+  }
+  subtitle {
+    definition {
+      Subsidiary title of the item.
+    }
+  }
+  main {
+    definition {
+      The default title of the item, privileged in citation.
+    }
+  }
 }

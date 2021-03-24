@@ -1,35 +1,109 @@
 class BibliographicItem {
-  +type: BibItemType[0..1]
-  +fetched: DateTime[0..1]
+  definition {
+    Description of a bibliographic resource.
+  }
+  +type: BibItemType[0..1] {
+    definition {
+      The type of the bibliographic item.
+    }
+  }
+  +fetched: DateTime[0..1] {
+    definition {
+      The date at which the bibliographic item was last updated.
+    }
+  }
   +title: TypedTitleString[0..*] {
     definition {
-      Title of the subject.
+      The title(s) of the bibliographic item.
 
       NOTE: `formattedRef` and `title` are mutually exclusive.
     }
   }
   +formattedRef: FormattedString[0..1] {
     definition {
-      Full reference identifier rendered for human reading.
+      A pre-formatted version of the full bibliographic item reference,
+      rendered for human reading, and
+      used to sidestep the rendering of the reference out of its component parts.
 
       NOTE: `formattedRef` and `title` are mutually exclusive.
     }
   }
-  +link: TypedUri[0..*]
-  +docidentifier: DocumentIdentifier[0..*]
-  +docnumber: String[0..1]
-  +dates: BibliographicDate[0..*]
-  +contributors: ContributionInfo[0..*]
-  +edition: Edition[0..1]
-  +version: VersionInfo[0..1]
-  +note: TypedNote[0..*]
-  +language: Iso639Code[0..*]
-  +script: Iso15924Code[0..*]
-  +abstract: FormattedString[0..*]
-  +status: DocumentStatus[0..1]
-  +copyright: CopyrightAssociation[0..*]
-  +relation: DocumentRelation[0..*]
-  +series: SeriesType[0..*]
+  +link: TypedUri[0..*] {
+    definition {
+      The URI(s) associated with the bibliographic item.
+    }
+  }
+  +docidentifier: DocumentIdentifier[0..*] {
+    definition {
+      The identifier(s) of the bibliographic item in an international standard scheme.
+    }
+  }
+  +docnumber: String[0..1] {
+    definition {
+      Unprefixed, preferably numeric version of an identifier of the bibliographic item,
+      intended for sorting of biblio.
+    }
+  }
+  +date: BibliographicDate[0..*] {
+    definition {
+      One or more date-times associated with the production of or access to the bibliographic item.
+    }
+  }
+  +contributor: ContributionInfo[0..*] {
+    definition {
+      Contributors to the production of the bibliographic item.
+    }
+  }
+  +edition: Edition[0..1] {
+    definition {
+      The edition of the bibliographic item.
+    }
+  }
+  +version: VersionInfo[0..1] {
+    definition {
+      The version of the bibliographic item (within an edition). Can be used for drafts.
+    }
+  }
+  +note: TypedNote[0..*] {
+    definition {
+      Note(s) associated with the bibliographic item. 
+    }
+  }
+  +language: Iso639Code[0..*] {
+    definition {
+      The language(s) in which the bibliographic item is expressed.
+    }
+  }
+  +script: Iso15924Code[0..*] {
+    definition {
+      The script(s) in which the bibliographic item is written.
+    }
+  }
+  +abstract: FormattedString[0..*] {
+    definition {
+      The abstract of the bibliographic item.
+    }
+  }
+  +status: DocumentStatus[0..1] {
+    definition {
+      The publication or preparation status of the bibliographic item.
+    }
+  }
+  +copyright: CopyrightAssociation[0..*] {
+    definition {
+      The copyright status of the bibliographic item.
+    }
+  }
+  +relation: DocumentRelation[0..*] {
+    definition {
+      The relation(s) of the bibliographic item to other bibliographic items.
+    }
+  }
+  +series: SeriesType[0..*] {
+    definition {
+      The series of the bibliographic item.
+    }
+  }
 
   +medium: MediumType[0..1] {
     definition {
@@ -40,12 +114,51 @@ class BibliographicItem {
     }
   }
 
-  +place: PlaceType[0..*]
-  +price: PriceType[0..*]
-  +extent: BiblItemLocality[0..*]
-  +accessLocation: String[0..*]
-  +license: String[0..*]
-  +classification: DocumentIdentifier[0..*]
-  +keyword: KeywordType[0..*]
-  +validity: ValidityType[0..1]
+  +place: PlaceType[0..*] {
+    definition {
+      The geographic location associated with the production of the bibliographic item.
+    }
+  }
+  +price: PriceType[0..*] {
+    definition {
+      The price set on accessing the bibliographic item.
+      The price should be treated as nominal, rather than capturing all possible pricings at a given time.
+    }
+  }
+  +extent: BiblItemLocality[0..*] {
+    definition {
+      The extent of the bibliographic item, if reference is not being made to the entirety of the item described,
+      or if the size of the bibliographic item needs to be given.
+      Repeats for different levels of granularity (e.g. volume number, page number), or for discontinuous ranges
+      (e.g. multiple page ranges, pages plus plates).
+    }
+  }
+  +accessLocation: String[0..*] {
+    definition {
+      The location where the bibliographic item may be accessed.
+      Used for archival resources. Also used for pathways to access digital resources, where a URI is not practical.
+    }
+  }
+  +license: String[0..*] {
+    definition {
+       A license under which the bibliographic item has been issued. 
+
+       NOTE: This should preferably be encoded as  a URI or short identifier, rather than descriptive text.
+    }
+  }
+  +classification: DocumentIdentifier[0..*] {
+    definition {
+      The classification of the bibliographic item according to a standard classification scheme.
+    }
+  }
+  +keyword: KeywordType[0..*] {
+    definition {
+      Keyword(s) for the bibliographic item.
+    }
+  }
+  +validity: ValidityType[0..1] {
+    definition {
+      Information about how long the current description of the bibliographic item is valid for.
+    }
+  }
 }
