@@ -1,5 +1,0 @@
-class NameVariant{
-  +type: String
-  +primary: LocalizedString[1..*]
-  +variant: NameVariant[0..*]
-}

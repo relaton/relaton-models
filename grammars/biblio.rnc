@@ -69,7 +69,7 @@ LocalizedString =
 FormattedString =
   # attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
   attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" | 
-    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-isodoc+xml" | text ) }?,
+    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
   LocalizedStringOrXsAny
 
 LocalizedStringOrXsAny1 =
