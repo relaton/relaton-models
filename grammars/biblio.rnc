@@ -435,7 +435,7 @@ DocRelationType =
 "complementOf" | 
 "obsoletes" | 
 "obsoletedBy" | 
-"cited" | 
+"cites" | 
 "isCitedIn" 
 
 docrelation =

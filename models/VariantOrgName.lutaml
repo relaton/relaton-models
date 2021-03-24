@@ -1,0 +1,15 @@
+class VariantOrgName{
+  definition {
+    A variant name of an organization.
+  }
+  +type: String {
+    definition {
+      The type of variant name for the organization.
+    }
+  }
+  +content: LocalizedString {
+    definition {
+      The variant name itself.
+    }
+  }
+}

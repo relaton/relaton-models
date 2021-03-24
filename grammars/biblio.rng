@@ -1104,7 +1104,7 @@
       <value>complementOf</value>
       <value>obsoletes</value>
       <value>obsoletedBy</value>
-      <value>cited</value>
+      <value>cites</value>
       <value>isCitedIn</value>
     </choice>
   </define>
