@@ -7,7 +7,7 @@ class DocumentStatus{
       The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint".
     }
   }
-  +stage_abbreviation: LocalizedString[0..1] {
+  +stageAbbreviation: LocalizedString[0..1] {
     definition {
       A canonical abbreviation of the document status.
     }
@@ -17,7 +17,7 @@ class DocumentStatus{
       The substage of the document status. These are used particularly in Standards Defining Organizations.
     }
   }
-  +substage_abbreviation: LocalizedString[0..1] {
+  +substageAbbreviation: LocalizedString[0..1] {
     definition {
       A canonical abbreviation of the document substage.
     }
