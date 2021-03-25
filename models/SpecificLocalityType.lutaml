@@ -1,4 +1,4 @@
-enum SpecificLocalityType <<enumeration>>{
+enum SpecificLocalityType {
   definition {
     Type of indicator of a location or extent within a bibliographic item.
 
