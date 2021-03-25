@@ -1,4 +1,4 @@
-class Iso15924Code <<dataType>> {
+data_type Iso15924Code {
   definition {
     Code for writing scripts, as specified in <<iso15924>>.
   }

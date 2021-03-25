@@ -1,4 +1,4 @@
-class Iso8601DateTime <<dataType>> {
+data_type Iso8601DateTime {
   definition {
     Gregorian date and time, as specified in <<iso8601>>. 
   }

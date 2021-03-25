@@ -1,4 +1,4 @@
-class Uri <<dataType>> {
+data_type Uri {
   definition {
     Container for URIs, as defined by <<rfc3986>>.
   }

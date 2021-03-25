@@ -1,4 +1,4 @@
-class Iso4217Code <<dataType>> {
+data_type Iso4217Code {
   definition {
     Code for currencies, as specified in <<iso4217>>.
   }
