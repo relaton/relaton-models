@@ -20,10 +20,10 @@ PNG := $(patsubst views/%.lutaml,images/%.png,$(SRC))
 all: $(PNG)
 
 images/%.png: views/%.lutaml
-	lutaml -t png -o $@ $<
+	bundle exec lutaml -t png -o $@ $<
 
 views/%.lutaml: models/%.wsd | views
-	lutaml-wsd2uml $< > $@
+	bundle exec lutaml-wsd2uml $< > $@
 
 views:
 	mkdir views
