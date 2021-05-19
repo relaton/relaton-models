@@ -1,4 +1,4 @@
-enum SpecificLocalityType <<enumeration>>{
+enum SpecificLocalityType {
   definition {
     Type of indicator of a location or extent within a bibliographic item.
 
@@ -92,7 +92,7 @@ enum SpecificLocalityType <<enumeration>>{
     }
   }
 
-  locality_string {
+  localityString {
     definition {
       A free-form text string prefixed with locality information that is human-readable.
     }

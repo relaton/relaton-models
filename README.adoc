@@ -99,9 +99,9 @@ image::images/RelBib_Collection.png[]
       </organization>
     </owner>
   </copyright>
-  <editorialgroup>
+  <editorialGroup>
     <technical-committee>PUBLISH</technical-committee>
-  </editorialgroup>
+  </editorialGroup>
 
   <relation type='partOf'>
     <bibdata type='governance'>
@@ -183,9 +183,9 @@ teneur en protéines brutes -- Méthode de Kjeldahl</title>
   <language>en</language>
   <language>fr</language>
   <script>Latn</script>
-  <editorialgroup>
+  <editorialGroup>
     <technical_committee number="34" type="TC">ISO/TC 34/SC 4 Cereals and pulses</technical_committee>
-  </editorialgroup>
+  </editorialGroup>
   <ics>
     <code>67.060</code>
     <text>Cereals, pulses and derived products</text>

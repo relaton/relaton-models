@@ -82,13 +82,13 @@ enum BibliographicDateType {
        in content (includes translation).
     }
   }
-  vote_started {
+  voteStarted {
     definition {
        The date on which a formal process for approval of a document was initiated.
        Typically applies to standards documents in draft.
     }
   }
-  vote_ended {
+  voteEnded {
     definition {
        The date on which a formal process for approval of a document was closed.
        Typically applies to standards documents in draft.

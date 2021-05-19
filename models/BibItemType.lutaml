@@ -9,7 +9,7 @@ enum BibItemType {
     mapped to these values. Some values here do not have a corresponding
     entry in BibTeX, for instance, "standard" and "website".
 
-    NOTE: While the value of "electronic_resource" exists, the
+    NOTE: While the value of "electronicResource" exists, the
     distinction between offline and online resources
     should be made through medium (electronic vs physical).
   }
@@ -49,7 +49,7 @@ enum BibItemType {
       A dissertation given in an academic institution, as a summation of research.
     }
   }
-  techreport {
+  techReport {
     definition {
       A technical report.
     }
@@ -72,14 +72,14 @@ enum BibItemType {
       A map or other cartographic resource.
     }
   }
-  electronic_resource {
+  electronicResource {
     definition {
       A resource avaiulable in digital form.
 
-      NOTE: The overloaded type `electronic_resource` should be avoided where possible, particularly if the
+      NOTE: The overloaded type `electronicResource` should be avoided where possible, particularly if the
       resource corresponds closely to a paper bibliographic type, such as `book` or `article`.
-      Specialisations of `electronic_resource` include `dataset`, `webresource`, `website`,
-      `social_media`, and `software`.
+      Specialisations of `electronicResource` include `dataset`, `webResource`, `website`,
+      `socialMedia`, and `software`.
     }
   }
   audiovisual {
@@ -102,7 +102,7 @@ enum BibItemType {
       A broadcast made through mass media, including radio and television.
     }
   }
-  graphic_work {
+  graphicWork {
     definition {
       A graphic work, a work with two-dimensional or three-dimensional content.
     }
@@ -119,17 +119,17 @@ enum BibItemType {
       A patent.
     }
   }
-  inbook {
+  inBook {
     definition {
       A (typically untitled) part of a book. May be a chapter (or section, etc.) and/or a range of pages.
     }
   }
-  incollection {
+  inCollection {
     definition {
       A part of a book having its own title, and typically having distinct authorship..
     }
   }
-  inproceedings {
+  inProceedings {
     definition {
       An article in a conference proceedings.
     }
@@ -139,7 +139,7 @@ enum BibItemType {
       A journal or periodical publication.
     }
   }
-  webresource {
+  webResource {
     definition {
       A human-readable or consumable web resource,
       a single item accessible online via a web browser,
@@ -174,10 +174,10 @@ enum BibItemType {
       Computer executable code, not itself human-readable text (though it may generate such text).
     }
   }
-  social_media {
+  socialMedia {
     definition {
       One or more resources within a collection that is typically collectively authored by member users.
-      Includes blog posts, forum posts, social media posts, tweets. Is usually a `webresource`,
+      Includes blog posts, forum posts, social media posts, tweets. Is usually a `webResource`,
       but not always (e.g. blogs on WeChat are only accessible within the WeChat app.)
     }
   }
