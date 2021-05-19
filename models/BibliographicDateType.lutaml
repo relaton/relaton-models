@@ -94,4 +94,11 @@ enum BibliographicDateType {
        Typically applies to standards documents in draft.
     }
   }
+  announced {
+    definition {
+       The date on which the existence of a document is made public.
+       Applies whether the resource has already been created or not, and whether it is to be
+       published or not.
+    }
+  }
 }
