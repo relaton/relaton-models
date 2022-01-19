@@ -173,7 +173,7 @@ email = element email { text }
 address =
   element address {
     # iso191606 TODO
-    (street+, city, state?, country, postcode? ) | formattedAddress
+    (street*, city, state?, country, postcode? ) | formattedAddress
 }
 
 street = element street { text }
