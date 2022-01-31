@@ -12,6 +12,11 @@ class DocumentIdentifier{
       The scheme or namespace of the identifier.
     }
   }
+  +primary: Boolean[0..1] {
+    definition {
+      This is a primary identifier for the item, to be used in citation.
+    }
+  }
   +scope: String[0..1] {
     definition {
       The scope of the identifier, in case the identifier is not for the document 

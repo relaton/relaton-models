@@ -309,6 +309,7 @@ element on { ISO8601Date }
 docidentifier = element docidentifier { 
   attribute type { text }?,
   attribute scope { text }?,
+  attribute primary { xsd:boolean }?,
   text 
 }
 docnumber = element docnumber { text }
