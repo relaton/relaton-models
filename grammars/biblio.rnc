@@ -103,7 +103,7 @@ roledescription =
 
 person = 
   element person {
-    fullname?, affiliation*, person-identifier*, contact*, uri*
+    fullname?, affiliation*, person-identifier*, contact*
 }
 
 fullname =

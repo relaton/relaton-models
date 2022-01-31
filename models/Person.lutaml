@@ -19,12 +19,7 @@ class Person{
   }
   +contact: ContactMethod[0..*] {
     definition {
-      Contact information for the person, including address, phone number, and email.
-    }
-  }
-  +uri: TypedUri[0..*] {
-    definition {
-      URI associated with the person.
+      Contact information for the person, including URI, address, phone number, and email.
     }
   }
 }

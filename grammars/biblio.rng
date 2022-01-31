@@ -209,9 +209,6 @@
       <zeroOrMore>
         <ref name="contact"/>
       </zeroOrMore>
-      <zeroOrMore>
-        <ref name="uri"/>
-      </zeroOrMore>
     </element>
   </define>
   <define name="fullname">
