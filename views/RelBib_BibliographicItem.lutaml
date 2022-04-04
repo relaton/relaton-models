@@ -13,6 +13,8 @@ diagram RelBib_BibliographicItem {
   include ../models/TitleType.lutaml
   include ../models/VersionInfo.lutaml
   include ../models/PlaceType.lutaml
+  include ../models/BibItemSize.lutaml
+  include ../models/BibItemSizeType.lutaml
 
   association {
     owner DocumentIdentifier
@@ -32,6 +34,16 @@ diagram RelBib_BibliographicItem {
   association {
     owner MediumType
     member BibliographicItem
+    member_type direct
+  }
+  association {
+    owner MediumType
+    member BibItemSize
+    member_type direct
+  }
+  association {
+    owner BibItemSize
+    member BibItemSizeType
     member_type direct
   }
   association {

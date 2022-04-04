@@ -909,7 +909,9 @@
   </define>
   <define name="size">
     <element name="size">
-      <text/>
+      <oneOrMore>
+        <ref name="sizevalue"/>
+      </oneOrMore>
     </element>
   </define>
   <define name="scale">
@@ -919,6 +921,12 @@
   </define>
   <define name="accesslocation">
     <element name="accesslocation">
+      <text/>
+    </element>
+  </define>
+  <define name="sizevalue">
+    <element name="value">
+      <attribute name="type"/>
       <text/>
     </element>
   </define>

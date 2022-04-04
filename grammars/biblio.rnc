@@ -337,11 +337,17 @@ bcontent = element content { text }
 genre = element genre { text }
 form = element form { text }
 carrier = element carrier { text }
-size = element size { text }
+size = element size { sizevalue+ }
 scale = element scale { text }
 accesslocation = element accesslocation { text }
 
+sizevalue = element value {
+  attribute type { text },
+  text
+}
+
 extent = element extent { BibItemLocality }
+
 
 series = element series {
   attribute type { SeriesType }?,

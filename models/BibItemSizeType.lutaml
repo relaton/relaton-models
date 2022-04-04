@@ -1,0 +1,32 @@
+enum BibItemSizeType {
+  definition {
+    Type of size of a bibliographic item. In principle, this is open-ended, but
+    there are recommended values for standard size measures.
+  }
+
+  page {
+    definition {
+      Page count.
+    }
+  }
+  volume {
+    definition {
+      Volume count.
+    }
+  }
+  time {
+    definition {
+      Time duration (expressed as ISO 8601 duration value).
+    }
+  }
+  data {
+    definition {
+      Data size (includes unit, e.g. "6.8 GB").
+    }
+  }
+  value {
+    definition {
+      A free-form text string.
+    }
+  }
+}

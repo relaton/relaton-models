@@ -44,7 +44,7 @@ class MediumType{
       vocabulary; see https://www.loc.gov/standards/valuelist/rdacarrier.html
     }
   }
-  +size: String[0..1] {
+  +size: BibItemSize[0..*] {
     definition {
       The size of the physical representation of the bibliographic item.
     }
