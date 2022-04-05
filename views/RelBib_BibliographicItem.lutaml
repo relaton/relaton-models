@@ -37,7 +37,7 @@ diagram RelBib_BibliographicItem {
     member_type direct
   }
   association {
-    owner MediumType
+    owner BibliographicItem
     member BibItemSize
     member_type direct
   }

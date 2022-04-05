@@ -259,7 +259,7 @@ BibliographicItem =
     (btitle+ | formattedref), bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version?, biblionote*, language*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, accesslocation*, license*, bclassification*, bkeyword*, validity?
+    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
@@ -337,7 +337,7 @@ bcontent = element content { text }
 genre = element genre { text }
 form = element form { text }
 carrier = element carrier { text }
-size = element size { sizevalue+ }
+size = element size { text }
 scale = element scale { text }
 accesslocation = element accesslocation { text }
 
@@ -346,6 +346,7 @@ sizevalue = element value {
   text
 }
 
+bibliographic_size = element size { sizevalue+ }
 extent = element extent { BibItemLocality }
 
 

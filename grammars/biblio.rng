@@ -677,6 +677,9 @@
     <zeroOrMore>
       <ref name="extent"/>
     </zeroOrMore>
+    <optional>
+      <ref name="bibliographic_size"/>
+    </optional>
     <zeroOrMore>
       <ref name="accesslocation"/>
     </zeroOrMore>
@@ -909,9 +912,7 @@
   </define>
   <define name="size">
     <element name="size">
-      <oneOrMore>
-        <ref name="sizevalue"/>
-      </oneOrMore>
+      <text/>
     </element>
   </define>
   <define name="scale">
@@ -928,6 +929,13 @@
     <element name="value">
       <attribute name="type"/>
       <text/>
+    </element>
+  </define>
+  <define name="bibliographic_size">
+    <element name="size">
+      <oneOrMore>
+        <ref name="sizevalue"/>
+      </oneOrMore>
     </element>
   </define>
   <define name="extent">

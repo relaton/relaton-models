@@ -127,10 +127,15 @@ class BibliographicItem {
   }
   +extent: BiblItemLocality[0..*] {
     definition {
-      The extent of the bibliographic item, if reference is not being made to the entirety of the item described,
-      or if the size of the bibliographic item needs to be given.
+      The extent of the bibliographic item, if reference is not being made to the entirety of the item described.
       Repeats for different levels of granularity (e.g. volume number, page number), or for discontinuous ranges
       (e.g. multiple page ranges, pages plus plates).
+    }
+  }
+  +size: BibItemSize[0..*] {
+    definition {
+      The bibliographic size of the bibliographic item, measured in the same units as extent (i.e. pages, volumes,
+      megabytes, hours, rather than cm^2.) Distinct from the physical size of the bibliographic item, captured in medium/size.
     }
   }
   +accessLocation: String[0..*] {
