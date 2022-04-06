@@ -125,7 +125,7 @@ class BibliographicItem {
       The price should be treated as nominal, rather than capturing all possible pricings at a given time.
     }
   }
-  +extent: BiblItemLocality[0..*] {
+  +extent: LocalityStack[0..*] {
     definition {
       The extent of the bibliographic item, if reference is not being made to the entirety of the item described.
       Repeats for different levels of granularity (e.g. volume number, page number), or for discontinuous ranges

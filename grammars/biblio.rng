@@ -940,7 +940,14 @@
   </define>
   <define name="extent">
     <element name="extent">
-      <ref name="BibItemLocality"/>
+      <choice>
+        <zeroOrMore>
+          <ref name="locality"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="localityStack"/>
+        </zeroOrMore>
+      </choice>
     </element>
   </define>
   <define name="series">

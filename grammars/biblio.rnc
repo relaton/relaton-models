@@ -347,8 +347,9 @@ sizevalue = element value {
 }
 
 bibliographic_size = element size { sizevalue+ }
-extent = element extent { BibItemLocality }
-
+extent = element extent  {
+  locality* | localityStack*
+}
 
 series = element series {
   attribute type { SeriesType }?,
