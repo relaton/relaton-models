@@ -2,7 +2,7 @@ enum SpecificLocalityType {
   definition {
     Type of indicator of a location or extent within a bibliographic item.
 
-    When the value `whole` is used, the corresponding `BibItemLocality`
+    When the value `whole` or `title` is used, the corresponding `BibItemLocality`
     attribute `identifier` should be empty.
   }
 
@@ -91,6 +91,18 @@ enum SpecificLocalityType {
       Anchor (used for locations within web pages).
     }
   }
+  title {
+    definition {
+      Title (of a clause, figure, etc.)
+    }
+  }
+  line {
+    definition {
+      Line (of a block; dependent on printed form of document).
+    }
+  }
+
+
 
   localityString {
     definition {
