@@ -320,10 +320,18 @@ bclassification = element classification {
 }
 
 bplace = element place { 
-  attribute uri { xsd:anyURI }?,
-  attribute region { text }?,
-  text 
+  text | ( city, region*, country*)
 }
+
+city = element city { text }
+
+region = element region { RegionType }
+country = element country { RegionType }
+
+RegionType = 
+  attribute iso { text }?,
+  attribute recommended { xsd:boolean }?,
+  text
 
 bprice = element price {
    attribute currency { text },

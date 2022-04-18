@@ -13,6 +13,7 @@ diagram RelBib_BibliographicItem {
   include ../models/TitleType.lutaml
   include ../models/VersionInfo.lutaml
   include ../models/PlaceType.lutaml
+  include ../models/RegionType.lutaml
   include ../models/BibItemSize.lutaml
   include ../models/BibItemSizeType.lutaml
 
@@ -79,6 +80,11 @@ diagram RelBib_BibliographicItem {
   association {
     owner BibliographicItem
     member PlaceType
+    owner_type direct
+  }
+  association {
+    owner PlaceType
+    member RegionType
     owner_type direct
   }
   association {

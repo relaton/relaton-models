@@ -851,16 +851,45 @@
   </define>
   <define name="bplace">
     <element name="place">
-      <optional>
-        <attribute name="uri">
-          <data type="anyURI"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="region"/>
-      </optional>
+      <choice>
+        <text/>
+        <group>
+          <ref name="city"/>
+          <zeroOrMore>
+            <ref name="region"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="country"/>
+          </zeroOrMore>
+        </group>
+      </choice>
+    </element>
+  </define>
+  <define name="city">
+    <element name="city">
       <text/>
     </element>
+  </define>
+  <define name="region">
+    <element name="region">
+      <ref name="RegionType"/>
+    </element>
+  </define>
+  <define name="country">
+    <element name="country">
+      <ref name="RegionType"/>
+    </element>
+  </define>
+  <define name="RegionType">
+    <optional>
+      <attribute name="iso"/>
+    </optional>
+    <optional>
+      <attribute name="recommended">
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <text/>
   </define>
   <define name="bprice">
     <element name="price">
