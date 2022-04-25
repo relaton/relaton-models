@@ -320,10 +320,10 @@ bclassification = element classification {
 }
 
 bplace = element place { 
-  text | ( city, region*, country*)
+  text | ( bibliocity, region*, country*)
 }
 
-city = element city { text }
+bibliocity = element city { text }
 
 region = element region { RegionType }
 country = element country { RegionType }

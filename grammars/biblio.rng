@@ -854,7 +854,7 @@
       <choice>
         <text/>
         <group>
-          <ref name="city"/>
+          <ref name="bibliocity"/>
           <zeroOrMore>
             <ref name="region"/>
           </zeroOrMore>
@@ -865,7 +865,7 @@
       </choice>
     </element>
   </define>
-  <define name="city">
+  <define name="bibliocity">
     <element name="city">
       <text/>
     </element>
