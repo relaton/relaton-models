@@ -1,0 +1,20 @@
+class RegionType {
+  definition {
+    Encoding of region with ISO 3166 encoding.
+  }
+  +iso: String[0..1] {
+    definition {
+      ISO 3166 encoding.
+    }
+  }
+  +recommended: Boolean[0..1] {
+    definition {
+      Whether the region should be included in rendering of the place, for disambiguation.
+    }
+  }
+  +content[0..1]: String {
+    definition {
+      Name of the region.
+    }
+  }
+}
