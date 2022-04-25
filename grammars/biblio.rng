@@ -856,10 +856,10 @@
         <group>
           <ref name="bibliocity"/>
           <zeroOrMore>
-            <ref name="region"/>
+            <ref name="biblioregion"/>
           </zeroOrMore>
           <zeroOrMore>
-            <ref name="country"/>
+            <ref name="bibliocountry"/>
           </zeroOrMore>
         </group>
       </choice>
@@ -870,12 +870,12 @@
       <text/>
     </element>
   </define>
-  <define name="region">
+  <define name="biblioregion">
     <element name="region">
       <ref name="RegionType"/>
     </element>
   </define>
-  <define name="country">
+  <define name="bibliocountry">
     <element name="country">
       <ref name="RegionType"/>
     </element>

@@ -320,13 +320,13 @@ bclassification = element classification {
 }
 
 bplace = element place { 
-  text | ( bibliocity, region*, country*)
+  text | ( bibliocity, biblioregion*, bibliocountry*)
 }
 
 bibliocity = element city { text }
 
-region = element region { RegionType }
-country = element country { RegionType }
+biblioregion = element region { RegionType }
+bibliocountry = element country { RegionType }
 
 RegionType = 
   attribute iso { text }?,
