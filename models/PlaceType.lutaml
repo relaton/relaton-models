@@ -14,7 +14,7 @@ class PlaceType{
       URI in a geographical registry identifying the place.
     }
   }
-  +content[0..1]: String {
+  +content: String[0..1] {
     definition {
       Name of the place, not broken down.
     }
