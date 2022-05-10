@@ -614,12 +614,12 @@
     <optional>
       <ref name="fetched"/>
     </optional>
-    <choice>
-      <oneOrMore>
-        <ref name="btitle"/>
-      </oneOrMore>
+    <optional>
       <ref name="formattedref"/>
-    </choice>
+    </optional>
+    <oneOrMore>
+      <ref name="btitle"/>
+    </oneOrMore>
     <zeroOrMore>
       <ref name="bsource"/>
     </zeroOrMore>
