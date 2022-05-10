@@ -12,7 +12,7 @@ class RegionType {
       Whether the region should be included in rendering of the place, for disambiguation.
     }
   }
-  +content[0..1]: String {
+  +content: String[0..1] {
     definition {
       Name of the region.
     }
