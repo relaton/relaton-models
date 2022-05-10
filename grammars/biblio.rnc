@@ -362,11 +362,11 @@ extent = element extent  {
 
 series = element series {
   attribute type { SeriesType }?,
-  (formattedref |
-  (btitle, bplace?, seriesorganization?,
+  formattedref?,
+  btitle, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
-  seriesnumber?, seriespartnumber?, seriesrun?))
+  seriesnumber?, seriespartnumber?, seriesrun?
 }
 
 SeriesType = ( "main" | "alt" | text )

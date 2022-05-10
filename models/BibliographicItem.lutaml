@@ -15,17 +15,13 @@ class BibliographicItem {
   +title: TypedTitleString[0..*] {
     definition {
       The title(s) of the bibliographic item.
-
-      NOTE: `formattedRef` and `title` are mutually exclusive.
     }
   }
-  +formattedRef: FormattedString[0..1] {
+  +formattedref: FormattedString[0..1] {
     definition {
       A pre-formatted version of the full bibliographic item reference,
       rendered for human reading, and
       used to sidestep the rendering of the reference out of its component parts.
-
-      NOTE: `formattedRef` and `title` are mutually exclusive.
     }
   }
   +link: TypedUri[0..*] {

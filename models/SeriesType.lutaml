@@ -9,18 +9,9 @@ class SeriesType {
       The type of series description expressed in this container.
     }
   }
-  +formattedref: FormattedString[0..1] {
-    definition {
-      Fully formatted human-readable reference for the subject series.
-
-      NOTE: `formattedref` is mutually exclusive with other attributes in SeriesType.
-    }
-  }
   +title: TypedTitleString[0..1] {
     definition {
       The title of the series.
-
-      NOTE: `formattedref` and `title` are mutually exclusive.
     }
   }
   +place: String[0..1] {
@@ -72,8 +63,6 @@ class SeriesType {
     definition {
       A pre-formatted version of the series description, incorporating
       all needed disambiguating information in human-readable format.
-
-      NOTE: `formattedref` and `title` are mutually exclusive.
     }
   }
 }
