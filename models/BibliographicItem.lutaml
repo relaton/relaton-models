@@ -55,9 +55,9 @@ class BibliographicItem {
       The edition of the bibliographic item.
     }
   }
-  +version: VersionInfo[0..1] {
+  +version: VersionInfo[0..*] {
     definition {
-      The version of the bibliographic item (within an edition). Can be used for drafts.
+      The version of the bibliographic item (within an edition). Can be used for drafts. Can be more than one, in case of multiple versioning schemes.
     }
   }
   +note: TypedNote[0..*] {
