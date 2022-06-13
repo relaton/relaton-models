@@ -833,6 +833,12 @@
           <data type="boolean"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
       <text/>
     </element>
   </define>

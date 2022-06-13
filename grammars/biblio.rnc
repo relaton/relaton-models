@@ -311,6 +311,8 @@ docidentifier = element docidentifier {
   attribute type { text }?,
   attribute scope { text }?,
   attribute primary { xsd:boolean }?,
+  attribute language { text }?,
+  attribute script { text }?,
   text 
 }
 docnumber = element docnumber { text }
