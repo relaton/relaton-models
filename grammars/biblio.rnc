@@ -258,7 +258,7 @@ BibliographicItem =
     fetched?,
     formattedref?,
     btitle+, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
-    edition?, version*, biblionote*, language*, script*,
+    edition?, version?, biblionote*, language*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
@@ -467,7 +467,7 @@ docrelation =
 
 version =
   element version {
-    revision-date?, draft?
+    revision-date?, draft*
 }
 
 vedition = element edition { xsd:int }
