@@ -257,10 +257,20 @@ BibliographicItem =
     attribute type { BibItemType }?,
     fetched?,
     formattedref?,
-    btitle+, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
+    btitle+, bsource*, docidentifier+, docnumber?, bdate*, contributor*,
     edition?, version*, biblionote*, language*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
+
+ReducedBibliographicItem =
+    attribute type { BibItemType }?,
+    fetched?,
+    formattedref?,
+    btitle*, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
+    edition?, version*, biblionote*, language*, script*,
+    bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
+    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
+
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
@@ -462,7 +472,7 @@ docrelation =
   element relation {
     attribute type { DocRelationType },
     element description { FormattedString }?,
-    element bibitem { BibliographicItem },
+    element bibitem { ReducedBibliographicItem },
     (locality* | localityStack*),
     (sourceLocality* | sourceLocalityStack*)
 }
