@@ -1,6 +1,6 @@
 class BibliographicItem {
   definition {
-    Description of a bibliographic resource.
+    Reduced description of a bibliographic resource, without mandatory title and docidentifier, used for document relations.
   }
   +type: BibItemType[0..1] {
     definition {
@@ -12,7 +12,7 @@ class BibliographicItem {
       The date at which the bibliographic item was last updated.
     }
   }
-  +title: TypedTitleString[1..*] {
+  +title: TypedTitleString[0..*] {
     definition {
       The title(s) of the bibliographic item.
     }
@@ -29,7 +29,7 @@ class BibliographicItem {
       The URI(s) associated with the bibliographic item.
     }
   }
-  +docidentifier: DocumentIdentifier[1..*] {
+  +docidentifier: DocumentIdentifier[0..*] {
     definition {
       The identifier(s) of the bibliographic item in an international standard scheme.
     }

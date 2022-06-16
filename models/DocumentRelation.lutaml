@@ -12,7 +12,7 @@ class DocumentRelation {
       A more complete description of the type of document relation described.
     }
   }
-  +bibitem: BibliographicItem {
+  +bibitem: ReducedBibliographicItem {
     definition {
       The target bibliographic item to which this bibliographic item is described as related to.
     }
