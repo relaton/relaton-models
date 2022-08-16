@@ -1,0 +1,19 @@
+class Forename{
+  definition {
+    A forename of a person.
+  }
+  +content: LocalizedString {
+    definition {
+      A forename or given name of the person. Includes middle names.
+    }
+  }
+  +initial: String[0..1] {
+    definition {
+      An individual initial of the person, corresponding to the given forename.
+      Does not include final punctuation, but can include hyphens.
+      Can be used instead of forenames,
+      if formatted-initials are not provided (in which case each initial will be punctuated
+      following local practice.).
+    }
+  }
+}
