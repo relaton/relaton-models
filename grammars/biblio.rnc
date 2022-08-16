@@ -110,11 +110,12 @@ fullname =
   element name { FullNameType }
 
 FullNameType = 
-    (( prefix*, forename*, initial*, surname, addition* ) | completeName ),
+    (( prefix*, forename*, initial*, formatted-initials?, surname, addition* ) | completeName ),
     biblionote*, variantname*
 
 prefix = element prefix { LocalizedString }
 initial = element initial { LocalizedString }
+formatted-initials = element formatted-initials { LocalizedString }
 addition = element addition { LocalizedString }
 surname = element surname { LocalizedString }
 forename = element forename { LocalizedString }

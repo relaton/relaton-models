@@ -12,9 +12,20 @@ class FullName{
       A forename or given name of the person. Includes middle names.
     }
   }
-  +initials: LocalizedString[0..*] {
+  +initial: LocalizedString[0..*] {
     definition {
-      The initials of the person: can be used instead of forenames.
+      Each of the individual initials of the person. Does not include punctuation.
+      Can be used instead of forenames,
+      if formatted-initials are not provided (in which case each initial will be punctuated
+      following local practice.).
+    }
+  }
+  +formatted-initials: LocalizedString[0..1] {
+    definition {
+      The initials of the person, as a formatted string, including punctuation, dropping
+      punctuation as desired, and including hyphens where necessary. For example,
+      the initial set for Jean-Paul would be J, P; the formatted initials would be "J.-P."
+      or "J-P.". Can be used instead of forenames.
     }
   }
   +surname: LocalizedString {

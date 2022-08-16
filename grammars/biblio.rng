@@ -228,6 +228,9 @@
         <zeroOrMore>
           <ref name="initial"/>
         </zeroOrMore>
+        <optional>
+          <ref name="formatted-initials"/>
+        </optional>
         <ref name="surname"/>
         <zeroOrMore>
           <ref name="addition"/>
@@ -249,6 +252,11 @@
   </define>
   <define name="initial">
     <element name="initial">
+      <ref name="LocalizedString"/>
+    </element>
+  </define>
+  <define name="formatted-initials">
+    <element name="formatted-initials">
       <ref name="LocalizedString"/>
     </element>
   </define>
