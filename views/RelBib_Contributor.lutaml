@@ -12,6 +12,7 @@ diagram RelBib_Contributor {
   include ../models/OrgIdentifier.lutaml
   include ../models/PersonalIdentifierType.lutaml
   include ../models/FullName.lutaml
+  include ../models/Forename.lutaml
   include ../models/VariantFullName.lutaml
 
   association {
@@ -62,6 +63,11 @@ diagram RelBib_Contributor {
   association {
     owner Person
     member FullName
+    owner_type direct
+  }
+  association {
+    owner FullName
+    member Forename
     owner_type direct
   }
   association {
