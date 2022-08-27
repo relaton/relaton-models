@@ -882,6 +882,7 @@
       <value>vote-started</value>
       <value>vote-ended</value>
       <value>announced</value>
+      <value>stable-until</value>
     </choice>
   </define>
   <define name="bdate">
