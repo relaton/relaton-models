@@ -298,6 +298,8 @@ TypedTitleString =
 
 TypedUri =
   attribute type { text }?,
+  attribute language { text }?,
+  attribute script { text }?,
   xsd:anyURI 
 
 DateType =

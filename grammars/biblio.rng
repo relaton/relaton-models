@@ -854,6 +854,12 @@
     <optional>
       <attribute name="type"/>
     </optional>
+    <optional>
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
     <data type="anyURI"/>
   </define>
   <define name="DateType">

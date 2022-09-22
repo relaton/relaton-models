@@ -8,6 +8,16 @@ class TypedUri{
       the IANA link relations specified in <<rfc8288>>.
     }
   }
+  +language: Iso639Code[0..*] {
+    definition {
+      Language of string.
+    } 
+  }   
+  +script: Iso15924Code[0..*] {
+    definition {
+      Script of string.
+    }
+  }
   +content: Uri {
     definition {
       URI.
