@@ -6,6 +6,7 @@ diagram RelBib_DataTypes {
   include ../models/Iso639Code.lutaml
   include ../models/Iso15924Code.lutaml
   include ../models/Iso4217Code.lutaml
+  include ../models/Iso3166Code.lutaml
   include ../models/DateTime.lutaml
   include ../models/TypedUri.lutaml
   include ../models/LocalizedString.lutaml

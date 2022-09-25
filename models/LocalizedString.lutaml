@@ -7,6 +7,11 @@ class LocalizedString{
       Language of string.
     }
   }
+  +locale: Iso3166Code[0..*] {
+    definition {
+      Locale of string.
+    }
+  }
   +script: Iso15924Code[0..*] {
     definition {
       Script of string.

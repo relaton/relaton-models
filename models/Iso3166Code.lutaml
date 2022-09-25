@@ -1,0 +1,7 @@
+data_type Iso3166Code {
+  definition { 
+    Code for locale: country or region, as specified in <<iso3166>>.
+    The specification is open as to whether the two-letter code or the three-letter
+    code for countries is used.
+  }
+}

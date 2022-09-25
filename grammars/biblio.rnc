@@ -45,6 +45,9 @@ iteration = element iteration { text }
 language = element language { text }
 ## ISO-639
 
+locale = element locale { text }
+## ISO-3166
+
 script = element script { text }
 ## ISO-15924: Latn
 
@@ -56,6 +59,7 @@ edition = element edition {
 LocalizedString1 =
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
+  attribute locale { text }?,
   attribute script { text }?,
   text 
 
@@ -75,6 +79,7 @@ FormattedString =
 LocalizedStringOrXsAny1 =
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
+  attribute locale { text }?,
   attribute script { text }?,
   ( text | AnyElement )+
 
@@ -261,7 +266,7 @@ BibliographicItem =
     fetched?,
     formattedref?,
     btitle+, bsource*, docidentifier+, docnumber?, bdate*, contributor*,
-    edition?, version*, biblionote*, language*, script*,
+    edition?, version*, biblionote*, language*, locale*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
@@ -270,7 +275,7 @@ ReducedBibliographicItem =
     fetched?,
     formattedref?,
     btitle*, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
-    edition?, version*, biblionote*, language*, script*,
+    edition?, version*, biblionote*, language*, locale*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
     extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
 
@@ -299,6 +304,7 @@ TypedTitleString =
 TypedUri =
   attribute type { text }?,
   attribute language { text }?,
+  attribute locale { text }?,
   attribute script { text }?,
   xsd:anyURI 
 
@@ -327,6 +333,7 @@ docidentifier = element docidentifier {
   attribute scope { text }?,
   attribute primary { xsd:boolean }?,
   attribute language { text }?,
+  attribute locale { text }?,
   attribute script { text }?,
   text 
 }
