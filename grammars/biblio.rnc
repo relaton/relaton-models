@@ -263,6 +263,7 @@ BibItemType |=
  
 BibliographicItem =
     attribute type { BibItemType }?,
+    attribute schema-version { text }?,
     fetched?,
     formattedref?,
     btitle+, bsource*, docidentifier+, docnumber?, bdate*, contributor*,
@@ -272,6 +273,7 @@ BibliographicItem =
 
 ReducedBibliographicItem =
     attribute type { BibItemType }?,
+    attribute schema-version { text }?,
     fetched?,
     formattedref?,
     btitle*, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
