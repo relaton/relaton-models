@@ -2,9 +2,10 @@ class ContributorRole{
   definition {
     A description of the role of the contributor in the production of a bibliographic item.
   }
-  +type: ContributorRoleType[0..1] {
+  +type: ContributorRoleType {
     definition {
-      The broad class of role of the contributor. 
+      The broad class of role of the contributor. Mandatory in order to enforce orderly management
+      of contributors.
     }
   }
   +description: FormattedString[0..*] {

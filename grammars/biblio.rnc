@@ -90,13 +90,13 @@ LocalizedStringOrXsAny =
 
 contributor = 
   element contributor {
-    role*,
+    role+,
     ContributorInfo
 }
 
 role =
   element role {
-    attribute type { ( "author" | "performer" | "publisher" | "editor" | "adapter" | "translator" | "distributor" ) }?,
+    attribute type { ( "author" | "performer" | "publisher" | "editor" | "adapter" | "translator" | "distributor" ) },
     roledescription*
 }
 

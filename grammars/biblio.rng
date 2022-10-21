@@ -170,27 +170,25 @@
   </define>
   <define name="contributor">
     <element name="contributor">
-      <zeroOrMore>
+      <oneOrMore>
         <ref name="role"/>
-      </zeroOrMore>
+      </oneOrMore>
       <ref name="ContributorInfo"/>
     </element>
   </define>
   <define name="role">
     <element name="role">
-      <optional>
-        <attribute name="type">
-          <choice>
-            <value>author</value>
-            <value>performer</value>
-            <value>publisher</value>
-            <value>editor</value>
-            <value>adapter</value>
-            <value>translator</value>
-            <value>distributor</value>
-          </choice>
-        </attribute>
-      </optional>
+      <attribute name="type">
+        <choice>
+          <value>author</value>
+          <value>performer</value>
+          <value>publisher</value>
+          <value>editor</value>
+          <value>adapter</value>
+          <value>translator</value>
+          <value>distributor</value>
+        </choice>
+      </attribute>
       <zeroOrMore>
         <ref name="roledescription"/>
       </zeroOrMore>
