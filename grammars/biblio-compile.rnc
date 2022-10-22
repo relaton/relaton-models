@@ -1,0 +1,3 @@
+include "biblio-standoc.rnc" {
+  start = bibitem
+}

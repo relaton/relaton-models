@@ -25,6 +25,9 @@ ISO8601Date = xsd:string { pattern = "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([
 
 # start = bibitem
 
+BibData =
+  BibliographicItem
+
 status =
   element status {
      ( stage, substage?, iteration? )
