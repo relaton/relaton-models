@@ -2,6 +2,11 @@ class LocalityStack{
   definition {
     Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item.
   }
+  +connective: LocalityConnective[0..1] {
+    definition {
+      Logical connective linking localities. If not supplied, "and" is understood.
+    }
+  }
   +bibLocality: BibItemLocality[0..*] {
     definition {
       Component bibliographic localities which group together to designate a single span of text.

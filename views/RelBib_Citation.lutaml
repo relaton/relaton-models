@@ -3,6 +3,7 @@ diagram RelBib_Citation {
   include ../models/Citation.lutaml
   include ../models/BibItemLocality.lutaml
   include ../models/LocalityStack.lutaml
+  include ../models/LocalityConnective.lutaml
   include ../models/SpecificLocalityType.lutaml
 
   association {
@@ -18,6 +19,11 @@ diagram RelBib_Citation {
   association {
     owner LocalityStack
     member BibItemLocality
+    owner_type direct
+  }
+  association {
+    owner LocalityStack
+    member LocalityConnective
     owner_type direct
   }
   association {

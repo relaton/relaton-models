@@ -1,0 +1,25 @@
+enum LocalityConnective {
+  definition {
+    Connective linking bibliographic localities together.
+  }
+  and {
+    definition {
+      Logical and.
+    }
+  }
+  or {
+    definition {
+      Logical or.
+    }
+  }
+  from {
+    definition {
+      Start of a range.
+    }
+  }
+  to {
+    definition {
+      End of a range.
+    }
+  }
+}
