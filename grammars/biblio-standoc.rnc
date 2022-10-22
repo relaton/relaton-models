@@ -1,0 +1,71 @@
+# Add-ons to biblio.rnc for standoc model: defines the extension point BibDataExtensionType
+# of relaton
+#
+# Specialisations as for biblio.rnc. Extension point can be redefined completely for a flavour of standoc
+# (SDO); but other elements in Bibdata can only be extended (more specialised vocabularies for Bibdata)
+
+include "biblio.rnc" { 
+
+BibData =
+  BibliographicItem,
+  ext?
+}
+
+ext =
+  element ext { BibDataExtensionType }
+
+BibDataExtensionType =
+  attribute schema-version { text }?,
+  doctype,
+  docsubtype?,
+  editorialgroup?,
+  ics*,
+  structuredidentifier*
+
+doctype = element doctype {
+    attribute abbreviation { text }?,
+    DocumentType
+}
+
+DocumentType = ( "document" )
+
+docsubtype = element subdoctype { DocumentSubtype }
+
+DocumentSubtype = text
+
+editorialgroup = element editorialgroup {
+  technical-committee+
+}
+
+technical-committee =
+  element technical-committee { IsoWorkgroup }
+
+IsoWorkgroup =
+    attribute number { text }?,
+    attribute type { text }?,
+    attribute identifier { text }?,
+    attribute prefix { text }?,
+    text
+
+ics = element ics { 
+  element code { text },
+  element text { text }?
+} 
+
+structuredidentifier = element structuredidentifier {
+  attribute type { text }?,
+  element agency { text }+,
+  element class { text }?,
+  element docnumber { text },
+  element partnumber { text }?,
+  element edition { text }?,
+  element version { text }?,
+  element supplementtype { text }?,
+  element supplementnumber { text }?,
+  element amendment { text }?,
+  element corrigendum { text }?,
+  element language { text }?,
+  element year { text }?
+}
+
+
