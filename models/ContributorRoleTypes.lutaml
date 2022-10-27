@@ -1,56 +1,161 @@
 enum ContributorRoleType {
   definition {
     The broad class of role of a contributor to the production of a bibliographic item.
-    Taken from <<iso690>>.
+    Expanded on <<iso690>>.
     The vocabulary is deliberately kept general for ease of processing; more detailed
     descriptions of the role can be given elsewhere.
+
+    The basic list of roles in <<iso690,clause=7.2.2>> is:
+
+    a. creator of work
+    b. expresser of created work
+    c. reviser of work
+    d. creator of derivative work
+    e. publisher of manifestation
+    f. distributor of manifestation
   }
 
   author {
     definition {
       Creator of the intellectual content of the bibliographic item.
+      Corresponds to <<iso690,clause="7.2.2 a)">>: creator of work.
+      Includes both the major intellectual contributors to intellectual
+      content, and subsidiary contributors.
+
       Includes: composer, librettist, mapping agency, surveyor,
-      cartographer, copyist, system designer of software, patentee,
+      cartographer, system designer of software, patentee,
       patent applicant, artist, photographer, draughtsman, graphic
-      designer.
-    }
-  }
-  performer {
-    definition {
-      Realiser of the intellectual content of the bibliographic item.
-      Includes: conductor, performer of music, drama, etc., director of
-      films, inventor.
+      designer, inventor.
+
+      In the case of documents arising from legal cases, all participants
+      involved are considered creators, e.g. applicants, complainants, defendants,
+      judges.
     }
   }
   editor {
     definition {
       Party imposing structure on the intellectual content of the bibliographic item.
-      Includes: compiler, editor, reviser.
+      Corresponds to <<iso690,clause="7.2.2 c)">>: reviser of work.
+      Is someone finalising a work (i.e. its intellectual content), which has been
+      created or initiated by others.
+           
+      Includes: compiler, corrector, curator, editor, moderator, proofreader, reviser.
+    }
+  realizer {
+    definition {
+      Realiser of the intellectual content of the bibliographic item.
+      Corresponds to <<iso690,clause="7.2.2 b)">>: expresser of created work.
+      Contributes to the work being realised in a particular intellectual or
+      artistic form, but is distinct from a mass-produced physical presentation
+      of that form (a manifestation).
+
+      Includes: animator, art director, film director, cinematographer, engineer,
+      music copyist, musical director, recordist, stage manager, videographer; 
+      analyst, court reporter, markup editor, programmer, scribe.
+
+      A large number of visual artists, such as engravers, etchers, and illustrators,
+      can be modelled as creators, realisers, or adapters, depending on whether
+      they are creating work they have conceived of themselves (creator),
+      carrying out a creator's artistic vision and following their drafts (realiser),
+      or copying an artistic work that has already been fully realised in a different
+      medium (adapter). In the bibliographic description of visual works,
+      realiser is the usual role involved.
     }
   }
-  adapter {
+  performer {
     definition {
-      Party converting the intellectual content of the bibliographic item into
-      a different medium. Includes: engraver, photographer of another creator's
-      work, copyist, arranger, software programmer.
+      Realiser of the intellectual content of the bibliographic item.
+      Corresponds to <<iso690,clause="7.2.2 b)">>: expresser of created work.
+      Is specific to the performing arts, and indicates the performers
+      realising the work in a time-bound event. If performers are indicated for
+      an artistic work, a distinction is made between the performers ("front of stage"),
+      and the realisers, the other contributors working towards realising the performance
+      in a planning or coordinating role ("backstage").
+
+      Includes: actor, conductor, dancer, musician, narrator, performer, singer.
     }
   }
   translator {
     definition {
       Party converting the intellectual content of the bibliographic item into
-      a different language.
+      a different language. Corresponds to <<iso690,clause="7.2.2 b)">>:
+      expresser of created work. Is given a separate role because of the
+      prominence given to translators in bibliographic description.
+    }
+  }
+  adapter {
+    definition {
+      Party converting the intellectual content of the bibliographic item into
+      a different medium or form. 
+      Corresponds to <<iso690,clause="7.2.2 d)">>: creator of derivative work.
+
+      Includes: abridger, annotator, adapter, commentator, reviewer;
+      photographer of another creator's work, copyist, arranger.
     }
   }
   publisher {
     definition {
       Party responsible for the bibliographic item becoming publicly available.
-      Includes: publisher, online information provider, production company.
+      Corresponds to <<iso690,clause="7.2.2 e)">>: publisher of manifestation.
+      Covers all parties involved in creating and producing a manifestation
+      (physical presentation) of the work.
+
+      Includes: bookbinder, manufacturer, online information provider, publisher,
+      printer, production company.
     }
   }
   distributor {
     definition {
       Party arranging for the bibliographic item to become publicly accessible.
-      Includes: distributor, online host, sponsoring organization.
+      Corresponds to <<iso690,clause="7.2.2 f)">>: distributor of manifestation.
+      Covers all parties involved in making a manifestation available, and
+      providing manifestation Items to owners.
+
+      Includes: auctioneer, bookseller, online host, provider,
+      repository, vendor.
+    }
+  }
+  owner {
+    definition {
+      Party who is in physical possession of a bibliographic item.
+      Modelled in <<iso690,clause="7.12.1.3)">> as an owner of an Item.
+
+      Includes: autographer, collector, depositor, lender, owner.
+    }
+  }
+  authorizer {
+    definition {
+      Party which lends its authority to the bibliographic item, and vouches for its
+      quality and accuracy.
+      Corresponds to <<iso690,clause="7.2.2 f)">>: distributor of manifestation,
+      (which is treated in the current version of that standard as a catch-all category.)
+      Covers most cases of corporate authorship: the organisation lends its
+      authority to works that individual authors create, whether as work for hire,
+      or under the auspices of the organisation.
+
+      Includes: copyright holder, degree supervisor, issuing body, jurisdiction,
+      laboratory, licensor, monitor, scholarly society, scientific advisor, software company,
+      standards body.
+    }
+  }
+  enabler {
+    definition {
+      Party who is involved in supporting, enabling, or facilitating the
+      production of a bibliographic item, without contributing directly to its
+      intellectual content, realisation, or presentation.
+      Corresponds to <<iso690,clause="7.2.2 f)">>: distributor of manifestation,
+      (which is treated in the current version of that standard as a catch-all category.)
+
+      Includes: donor, host institution, licensee, patron, producer, sponsor.
+    }
+  }
+  subject {
+    definition {
+      Party who is referenced in a bibliographic item. Is not properly a contributor of
+      intellectual content, but is included because of edge cases in some contributor
+      models.
+
+      Includes: addressee, cited, dedicatee, depicted, honoree, subject.
     }
   }
 }
