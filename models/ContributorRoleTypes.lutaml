@@ -41,6 +41,7 @@ enum ContributorRoleType {
            
       Includes: compiler, corrector, curator, editor, moderator, proofreader, reviser.
     }
+  }
   realizer {
     definition {
       Realiser of the intellectual content of the bibliographic item.
