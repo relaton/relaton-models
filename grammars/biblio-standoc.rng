@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
-  <include href="biblio.rng"/>
+  <!--
+    Add-ons to biblio.rnc for standoc model: defines the extension point BibDataExtensionType
+    of relaton
+    
+    Specialisations as for biblio.rnc. Extension point can be redefined completely for a flavour of standoc
+    (SDO); but other elements in Bibdata can only be extended (more specialised vocabularies for Bibdata)
+  -->
+  <include href="biblio.rng">
+    <define name="BibData">
+      <ref name="BibliographicItem"/>
+      <optional>
+        <ref name="ext"/>
+      </optional>
+    </define>
+  </include>
   <define name="ext">
     <element name="ext">
       <ref name="BibDataExtensionType"/>
@@ -34,12 +48,6 @@
   </define>
   <define name="DocumentType">
     <value>document</value>
-  </define>
-  <define name="BibData">
-    <ref name="BibliographicItem"/>
-    <optional>
-      <ref name="ext"/>
-    </optional>
   </define>
   <define name="docsubtype">
     <element name="subdoctype">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <include href="basicdoc.rng"/>
   <include href="biblio-standoc.rng">
     <start>
       <ref name="bibitem"/>
