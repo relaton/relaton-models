@@ -5,5 +5,5 @@ grammar {
 
   start = bibitem | bibdata
 
-  element bibdata { BibData }
+  bibdata = element bibdata { BibData }
 }
