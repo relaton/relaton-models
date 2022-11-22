@@ -3,5 +3,7 @@ grammar {
 
   include "biblio-standoc.rnc" { }
 
-  start = bibitem
+  start = bibitem | bibdata
+
+  element bibdata { BibData }
 }
