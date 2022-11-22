@@ -4,6 +4,4 @@ grammar {
   include "biblio-standoc.rnc" { }
 
   start = bibitem | bibdata
-
-  bibdata = element bibdata { BibData }
 }
