@@ -1,5 +1,7 @@
-include "basicdoc.rnc" { }
+grammar {
+  include "basicdoc.rnc" { }
 
-include "biblio-standoc.rnc" {
+  include "biblio-standoc.rnc" { }
+
   start = bibitem
 }
