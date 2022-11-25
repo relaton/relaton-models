@@ -27,7 +27,7 @@ doctype = element doctype {
     DocumentType
 }
 
-DocumentType = ( "document" )
+DocumentType = text
 
 docsubtype = element subdoctype { DocumentSubtype }
 

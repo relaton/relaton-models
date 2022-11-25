@@ -3,6 +3,9 @@
   <include href="basicdoc.rng"/>
   <include href="biblio-standoc.rng"/>
   <start>
-    <ref name="bibitem"/>
+    <choice>
+      <ref name="bibitem"/>
+      <ref name="bibdata"/>
+    </choice>
   </start>
 </grammar>
