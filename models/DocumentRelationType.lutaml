@@ -379,16 +379,16 @@ enum DocumentRelationType  {
       The main document is related to the target document in an otherwise unspecified fashion.
     }
   }
-  complements {
+  hasComplement {
     definition {
-      The main document is complementary to the target document, and provides additional
-      or contextual information to help understand the target document. Inverse of `complementOf` relation.
+      The main document has additional or contextual information provided in the the target document,
+      to help understand the main document. The target document is complementary to the main document.
     }
   }
   complementOf {
     definition {
-      The main document has additional or contextual information provided in the the target document,
-      to help understand the main document. The target document is complementary to the main document.
+      The main document is complementary to the target document, and provides additional
+      or contextual information to help understand the target document. Inverse of `hasComplement` relation.
     }
   }
   obsoletes {

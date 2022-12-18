@@ -485,7 +485,7 @@ DocRelationType =
 "commentaryOf" | 
 "hasCommentary" | 
 "related" | 
-"complements" | 
+"hasComplement" | 
 "complementOf" | 
 "obsoletes" | 
 "obsoletedBy" | 
