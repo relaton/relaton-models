@@ -112,11 +112,11 @@ roledescription =
 
 person = 
   element person {
-    fullname?, affiliation*, person-identifier*, contact*
+    fullname?, credential*, affiliation*, person-identifier*, contact*
 }
 
-fullname =
-  element name { FullNameType }
+fullname = element name { FullNameType }
+credential = element credential { text }
 
 FullNameType = 
     (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
@@ -139,7 +139,7 @@ variantname = element variant {
 
 affiliation =
   element affiliation { 
-    affiliationname?, affiliationdescription*, organization
+    affiliationname?, affiliationdescription*, organization?
 }
 
 affiliationname = element name { LocalizedString }

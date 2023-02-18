@@ -13,7 +13,7 @@ class Affiliation{
       A more detailed description of the affiliation of the person.
     }
   }
-  +organization: Organization {
+  +organization: Organization[0..1] {
     definition {
       The organization with which the person is affiliated.
     }
