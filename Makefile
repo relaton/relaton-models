@@ -3,10 +3,8 @@
 #!make
 ifeq ($(OS),Windows_NT)
 SHELL := pwsh -NoProfile
-RM    := Remove-Item -Force
 else
 SHELL := /bin/bash
-RM    := rm -f
 endif
 
 SRC := $(wildcard views/*.lutaml)
@@ -29,6 +27,10 @@ views:
 	mkdir views
 
 clean:
-	$(RM) images/*.png
+ifeq ($(OS),Windows_NT)
+	if (Test-Path images/*.png) { rm -r -force images/*.png }
+else
+	rm -f images/*.png
+endif
 
 .PHONY: clean
