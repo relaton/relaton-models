@@ -45,6 +45,12 @@ enum BibliographicDateType {
       The date on which the current version of the document was updated.
     }
   }
+  corrected {
+    definition {
+      The date on which the current version of the document was corrected, without that correction considered
+      to amount to a full document update..
+    }
+  }
   issued {
     definition {
       The date on which the document was issued (authorised for publication by the issuing authority).

@@ -942,6 +942,7 @@
       <value>obsoleted</value>
       <value>confirmed</value>
       <value>updated</value>
+      <value>corrected</value>
       <value>issued</value>
       <value>transmitted</value>
       <value>copied</value>
@@ -1283,7 +1284,7 @@
       <value>mergedInto</value>
       <value>splits</value>
       <value>splitInto</value>
-      <value>instance</value>
+      <value>instanceOf</value>
       <value>hasInstance</value>
       <value>exemplarOf</value>
       <value>hasExemplar</value>

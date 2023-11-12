@@ -325,7 +325,7 @@ DateType =
   ( ISO8601Date )?
 
 BibliographicDateType =
-"published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" | "adapted" | "vote-started" | "vote-ended" | "announced" | "stable-until"
+"published" | "accessed" | "created" | "implemented" | "obsoleted" | "confirmed" | "updated" | "corrected" | "issued" | "transmitted" | "copied" | "unchanged" | "circulated" | "adapted" | "vote-started" | "vote-ended" | "announced" | "stable-until"
 
 bdate = element date {
   attribute type { ( BibliographicDateType | text ) },
