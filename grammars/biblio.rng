@@ -374,11 +374,6 @@
       <ref name="image"/>
     </element>
   </define>
-  <define name="image">
-    <element name="image">
-      <ref name="Image"/>
-    </element>
-  </define>
   <define name="NameWithVariants">
     <element name="primary">
       <ref name="LocalizedString"/>

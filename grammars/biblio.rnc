@@ -153,7 +153,6 @@ organization =
 orgname = element name { LocalizedString | NameWithVariants }
 subdivision = element subdivision { LocalizedString | NameWithVariants }
 logo = element logo { image }
-image = element image { Image }
 
 NameWithVariants =
   element primary { LocalizedString },
