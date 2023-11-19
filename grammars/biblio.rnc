@@ -59,7 +59,6 @@ edition = element edition {
    text
 }
 
-# START: FROM BASICDOC
 LocalizedString1 =
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
@@ -90,19 +89,6 @@ LocalizedStringOrXsAny1 =
 LocalizedStringOrXsAny = 
   LocalizedStringOrXsAny1 | 
   element variant { LocalizedStringOrXsAny1 }+
-
-image =
-  element image {
-    attribute id { xsd:ID }?,
-    attribute src { xsd:anyURI }, 
-    attribute mimetype { text },
-    attribute width { xsd:int | "auto" }?,
-    attribute height { xsd:int | "auto" }?,
-    attribute alt { text }?,
-    attribute title { text }?,
-    attribute longdesc { xsd:anyURI }?
-}
-# END: FROM BASICDOC
 
 contributor = 
   element contributor {
@@ -167,6 +153,7 @@ organization =
 orgname = element name { LocalizedString | NameWithVariants }
 subdivision = element subdivision { LocalizedString | NameWithVariants }
 logo = element logo { image }
+image = element image { Image }
 
 NameWithVariants =
   element primary { LocalizedString },
