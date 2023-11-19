@@ -42,4 +42,9 @@ class Organization{
       Contact information for the organization, including address, phone number, and email.
     }
   }
+  +logo: <<Basicdoc>>Image[0..*] {
+    definition {
+      A logo for the organization.
+    }
+  }
 }

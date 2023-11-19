@@ -95,6 +95,7 @@
       <text/>
     </element>
   </define>
+  <!-- START: FROM BASICDOC -->
   <define name="LocalizedString1">
     <optional>
       <!-- multiple languages and scripts possible: comma delimit them if so -->
@@ -169,6 +170,47 @@
       </oneOrMore>
     </choice>
   </define>
+  <define name="image">
+    <element name="image">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <attribute name="src">
+        <data type="anyURI"/>
+      </attribute>
+      <attribute name="mimetype"/>
+      <optional>
+        <attribute name="width">
+          <choice>
+            <data type="int"/>
+            <value>auto</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="height">
+          <choice>
+            <data type="int"/>
+            <value>auto</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="alt"/>
+      </optional>
+      <optional>
+        <attribute name="title"/>
+      </optional>
+      <optional>
+        <attribute name="longdesc">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
+    </element>
+  </define>
+  <!-- END: FROM BASICDOC -->
   <define name="contributor">
     <element name="contributor">
       <oneOrMore>
@@ -348,6 +390,9 @@
       <zeroOrMore>
         <ref name="contact"/>
       </zeroOrMore>
+      <optional>
+        <ref name="logo"/>
+      </optional>
     </element>
   </define>
   <define name="orgname">
@@ -364,6 +409,11 @@
         <ref name="LocalizedString"/>
         <ref name="NameWithVariants"/>
       </choice>
+    </element>
+  </define>
+  <define name="logo">
+    <element name="logo">
+      <ref name="image"/>
     </element>
   </define>
   <define name="NameWithVariants">

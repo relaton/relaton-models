@@ -1,5 +1,6 @@
 diagram RelBib_Contributor {
 
+  include ../models/Basicdoc_Image.lutaml
   include ../models/Contributor.lutaml
   include ../models/Person.lutaml
   include ../models/ContactMethod.lutaml
@@ -24,6 +25,11 @@ diagram RelBib_Contributor {
     owner Contributor
     member Organization
     owner_type inheritance
+  }
+  association {
+    owner Basicdoc_Image
+    member Organization
+    owner_type direct
   }
   association {
     owner Organization
