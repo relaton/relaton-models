@@ -153,6 +153,10 @@ organization =
 orgname = element name { LocalizedString | NameWithVariants }
 subdivision = element subdivision { LocalizedString | NameWithVariants }
 logo = element logo { image }
+depiction = element depiction {
+  attribute scope { text }?,
+  image*
+}
 
 NameWithVariants =
   element primary { LocalizedString },
@@ -279,7 +283,7 @@ BibliographicItem =
     btitle+, bsource*, docidentifier+, docnumber?, bdate*, contributor*,
     edition?, version*, biblionote*, language*, locale*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
+    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?, depiction?
 
 ReducedBibliographicItem =
     attribute type { BibItemType }?,

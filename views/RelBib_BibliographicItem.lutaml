@@ -16,25 +16,26 @@ diagram RelBib_BibliographicItem {
   include ../models/RegionType.lutaml
   include ../models/BibItemSize.lutaml
   include ../models/BibItemSizeType.lutaml
+  include ../models/Depiction.lutaml
 
   association {
-    owner DocumentIdentifier
-    member BibliographicItem
+    owner BibliographicItem
+    member DocumentIdentifier
     member_type direct
   }
   association {
-    owner DocumentStatus
-    member BibliographicItem
+    owner BibliographicItem
+    member DocumentStatus
     member_type direct
   }
   association {
-    owner CopyrightAssociation
-    member BibliographicItem
+    owner BibliographicItem
+    member CopyrightAssociation
     member_type direct
   }
   association {
-    owner MediumType
-    member BibliographicItem
+    owner BibliographicItem
+    member MediumType
     member_type direct
   }
   association {
@@ -48,8 +49,8 @@ diagram RelBib_BibliographicItem {
     member_type direct
   }
   association {
-    owner VersionInfo
-    member BibliographicItem
+    owner BibliographicItem
+    member VersionInfo
     member_type direct
   }
   association {
@@ -65,6 +66,11 @@ diagram RelBib_BibliographicItem {
   association {
     owner BibliographicItem
     member TypedNote
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Depiction
     owner_type direct
   }
   association {

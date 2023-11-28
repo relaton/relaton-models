@@ -1,0 +1,15 @@
+class Depiction {
+  definition {
+    Depiction of the bibliographic item.
+  }
+  +scope: String[0..1] {
+    definition {
+      Description of what is being depicted
+    }
+  }
+  +image: <<Basicdoc>>Image[0..*] {
+    definition {
+      A visual depiction of the bibliographic item.
+    }
+  }
+}
