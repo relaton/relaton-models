@@ -7,8 +7,28 @@
 include "biblio.rnc" { 
 
 BibData =
-  BibliographicItem,
+  StandardBibliographicItem,
   ext?
+}
+
+bibitem =
+  element bibitem { 
+     attribute id { xsd:ID },
+     StandardBibliographicItem
+}
+  
+bibitem_no_id =
+  element bibitem { 
+     StandardBibliographicItem
+}
+
+docrelation =
+  element relation {
+    attribute type { DocRelationType },
+    element description { FormattedString }?,
+    element bibitem { StandardReducedBibliographicItem },
+    (locality* | localityStack*),
+    (sourceLocality* | sourceLocalityStack*)
 }
 
 ext =
@@ -68,4 +88,10 @@ structuredidentifier = element structuredidentifier {
   element year { text }?
 }
 
+StandardBibliographicItem =
+  StandardBibliographicItem,
+  amend*
 
+StandardReducedBibliographicItem =
+  StandardReducedBibliographicItem,
+  amend*
