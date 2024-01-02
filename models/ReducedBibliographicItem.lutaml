@@ -162,4 +162,9 @@ class BibliographicItem {
       Information about how long the current description of the bibliographic item is valid for.
     }
   }
+  +depiction: Depiction[0..*] {
+    definition {
+      Depiction of the bibliographic item.
+    }
+  }
 }

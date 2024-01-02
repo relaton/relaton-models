@@ -118,9 +118,11 @@ fullname = element name { FullNameType }
 credential = element credential { text }
 
 FullNameType = 
+    name_abbreviation?,
     (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
     biblionote*, variantname*
 
+name_abbrevation = element abbreviation { LocalizedString }
 prefix = element prefix { LocalizedString }
 formatted-initials = element formatted-initials { LocalizedString }
 addition = element addition { LocalizedString }
@@ -293,7 +295,7 @@ ReducedBibliographicItem =
     btitle*, bsource*, docidentifier*, docnumber?, bdate*, contributor*,
     edition?, version*, biblionote*, language*, locale*, script*,
     bibabstract*, status?, copyright*, docrelation*, series*, medium?, bplace*, bprice*,
-    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?
+    extent*, bibliographic_size?, accesslocation*, license*, bclassification*, bkeyword*, validity?, depiction?
 
 
 btitle = element title { TypedTitleString }
