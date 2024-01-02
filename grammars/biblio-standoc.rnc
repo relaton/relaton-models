@@ -9,7 +9,6 @@ include "biblio.rnc" {
 BibData =
   StandardBibliographicItem,
   ext?
-}
 
 docrelation =
   element relation {
@@ -18,6 +17,8 @@ docrelation =
     element bibitem { StandardReducedBibliographicItem },
     (locality* | localityStack*),
     (sourceLocality* | sourceLocalityStack*)
+}
+
 }
 
 ext =

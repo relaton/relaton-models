@@ -14,38 +14,38 @@
         <ref name="ext"/>
       </optional>
     </define>
-  </include>
-  <define name="docrelation">
-    <element name="relation">
-      <attribute name="type">
-        <ref name="DocRelationType"/>
-      </attribute>
-      <optional>
-        <element name="description">
-          <ref name="FormattedString"/>
+    <define name="docrelation">
+      <element name="relation">
+        <attribute name="type">
+          <ref name="DocRelationType"/>
+        </attribute>
+        <optional>
+          <element name="description">
+            <ref name="FormattedString"/>
+          </element>
+        </optional>
+        <element name="bibitem">
+          <ref name="StandardReducedBibliographicItem"/>
         </element>
-      </optional>
-      <element name="bibitem">
-        <ref name="StandardReducedBibliographicItem"/>
+        <choice>
+          <zeroOrMore>
+            <ref name="locality"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="localityStack"/>
+          </zeroOrMore>
+        </choice>
+        <choice>
+          <zeroOrMore>
+            <ref name="sourceLocality"/>
+          </zeroOrMore>
+          <zeroOrMore>
+            <ref name="sourceLocalityStack"/>
+          </zeroOrMore>
+        </choice>
       </element>
-      <choice>
-        <zeroOrMore>
-          <ref name="locality"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="localityStack"/>
-        </zeroOrMore>
-      </choice>
-      <choice>
-        <zeroOrMore>
-          <ref name="sourceLocality"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="sourceLocalityStack"/>
-        </zeroOrMore>
-      </choice>
-    </element>
-  </define>
+    </define>
+  </include>
   <define name="ext">
     <element name="ext">
       <ref name="BibDataExtensionType"/>
