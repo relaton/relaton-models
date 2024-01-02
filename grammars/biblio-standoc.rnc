@@ -11,17 +11,6 @@ BibData =
   ext?
 }
 
-bibitem =
-  element bibitem { 
-     attribute id { xsd:ID },
-     StandardBibliographicItem
-}
-  
-bibitem_no_id =
-  element bibitem { 
-     StandardBibliographicItem
-}
-
 docrelation =
   element relation {
     attribute type { DocRelationType },
