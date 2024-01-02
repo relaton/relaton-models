@@ -1,5 +1,6 @@
 diagram RelBib_BibliographicItem {
 
+  include ../models/Basicdoc_Image.lutaml
   include ../models/BibliographicItem.lutaml
   include ../models/Edition.lutaml
   include ../models/TypedNote.lutaml
@@ -21,6 +22,11 @@ diagram RelBib_BibliographicItem {
   association {
     owner BibliographicItem
     member DocumentIdentifier
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Basicdoc_Image
     member_type direct
   }
   association {
