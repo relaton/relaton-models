@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
   <!--
     Add-ons to biblio.rnc for standoc model: defines the extension point BibDataExtensionType
     of relaton
@@ -15,19 +15,6 @@
       </optional>
     </define>
   </include>
-  <define name="bibitem">
-    <element name="bibitem">
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-      <ref name="StandardBibliographicItem"/>
-    </element>
-  </define>
-  <define name="bibitem_no_id">
-    <element name="bibitem">
-      <ref name="StandardBibliographicItem"/>
-    </element>
-  </define>
   <define name="docrelation">
     <element name="relation">
       <attribute name="type">
