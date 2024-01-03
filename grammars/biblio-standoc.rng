@@ -193,13 +193,13 @@
     </element>
   </define>
   <define name="StandardBibliographicItem">
-    <ref name="StandardBibliographicItem"/>
+    <ref name="BibliographicItem"/>
     <zeroOrMore>
       <ref name="amend"/>
     </zeroOrMore>
   </define>
   <define name="StandardReducedBibliographicItem">
-    <ref name="StandardReducedBibliographicItem"/>
+    <ref name="ReducedBibliographicItem"/>
     <zeroOrMore>
       <ref name="amend"/>
     </zeroOrMore>

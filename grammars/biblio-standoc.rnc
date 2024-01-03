@@ -79,9 +79,9 @@ structuredidentifier = element structuredidentifier {
 }
 
 StandardBibliographicItem =
-  StandardBibliographicItem,
+  BibliographicItem,
   amend*
 
 StandardReducedBibliographicItem =
-  StandardReducedBibliographicItem,
+  ReducedBibliographicItem,
   amend*
