@@ -33,12 +33,12 @@ status =
      ( stage, substage?, iteration? )
 }
 
-stage = element stage { 
+stage = element stage {
   attribute abbreviation { text }?,
   text
 }
 
-substage = element substage { 
+substage = element substage {
   attribute abbreviation { text }?,
   text
 }
@@ -54,7 +54,7 @@ locale = element locale { text }
 script = element script { text }
 ## ISO-15924: Latn
 
-edition = element edition { 
+edition = element edition {
    attribute number { text }?,
    text
 }
@@ -64,10 +64,10 @@ LocalizedString1 =
   attribute language { text }?,
   attribute locale { text }?,
   attribute script { text }?,
-  text 
+  text
 
-LocalizedString = 
-  LocalizedString1 | 
+LocalizedString =
+  LocalizedString1 |
   element variant { LocalizedString1 }+
 
 # Unlike UML, change type to format: type is overloaded
@@ -75,7 +75,7 @@ LocalizedString =
 # Added LocalizedStringOrXsAny
 FormattedString =
   # attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
-  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" | 
+  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" |
     "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
   LocalizedStringOrXsAny
 
@@ -86,11 +86,11 @@ LocalizedStringOrXsAny1 =
   attribute script { text }?,
   ( text | AnyElement )+
 
-LocalizedStringOrXsAny = 
-  LocalizedStringOrXsAny1 | 
+LocalizedStringOrXsAny =
+  LocalizedStringOrXsAny1 |
   element variant { LocalizedStringOrXsAny1 }+
 
-contributor = 
+contributor =
   element contributor {
     role+,
     ContributorInfo
@@ -106,10 +106,10 @@ role =
 ContributorInfo =
   ( person | organization )
 
-roledescription = 
+roledescription =
   element description { FormattedString }
 
-person = 
+person =
   element person {
     fullname?, credential*, affiliation*, person-identifier*, contact*
 }
@@ -117,12 +117,12 @@ person =
 fullname = element name { FullNameType }
 credential = element credential { text }
 
-FullNameType = 
+FullNameType =
     name_abbreviation?,
     (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
     biblionote*, variantname*
 
-name_abbrevation = element abbreviation { LocalizedString }
+name_abbreviation = element abbreviation { LocalizedString }
 prefix = element prefix { LocalizedString }
 formatted-initials = element formatted-initials { LocalizedString }
 addition = element addition { LocalizedString }
@@ -139,7 +139,7 @@ variantname = element variant {
 }
 
 affiliation =
-  element affiliation { 
+  element affiliation {
     affiliationname?, affiliationdescription*, organization?
 }
 
@@ -147,7 +147,7 @@ affiliationname = element name { LocalizedString }
 
 affiliationdescription = element description { FormattedString }
 
-organization = 
+organization =
   element organization {
     orgname+, subdivision*, abbreviation?, uri*, org-identifier*, contact*, logo?
 }
@@ -173,16 +173,16 @@ abbreviation =
   element abbreviation { LocalizedString }
 
 uri =
-  element uri { 
+  element uri {
     attribute type { text }?,
-    xsd:anyURI 
+    xsd:anyURI
   }
 
 # TODO may change
 contact =
   ( address | phone | email | uri )
 
-phone = element phone { 
+phone = element phone {
   attribute type { text }?,
   text }
 
@@ -216,7 +216,7 @@ org-identifier =
 citation =
   element citation { CitationType }
 
-CitationType = 
+CitationType =
     attribute bibitemid { xsd:IDREF },
     (locality* | localityStack*), date?
 
@@ -226,7 +226,7 @@ locality =
   element locality { BibItemLocality }
 
 localityStack =
-   element localityStack { 
+   element localityStack {
      attribute connective { "and" | "or" | "from" | "to" | "" }?,
      locality*
  }
@@ -235,7 +235,7 @@ sourceLocality =
   element sourceLocality { BibItemLocality }
 
 sourceLocalityStack =
-   element sourceLocalityStack { 
+   element sourceLocalityStack {
      attribute connective { "and" | "or" | "from" | "to" | "" }?,
      sourceLocality*
  }
@@ -244,24 +244,24 @@ BibItemLocality =
     attribute type { LocalityType },
     referenceFrom?, referenceTo?
 
-LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|title|line|whole|table|annex|figure|note|list|example|volume|issue|time|anchor|locality:[a-zA-Z0-9_]+" } 
+LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|title|line|whole|table|annex|figure|note|list|example|volume|issue|time|anchor|locality:[a-zA-Z0-9_]+" }
 
 referenceFrom = element referenceFrom { text }
 referenceTo = element referenceTo { text }
 
 # unlike UML, has id attribute; that results from including bibitem in a docmodel
 bibitem =
-  element bibitem { 
+  element bibitem {
      attribute id { xsd:ID },
-     BibliographicItem 
+     BibliographicItem
 }
 
 bibitem_no_id =
-  element bibitem { 
-     BibliographicItem 
+  element bibitem {
+     BibliographicItem
 }
 
-relaton_collection = 
+relaton_collection =
   element relaton-collection {
     attribute type { text }?,
     btitle, contributor*,
@@ -271,12 +271,12 @@ relaton_collection =
 BibItemType |=
     (  "article" | "book" | "booklet" | "manual" |
        "proceedings" | "presentation" | "thesis" | "techreport" |
-       "standard" | "unpublished" | "map" | "electronic resource" | 
+       "standard" | "unpublished" | "map" | "electronic resource" |
        "audiovisual" | "film" | "video" | "broadcast" | "software" |
        "graphic_work" | "music" | "patent" | "inbook" | "incollection" |
-        "inproceedings" | "journal" | "website" |"webresource"| "dataset" | "archival" | 
+        "inproceedings" | "journal" | "website" |"webresource"| "dataset" | "archival" |
         "social_media" | "alert" | "message" | "conversation" | "misc" )
- 
+
 BibliographicItem =
     attribute type { BibItemType }?,
     attribute schema-version { text }?,
@@ -313,9 +313,9 @@ validityEnds = element validityEnds { ISO8601DateTime }
 validityRevision = element revision { ISO8601DateTime }
 
 
-TypedTitleString = 
+TypedTitleString =
   attribute type { text }?,
-  FormattedString  
+  FormattedString
 
 # TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
 
@@ -324,7 +324,7 @@ TypedUri =
   attribute language { text }?,
   attribute locale { text }?,
   attribute script { text }?,
-  xsd:anyURI 
+  xsd:anyURI
 
 DateType =
   attribute text { text }?,
@@ -346,23 +346,23 @@ element on { ISO8601Date }
 
 }
 
-docidentifier = element docidentifier { 
+docidentifier = element docidentifier {
   attribute type { text }?,
   attribute scope { text }?,
   attribute primary { xsd:boolean }?,
   attribute language { text }?,
   attribute locale { text }?,
   attribute script { text }?,
-  text 
+  text
 }
 docnumber = element docnumber { text }
 
-bclassification = element classification { 
+bclassification = element classification {
   attribute type { text }?,
-  text 
+  text
 }
 
-bplace = element place { 
+bplace = element place {
   text | ( bibliocity, biblioregion*, bibliocountry*)
 }
 
@@ -371,7 +371,7 @@ bibliocity = element city { text }
 biblioregion = element region { RegionType }
 bibliocountry = element country { RegionType }
 
-RegionType = 
+RegionType =
   attribute iso { text }?,
   attribute recommended { xsd:boolean }?,
   text
@@ -381,7 +381,7 @@ bprice = element price {
    text
 }
 
-medium = element medium { 
+medium = element medium {
   bcontent?, genre?, form?, carrier?, size?, scale?
 }
 bcontent = element content { text }
@@ -420,9 +420,9 @@ seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
 seriesrun = element run { text }
 
-biblionote = element note { 
+biblionote = element note {
   attribute type { text }?,
-  FormattedString 
+  FormattedString
 }
 bibabstract = element abstract { FormattedString }
 
@@ -440,63 +440,63 @@ owner =
   element owner { ContributorInfo }
 
 DocRelationType =
-"includes" | 
-"includedIn" | 
-"hasPart" | 
-"partOf" | 
-"merges" | 
-"mergedInto" | 
-"splits" | 
-"splitInto" | 
-"instanceOf" | 
-"hasInstance" | 
-"exemplarOf" | 
-"hasExemplar" | 
-"manifestationOf" | 
-"hasManifestation" | 
-"reproductionOf" | 
-"hasReproduction" | 
-"reprintOf" | 
-"hasReprint" | 
-"expressionOf" | 
-"hasExpression" | 
-"translatedFrom" | 
-"hasTranslation" | 
-"arrangementOf" | 
-"hasArrangement" | 
-"abridgementOf" | 
-"hasAbridgement" | 
-"annotationOf" | 
-"hasAnnotation" | 
-"draftOf" | 
-"hasDraft" | 
-"editionOf" | 
-"hasEdition" | 
-"updates" | 
-"updatedBy" | 
-"derivedFrom" | 
-"derives" | 
-"describes" | 
-"describedBy" | 
-"catalogues" | 
-"cataloguedBy" | 
-"hasSuccessor" | 
-"successorOf" | 
-"adaptedFrom" | 
-"hasAdaptation" | 
-"adoptedFrom" | 
-"adoptedAs" | 
-"reviewOf" | 
-"hasReview" | 
-"commentaryOf" | 
-"hasCommentary" | 
-"related" | 
-"hasComplement" | 
-"complementOf" | 
-"obsoletes" | 
-"obsoletedBy" | 
-"cites" | 
-"isCitedIn" 
+"includes" |
+"includedIn" |
+"hasPart" |
+"partOf" |
+"merges" |
+"mergedInto" |
+"splits" |
+"splitInto" |
+"instanceOf" |
+"hasInstance" |
+"exemplarOf" |
+"hasExemplar" |
+"manifestationOf" |
+"hasManifestation" |
+"reproductionOf" |
+"hasReproduction" |
+"reprintOf" |
+"hasReprint" |
+"expressionOf" |
+"hasExpression" |
+"translatedFrom" |
+"hasTranslation" |
+"arrangementOf" |
+"hasArrangement" |
+"abridgementOf" |
+"hasAbridgement" |
+"annotationOf" |
+"hasAnnotation" |
+"draftOf" |
+"hasDraft" |
+"editionOf" |
+"hasEdition" |
+"updates" |
+"updatedBy" |
+"derivedFrom" |
+"derives" |
+"describes" |
+"describedBy" |
+"catalogues" |
+"cataloguedBy" |
+"hasSuccessor" |
+"successorOf" |
+"adaptedFrom" |
+"hasAdaptation" |
+"adoptedFrom" |
+"adoptedAs" |
+"reviewOf" |
+"hasReview" |
+"commentaryOf" |
+"hasCommentary" |
+"related" |
+"hasComplement" |
+"complementOf" |
+"obsoletes" |
+"obsoletedBy" |
+"cites" |
+"isCitedIn"
 
 docrelation =
   element relation {
@@ -518,11 +518,11 @@ draft = element draft { text }
 
 bkeyword = element keyword {
     LocalizedString |
-    ( 
+    (
        element vocab { LocalizedString },
        vocabid+
     ) |
-    ( 
+    (
        element taxon { LocalizedString }+,
        vocabid+
     )
