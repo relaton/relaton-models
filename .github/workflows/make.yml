@@ -10,4 +10,4 @@ on:
 
 jobs:
   make:
-    uses: relaton/support/.github/workflows/make.yml@master
+    uses: relaton/support/.github/workflows/make.yml@main
