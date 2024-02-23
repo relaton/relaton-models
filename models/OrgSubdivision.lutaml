@@ -1,0 +1,15 @@
+class OrgSubdivision{
+  definition {
+    Subdivision of organization associated with a bibliographic item.
+  }
+  +subdivision: Organization[1..*] {
+    definition {
+      The subdivision, modelled recursively as an organization.
+    }
+  }
+  +type: String[0..1] {
+    definition {
+      The type of subdivision.
+    }
+  }
+}

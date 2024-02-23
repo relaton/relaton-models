@@ -147,13 +147,15 @@ affiliationname = element name { LocalizedString }
 
 affiliationdescription = element description { FormattedString }
 
-organization =
-  element organization {
+organization = element organization { OrganizationType}
+OrganizationType =
     orgname+, subdivision*, abbreviation?, uri*, org-identifier*, contact*, logo?
-}
 
 orgname = element name { LocalizedString | NameWithVariants }
-subdivision = element subdivision { LocalizedString | NameWithVariants }
+subdivision = element subdivision { 
+   attribute type { text }?,
+   OrganizationType 
+}
 logo = element logo { image }
 depiction = element depiction {
   attribute scope { text }?,

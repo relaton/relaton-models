@@ -12,14 +12,9 @@ class Organization{
       A variant name of the organization.
     }
   }
-  +subdivision: LocalizedString[0..*] {
+  +subdivision: OrgSubdivision[0..*] {
     definition {
       The subdivision of the organization directly involved with the production of the bibliographic item.
-    }
-  }
-  +variant_subdivision: VariantOrgName[0..*] {
-    definition {
-      A variant name of the subdivision.
     }
   }
   +abbreviation: LocalizedString[0..1] {

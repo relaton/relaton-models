@@ -1,11 +1,11 @@
 diagram RelBib_Contributor {
 
-  include ../models/Basicdoc_Image.lutaml
   include ../models/Contributor.lutaml
   include ../models/Person.lutaml
   include ../models/ContactMethod.lutaml
   include ../models/Phone.lutaml
   include ../models/Organization.lutaml
+  include ../models/OrgSubdivision.lutaml
   include ../models/VariantOrgName.lutaml
   include ../models/Address.lutaml
   include ../models/PersonIdentifier.lutaml
@@ -27,8 +27,18 @@ diagram RelBib_Contributor {
     owner_type inheritance
   }
   association {
-    owner Basicdoc_Image
-    member Organization
+    owner Organization
+    member OrgSubdivision
+    owner_type inheritance
+  }
+  association {
+    owner Organization
+    member OrgSubdivision
+    owner_type direct
+  }
+  association {
+    owner Organization
+    member OrgIdentifier
     owner_type direct
   }
   association {
@@ -64,6 +74,11 @@ diagram RelBib_Contributor {
   association {
     owner ContactMethod
     member Address
+    owner_type direct
+  }
+  association {
+    owner ContactMethod
+    member Phone
     owner_type direct
   }
   association {
