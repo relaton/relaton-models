@@ -1,0 +1,5 @@
+data_type BasicElement <<Basicdoc>> {
+  definition {
+    Container of inline content in BasicDocument (includes plain text).
+  }
+}

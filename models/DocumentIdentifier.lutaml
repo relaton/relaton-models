@@ -2,7 +2,7 @@ class DocumentIdentifier{
   definition {
     An identifier of a bibliographic item in an international standard scheme.
   }
-  +id: String {
+  +id: <<Basicdoc>>BasicElement[1..*] {
     definition {
       The identifier string.
     }

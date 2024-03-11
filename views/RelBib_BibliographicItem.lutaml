@@ -1,6 +1,7 @@
 diagram RelBib_BibliographicItem {
 
   include ../models/Basicdoc_Image.lutaml
+  include ../models/Basicdoc_BasicElement.lutaml
   include ../models/BibliographicItem.lutaml
   include ../models/Edition.lutaml
   include ../models/TypedNote.lutaml
@@ -102,6 +103,11 @@ diagram RelBib_BibliographicItem {
   association {
     owner TypedTitleString
     member TitleType
+    owner_type direct
+  }
+  association {
+    owner TypedTitleString
+    member Basicdoc_BasicElement
     owner_type direct
   }
 }

@@ -942,7 +942,9 @@
     <optional>
       <attribute name="type"/>
     </optional>
-    <ref name="FormattedString"/>
+    <zeroOrMore>
+      <ref name="TextElement"/>
+    </zeroOrMore>
   </define>
   <!-- TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" ) -->
   <define name="TypedUri">

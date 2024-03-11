@@ -7,7 +7,7 @@ class TypedTitleString{
       The type for the given title of the bibliographic item.
     }
   }
-  +content: FormattedString {
+  +content: <<Basicdoc>>BasicElement[0..*] {
     definition {
       The title itself.
     }
