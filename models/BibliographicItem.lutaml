@@ -22,7 +22,7 @@ class BibliographicItem {
       The title(s) of the bibliographic item.
     }
   }
-  +formattedref: <<Basicdoc>BasicElement[0..*] {
+  +formattedref: <<Basicdoc>>BasicElement[0..*] {
     definition {
       A pre-formatted version of the full bibliographic item reference,
       rendered for human reading, and
