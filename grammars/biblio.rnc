@@ -107,7 +107,7 @@ ContributorInfo =
   ( person | organization )
 
 roledescription =
-  element description { FormattedString }
+  element description { TextElement+ }
 
 person =
   element person {
@@ -145,7 +145,7 @@ affiliation =
 
 affiliationname = element name { LocalizedString }
 
-affiliationdescription = element description { FormattedString }
+affiliationdescription = element description { TextElement+ }
 
 organization = element organization { OrganizationType}
 OrganizationType =
@@ -302,7 +302,7 @@ ReducedBibliographicItem =
 
 btitle = element title { TypedTitleString }
 bsource = element uri { TypedUri }
-formattedref = element formattedref { FormattedString }
+formattedref = element formattedref { TextElement+ }
 license = element license { text }
 
 fetched = element fetched { ISO8601DateTime }
@@ -424,9 +424,9 @@ seriesrun = element run { text }
 
 biblionote = element note {
   attribute type { text }?,
-  FormattedString
+  TextElement+
 }
-bibabstract = element abstract { FormattedString }
+bibabstract = element abstract { TextElement+ }
 
 copyright =
   element copyright {
@@ -503,7 +503,7 @@ DocRelationType =
 docrelation =
   element relation {
     attribute type { DocRelationType },
-    element description { FormattedString }?,
+    element description { TextElement+ }?,
     element bibitem { ReducedBibliographicItem },
     (locality* | localityStack*),
     (sourceLocality* | sourceLocalityStack*)

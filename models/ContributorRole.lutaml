@@ -8,7 +8,7 @@ class ContributorRole{
       of contributors.
     }
   }
-  +description: FormattedString[0..*] {
+  +description: <<Basicdoc>>BasicElement[0..*] {
     definition {
       A more detailed description of the role of the contributor.
     }

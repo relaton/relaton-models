@@ -1,0 +1,5 @@
+data_type BasicBlock <<Basicdoc>> {
+  definition {
+    Container of block content in BasicDocument.
+  }
+}

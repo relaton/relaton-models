@@ -8,7 +8,7 @@ class TypedNote{
       May be used to differentiate rendering of notes in bibliographies.
     }
   }
-  +content: FormattedString {
+  +content: <<Basicdoc>>BasicElement[0..*] {
     definition {
       The content of the note.
     }

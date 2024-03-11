@@ -12,7 +12,7 @@ class Edition {
     }
   }
 
-  +content: FormattedString {
+  +content: <<Basicdoc>>BasicElement[1..*] {
     definition {
       Formatted edition string for human reading.
     }

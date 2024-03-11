@@ -7,7 +7,7 @@ class DocumentRelation {
       The type of document relation described, using a controlled vocabulary.
     }
   }
-  +description: FormattedString[0..*] {
+  +description: <<Basicdoc>>BasicElement[0..*] {
     definition {
       A more complete description of the type of document relation described.
     }
