@@ -59,11 +59,15 @@ edition = element edition {
    text
 }
 
-LocalizedString1 =
+LocalizedStringAttrs = 
   # multiple languages and scripts possible: comma delimit them if so
   attribute language { text }?,
   attribute locale { text }?,
-  attribute script { text }?,
+  attribute script { text }?
+
+LocalizedString1 =
+  # multiple languages and scripts possible: comma delimit them if so
+  LocalizedStringAttrs,
   text
 
 LocalizedString =
@@ -81,9 +85,7 @@ FormattedString =
 
 LocalizedStringOrXsAny1 =
   # multiple languages and scripts possible: comma delimit them if so
-  attribute language { text }?,
-  attribute locale { text }?,
-  attribute script { text }?,
+  LocalizedStringAttrs,
   ( text | AnyElement )+
 
 LocalizedStringOrXsAny =
@@ -107,7 +109,10 @@ ContributorInfo =
   ( person | organization )
 
 roledescription =
-  element description { TextElement+ }
+  element description { 
+   LocalizedStringAttrs,
+   TextElement+ 
+  }
 
 person =
   element person {
@@ -145,7 +150,10 @@ affiliation =
 
 affiliationname = element name { LocalizedString }
 
-affiliationdescription = element description { TextElement+ }
+affiliationdescription = element description { 
+   LocalizedStringAttrs,
+   TextElement+ 
+}
 
 organization = element organization { OrganizationType}
 OrganizationType =
@@ -317,6 +325,7 @@ validityRevision = element revision { ISO8601DateTime }
 
 TypedTitleString =
   attribute type { text }?,
+  LocalizedStringAttrs,
   TextElement*
 
 # TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
@@ -352,9 +361,7 @@ docidentifier = element docidentifier {
   attribute type { text }?,
   attribute scope { text }?,
   attribute primary { xsd:boolean }?,
-  attribute language { text }?,
-  attribute locale { text }?,
-  attribute script { text }?,
+  LocalizedStringAttrs,
   TextElement+
 }
 docnumber = element docnumber { text }
@@ -424,9 +431,13 @@ seriesrun = element run { text }
 
 biblionote = element note {
   attribute type { text }?,
+  LocalizedStringAttrs,
   TextElement+
 }
-bibabstract = element abstract { TextElement+ }
+bibabstract = element abstract { 
+  LocalizedStringAttrs,
+  (BasicBlock+ | TextElement+)
+}
 
 copyright =
   element copyright {
@@ -503,7 +514,10 @@ DocRelationType =
 docrelation =
   element relation {
     attribute type { DocRelationType },
-    element description { TextElement+ }?,
+    element description { 
+       LocalizedStringAttrs,
+       TextElement+ 
+    }?,
     element bibitem { ReducedBibliographicItem },
     (locality* | localityStack*),
     (sourceLocality* | sourceLocalityStack*)
