@@ -164,10 +164,10 @@ subdivision = element subdivision {
    attribute type { text }?,
    OrganizationType 
 }
-logo = element logo { image }
+logo = element logo { image-no-id }
 depiction = element depiction {
   attribute scope { text }?,
-  image*
+  image-no-id*
 }
 
 NameWithVariants =
@@ -436,7 +436,7 @@ biblionote = element note {
 }
 bibabstract = element abstract { 
   LocalizedStringAttrs,
-  (BasicBlock+ | TextElement+)
+  (BasicBlockNoId+ | TextElement+)
 }
 
 RequiredId = 
