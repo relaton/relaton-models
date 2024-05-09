@@ -384,7 +384,7 @@
   </define>
   <define name="logo">
     <element name="logo">
-      <ref name="image"/>
+      <ref name="image-no-id"/>
     </element>
   </define>
   <define name="depiction">
@@ -393,7 +393,7 @@
         <attribute name="scope"/>
       </optional>
       <zeroOrMore>
-        <ref name="image"/>
+        <ref name="image-no-id"/>
       </zeroOrMore>
     </element>
   </define>
@@ -1279,7 +1279,7 @@
       <ref name="LocalizedStringAttrs"/>
       <choice>
         <oneOrMore>
-          <ref name="BasicBlock"/>
+          <ref name="BasicBlockNoId"/>
         </oneOrMore>
         <oneOrMore>
           <ref name="TextElement"/>
