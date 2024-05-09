@@ -439,9 +439,6 @@ bibabstract = element abstract {
   (BasicBlockNoId+ | TextElement+)
 }
 
-RequiredId = 
-    attribute id { xsd:ID }?
-
 copyright =
   element copyright {
     from, to?, owner+, copyright_scope?
