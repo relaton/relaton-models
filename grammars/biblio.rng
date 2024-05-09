@@ -1287,6 +1287,13 @@
       </choice>
     </element>
   </define>
+  <define name="RequiredId">
+    <optional>
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+    </optional>
+  </define>
   <define name="copyright">
     <element name="copyright">
       <ref name="from"/>
