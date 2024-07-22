@@ -415,7 +415,7 @@ extent = element extent  {
 series = element series {
   attribute type { SeriesType }?,
   formattedref?,
-  btitle, bplace?, seriesorganization?,
+  btitle+, bplace?, seriesorganization?,
   abbreviation?,
   seriesfrom?, seriesto?,
   seriesnumber?, seriespartnumber?, seriesrun?

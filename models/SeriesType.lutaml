@@ -9,7 +9,7 @@ class SeriesType {
       The type of series description expressed in this container.
     }
   }
-  +title: TypedTitleString[0..1] {
+  +title: TypedTitleString[0..*] {
     definition {
       The title of the series.
     }
