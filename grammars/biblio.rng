@@ -107,62 +107,42 @@
       <attribute name="script"/>
     </optional>
   </define>
-  <define name="LocalizedString1">
+  <!-- LocalizedString1 = -->
+  <define name="LocalizedString">
     <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <text/>
   </define>
-  <define name="LocalizedString">
-    <choice>
-      <ref name="LocalizedString1"/>
-      <oneOrMore>
-        <element name="variant">
-          <ref name="LocalizedString1"/>
-        </element>
-      </oneOrMore>
-    </choice>
-  </define>
-  <define name="LocalizedMarkedUpString1">
+  <!--
+    LocalizedString =
+     LocalizedString1 |
+     element variant { LocalizedString1 }+
+  -->
+  <!-- LocalizedMarkedUpString1 = -->
+  <define name="LocalizedMarkedUpString">
     <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <oneOrMore>
       <ref name="TextElement"/>
     </oneOrMore>
   </define>
-  <define name="LocalizedMarkedUpString">
-    <choice>
-      <ref name="LocalizedMarkedUpString1"/>
-      <oneOrMore>
-        <element name="variant">
-          <ref name="LocalizedMarkedUpString1"/>
-        </element>
-      </oneOrMore>
-    </choice>
-  </define>
+  <!--
+    LocalizedMarkedUpString =
+     LocalizedMarkedUpString1 |
+     element variant { LocalizedMarkedUpString1 }+
+  -->
   <!--
     Unlike UML, change type to format: type is overloaded
     Would be need if plain were default value and could omit the attribute
     Added LocalizedStringOrXsAny
+    FormattedString =
+    attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
+     attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" |
+       "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
+     LocalizedStringOrXsAny
   -->
-  <define name="FormattedString">
-    <optional>
-      <!-- attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?, -->
-      <attribute name="format">
-        <choice>
-          <value>text/plain</value>
-          <value>text/html</value>
-          <value>application/docbook+xml</value>
-          <value>application/tei+xml</value>
-          <value>text/x-asciidoc</value>
-          <value>text/markdown</value>
-          <value>application/x-metanorma+xml</value>
-          <text/>
-        </choice>
-      </attribute>
-    </optional>
-    <ref name="LocalizedStringOrXsAny"/>
-  </define>
-  <define name="LocalizedStringOrXsAny1">
+  <!-- LocalizedStringOrXsAny1 = -->
+  <define name="LocalizedStringOrXsAny">
     <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <oneOrMore>
@@ -172,16 +152,11 @@
       </choice>
     </oneOrMore>
   </define>
-  <define name="LocalizedStringOrXsAny">
-    <choice>
-      <ref name="LocalizedStringOrXsAny1"/>
-      <oneOrMore>
-        <element name="variant">
-          <ref name="LocalizedStringOrXsAny1"/>
-        </element>
-      </oneOrMore>
-    </choice>
-  </define>
+  <!--
+    LocalizedStringOrXsAny =
+     LocalizedStringOrXsAny1 |
+     element variant { LocalizedStringOrXsAny1 }+
+  -->
   <define name="contributor">
     <element name="contributor">
       <oneOrMore>
@@ -257,24 +232,25 @@
     <optional>
       <ref name="name_abbreviation"/>
     </optional>
-    <choice>
-      <group>
-        <zeroOrMore>
-          <ref name="prefix"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="forename"/>
-        </zeroOrMore>
-        <optional>
-          <ref name="formatted-initials"/>
-        </optional>
-        <ref name="surname"/>
-        <zeroOrMore>
-          <ref name="addition"/>
-        </zeroOrMore>
-      </group>
+    <zeroOrMore>
+      <!--    (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ), -->
+      <ref name="prefix"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="forename"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="formatted-initials"/>
+    </optional>
+    <optional>
+      <ref name="surname"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="addition"/>
+    </zeroOrMore>
+    <optional>
       <ref name="completeName"/>
-    </choice>
+    </optional>
     <zeroOrMore>
       <ref name="biblionote"/>
     </zeroOrMore>
@@ -466,23 +442,28 @@
   </define>
   <define name="address">
     <element name="address">
-      <choice>
-        <!-- iso191606 TODO -->
-        <group>
-          <zeroOrMore>
-            <ref name="street"/>
-          </zeroOrMore>
-          <ref name="city"/>
-          <optional>
-            <ref name="state"/>
-          </optional>
-          <ref name="country"/>
-          <optional>
-            <ref name="postcode"/>
-          </optional>
-        </group>
+      <zeroOrMore>
+        <!--
+          iso191606 TODO
+          (street*, city, state?, country, postcode? ) | formattedAddress
+        -->
+        <ref name="street"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="city"/>
+      </optional>
+      <optional>
+        <ref name="state"/>
+      </optional>
+      <optional>
+        <ref name="country"/>
+      </optional>
+      <optional>
+        <ref name="postcode"/>
+      </optional>
+      <optional>
         <ref name="formattedAddress"/>
-      </choice>
+      </optional>
     </element>
   </define>
   <define name="street">

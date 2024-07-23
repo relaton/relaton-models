@@ -65,41 +65,44 @@ LocalizedStringAttrs =
   attribute locale { text }?,
   attribute script { text }?
 
-LocalizedString1 =
+#LocalizedString1 =
+LocalizedString =
   # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   text
 
-LocalizedString =
-  LocalizedString1 |
-  element variant { LocalizedString1 }+
+#LocalizedString =
+#  LocalizedString1 |
+#  element variant { LocalizedString1 }+
 
-LocalizedMarkedUpString1 =
+#LocalizedMarkedUpString1 =
+LocalizedMarkedUpString =
   # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   TextElement+
 
-LocalizedMarkedUpString =
-  LocalizedMarkedUpString1 |
-  element variant { LocalizedMarkedUpString1 }+
+#LocalizedMarkedUpString =
+#  LocalizedMarkedUpString1 |
+#  element variant { LocalizedMarkedUpString1 }+
 
 # Unlike UML, change type to format: type is overloaded
 # Would be need if plain were default value and could omit the attribute
 # Added LocalizedStringOrXsAny
-FormattedString =
+#FormattedString =
   # attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
-  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" |
-    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
-  LocalizedStringOrXsAny
+#  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" |
+#    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
+#  LocalizedStringOrXsAny
 
-LocalizedStringOrXsAny1 =
+#LocalizedStringOrXsAny1 =
+LocalizedStringOrXsAny =
   # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   ( text | AnyElement )+
 
-LocalizedStringOrXsAny =
-  LocalizedStringOrXsAny1 |
-  element variant { LocalizedStringOrXsAny1 }+
+#LocalizedStringOrXsAny =
+#  LocalizedStringOrXsAny1 |
+#  element variant { LocalizedStringOrXsAny1 }+
 
 contributor =
   element contributor {
@@ -130,7 +133,8 @@ credential = element credential { text }
 
 FullNameType =
     name_abbreviation?,
-    (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
+#    (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
+    prefix*, forename*, formatted-initials?, surname?, addition*, completeName?,
     biblionote*, variantname*
 
 name_abbreviation = element abbreviation { LocalizedString }
@@ -204,7 +208,8 @@ email = element email { text }
 address =
   element address {
     # iso191606 TODO
-    (street*, city, state?, country, postcode? ) | formattedAddress
+    # (street*, city, state?, country, postcode? ) | formattedAddress
+    street*, city?, state?, country?, postcode?, formattedAddress?
 }
 
 street = element street { text }
