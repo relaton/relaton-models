@@ -95,9 +95,21 @@
       <text/>
     </element>
   </define>
-  <define name="LocalizedStringAttrs">
+  <!--
+    being flattened because of purported Shale incapacity
+    LocalizedStringAttrs = 
+    multiple languages and scripts possible: comma delimit them if so
+    attribute language { text }?,
+    attribute locale { text }?,
+    attribute script { text }?
+  -->
+  <!-- LocalizedString1 = -->
+  <define name="LocalizedString">
     <optional>
-      <!-- multiple languages and scripts possible: comma delimit them if so -->
+      <!--
+        multiple languages and scripts possible: comma delimit them if so
+        LocalizedStringAttrs,
+      -->
       <attribute name="language"/>
     </optional>
     <optional>
@@ -106,11 +118,6 @@
     <optional>
       <attribute name="script"/>
     </optional>
-  </define>
-  <!-- LocalizedString1 = -->
-  <define name="LocalizedString">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
-    <ref name="LocalizedStringAttrs"/>
     <text/>
   </define>
   <!--
@@ -120,8 +127,19 @@
   -->
   <!-- LocalizedMarkedUpString1 = -->
   <define name="LocalizedMarkedUpString">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
-    <ref name="LocalizedStringAttrs"/>
+    <optional>
+      <!--
+        multiple languages and scripts possible: comma delimit them if so
+        LocalizedStringAttrs,
+      -->
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="locale"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
     <oneOrMore>
       <ref name="TextElement"/>
     </oneOrMore>
@@ -143,8 +161,19 @@
   -->
   <!-- LocalizedStringOrXsAny1 = -->
   <define name="LocalizedStringOrXsAny">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
-    <ref name="LocalizedStringAttrs"/>
+    <optional>
+      <!--
+        multiple languages and scripts possible: comma delimit them if so
+        LocalizedStringAttrs,
+      -->
+      <attribute name="language"/>
+    </optional>
+    <optional>
+      <attribute name="locale"/>
+    </optional>
+    <optional>
+      <attribute name="script"/>
+    </optional>
     <oneOrMore>
       <choice>
         <text/>
@@ -353,12 +382,13 @@
       <ref name="logo"/>
     </optional>
   </define>
+  <!-- orgname = element name { LocalizedString | NameWithVariants } -->
   <define name="orgname">
     <element name="name">
-      <choice>
-        <ref name="LocalizedString"/>
-        <ref name="NameWithVariants"/>
-      </choice>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <ref name="LocalizedString"/>
     </element>
   </define>
   <define name="subdivision">
@@ -384,27 +414,16 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="NameWithVariants">
-    <element name="primary">
-      <ref name="LocalizedString"/>
-    </element>
-    <zeroOrMore>
-      <element name="variant">
-        <ref name="NameWithVariants1"/>
-      </element>
-    </zeroOrMore>
-  </define>
-  <define name="NameWithVariants1">
-    <attribute name="type"/>
-    <element name="primary">
-      <ref name="LocalizedString"/>
-    </element>
-    <zeroOrMore>
-      <element name="variant">
-        <ref name="NameWithVariants1"/>
-      </element>
-    </zeroOrMore>
-  </define>
+  <!--
+    NameWithVariants =
+    element primary { LocalizedString },
+    element variant { NameWithVariants1 }*
+    
+    NameWithVariants1 =
+    attribute type { text },
+    element primary { LocalizedString },
+    element variant { NameWithVariants1 }*
+  -->
   <define name="abbreviation">
     <element name="abbreviation">
       <ref name="LocalizedString"/>
@@ -1047,22 +1066,28 @@
   </define>
   <define name="bplace">
     <element name="place">
-      <choice>
-        <text/>
-        <group>
-          <ref name="bibliocity"/>
-          <zeroOrMore>
-            <ref name="biblioregion"/>
-          </zeroOrMore>
-          <zeroOrMore>
-            <ref name="bibliocountry"/>
-          </zeroOrMore>
-        </group>
-      </choice>
+      <optional>
+        <!-- text | ( bibliocity, biblioregion*, bibliocountry*) -->
+        <ref name="bibliocity"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="biblioregion"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="bibliocountry"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="formattedPlace"/>
+      </optional>
     </element>
   </define>
   <define name="bibliocity">
     <element name="city">
+      <text/>
+    </element>
+  </define>
+  <define name="formattedPlace">
+    <element name="formattedPlace">
       <text/>
     </element>
   </define>
@@ -1261,7 +1286,16 @@
   </define>
   <define name="bibabstract">
     <element name="abstract">
-      <ref name="LocalizedStringAttrs"/>
+      <optional>
+        <!-- LocalizedStringAttrs, -->
+        <attribute name="language"/>
+      </optional>
+      <optional>
+        <attribute name="locale"/>
+      </optional>
+      <optional>
+        <attribute name="script"/>
+      </optional>
       <choice>
         <oneOrMore>
           <ref name="BasicBlockNoId"/>
@@ -1423,29 +1457,34 @@
       <text/>
     </element>
   </define>
+  <!--
+    bkeyword = element keyword {
+    LocalizedString |
+    (
+    element vocab { LocalizedString },
+    vocabid+
+    ) |
+    (
+    element taxon { LocalizedString }+,
+    vocabid+
+    )
+    }
+  -->
   <define name="bkeyword">
     <element name="keyword">
-      <choice>
-        <ref name="LocalizedString"/>
-        <group>
-          <element name="vocab">
-            <ref name="LocalizedString"/>
-          </element>
-          <oneOrMore>
-            <ref name="vocabid"/>
-          </oneOrMore>
-        </group>
-        <group>
-          <oneOrMore>
-            <element name="taxon">
-              <ref name="LocalizedString"/>
-            </element>
-          </oneOrMore>
-          <oneOrMore>
-            <ref name="vocabid"/>
-          </oneOrMore>
-        </group>
-      </choice>
+      <optional>
+        <element name="vocab">
+          <ref name="LocalizedString"/>
+        </element>
+      </optional>
+      <oneOrMore>
+        <element name="taxon">
+          <ref name="LocalizedString"/>
+        </element>
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="vocabid"/>
+      </zeroOrMore>
     </element>
   </define>
   <define name="vocabid">

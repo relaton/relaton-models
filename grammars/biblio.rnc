@@ -30,7 +30,7 @@ BibData =
 
 status =
   element status {
-     ( stage, substage?, iteration? )
+     stage, substage?, iteration?
 }
 
 stage = element stage {
@@ -59,16 +59,20 @@ edition = element edition {
    text
 }
 
-LocalizedStringAttrs = 
+# being flattened because of purported Shale incapacity
+#LocalizedStringAttrs = 
   # multiple languages and scripts possible: comma delimit them if so
-  attribute language { text }?,
-  attribute locale { text }?,
-  attribute script { text }?
+  #attribute language { text }?,
+  #attribute locale { text }?,
+  #attribute script { text }?
 
 #LocalizedString1 =
 LocalizedString =
   # multiple languages and scripts possible: comma delimit them if so
-  LocalizedStringAttrs,
+  #LocalizedStringAttrs,
+  attribute language { text }?,
+  attribute locale { text }?,
+  attribute script { text }?,
   text
 
 #LocalizedString =
@@ -78,7 +82,10 @@ LocalizedString =
 #LocalizedMarkedUpString1 =
 LocalizedMarkedUpString =
   # multiple languages and scripts possible: comma delimit them if so
-  LocalizedStringAttrs,
+  #LocalizedStringAttrs,
+  attribute language { text }?,
+  attribute locale { text }?,
+  attribute script { text }?,
   TextElement+
 
 #LocalizedMarkedUpString =
@@ -97,7 +104,10 @@ LocalizedMarkedUpString =
 #LocalizedStringOrXsAny1 =
 LocalizedStringOrXsAny =
   # multiple languages and scripts possible: comma delimit them if so
-  LocalizedStringAttrs,
+  #LocalizedStringAttrs,
+  attribute language { text }?,
+  attribute locale { text }?,
+  attribute script { text }?,
   ( text | AnyElement )+
 
 #LocalizedStringOrXsAny =
@@ -163,10 +173,16 @@ affiliationname = element name { LocalizedString }
 affiliationdescription = element description {  LocalizedMarkedUpString }
 
 organization = element organization { OrganizationType}
+
 OrganizationType =
     orgname+, subdivision*, abbreviation?, uri*, org-identifier*, contact*, logo?
 
-orgname = element name { LocalizedString | NameWithVariants }
+#orgname = element name { LocalizedString | NameWithVariants }
+orgname = element name {
+   attribute type { text }?,
+   LocalizedString
+}
+
 subdivision = element subdivision { 
    attribute type { text }?,
    OrganizationType 
@@ -177,14 +193,14 @@ depiction = element depiction {
   image-no-id*
 }
 
-NameWithVariants =
-  element primary { LocalizedString },
-  element variant { NameWithVariants1 }*
-
-NameWithVariants1 =
-  attribute type { text },
-  element primary { LocalizedString },
-  element variant { NameWithVariants1 }*
+#NameWithVariants =
+  #element primary { LocalizedString },
+  #element variant { NameWithVariants1 }*
+#
+#NameWithVariants1 =
+  #attribute type { text },
+  #element primary { LocalizedString },
+  #element variant { NameWithVariants1 }*
 
 abbreviation =
   element abbreviation { LocalizedString }
@@ -201,7 +217,8 @@ contact =
 
 phone = element phone {
   attribute type { text }?,
-  text }
+  text
+}
 
 email = element email { text }
 
@@ -223,13 +240,13 @@ person-identifier =
   element identifier {
     attribute type { ("isni" | "orcid" | "uri") },
     text
-  }
+}
 
 org-identifier =
   element identifier {
     attribute type { string },
     text
-  }
+}
 
 citation =
   element citation { CitationType }
@@ -378,11 +395,12 @@ bclassification = element classification {
 }
 
 bplace = element place {
-  text | ( bibliocity, biblioregion*, bibliocountry*)
+  #text | ( bibliocity, biblioregion*, bibliocountry*)
+  bibliocity?, biblioregion*, bibliocountry*, formattedPlace?
 }
 
 bibliocity = element city { text }
-
+formattedPlace = element formattedPlace { text }
 biblioregion = element region { RegionType }
 bibliocountry = element country { RegionType }
 
@@ -441,7 +459,10 @@ biblionote = element note {
 }
 
 bibabstract = element abstract { 
-  LocalizedStringAttrs,
+  #LocalizedStringAttrs,
+  attribute language { text }?,
+  attribute locale { text }?,
+  attribute script { text }?,
   (BasicBlockNoId+ | TextElement+)
 }
 
@@ -535,16 +556,22 @@ vedition = element edition { xsd:int }
 revision-date = element revision-date { ISO8601Date }
 draft = element draft { text }
 
+#bkeyword = element keyword {
+    #LocalizedString |
+    #(
+       #element vocab { LocalizedString },
+       #vocabid+
+    #) |
+    #(
+       #element taxon { LocalizedString }+,
+       #vocabid+
+    #)
+#}
+
 bkeyword = element keyword {
-    LocalizedString |
-    (
-       element vocab { LocalizedString },
-       vocabid+
-    ) |
-    (
-       element taxon { LocalizedString }+,
-       vocabid+
-    )
+   element vocab { LocalizedString }?,
+   element taxon { LocalizedString }+,
+   vocabid*
 }
 
 vocabid = element vocabid {
