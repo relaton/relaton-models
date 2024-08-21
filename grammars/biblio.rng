@@ -141,7 +141,7 @@
       <attribute name="script"/>
     </optional>
     <oneOrMore>
-      <ref name="TextElement"/>
+      <ref name="PureTextElement"/>
     </oneOrMore>
   </define>
   <!--

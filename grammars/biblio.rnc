@@ -86,7 +86,7 @@ LocalizedMarkedUpString =
   attribute language { text }?,
   attribute locale { text }?,
   attribute script { text }?,
-  TextElement+
+  PureTextElement+
 
 #LocalizedMarkedUpString =
 #  LocalizedMarkedUpString1 |
