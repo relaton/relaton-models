@@ -126,7 +126,7 @@ enum BibItemType {
   }
   inCollection {
     definition {
-      A part of a book having its own title, and typically having distinct authorship..
+      A part of a book having its own title, and typically having distinct authorship.
     }
   }
   inProceedings {
@@ -149,7 +149,7 @@ enum BibItemType {
   }
   website {
     definition {
-      A collection of web resources, presented under the same URL domain and by the same
+      A collection of web resources, presented under the same URL domain and under the same
       (individual or corporate) authorship. 
     }
   }

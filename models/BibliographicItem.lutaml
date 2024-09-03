@@ -42,7 +42,7 @@ class BibliographicItem {
   +docnumber: String[0..1] {
     definition {
       Unprefixed, preferably numeric version of an identifier of the bibliographic item,
-      intended for sorting of biblio.
+      intended for sorting of bibliography.
     }
   }
   +date: BibliographicDate[0..*] {
@@ -173,7 +173,7 @@ class BibliographicItem {
   }
   +depiction: Depiction[0..*] {
     definition {
-      Depiction of the bibliographic item.
+      Depiction of the bibliographic item, typically an image.
     }
   }
 }

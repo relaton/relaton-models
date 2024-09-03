@@ -327,15 +327,22 @@
     </element>
   </define>
   <define name="affiliation">
+    <a:documentation>The affiliation of a person with an organization</a:documentation>
     <element name="affiliation">
       <optional>
-        <ref name="affiliationname"/>
+        <ref name="affiliationname">
+          <a:documentation>The name of the affiliation of the person with the organization; typically a position title</a:documentation>
+        </ref>
       </optional>
       <zeroOrMore>
-        <ref name="affiliationdescription"/>
+        <ref name="affiliationdescription">
+          <a:documentation>A more detailed description of the affiliation of the person</a:documentation>
+        </ref>
       </zeroOrMore>
       <optional>
-        <ref name="organization"/>
+        <ref name="organization">
+          <a:documentation>The organization with which the person is affiliated</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
@@ -465,23 +472,36 @@
     </element>
   </define>
   <define name="address">
+    <a:documentation>An address for a person or organization</a:documentation>
     <element name="address">
       <choice>
         <!-- iso191606 TODO -->
         <group>
           <zeroOrMore>
-            <ref name="street"/>
+            <ref name="street">
+              <a:documentation>The street and street number or equivalent in the address, as one or more lines of text</a:documentation>
+            </ref>
           </zeroOrMore>
-          <ref name="city"/>
+          <ref name="city">
+            <a:documentation>The settlement or municipality in the address</a:documentation>
+          </ref>
           <optional>
-            <ref name="state"/>
+            <ref name="state">
+              <a:documentation>The region of the country in the address</a:documentation>
+            </ref>
           </optional>
-          <ref name="country"/>
+          <ref name="country">
+            <a:documentation>The country in the address</a:documentation>
+          </ref>
           <optional>
-            <ref name="postcode"/>
+            <ref name="postcode">
+              <a:documentation>The postal code or equivalent in the address</a:documentation>
+            </ref>
           </optional>
         </group>
-        <ref name="formattedAddress"/>
+        <ref name="formattedAddress">
+          <a:documentation>Preformatted version of the address, not decomposed into its component parts</a:documentation>
+        </ref>
       </choice>
     </element>
   </define>
@@ -536,24 +556,42 @@
     </element>
   </define>
   <define name="citation">
+    <a:documentation>Representation of a citation of a bibliographic item, typically within a document</a:documentation>
     <element name="citation">
       <ref name="CitationType"/>
     </element>
   </define>
   <define name="CitationType">
     <attribute name="bibitemid">
+      <a:documentation>Bibliographic item that the citation applies to, referenced as the anchor of a bibliographic description</a:documentation>
       <data type="IDREF"/>
     </attribute>
     <choice>
       <zeroOrMore>
-        <ref name="locality"/>
+        <ref name="locality">
+          <a:documentation>Describes the location of the cited information resource within the subject of the bibliographic item.
+Multiple ``bibLocality``s are interpreted as discontinuous references.</a:documentation>
+        </ref>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="localityStack"/>
+        <ref name="localityStack">
+          <a:documentation>Describes the location of the cited information resource within the subject of the bibliographic item in a multi-level manner.
+For example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" 
+is represented as a single `bibLocalityStack`, composed of those three localities
+(as opposed to three `bibLocality` references, which would be treated as three discontinuous references).
+Multiple ``bibLocalityStack``s are themselves interpreted as discontinuous references</a:documentation>
+        </ref>
       </zeroOrMore>
     </choice>
     <optional>
-      <ref name="date"/>
+      <ref name="date">
+        <a:documentation>Date of the citation, typically date of publication. 
+A combination of the date time elements year, month and day should be specified.
+Specification of month and day are optional. 
+This date is not intended for disambiguation, since `bibitemid`
+already identifies the source unambiguously; it is added for ease of processing, in case author-date
+citations cannot straightforwardly extract the date from the bibliographic source</a:documentation>
+      </ref>
     </optional>
   </define>
   <define name="date">
@@ -562,6 +600,10 @@
     </element>
   </define>
   <define name="locality">
+    <a:documentation>The extent or location of a bibliographic item being referred to.
+A sequence of locality elements is meant to indicate hierarchical ordering, from greater to smaller.
+e.g. Chapter, then page, then paragraph.
+A discontinuous range can be represented by using two adjacent localities with the same type.</a:documentation>
     <element name="locality">
       <ref name="BibItemLocality"/>
     </element>
@@ -609,13 +651,18 @@
   </define>
   <define name="BibItemLocality">
     <attribute name="type">
+      <a:documentation>The type of extent of a locality (e.g. section, clause, page)</a:documentation>
       <ref name="LocalityType"/>
     </attribute>
     <optional>
-      <ref name="referenceFrom"/>
+      <ref name="referenceFrom">
+        <a:documentation>The starting value of the extent, or point location</a:documentation>
+      </ref>
     </optional>
     <optional>
-      <ref name="referenceTo"/>
+      <ref name="referenceTo">
+        <a:documentation>The end value of the extent as a range, if applicable</a:documentation>
+      </ref>
     </optional>
   </define>
   <define name="LocalityType">
@@ -662,140 +709,270 @@
     </element>
   </define>
   <define name="BibItemType" combine="choice">
+    <a:documentation>Type of bibliographic item.
+The value list complies with the types provided in ISO 690:2021.
+NOTE: These values represent a strict superset to BibTeX
+publication types, and therefore any BibTeX type value can be
+mapped to these values. Some values here do not have a corresponding
+entry in BibTeX, for instance, "standard" and "website".</a:documentation>
     <choice>
       <value>article</value>
+      <a:documentation>An article from a journal or magazine</a:documentation>
       <value>book</value>
+      <a:documentation>A monograph</a:documentation>
       <value>booklet</value>
+      <a:documentation>A booklet or pamphlet. The distinction between book and booklet is not made frequently</a:documentation>
       <value>manual</value>
+      <a:documentation>A manual</a:documentation>
       <value>proceedings</value>
+      <a:documentation>A conference proceedings</a:documentation>
       <value>presentation</value>
+      <a:documentation>A presentation given in a formal meeting</a:documentation>
       <value>thesis</value>
+      <a:documentation>A dissertation given in an academic institution, as a summation of research</a:documentation>
       <value>techreport</value>
+      <a:documentation>A technical report</a:documentation>
       <value>standard</value>
+      <a:documentation>A standard, a document issued by a Standards Defining Organization</a:documentation>
       <value>unpublished</value>
+      <a:documentation>An intellectual creation which has not been published, e.g. a manuscript.
+NOTE: Properly this does not represent a distinct bibliographic type, and it
+should be avoided in favour of using the `status` element of `BibliographicItem`</a:documentation>
       <value>map</value>
+      <a:documentation>A map or other cartographic resource</a:documentation>
       <value>electronic resource</value>
+      <a:documentation>A resource avaiulable in digital form
+NOTE: The overloaded type `electronicResource` should be avoided where possible, particularly if the
+resource corresponds closely to a paper bibliographic type, such as `book` or `article`.
+The distinction between offline and online resources should be made through `medium` (electronic vs physical).
+Specialisations of `electronicResource` include `dataset`, `webResource`, `website`,
+`socialMedia`, and `software`.</a:documentation>
       <value>audiovisual</value>
+      <a:documentation>An audiovisual resource. Is a superclass of other types such as `video` and `music`</a:documentation>
       <value>film</value>
+      <a:documentation>A film</a:documentation>
       <value>video</value>
+      <a:documentation>A video</a:documentation>
       <value>broadcast</value>
+      <a:documentation>A broadcast made through mass media, including radio and television</a:documentation>
       <value>software</value>
+      <a:documentation>Computer executable code, not itself human-readable text (though it may generate such text)</a:documentation>
       <value>graphic_work</value>
+      <a:documentation>A graphic work, a work with two-dimensional or three-dimensional content</a:documentation>
       <value>music</value>
+      <a:documentation>A musical work. Includes both notated music and music performances:
+The two are differentiated through `BibliographicItem/medium/content` as "notated music" vs "performed music"</a:documentation>
       <value>patent</value>
+      <a:documentation>A patent</a:documentation>
       <value>inbook</value>
+      <a:documentation>A (typically untitled) part of a book. May be a chapter (or section, etc.) and/or a range of pages</a:documentation>
       <value>incollection</value>
+      <a:documentation>A part of a book having its own title, and typically having distinct authorship</a:documentation>
       <value>inproceedings</value>
+      <a:documentation>An article in a conference proceedings</a:documentation>
       <value>journal</value>
+      <a:documentation>A journal or periodical publication</a:documentation>
       <value>website</value>
+      <a:documentation>A collection of web resources, presented under the same URL domain and under the same (individual or corporate) authorship</a:documentation>
       <value>webresource</value>
+      <a:documentation>A human-readable or consumable web resource, a single item accessible online via a web browser,
+which is not composed of components all of which can be accessed in the same way.
+Includes media files, as well as individual web pages</a:documentation>
       <value>dataset</value>
+      <a:documentation>An electronic dataset, a collection of data that is not meant to be human-readable, and which is typically only machine readable</a:documentation>
       <value>archival</value>
+      <a:documentation>A instance of a resource curated and preserved in an archive, which mediates any access to it. 
+Typically it is physical, unique, and unpublished.
+ NOTE: The content of the resource may be published separately,
+ but that makes it a distinct bibliographic item, as access to it is no longer mediated through the archive</a:documentation>
       <value>social_media</value>
+      <a:documentation>One or more resources within a collection that is typically collectively authored by member users.
+Includes blog posts, forum posts, social media posts, tweets. Is usually a `webResource`,
+but not always (e.g. blogs on WeChat are only accessible within the WeChat app.)</a:documentation>
       <value>alert</value>
+      <a:documentation>A single communication intended for multiple persons, and publicly accessible. 
+May be electronic (e.g. Facebook status update) or voice (e.g. evacuation alert), but is typically not print</a:documentation>
       <value>message</value>
+      <a:documentation>A single communication intended for a restricted number of authorised persons (typically one).
+May be electronic (e.g. Twitter direct message, email) or voice (e.g. a remark made to someone,
+typically cited as "personal communication")</a:documentation>
       <value>conversation</value>
+      <a:documentation>An exchange of messages between two or more persons. May be electronic (e.g. web chat) or voice (e.g. phone call)</a:documentation>
       <value>misc</value>
+      <a:documentation>Bibliographic type not adequately described in the foregoing</a:documentation>
     </choice>
   </define>
   <define name="BibliographicItem">
+    <a:documentation>Description of a bibliographic resource</a:documentation>
     <optional>
       <attribute name="type">
+        <a:documentation>The type of the bibliographic item</a:documentation>
         <ref name="BibItemType"/>
       </attribute>
     </optional>
     <optional>
-      <attribute name="schema-version"/>
+      <attribute name="schema-version">
+        <a:documentation>The version of the Relaton schema that this description conforms to</a:documentation>
+      </attribute>
     </optional>
     <optional>
-      <ref name="fetched"/>
+      <ref name="fetched">
+        <a:documentation>The date at which the bibliographic item was last updated</a:documentation>
+      </ref>
     </optional>
     <optional>
-      <ref name="formattedref"/>
+      <ref name="formattedref">
+        <a:documentation>A pre-formatted version of the full bibliographic item reference,
+rendered for human reading, and used to sidestep the rendering of the reference out of its component parts</a:documentation>
+      </ref>
     </optional>
     <oneOrMore>
-      <ref name="btitle"/>
+      <ref name="btitle">
+        <a:documentation>The title(s) of the bibliographic item</a:documentation>
+      </ref>
     </oneOrMore>
     <zeroOrMore>
-      <ref name="bsource"/>
+      <ref name="bsource">
+        <a:documentation>The URI(s) associated with the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <oneOrMore>
-      <ref name="docidentifier"/>
+      <ref name="docidentifier">
+        <a:documentation>The identifier(s) of the bibliographic item in an international standard scheme</a:documentation>
+      </ref>
     </oneOrMore>
     <optional>
-      <ref name="docnumber"/>
+      <ref name="docnumber">
+        <a:documentation>Unprefixed, preferably numeric version of an identifier of the bibliographic item, intended for sorting of bibliography</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="bdate"/>
+      <ref name="bdate">
+        <a:documentation>One or more date-times associated with the production of or access to the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="contributor"/>
+      <ref name="contributor">
+        <a:documentation>Contributors to the production of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="edition"/>
+      <ref name="edition">
+        <a:documentation>The edition of the bibliographic item</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="version"/>
+      <ref name="version">
+        <a:documentation>The version of the bibliographic item (within an edition). Can be used for drafts. 
+Can be more than one, in case of multiple versioning schemes</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="biblionote"/>
+      <ref name="biblionote">
+        <a:documentation>Note(s) associated with the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="language"/>
+      <ref name="language">
+        <a:documentation>The language(s) in which the bibliographic item is expressed</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="locale"/>
+      <ref name="locale">
+        <a:documentation>The locale(s) in which the bibliographic item is expressed</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="script"/>
+      <ref name="script">
+        <a:documentation>The script(s) in which the bibliographic item is written</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="bibabstract"/>
+      <ref name="bibabstract">
+        <a:documentation>The abstract of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="status"/>
+      <ref name="status">
+        <a:documentation>The publication or preparation status of the bibliographic item</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="copyright"/>
+      <ref name="copyright">
+        <a:documentation>The copyright status of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="docrelation"/>
+      <ref name="docrelation">
+        <a:documentation>The relation(s) of the bibliographic item to other bibliographic items</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="series"/>
+      <ref name="series">
+        <a:documentation>The series of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="medium"/>
+      <ref name="medium">
+        <a:documentation>The medium the subject is realized on.
+Medium can be used to differentiate between "electronic" and "physical" manifestations of an information resource.</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="bplace"/>
+      <ref name="bplace">
+        <a:documentation>The geographic location associated with the production of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="bprice"/>
+      <ref name="bprice">
+        <a:documentation>The price set on accessing the bibliographic item.
+The price should be treated as nominal, rather than capturing all possible pricings at a given time</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="extent"/>
+      <ref name="extent">
+        <a:documentation>The extent of the bibliographic item, if reference is not being made to the entirety of the item described.
+Repeats for different levels of granularity (e.g. volume number, page number), or for discontinuous ranges
+(e.g. multiple page ranges, pages plus plates)</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="bibliographic_size"/>
+      <ref name="bibliographic_size">
+        <a:documentation>The bibliographic size of the bibliographic item, measured in the same units as extent (i.e. pages, volumes,
+megabytes, hours, rather than cm^2.) Distinct from the physical size of the bibliographic item, captured in medium/size</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="accesslocation"/>
+      <ref name="accesslocation">
+        <a:documentation>The location where the bibliographic item may be accessed.
+Used for archival resources. Also used for pathways to access digital resources, where a URI is not practical</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="license"/>
+      <ref name="license">
+        <a:documentation>A license under which the bibliographic item has been issued.
+NOTE: This should preferably be encoded as  a URI or short identifier, rather than descriptive text</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="bclassification"/>
+      <ref name="bclassification">
+        <a:documentation>The classification of the bibliographic item according to a standard classification scheme</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="bkeyword"/>
+      <ref name="bkeyword">
+        <a:documentation>Keyword(s) for the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="validity"/>
+      <ref name="validity">
+        <a:documentation>Information about how long the current description of the bibliographic item is valid for</a:documentation>
+      </ref>
     </optional>
     <optional>
-      <ref name="depiction"/>
+      <ref name="depiction">
+        <a:documentation>Depiction of the bibliographic item, typically an image</a:documentation>
+      </ref>
     </optional>
   </define>
   <define name="ReducedBibliographicItem">
@@ -984,51 +1161,84 @@
     </optional>
   </define>
   <define name="BibliographicDateType">
+    <a:documentation>Indicates type of date within a bibliographic lifecycle.
+NOTE: Typically only the `published` date is of interest</a:documentation>
     <choice>
       <value>published</value>
+      <a:documentation>The date on which the document was published (distributed by the publisher)</a:documentation>
       <value>accessed</value>
+      <a:documentation>Date a document was last accessed by the compiler of the bibliographic record; routinely used for online publications.
+NOTE: Unlike in ISO 690:2021, no distinction is made between
+"viewed" and "accessed" based on whether the resource is human-readable or machine-readable.)</a:documentation>
       <value>created</value>
+      <a:documentation>The date on which the first version of the document was created</a:documentation>
       <value>implemented</value>
+      <a:documentation>The date on which the document takes effect. Applies to normative documents</a:documentation>
       <value>obsoleted</value>
+      <a:documentation>The date on which the document was obsoleted/</a:documentation>
       <value>confirmed</value>
+      <a:documentation>The date on which the document was reviewed and approved by the issuing authority</a:documentation>
       <value>updated</value>
+      <a:documentation>The date on which the current version of the document was updated</a:documentation>
       <value>corrected</value>
+      <a:documentation>The date on which the current version of the document was corrected, without that correction considered to amount to a full document update</a:documentation>
       <value>issued</value>
+      <a:documentation>The date on which the document was issued (authorised for publication by the issuing authority).
+Is typically differentiated from `published` for normative documents, such as standards and legislation</a:documentation>
       <value>transmitted</value>
+      <a:documentation>The date on which the document was broadcast</a:documentation>
       <value>copied</value>
+      <a:documentation>The date on which the document physically copied, or recreated without any substantial change in content (allowing for change in medium)</a:documentation>
       <value>unchanged</value>
+      <a:documentation>The date on which the document was last renewed or reprinted without any changes in content</a:documentation>
       <value>circulated</value>
+      <a:documentation>The date on which the unpublished document was last circulated officially as a preprint.
+For standards, this is associated with the latest transition to a formally defined preparation stage,
+such as Working Draft or Committee Draft</a:documentation>
       <value>adapted</value>
+      <a:documentation>The date on which a document adapted for a new purpose or audience, with some change in content (includes translation)</a:documentation>
       <value>vote-started</value>
+      <a:documentation>The date on which a formal process for approval of a document was initiated. Typically applies to standards documents in draft</a:documentation>
       <value>vote-ended</value>
+      <a:documentation>The date on which a formal process for approval of a document was closed. Typically applies to standards documents in draft</a:documentation>
       <value>announced</value>
+      <a:documentation>The date on which the existence of a document is made public.
+Applies whether the resource has already been created or not, and whether it is to be published or not</a:documentation>
       <value>stable-until</value>
+      <a:documentation>The document is guaranteed not to be changed or updated until this date</a:documentation>
     </choice>
   </define>
   <define name="bdate">
+    <a:documentation>Significant date in the lifecycle of the bibliographic item, including its production and its access</a:documentation>
     <element name="date">
       <attribute name="type">
+        <a:documentation>The phase of the production of or access to a bibliographic item</a:documentation>
         <choice>
           <ref name="BibliographicDateType"/>
           <text/>
         </choice>
       </attribute>
       <optional>
-        <attribute name="text"/>
+        <attribute name="text">
+          <a:documentation>An optional textual description of the date, especially when a Gregorian date is not applicable</a:documentation>
+        </attribute>
       </optional>
       <optional>
         <choice>
           <group>
             <element name="from">
+              <a:documentation>The start of the date range described</a:documentation>
               <ref name="ISO8601Date"/>
             </element>
             <optional>
               <element name="to">
+                <a:documentation>The end of the date range described</a:documentation>
                 <ref name="ISO8601Date"/>
               </element>
             </optional>
           </group>
           <element name="on">
+            <a:documentation>The point date described</a:documentation>
             <ref name="ISO8601Date"/>
           </element>
         </choice>
@@ -1170,9 +1380,18 @@
     </element>
   </define>
   <define name="sizevalue">
+    <a:documentation>The size of a bibliographic item being referred to.
+A sequence of sizes can be used to indicate different numberings, e.g. xii + 40 pp.,
+or different kinds of measures, e.g. pages + plates</a:documentation>
     <element name="value">
-      <attribute name="type"/>
-      <text/>
+      <attribute name="type">
+        <a:documentation>The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), data (including unit), value (free-form string)</a:documentation>
+      </attribute>
+      <optional>
+        <text>
+          <a:documentation>The quantity of the size</a:documentation>
+        </text>
+      </optional>
     </element>
   </define>
   <define name="bibliographic_size">
