@@ -57,6 +57,7 @@
     </element>
   </define>
   <define name="stage">
+    <a:documentation>The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint"</a:documentation>
     <element name="stage">
       <optional>
         <attribute name="abbreviation">
@@ -69,6 +70,7 @@
     </element>
   </define>
   <define name="substage">
+    <a:documentation>The substage of the document status. These are used particularly in Standards Defining Organizations</a:documentation>
     <element name="substage">
       <optional>
         <attribute name="abbreviation">
@@ -118,7 +120,6 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
     <a:documentation>multiple values are comma-delimited</a:documentation>
     <optional>
       <attribute name="language">
-        <a:documentation>multiple languages and scripts possible: comma delimit them if so</a:documentation>
         <ref name="LanguageType"/>
       </attribute>
     </optional>
@@ -150,7 +151,6 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
     </choice>
   </define>
   <define name="LocalizedMarkedUpString1">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <oneOrMore>
       <ref name="TextElement"/>
@@ -161,6 +161,7 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
       <ref name="LocalizedMarkedUpString1"/>
       <oneOrMore>
         <element name="variant">
+          <a:documentation>Variants of the string, with the same content, but in different language, script, or format</a:documentation>
           <ref name="LocalizedMarkedUpString1"/>
         </element>
       </oneOrMore>
@@ -194,7 +195,6 @@ NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types</a:
     </ref>
   </define>
   <define name="LocalizedStringOrXsAny1">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <oneOrMore>
       <choice>
@@ -208,6 +208,7 @@ NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types</a:
       <ref name="LocalizedStringOrXsAny1"/>
       <oneOrMore>
         <element name="variant">
+          <a:documentation>Variants of the string, with the same content, but in different language, script, or format</a:documentation>
           <ref name="LocalizedStringOrXsAny1"/>
         </element>
       </oneOrMore>
@@ -544,15 +545,12 @@ real names (if the person is named with a pseudonym or user name); previous lega
     </zeroOrMore>
   </define>
   <define name="NameWithVariants1">
-    <attribute name="type"/>
-    <element name="primary">
-      <ref name="LocalizedString"/>
-    </element>
-    <zeroOrMore>
-      <element name="variant">
-        <ref name="NameWithVariants1"/>
-      </element>
-    </zeroOrMore>
+    <attribute name="type">
+      <a:documentation>Type of variant name of organisation</a:documentation>
+    </attribute>
+    <ref name="LocalizedString">
+      <a:documentation>Value of variant name</a:documentation>
+    </ref>
   </define>
   <define name="abbreviation">
     <element name="abbreviation">
@@ -663,7 +661,12 @@ real names (if the person is named with a pseudonym or user name); previous lega
   </define>
   <define name="formattedAddress">
     <element name="formattedAddress">
-      <text/>
+      <oneOrMore>
+        <choice>
+          <text/>
+          <ref name="linebreak"/>
+        </choice>
+      </oneOrMore>
     </element>
   </define>
   <define name="person-identifier">
@@ -744,7 +747,7 @@ A discontinuous range can be represented by using two adjacent localities with t
     </element>
   </define>
   <define name="localityStack">
-    <a:documentation>Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item</a:documentation>
+    <a:documentation>Hierarchical arrangement of bibliographic localities, to refer to a single span of text in a bibliographic item</a:documentation>
     <element name="localityStack">
       <optional>
         <attribute name="connective">
@@ -768,11 +771,14 @@ e.g. "Chapter 7, paragraph 9–11"</a:documentation>
     </element>
   </define>
   <define name="sourceLocality">
+    <a:documentation>The extent or location of a source bibliographic item being related to a target bibliographic item</a:documentation>
     <element name="sourceLocality">
       <ref name="BibItemLocality"/>
     </element>
   </define>
   <define name="sourceLocalityStack">
+    <a:documentation>Hierarchical arrangement of bibliographic localities, to refer to a single span of text in a source bibliographic item,
+being related to a target bibliographic item</a:documentation>
     <element name="sourceLocalityStack">
       <optional>
         <attribute name="connective">
@@ -832,6 +838,7 @@ attribute `identifier` should be empty
   </define>
   <!-- unlike UML, has id attribute; that results from including bibitem in a docmodel -->
   <define name="bibitem">
+    <a:documentation>Description of a bibliographic item</a:documentation>
     <element name="bibitem">
       <attribute name="id">
         <data type="ID"/>
@@ -840,6 +847,7 @@ attribute `identifier` should be empty
     </element>
   </define>
   <define name="bibitem_no_id">
+    <a:documentation>Description of a bibliographic item: no ID attribute (for use in Relaton, metadata)</a:documentation>
     <element name="bibitem">
       <ref name="BibliographicItem"/>
     </element>
@@ -1323,18 +1331,13 @@ for which this claim of validity is made, if applicable</a:documentation>
   </define>
   <!-- TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" ) -->
   <define name="TypedUri">
+    <a:documentation>URI with type</a:documentation>
     <optional>
-      <attribute name="type"/>
+      <attribute name="type">
+        <a:documentation>Type of URI</a:documentation>
+      </attribute>
     </optional>
-    <optional>
-      <attribute name="language"/>
-    </optional>
-    <optional>
-      <attribute name="locale"/>
-    </optional>
-    <optional>
-      <attribute name="script"/>
-    </optional>
+    <ref name="LocalizedStringAttrs"/>
     <data type="anyURI"/>
   </define>
   <define name="DateType">
@@ -1441,28 +1444,31 @@ Applies whether the resource has already been created or not, and whether it is 
   <define name="docidentifier">
     <a:documentation>An identifier of a bibliographic item in an international standard scheme</a:documentation>
     <element name="docidentifier">
-      <optional>
-        <attribute name="type">
-          <a:documentation>The scheme or namespace of the identifier</a:documentation>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="scope">
-          <a:documentation>The scope of the identifier, in case the identifier does not apply to the document 
+      <ref name="DocIdentifierType"/>
+    </element>
+  </define>
+  <define name="DocIdentifierType">
+    <optional>
+      <attribute name="type">
+        <a:documentation>The scheme or namespace of the identifier</a:documentation>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="scope">
+        <a:documentation>The scope of the identifier, in case the identifier does not apply to the document 
 but to a superset or subset of entities; or in case the identifier 
 is for a particular instance of the document, e.g. for a particular format or edition of the document</a:documentation>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="primary">
-          <a:documentation>This is a primary identifier for the item, to be used in citation</a:documentation>
-          <data type="boolean"/>
-        </attribute>
-      </optional>
-      <ref name="LocalizedMarkedUpString">
-        <a:documentation>The identifier string</a:documentation>
-      </ref>
-    </element>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="primary">
+        <a:documentation>This is a primary identifier for the item, to be used in citation</a:documentation>
+        <data type="boolean"/>
+      </attribute>
+    </optional>
+    <ref name="LocalizedMarkedUpString">
+      <a:documentation>The identifier string</a:documentation>
+    </ref>
   </define>
   <define name="docnumber">
     <element name="docnumber">
@@ -1471,10 +1477,7 @@ is for a particular instance of the document, e.g. for a particular format or ed
   </define>
   <define name="bclassification">
     <element name="classification">
-      <optional>
-        <attribute name="type"/>
-      </optional>
-      <text/>
+      <ref name="DocIdentifierType"/>
     </element>
   </define>
   <define name="bplace">
@@ -1802,14 +1805,19 @@ May be used to differentiate rendering of notes in bibliographies</a:documentati
     </element>
   </define>
   <define name="bibabstract">
+    <a:documentation>Abstract of bibliographic item</a:documentation>
     <element name="abstract">
       <ref name="LocalizedStringAttrs"/>
       <choice>
         <oneOrMore>
-          <ref name="BasicBlockNoId"/>
+          <ref name="BasicBlockNoId">
+            <a:documentation>Multiple blocks of content</a:documentation>
+          </ref>
         </oneOrMore>
         <oneOrMore>
-          <ref name="TextElement"/>
+          <ref name="TextElement">
+            <a:documentation>Single block of content</a:documentation>
+          </ref>
         </oneOrMore>
       </choice>
     </element>
@@ -1839,8 +1847,8 @@ to the preface of a book</a:documentation>
       </optional>
     </element>
   </define>
+  <!-- TODO potentially should be locality | localityStack -->
   <define name="copyright_scope">
-    <a:documentation>TODO potentially should be locality | localityStack</a:documentation>
     <element name="scope">
       <text/>
     </element>
@@ -1856,6 +1864,7 @@ to the preface of a book</a:documentation>
     </element>
   </define>
   <define name="owner">
+    <a:documentation>Copyright owner</a:documentation>
     <element name="owner">
       <ref name="ContributorInfo"/>
     </element>

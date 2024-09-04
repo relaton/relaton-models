@@ -39,6 +39,7 @@ status =
      iteration?
 }
 
+## The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint"
 stage = element stage {
   ## A canonical abbreviation of the document stage
   attribute abbreviation { text }?,
@@ -46,6 +47,7 @@ stage = element stage {
   text
 }
 
+## The substage of the document status. These are used particularly in Standards Defining Organizations
 substage = element substage {
   ## A canonical abbreviation of the document substage
   attribute abbreviation { text }?,
@@ -72,7 +74,6 @@ edition = element edition {
 
 ## multiple values are comma-delimited
 LocalizedStringAttrs = 
-  ## multiple languages and scripts possible: comma delimit them if so
   attribute language { LanguageType }?,
   attribute locale { LocaleType }?,
   attribute script { ScriptType }?
@@ -88,12 +89,12 @@ LocalizedString =
   element variant { LocalizedString1 }+
 
 LocalizedMarkedUpString1 =
-  # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   TextElement+
 
 LocalizedMarkedUpString =
   LocalizedMarkedUpString1 |
+  ## Variants of the string, with the same content, but in different language, script, or format
   element variant { LocalizedMarkedUpString1 }+
 
 # Unlike UML, change type to format: type is overloaded
@@ -111,12 +112,12 @@ FormattedString =
   LocalizedStringOrXsAny
 
 LocalizedStringOrXsAny1 =
-  # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   ( text | AnyElement )+
 
 LocalizedStringOrXsAny =
   LocalizedStringOrXsAny1 |
+  ## Variants of the string, with the same content, but in different language, script, or format
   element variant { LocalizedStringOrXsAny1 }+
 
 ## Description of a contributor to the production of the bibliographic item
@@ -175,6 +176,7 @@ person =
 
 ## The name of a person
 fullname = element name { FullNameType }
+
 credential = element credential { text }
 
 FullNameType =
@@ -222,6 +224,7 @@ forename = element forename {
   ## A forename or given name of the person. Includes middle names
   LocalizedString
 }
+
 completeName = element completename { LocalizedString }
 
 ## A variant name of a person
@@ -276,6 +279,7 @@ subdivision = element subdivision {
    ## The subdivision, modelled recursively as an organization
    OrganizationType 
 }
+
 logo = element logo { image-no-id }
 
 ## Depiction of the bibliographic item
@@ -293,9 +297,10 @@ NameWithVariants =
   element variant { NameWithVariants1 }*
 
 NameWithVariants1 =
+  ## Type of variant name of organisation
   attribute type { text },
-  element primary { LocalizedString },
-  element variant { NameWithVariants1 }*
+  ## Value of variant name
+  LocalizedString
 
 abbreviation =
   element abbreviation { LocalizedString }
@@ -351,7 +356,8 @@ city = element city { text }
 state = element state { text }
 country = element country { text }
 postcode = element postcode { text }
-formattedAddress = element formattedAddress { text }
+
+formattedAddress = element formattedAddress { (text | linebreak)+ }
 
 ## An identifier of a person according to an international identifier scheme
 person-identifier =
@@ -408,7 +414,7 @@ date = element date { ISO8601Date }
 locality =
   element locality { BibItemLocality }
 
-## Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item
+## Hierarchical arrangement of bibliographic localities, to refer to a single span of text in a bibliographic item
 localityStack =
    element localityStack {
      ## Logical connective linking localities. If not supplied, "and" is understood
@@ -419,9 +425,12 @@ localityStack =
      locality*
  }
 
+## The extent or location of a source bibliographic item being related to a target bibliographic item
 sourceLocality =
   element sourceLocality { BibItemLocality }
 
+## Hierarchical arrangement of bibliographic localities, to refer to a single span of text in a source bibliographic item,
+## being related to a target bibliographic item
 sourceLocalityStack =
    element sourceLocalityStack {
      attribute connective { "and" | "or" | "from" | "to" | "" }?,
@@ -451,12 +460,14 @@ referenceFrom = element referenceFrom { text }
 referenceTo = element referenceTo { text }
 
 # unlike UML, has id attribute; that results from including bibitem in a docmodel
+## Description of a bibliographic item
 bibitem =
   element bibitem {
      attribute id { xsd:ID },
      BibliographicItem
 }
 
+## Description of a bibliographic item: no ID attribute (for use in Relaton, metadata)
 bibitem_no_id =
   element bibitem {
      BibliographicItem
@@ -722,11 +733,11 @@ TypedTitleString =
 
 # TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
 
+## URI with type
 TypedUri =
+  ## Type of URI
   attribute type { text }?,
-  attribute language { text }?,
-  attribute locale { text }?,
-  attribute script { text }?,
+  LocalizedStringAttrs,
   xsd:anyURI
 
 ## Type which allows date and time to be specified as either a Gregorian
@@ -803,7 +814,9 @@ bdate = element date {
 }
 
 ## An identifier of a bibliographic item in an international standard scheme
-docidentifier = element docidentifier {
+docidentifier = element docidentifier { DocIdentifierType }
+
+DocIdentifierType =
   ## The scheme or namespace of the identifier
   attribute type { text }?,
   ## The scope of the identifier, in case the identifier does not apply to the document 
@@ -814,13 +827,10 @@ docidentifier = element docidentifier {
   attribute primary { xsd:boolean }?,
   ## The identifier string
   LocalizedMarkedUpString
-}
+
 docnumber = element docnumber { text }
 
-bclassification = element classification {
-  attribute type { text }?,
-  text
-}
+bclassification = element classification { DocIdentifierType }
 
 ## Place associated with the production of a bibliographic item
 bplace = element place {
@@ -919,6 +929,7 @@ sizevalue = element value {
 }
 
 bibliographic_size = element size { sizevalue+ }
+
 extent = element extent  {
   locality* | localityStack*
 }
@@ -980,9 +991,15 @@ biblionote = element note {
   LocalizedMarkedUpString
 }
 
+## Abstract of bibliographic item
 bibabstract = element abstract { 
   LocalizedStringAttrs,
-  (BasicBlockNoId+ | TextElement+)
+  (
+    ## Multiple blocks of content
+    BasicBlockNoId+ |
+    ## Single block of content
+    TextElement+
+  )
 }
 
 ## The copyright status of a bibliographic item.
@@ -1000,12 +1017,13 @@ copyright =
     copyright_scope?
 }
 
-## TODO potentially should be locality | localityStack
+# TODO potentially should be locality | localityStack
 copyright_scope = element scope { text }
 
 from = element from { xsd:gYear }
 to = element to { xsd:gYear }
 
+## Copyright owner
 owner =
   element owner { ContributorInfo }
 

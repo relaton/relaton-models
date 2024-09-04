@@ -12,6 +12,7 @@ BibData =
   ## The extension point of the bibliographic description of a standardisation document
   ext?
 
+## Update to StandardReducedBibliographicItem
 docrelation =
   element relation {
     attribute type { DocRelationType },
