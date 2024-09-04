@@ -56,8 +56,8 @@ enum ContributorRoleType {
 
       A large number of visual artists, such as engravers, etchers, and illustrators,
       can be modelled as creators, realisers, or adapters, depending on whether
-      they are creating work they have conceived of themselves (creator),
-      carrying out a creator's artistic vision and following their drafts (realiser),
+      they are creating work they have conceived of themselves (author),
+      carrying out a creator's artistic vision and following their drafts (realizer),
       or copying an artistic work that has already been fully realised in a different
       medium (adapter). In the bibliographic description of visual works,
       realiser is the usual role involved.

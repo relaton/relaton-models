@@ -142,7 +142,8 @@ enum DocumentRelationType  {
       The main document is a particular realisation of the intellectual or artistic content of the
       bibliographic item, which is more generically referred to in the target document. 
       This corresponds to _Expression_ in the Functional Requirements for Bibliographic Records (FRBR) model.
-      Inverse of `hasExpression` relation.
+      Inverse of `hasExpression` relation. Includes the more precise `translatedFrom`, `arrangementOf`,
+      `abridgementOf`, and `annotationOf`.
     }
   }
   hasExpression {
@@ -154,7 +155,8 @@ enum DocumentRelationType  {
   }
   translatedFrom {
     definition {
-      The main document is a translation of the target document. Inverse of `hasTranslation` relation.
+      The main document is a translation of the target document. This includes dubbed and subtitled versions of a film.
+      Inverse of `hasTranslation` relation.
     }
   }
   hasTranslation {
@@ -166,9 +168,8 @@ enum DocumentRelationType  {
     definition {
       The main document has the same intellectual or artistic content as the target document, and the main
       document has been created to realise that content through different resources than the target document.
-      Is typically understood 
-      to involve the realisation of a musical work with different instruments than the original. Inverse of
-      `hasArrangement` relation.
+      Is typically understood to involve the realisation of a musical work with different instruments or voices 
+      than the original (arrangement).  This includes adding parts or an accompaniment. Inverse of `hasArrangement` relation.
     }
   }
   hasArrangement {
@@ -182,14 +183,14 @@ enum DocumentRelationType  {
   abridgementOf {
     definition {
       The main document presents a subset of the intellectual or artistic content of the target document,
-      but is still intended as a complete work, presenting a shortened version of the original.
+      but is still intended as a complete work, presenting a shortened version of the main document expression.
       Inverse of `hasAbridgement` relation.
     }
   }
   hasAbridgement {
     definition {
       The main document has a target document which presents a subset of its intellectual or artistic content,
-      but which is still intended as a complete work, presenting a shortened version of the original.
+      but which is still intended as a complete work, presenting a shortened version of the main document expression.
     }
   }
   annotationOf {
@@ -201,7 +202,7 @@ enum DocumentRelationType  {
   hasAnnotation {
     definition {
       The main document has a target document which incorporates part or all of it, and which
-      enhances it with explanatory commentary.
+      enhances it with explanatory commentary ot present in the source expression.
     }
   }
   draftOf {
@@ -249,7 +250,8 @@ enum DocumentRelationType  {
   derivedFrom {
     definition {
       The main document is derived from the target document, depending on it for at least some
-      of its content. Inverse of `derives` relation.
+      of its content. Includes
+      classes not otherwise specified, such as parodies. Inverse of `derives` relation.
     }
   }
   derives {
@@ -288,7 +290,7 @@ enum DocumentRelationType  {
   }
   successorOf {
     definition {
-      The main document has assumed the function of the target dcoument, which has ceased fulfilling
+      The main document has assumed the function of the target document, which has ceased fulfilling
       that function. Typically applies when the target document is a periodical publication 
       which has ceased publication, and the main document is a new periodical publication, 
       designated as the continuation of the target document. 
@@ -297,23 +299,24 @@ enum DocumentRelationType  {
   adaptedFrom {
     definition {
       The main document has its intellectual or artistic content derived from the target document,
-      and has modified it to match the requirements of a different medium. Is typically applied to
-      textual originals, whereas `arrangementOf` is typically applied to musical originals. Inverse of
-      `hasAdaptation` relation.
+      and has modified it to match the requirements of a different medium or audience. 
+      In music, an adaptation changes the musical content, whereas an arrangement
+      changes the instrumenal and vocal resources of the work. Inverse of `hasAdaptation` relation.
     }
   }
   hasAdaptation {
     definition {
       The main document has been modified in the target document, to present its content matching
-      the requirements of a different medium. Is typically applied to
-      textual originals, whereas `hasArrangement` is typically applied to musical originals.
+      the requirements of a different medium or audience. 
     }
   }
   adoptedFrom {
     definition {
-      The main document has its content derived from the target document, and has been adopted in response to it.
-      Typically it is a national standard body's counterpart to an international
-      standard. Inverse of `adoptedAs` relation. Includes more specific relations `identical`, `equivalent`,
+      The main document has its content derived from the target document, and has been adopted in response to it
+      by a distinct authorising body.  Typically it is a national standard body's counterpart to an international
+      standard. (These are potentially the same content, but they have distinct institutional authorship and
+      application; this kind of appropriation of text is not characteristic of literary works.)
+      Inverse of `adoptedAs` relation. Includes more specific relations `identical`, `equivalent`,
       and `nonequivalent`.
     }
   }
@@ -387,7 +390,7 @@ enum DocumentRelationType  {
   }
   complementOf {
     definition {
-      The main document is complementary to the target document, and provides additional
+      The main document is complementary or supplementary to the target document, and provides additional
       or contextual information to help understand the target document. Inverse of `hasComplement` relation.
     }
   }

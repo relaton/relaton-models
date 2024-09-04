@@ -20,58 +20,71 @@ grammar {
 # https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
 # iso8601date = xsd:string { pattern = "([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?" }
 # Somewhat dumbed down for XSD regex:
+## Date/Time conforming with ISO 8601
 ISO8601DateTime = xsd:string { pattern = "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+)?)?((:?)[0-5]\d([.,]\d+)?)?([zZ]|([\+\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?" }
+## Date conforming with ISO 8601
 ISO8601Date = xsd:string { pattern = "([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?" }
-
-# start = bibitem
 
 BibData =
   BibliographicItem
 
+## The publication or preparation status of a document
 status =
   element status {
-     ( stage, substage?, iteration? )
+     ## The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint"
+     stage,
+     ## The substage of the document status. These are used particularly in Standards Defining Organizations
+     substage?,
+     ## The iteration of the given status that the document is currently in (e.g. "3" for a third draft)
+     iteration?
 }
 
 stage = element stage {
+  ## A canonical abbreviation of the document stage
   attribute abbreviation { text }?,
+  ## The name of the document stage
   text
 }
 
 substage = element substage {
+  ## A canonical abbreviation of the document substage
   attribute abbreviation { text }?,
+  ## The name of the documen substage
   text
 }
 
 iteration = element iteration { text }
 
-language = element language { text }
-## ISO-639
+language = element language { LanguageType }
 
-locale = element locale { text }
-## ISO-3166
+locale = element locale { LocaleType }
 
-script = element script { text }
-## ISO-15924: Latn
+script = element script { ScriptType }
 
+## Edition of a bibliographic item
 edition = element edition {
+   ## Number of edition.
+   ## NOTE: The number attribute can be used to represent the numeric equivalent of the edition string
    attribute number { text }?,
+   ## Formatted, human-readable edition string
    text
 }
 
+## multiple values are comma-delimited
 LocalizedStringAttrs = 
-  # multiple languages and scripts possible: comma delimit them if so
-  attribute language { text }?,
-  attribute locale { text }?,
-  attribute script { text }?
+  ## multiple languages and scripts possible: comma delimit them if so
+  attribute language { LanguageType }?,
+  attribute locale { LocaleType }?,
+  attribute script { ScriptType }?
 
 LocalizedString1 =
-  # multiple languages and scripts possible: comma delimit them if so
   LocalizedStringAttrs,
   text
 
+## FormattedString which optionally specifies its language, locale, and/or script
 LocalizedString =
   LocalizedString1 |
+  ## Variants of the string, with the same content, but in different language, script, or format
   element variant { LocalizedString1 }+
 
 LocalizedMarkedUpString1 =
@@ -86,10 +99,15 @@ LocalizedMarkedUpString =
 # Unlike UML, change type to format: type is overloaded
 # Would be need if plain were default value and could omit the attribute
 # Added LocalizedStringOrXsAny
+## String which is formatted according to conventions specified in a named MIME type 
 FormattedString =
-  # attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?,
-  attribute format { ( "text/plain" | "text/html" | "application/docbook+xml" |
-    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text ) }?,
+  ## MIME type for string (defailts to text/plain). 
+  ## NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types
+  attribute format { 
+    "text/plain" | "text/html" | "application/docbook+xml" |
+    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text 
+  }?,
+  ## String
   LocalizedStringOrXsAny
 
 LocalizedStringOrXsAny1 =
@@ -101,16 +119,36 @@ LocalizedStringOrXsAny =
   LocalizedStringOrXsAny1 |
   element variant { LocalizedStringOrXsAny1 }+
 
+## Description of a contributor to the production of the bibliographic item
 contributor =
   element contributor {
+    ## A description of the role of the contributor in the production of the bibliographic item
     role+,
+    ## The contributor involved in the production of the bibliographic item.
+    ## May be either a person or an organization
     ContributorInfo
 }
 
+## A description of the role of the contributor in the production of a bibliographic item
 role =
   element role {
-    attribute type { ( "author" | "performer" | "publisher" | "editor" | "adapter" | "translator" | "distributor" |
-    "realizer" | "owner" | "authorizer" | "enabler" | "subject" ) },
+    ## The broad class of role of the contributor. Mandatory in order to enforce orderly management of contributors.
+    ## Detailed in https://www.relaton.org/model/creator/
+    attribute type {
+      "author" |
+      "performer" |
+      "publisher" |
+      "editor" |
+      "adapter" |
+      "translator" |
+      "distributor" |
+      "realizer" |
+      "owner" |
+      "authorizer" |
+      "enabler" |
+      "subject"
+    },
+    ## A more detailed description of the role of the contributor
     roledescription*
 }
 
@@ -129,21 +167,53 @@ person =
     contact*
 }
 
+## The name of a person
 fullname = element name { FullNameType }
 credential = element credential { text }
 
 FullNameType =
+    ## The initials of the person, used as an abbreviation for the person, and including the
+    ## surname. Can be used instead of the complete name. Distinct from formatted-initials,
+    ## which are the initials only of the forenames of the person
     name_abbreviation?,
-    (( prefix*, forename*, formatted-initials?, surname, addition* ) | completeName ),
-    biblionote*, variantname*
+    (
+      (
+        ## A prefixed addition to the name of the person, such as "Dr"
+        prefix*,
+        ## A forename or given name of the person. Includes middle names
+        forename*,
+        ## The initials of the person, as a formatted string, including punctuation, dropping
+        ## punctuation as desired, and including hyphens where necessary. For example,
+        ## the initial set for Jean-Paul would be J, P; the formatted initials would be "J.-P."
+        ## or "J-P.". Can be used instead of forenames
+        formatted-initials?,
+        ## The surname, family name, or equivalent of the person
+        surname,
+        ## A suffixed addition to the name of the person, such as "Jr"
+        addition*
+      ) |
+     ## A preformatted version of the name of the person, not broken down into its component parts
+     completeName
+    ),
+    ## An additional note about the name of the person
+    biblionote*,
+    ## A variant name of the person
+    variantname*
 
 name_abbreviation = element abbreviation { LocalizedString }
 prefix = element prefix { LocalizedString }
 formatted-initials = element formatted-initials { LocalizedString }
 addition = element addition { LocalizedString }
 surname = element surname { LocalizedString }
+
+## A forename of a person
 forename = element forename {
+  ## An individual initial of the person, corresponding to the given forename.
+  ## Does not include final punctuation, but can include hyphens.
+  ## Can be used instead of forenames, if formatted-initials are not provided 
+  ##(in which case each initial will be punctuated following local practice).
   attribute initial { text }?,
+  ## A forename or given name of the person. Includes middle names
   LocalizedString
 }
 completeName = element completename { LocalizedString }
@@ -178,8 +248,12 @@ subdivision = element subdivision {
    OrganizationType 
 }
 logo = element logo { image-no-id }
+
+## Depiction of the bibliographic item
 depiction = element depiction {
+  ## Description of what is being depicted
   attribute scope { text }?,
+  ## A visual depiction of the bibliographic item
   image-no-id*
 }
 
@@ -195,6 +269,7 @@ NameWithVariants1 =
 abbreviation =
   element abbreviation { LocalizedString }
 
+## URI
 uri =
   element uri {
     attribute type { text }?,
@@ -202,6 +277,7 @@ uri =
   }
 
 # TODO may change
+## Contact information for a person or organization
 contact =
   ( address | phone | email | uri )
 
@@ -209,6 +285,7 @@ phone = element phone {
   attribute type { text }?,
   text }
 
+## Email address
 email = element email { text }
 
 ## An address for a person or organization
@@ -281,14 +358,18 @@ date = element date { ISO8601Date }
 ## The extent or location of a bibliographic item being referred to.
 ## A sequence of locality elements is meant to indicate hierarchical ordering, from greater to smaller.
 ## e.g. Chapter, then page, then paragraph.
-## A discontinuous range can be represented by using two adjacent localities with the same type.
-
+## A discontinuous range can be represented by using two adjacent localities with the same type
 locality =
   element locality { BibItemLocality }
 
+## Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item
 localityStack =
    element localityStack {
+     ## Logical connective linking localities. If not supplied, "and" is understood
      attribute connective { "and" | "or" | "from" | "to" | "" }?,
+     ## Component bibliographic localities which group together to designate a single span of text.
+     ## Earlier localities are assumed to include later localities, and be of different types;
+     ## e.g. "Chapter 7, paragraph 9–11"
      locality*
  }
 
@@ -563,8 +644,13 @@ TypedUri =
   attribute script { text }?,
   xsd:anyURI
 
+## Type which allows date and time to be specified as either a Gregorian
+## date and time, as specified in ISO 8601, as text, or as both
 DateType =
+  ## Date and time, as specified in text
   attribute text { text }?,
+  ## Gregorian date and time, as specified in ISO 8601. Can be used
+  ## as a canonical interpretation of the date and time given in `text`
   ( ISO8601Date )?
 
 ## Indicates type of date within a bibliographic lifecycle.
@@ -631,10 +717,17 @@ bdate = element date {
   )?
 }
 
+## An identifier of a bibliographic item in an international standard scheme
 docidentifier = element docidentifier {
+  ## The scheme or namespace of the identifier
   attribute type { text }?,
+  ## The scope of the identifier, in case the identifier does not apply to the document 
+  ## but to a superset or subset of entities; or in case the identifier 
+  ## is for a particular instance of the document, e.g. for a particular format or edition of the document
   attribute scope { text }?,
+  ## This is a primary identifier for the item, to be used in citation
   attribute primary { xsd:boolean }?,
+  ## The identifier string
   LocalizedMarkedUpString
 }
 docnumber = element docnumber { text }
@@ -658,14 +751,51 @@ RegionType =
   attribute recommended { xsd:boolean }?,
   text
 
+## Code for currencies, taken from ISO 4217
+CurrencyType = text
+
 bprice = element price {
-   attribute currency { text },
+   attribute currency { CurrencyType },
    text
 }
 
+## Information about the medium and transmission of a bibliographic item
 medium = element medium {
-  bcontent?, genre?, form?, carrier?, size?, scale?
+  ## The content type of the bibliographic item, reflecting the form of
+  ## communication with which it is expressed and perceived. For example,
+  ## `text`, `video`, `audio`.
+    
+  ## NOTE: This field is intended to convey the
+  ## Content attribute of the MARC and Resource Description and Access
+  ## standards, although its values are not restricted to that
+  ## vocabulary; see http://www.loc.gov/standards/valuelist/rdacontent.html
+  bcontent?,
+  ## The genre of the bibliographic item, as a classification of the
+  ## type of communication it represents that is more specific than `content` or `BibliographicItem/type`.
+  ## For example, "statistical dataset"
+  genre?,
+  ## The media type of the bibliographic item, used to access the content
+  ## of the item, including file format for electronic media.
+  
+  ## NOTE: This field is intended to convey the
+  ## Media attribute of the MARC and Resource Description and Access
+  ## standards, although its values are not restricted to that
+  ## vocabulary; see http://www.loc.gov/standards/valuelist/rdamedia.html
+  ## IANA Media Types are recommended for electronic resources
+  form?,
+  ## The storage medium of the physical representation of the bibliographic item.
+            
+  ## NOTE: This field is intended to convey the
+  ## Carrier attribute of the MARC and Resource Description and Access
+  ## standards, although its values are not restricted to that
+  ## vocabulary; see https://www.loc.gov/standards/valuelist/rdacarrier.html
+  carrier?,
+  ## The size of the physical representation of the bibliographic item
+  size?,
+  ## The scale of the cartographic material in the bibliographic item
+  scale?
 }
+
 bcontent = element content { text }
 genre = element genre { text }
 form = element form { text }
@@ -717,11 +847,22 @@ bibabstract = element abstract {
   (BasicBlockNoId+ | TextElement+)
 }
 
+## The copyright status of a bibliographic item.
 copyright =
   element copyright {
-    from, to?, owner+, copyright_scope?
+    ## The copyright date of the bibliographic item
+    from,
+    ## The date when the copyright of the bibliographic item expires
+    to?,
+    ## The copyright owner for the bibliographic item.
+    owner+,
+    ## The extent of the bibliographic item, or contexts of use, for which this
+    ## assertion of copyright applies. For example, this description may only apply
+    ## to the preface of a book
+    copyright_scope?
 }
 
+## TODO potentially should be locality | localityStack
 copyright_scope = element scope { text }
 
 from = element from { xsd:gYear }
@@ -730,6 +871,8 @@ to = element to { xsd:gYear }
 owner =
   element owner { ContributorInfo }
 
+## Type of the relationship between a main document (described in `BibliographicItem`) and a target document
+## Detailed in https://www.relaton.org/model/relations/
 DocRelationType =
 "includes" |
 "includedIn" |
@@ -789,12 +932,20 @@ DocRelationType =
 "cites" |
 "isCitedIn"
 
+## Relation between a bibliographic item and another bibliographic item
 docrelation =
   element relation {
+    ## The type of document relation described, using a controlled vocabulary
     attribute type { DocRelationType },
+    ## A more complete description of the type of document relation described
     element description { LocalizedMarkedUpString }?,
+    ## The target bibliographic item to which this bibliographic item is described as related to
     element bibitem { ReducedBibliographicItem },
+    ## The extent of the target bibliographic item which is related to this bibliographic item,
+    ## provided that it is not the entire bibliographic item that is so related
     (locality* | localityStack*),
+    ## The extent of this bibliographic item which is related to the target bibliographic item,
+    ## provided that it is not the entire bibliographic item that is so related
     (sourceLocality* | sourceLocalityStack*)
 }
 
@@ -807,14 +958,23 @@ vedition = element edition { xsd:int }
 revision-date = element revision-date { ISO8601Date }
 draft = element draft { text }
 
+## Keyword for a bibliographic item
 bkeyword = element keyword {
+    ## Representation of keyword as a string in an uncontrolled vocabulary
     LocalizedString |
+    ## Representation of keyword as a string in a controlled vocabulary
     (
+       ## The keyword as a controlled vocabulary item
        element vocab { LocalizedString },
+       ## Identifiers for the keyword as a controlled vocabulary
        vocabid+
     ) |
+    ## Reprsentation of keyword as a hierarchical sequence of strings with associated identifiers (taxonomy)
     (
+       ## The keyword as a taxonomy. For example, the sequence of `taxon` elements
+       ## `pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic classification
        element taxon { LocalizedString }+,
+       ## Identifiers for the keyword in a taxonomy
        vocabid+
     )
 }

@@ -24,44 +24,60 @@
     Somewhat dumbed down for XSD regex:
   -->
   <define name="ISO8601DateTime">
+    <a:documentation>Date/Time conforming with ISO 8601</a:documentation>
     <data type="string">
       <param name="pattern">([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24:?00)([\.,]\d+)?)?((:?)[0-5]\d([.,]\d+)?)?([zZ]|([\+\-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?</param>
     </data>
   </define>
   <define name="ISO8601Date">
+    <a:documentation>Date conforming with ISO 8601</a:documentation>
     <data type="string">
       <param name="pattern">([\+\-]?\d{4})((-?)((0[1-9]|1[0-2])((-?)([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6]))))?</param>
     </data>
   </define>
-  <!-- start = bibitem -->
   <define name="BibData">
     <ref name="BibliographicItem"/>
   </define>
   <define name="status">
+    <a:documentation>The publication or preparation status of a document</a:documentation>
     <element name="status">
-      <ref name="stage"/>
+      <ref name="stage">
+        <a:documentation>The stage of the document status, e.g. "Published", "Unpublished", "Committee Draft", "Preprint"</a:documentation>
+      </ref>
       <optional>
-        <ref name="substage"/>
+        <ref name="substage">
+          <a:documentation>The substage of the document status. These are used particularly in Standards Defining Organizations</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="iteration"/>
+        <ref name="iteration">
+          <a:documentation>The iteration of the given status that the document is currently in (e.g. "3" for a third draft)</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
   <define name="stage">
     <element name="stage">
       <optional>
-        <attribute name="abbreviation"/>
+        <attribute name="abbreviation">
+          <a:documentation>A canonical abbreviation of the document stage</a:documentation>
+        </attribute>
       </optional>
-      <text/>
+      <text>
+        <a:documentation>The name of the document stage</a:documentation>
+      </text>
     </element>
   </define>
   <define name="substage">
     <element name="substage">
       <optional>
-        <attribute name="abbreviation"/>
+        <attribute name="abbreviation">
+          <a:documentation>A canonical abbreviation of the document substage</a:documentation>
+        </attribute>
       </optional>
-      <text/>
+      <text>
+        <a:documentation>The name of the documen substage</a:documentation>
+      </text>
     </element>
   </define>
   <define name="iteration">
@@ -71,52 +87,63 @@
   </define>
   <define name="language">
     <element name="language">
-      <text/>
+      <ref name="LanguageType"/>
     </element>
   </define>
   <define name="locale">
-    <a:documentation>ISO-639</a:documentation>
     <element name="locale">
-      <text/>
+      <ref name="LocaleType"/>
     </element>
   </define>
   <define name="script">
-    <a:documentation>ISO-3166</a:documentation>
     <element name="script">
-      <text/>
+      <ref name="ScriptType"/>
     </element>
   </define>
   <define name="edition">
-    <a:documentation>ISO-15924: Latn</a:documentation>
+    <a:documentation>Edition of a bibliographic item</a:documentation>
     <element name="edition">
       <optional>
-        <attribute name="number"/>
+        <attribute name="number">
+          <a:documentation>Number of edition.
+NOTE: The number attribute can be used to represent the numeric equivalent of the edition string</a:documentation>
+        </attribute>
       </optional>
-      <text/>
+      <text>
+        <a:documentation>Formatted, human-readable edition string</a:documentation>
+      </text>
     </element>
   </define>
   <define name="LocalizedStringAttrs">
+    <a:documentation>multiple values are comma-delimited</a:documentation>
     <optional>
-      <!-- multiple languages and scripts possible: comma delimit them if so -->
-      <attribute name="language"/>
+      <attribute name="language">
+        <a:documentation>multiple languages and scripts possible: comma delimit them if so</a:documentation>
+        <ref name="LanguageType"/>
+      </attribute>
     </optional>
     <optional>
-      <attribute name="locale"/>
+      <attribute name="locale">
+        <ref name="LocaleType"/>
+      </attribute>
     </optional>
     <optional>
-      <attribute name="script"/>
+      <attribute name="script">
+        <ref name="ScriptType"/>
+      </attribute>
     </optional>
   </define>
   <define name="LocalizedString1">
-    <!-- multiple languages and scripts possible: comma delimit them if so -->
     <ref name="LocalizedStringAttrs"/>
     <text/>
   </define>
   <define name="LocalizedString">
+    <a:documentation>FormattedString which optionally specifies its language, locale, and/or script</a:documentation>
     <choice>
       <ref name="LocalizedString1"/>
       <oneOrMore>
         <element name="variant">
+          <a:documentation>Variants of the string, with the same content, but in different language, script, or format</a:documentation>
           <ref name="LocalizedString1"/>
         </element>
       </oneOrMore>
@@ -145,9 +172,11 @@
     Added LocalizedStringOrXsAny
   -->
   <define name="FormattedString">
+    <a:documentation>String which is formatted according to conventions specified in a named MIME type </a:documentation>
     <optional>
-      <!-- attribute format { ( "plain" | "html" | "docbook" | "tei" | "asciidoc" | "markdown" ) }?, -->
       <attribute name="format">
+        <a:documentation>MIME type for string (defailts to text/plain). 
+NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types</a:documentation>
         <choice>
           <value>text/plain</value>
           <value>text/html</value>
@@ -160,7 +189,9 @@
         </choice>
       </attribute>
     </optional>
-    <ref name="LocalizedStringOrXsAny"/>
+    <ref name="LocalizedStringOrXsAny">
+      <a:documentation>String</a:documentation>
+    </ref>
   </define>
   <define name="LocalizedStringOrXsAny1">
     <!-- multiple languages and scripts possible: comma delimit them if so -->
@@ -183,16 +214,25 @@
     </choice>
   </define>
   <define name="contributor">
+    <a:documentation>Description of a contributor to the production of the bibliographic item</a:documentation>
     <element name="contributor">
       <oneOrMore>
-        <ref name="role"/>
+        <ref name="role">
+          <a:documentation>A description of the role of the contributor in the production of the bibliographic item</a:documentation>
+        </ref>
       </oneOrMore>
-      <ref name="ContributorInfo"/>
+      <ref name="ContributorInfo">
+        <a:documentation>The contributor involved in the production of the bibliographic item.
+May be either a person or an organization</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="role">
+    <a:documentation>A description of the role of the contributor in the production of a bibliographic item</a:documentation>
     <element name="role">
       <attribute name="type">
+        <a:documentation>The broad class of role of the contributor. Mandatory in order to enforce orderly management of contributors.
+Detailed in https://www.relaton.org/model/creator/</a:documentation>
         <choice>
           <value>author</value>
           <value>performer</value>
@@ -209,7 +249,9 @@
         </choice>
       </attribute>
       <zeroOrMore>
-        <ref name="roledescription"/>
+        <ref name="roledescription">
+          <a:documentation>A more detailed description of the role of the contributor</a:documentation>
+        </ref>
       </zeroOrMore>
     </element>
   </define>
@@ -244,6 +286,7 @@
     </element>
   </define>
   <define name="fullname">
+    <a:documentation>The name of a person</a:documentation>
     <element name="name">
       <ref name="FullNameType"/>
     </element>
@@ -255,31 +298,54 @@
   </define>
   <define name="FullNameType">
     <optional>
-      <ref name="name_abbreviation"/>
+      <ref name="name_abbreviation">
+        <a:documentation>The initials of the person, used as an abbreviation for the person, and including the
+surname. Can be used instead of the complete name. Distinct from formatted-initials,
+which are the initials only of the forenames of the person</a:documentation>
+      </ref>
     </optional>
     <choice>
       <group>
         <zeroOrMore>
-          <ref name="prefix"/>
+          <ref name="prefix">
+            <a:documentation>A prefixed addition to the name of the person, such as "Dr"</a:documentation>
+          </ref>
         </zeroOrMore>
         <zeroOrMore>
-          <ref name="forename"/>
+          <ref name="forename">
+            <a:documentation>A forename or given name of the person. Includes middle names</a:documentation>
+          </ref>
         </zeroOrMore>
         <optional>
-          <ref name="formatted-initials"/>
+          <ref name="formatted-initials">
+            <a:documentation>The initials of the person, as a formatted string, including punctuation, dropping
+punctuation as desired, and including hyphens where necessary. For example,
+the initial set for Jean-Paul would be J, P; the formatted initials would be "J.-P."
+or "J-P.". Can be used instead of forenames</a:documentation>
+          </ref>
         </optional>
-        <ref name="surname"/>
+        <ref name="surname">
+          <a:documentation>The surname, family name, or equivalent of the person</a:documentation>
+        </ref>
         <zeroOrMore>
-          <ref name="addition"/>
+          <ref name="addition">
+            <a:documentation>A suffixed addition to the name of the person, such as "Jr"</a:documentation>
+          </ref>
         </zeroOrMore>
       </group>
-      <ref name="completeName"/>
+      <ref name="completeName">
+        <a:documentation>A preformatted version of the name of the person, not broken down into its component parts</a:documentation>
+      </ref>
     </choice>
     <zeroOrMore>
-      <ref name="biblionote"/>
+      <ref name="biblionote">
+        <a:documentation>An additional note about the name of the person</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="variantname"/>
+      <ref name="variantname">
+        <a:documentation>A variant name of the person</a:documentation>
+      </ref>
     </zeroOrMore>
   </define>
   <define name="name_abbreviation">
@@ -308,11 +374,19 @@
     </element>
   </define>
   <define name="forename">
+    <a:documentation>A forename of a person</a:documentation>
     <element name="forename">
       <optional>
-        <attribute name="initial"/>
+        <attribute name="initial">
+          <a:documentation>An individual initial of the person, corresponding to the given forename.
+Does not include final punctuation, but can include hyphens.
+Can be used instead of forenames, if formatted-initials are not provided 
+(in which case each initial will be punctuated following local practice).</a:documentation>
+        </attribute>
       </optional>
-      <ref name="LocalizedString"/>
+      <ref name="LocalizedString">
+        <a:documentation>A forename or given name of the person. Includes middle names</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="completeName">
@@ -406,12 +480,17 @@
     </element>
   </define>
   <define name="depiction">
+    <a:documentation>Depiction of the bibliographic item</a:documentation>
     <element name="depiction">
       <optional>
-        <attribute name="scope"/>
+        <attribute name="scope">
+          <a:documentation>Description of what is being depicted</a:documentation>
+        </attribute>
       </optional>
       <zeroOrMore>
-        <ref name="image-no-id"/>
+        <ref name="image-no-id">
+          <a:documentation>A visual depiction of the bibliographic item</a:documentation>
+        </ref>
       </zeroOrMore>
     </element>
   </define>
@@ -442,6 +521,7 @@
     </element>
   </define>
   <define name="uri">
+    <a:documentation>URI</a:documentation>
     <element name="uri">
       <optional>
         <attribute name="type"/>
@@ -451,6 +531,7 @@
   </define>
   <!-- TODO may change -->
   <define name="contact">
+    <a:documentation>Contact information for a person or organization</a:documentation>
     <choice>
       <ref name="address"/>
       <ref name="phone"/>
@@ -467,6 +548,7 @@
     </element>
   </define>
   <define name="email">
+    <a:documentation>Email address</a:documentation>
     <element name="email">
       <text/>
     </element>
@@ -603,15 +685,17 @@ citations cannot straightforwardly extract the date from the bibliographic sourc
     <a:documentation>The extent or location of a bibliographic item being referred to.
 A sequence of locality elements is meant to indicate hierarchical ordering, from greater to smaller.
 e.g. Chapter, then page, then paragraph.
-A discontinuous range can be represented by using two adjacent localities with the same type.</a:documentation>
+A discontinuous range can be represented by using two adjacent localities with the same type</a:documentation>
     <element name="locality">
       <ref name="BibItemLocality"/>
     </element>
   </define>
   <define name="localityStack">
+    <a:documentation>Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item</a:documentation>
     <element name="localityStack">
       <optional>
         <attribute name="connective">
+          <a:documentation>Logical connective linking localities. If not supplied, "and" is understood</a:documentation>
           <choice>
             <value>and</value>
             <value>or</value>
@@ -622,7 +706,11 @@ A discontinuous range can be represented by using two adjacent localities with t
         </attribute>
       </optional>
       <zeroOrMore>
-        <ref name="locality"/>
+        <ref name="locality">
+          <a:documentation>Component bibliographic localities which group together to designate a single span of text.
+Earlier localities are assumed to include later localities, and be of different types;
+e.g. "Chapter 7, paragraph 9–11"</a:documentation>
+        </ref>
       </zeroOrMore>
     </element>
   </define>
@@ -1153,11 +1241,19 @@ NOTE: This should preferably be encoded as  a URI or short identifier, rather th
     <data type="anyURI"/>
   </define>
   <define name="DateType">
+    <a:documentation>Type which allows date and time to be specified as either a Gregorian
+date and time, as specified in ISO 8601, as text, or as both</a:documentation>
     <optional>
-      <attribute name="text"/>
+      <attribute name="text">
+        <a:documentation>Date and time, as specified in text</a:documentation>
+      </attribute>
     </optional>
     <optional>
-      <ref name="ISO8601Date"/>
+      <group>
+        <a:documentation>Gregorian date and time, as specified in ISO 8601. Can be used
+as a canonical interpretation of the date and time given in `text`</a:documentation>
+        <ref name="ISO8601Date"/>
+      </group>
     </optional>
   </define>
   <define name="BibliographicDateType">
@@ -1246,19 +1342,29 @@ Applies whether the resource has already been created or not, and whether it is 
     </element>
   </define>
   <define name="docidentifier">
+    <a:documentation>An identifier of a bibliographic item in an international standard scheme</a:documentation>
     <element name="docidentifier">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The scheme or namespace of the identifier</a:documentation>
+        </attribute>
       </optional>
       <optional>
-        <attribute name="scope"/>
+        <attribute name="scope">
+          <a:documentation>The scope of the identifier, in case the identifier does not apply to the document 
+but to a superset or subset of entities; or in case the identifier 
+is for a particular instance of the document, e.g. for a particular format or edition of the document</a:documentation>
+        </attribute>
       </optional>
       <optional>
         <attribute name="primary">
+          <a:documentation>This is a primary identifier for the item, to be used in citation</a:documentation>
           <data type="boolean"/>
         </attribute>
       </optional>
-      <ref name="LocalizedMarkedUpString"/>
+      <ref name="LocalizedMarkedUpString">
+        <a:documentation>The identifier string</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="docnumber">
@@ -1316,31 +1422,68 @@ Applies whether the resource has already been created or not, and whether it is 
     </optional>
     <text/>
   </define>
+  <define name="CurrencyType">
+    <a:documentation>Code for currencies, taken from ISO 4217</a:documentation>
+    <text/>
+  </define>
   <define name="bprice">
     <element name="price">
-      <attribute name="currency"/>
+      <attribute name="currency">
+        <ref name="CurrencyType"/>
+      </attribute>
       <text/>
     </element>
   </define>
   <define name="medium">
+    <a:documentation>Information about the medium and transmission of a bibliographic item</a:documentation>
     <element name="medium">
       <optional>
-        <ref name="bcontent"/>
+        <ref name="bcontent">
+          <a:documentation>The content type of the bibliographic item, reflecting the form of
+communication with which it is expressed and perceived. For example,
+`text`, `video`, `audio`.</a:documentation>
+          <a:documentation>NOTE: This field is intended to convey the
+Content attribute of the MARC and Resource Description and Access
+standards, although its values are not restricted to that
+vocabulary; see http://www.loc.gov/standards/valuelist/rdacontent.html</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="genre"/>
+        <ref name="genre">
+          <a:documentation>The genre of the bibliographic item, as a classification of the
+type of communication it represents that is more specific than `content` or `BibliographicItem/type`.
+For example, "statistical dataset"</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="form"/>
+        <ref name="form">
+          <a:documentation>The media type of the bibliographic item, used to access the content
+of the item, including file format for electronic media.</a:documentation>
+          <a:documentation>NOTE: This field is intended to convey the
+Media attribute of the MARC and Resource Description and Access
+standards, although its values are not restricted to that
+vocabulary; see http://www.loc.gov/standards/valuelist/rdamedia.html
+IANA Media Types are recommended for electronic resources</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="carrier"/>
+        <ref name="carrier">
+          <a:documentation>The storage medium of the physical representation of the bibliographic item.</a:documentation>
+          <a:documentation>NOTE: This field is intended to convey the
+Carrier attribute of the MARC and Resource Description and Access
+standards, although its values are not restricted to that
+vocabulary; see https://www.loc.gov/standards/valuelist/rdacarrier.html</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="size"/>
+        <ref name="size">
+          <a:documentation>The size of the physical representation of the bibliographic item</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="scale"/>
+        <ref name="scale">
+          <a:documentation>The scale of the cartographic material in the bibliographic item</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
@@ -1511,20 +1654,32 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </element>
   </define>
   <define name="copyright">
+    <a:documentation>The copyright status of a bibliographic item.</a:documentation>
     <element name="copyright">
-      <ref name="from"/>
+      <ref name="from">
+        <a:documentation>The copyright date of the bibliographic item</a:documentation>
+      </ref>
       <optional>
-        <ref name="to"/>
+        <ref name="to">
+          <a:documentation>The date when the copyright of the bibliographic item expires</a:documentation>
+        </ref>
       </optional>
       <oneOrMore>
-        <ref name="owner"/>
+        <ref name="owner">
+          <a:documentation>The copyright owner for the bibliographic item.</a:documentation>
+        </ref>
       </oneOrMore>
       <optional>
-        <ref name="copyright_scope"/>
+        <ref name="copyright_scope">
+          <a:documentation>The extent of the bibliographic item, or contexts of use, for which this
+assertion of copyright applies. For example, this description may only apply
+to the preface of a book</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
   <define name="copyright_scope">
+    <a:documentation>TODO potentially should be locality | localityStack</a:documentation>
     <element name="scope">
       <text/>
     </element>
@@ -1545,6 +1700,8 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </element>
   </define>
   <define name="DocRelationType">
+    <a:documentation>Type of the relationship between a main document (described in `BibliographicItem`) and a target document
+Detailed in https://www.relaton.org/model/relations/</a:documentation>
     <choice>
       <value>includes</value>
       <value>includedIn</value>
@@ -1606,19 +1763,25 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </choice>
   </define>
   <define name="docrelation">
+    <a:documentation>Relation between a bibliographic item and another bibliographic item</a:documentation>
     <element name="relation">
       <attribute name="type">
+        <a:documentation>The type of document relation described, using a controlled vocabulary</a:documentation>
         <ref name="DocRelationType"/>
       </attribute>
       <optional>
         <element name="description">
+          <a:documentation>A more complete description of the type of document relation described</a:documentation>
           <ref name="LocalizedMarkedUpString"/>
         </element>
       </optional>
       <element name="bibitem">
+        <a:documentation>The target bibliographic item to which this bibliographic item is described as related to</a:documentation>
         <ref name="ReducedBibliographicItem"/>
       </element>
       <choice>
+        <a:documentation>The extent of the target bibliographic item which is related to this bibliographic item,
+provided that it is not the entire bibliographic item that is so related</a:documentation>
         <zeroOrMore>
           <ref name="locality"/>
         </zeroOrMore>
@@ -1627,6 +1790,8 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
         </zeroOrMore>
       </choice>
       <choice>
+        <a:documentation>The extent of this bibliographic item which is related to the target bibliographic item,
+provided that it is not the entire bibliographic item that is so related</a:documentation>
         <zeroOrMore>
           <ref name="sourceLocality"/>
         </zeroOrMore>
@@ -1662,25 +1827,37 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </element>
   </define>
   <define name="bkeyword">
+    <a:documentation>Keyword for a bibliographic item</a:documentation>
     <element name="keyword">
       <choice>
-        <ref name="LocalizedString"/>
+        <ref name="LocalizedString">
+          <a:documentation>Representation of keyword as a string in an uncontrolled vocabulary</a:documentation>
+        </ref>
         <group>
+          <a:documentation>Representation of keyword as a string in a controlled vocabulary</a:documentation>
           <element name="vocab">
+            <a:documentation>The keyword as a controlled vocabulary item</a:documentation>
             <ref name="LocalizedString"/>
           </element>
           <oneOrMore>
-            <ref name="vocabid"/>
+            <ref name="vocabid">
+              <a:documentation>Identifiers for the keyword as a controlled vocabulary</a:documentation>
+            </ref>
           </oneOrMore>
         </group>
         <group>
+          <a:documentation>Reprsentation of keyword as a hierarchical sequence of strings with associated identifiers (taxonomy)</a:documentation>
           <oneOrMore>
             <element name="taxon">
+              <a:documentation>The keyword as a taxonomy. For example, the sequence of `taxon` elements
+`pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic classification</a:documentation>
               <ref name="LocalizedString"/>
             </element>
           </oneOrMore>
           <oneOrMore>
-            <ref name="vocabid"/>
+            <ref name="vocabid">
+              <a:documentation>Identifiers for the keyword in a taxonomy</a:documentation>
+            </ref>
           </oneOrMore>
         </group>
       </choice>
