@@ -267,21 +267,32 @@ Detailed in https://www.relaton.org/model/creator/</a:documentation>
     </element>
   </define>
   <define name="person">
+    <a:documentation>Person associated with a bibliographic item</a:documentation>
     <element name="person">
       <optional>
-        <ref name="fullname"/>
+        <ref name="fullname">
+          <a:documentation>The name of the person</a:documentation>
+        </ref>
       </optional>
       <zeroOrMore>
-        <ref name="credential"/>
+        <ref name="credential">
+          <a:documentation>Credentials given for the person postnominally, e.g. "PhD"</a:documentation>
+        </ref>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="affiliation"/>
+        <ref name="affiliation">
+          <a:documentation>The affiliation of the person within an organization</a:documentation>
+        </ref>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="person-identifier"/>
+        <ref name="person-identifier">
+          <a:documentation>An identifier of the person according to an international identifier scheme</a:documentation>
+        </ref>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="contact"/>
+        <ref name="contact">
+          <a:documentation>Contact information for the person, including URI, address, phone number, and email</a:documentation>
+        </ref>
       </zeroOrMore>
     </element>
   </define>
@@ -395,9 +406,15 @@ Can be used instead of forenames, if formatted-initials are not provided
     </element>
   </define>
   <define name="variantname">
+    <a:documentation>A variant name of a person</a:documentation>
     <element name="variant">
-      <attribute name="type"/>
-      <ref name="FullNameType"/>
+      <attribute name="type">
+        <a:documentation>The type of variant name for the person. Examples include pseudonyms; user names (online);
+real names (if the person is named with a pseudonym or user name); previous legal names</a:documentation>
+      </attribute>
+      <ref name="FullNameType">
+        <a:documentation>The variant name itself</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="affiliation">
@@ -431,31 +448,46 @@ Can be used instead of forenames, if formatted-initials are not provided
     </element>
   </define>
   <define name="organization">
+    <a:documentation>Organization associated with a bibliographic item</a:documentation>
     <element name="organization">
       <ref name="OrganizationType"/>
     </element>
   </define>
   <define name="OrganizationType">
     <oneOrMore>
-      <ref name="orgname"/>
+      <ref name="orgname">
+        <a:documentation>The name of the organization</a:documentation>
+      </ref>
     </oneOrMore>
     <zeroOrMore>
-      <ref name="subdivision"/>
+      <ref name="subdivision">
+        <a:documentation>The subdivision of the organization directly involved with the production of the bibliographic item</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="abbreviation"/>
+      <ref name="abbreviation">
+        <a:documentation>Abbreviation under which the organization is known</a:documentation>
+      </ref>
     </optional>
     <zeroOrMore>
-      <ref name="uri"/>
+      <ref name="uri">
+        <a:documentation>A URI with information about the organization</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="org-identifier"/>
+      <ref name="org-identifier">
+        <a:documentation>An identifier of the organization according to an international identifier scheme</a:documentation>
+      </ref>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="contact"/>
+      <ref name="contact">
+        <a:documentation>Contact information for the organization, including address, phone number, and email</a:documentation>
+      </ref>
     </zeroOrMore>
     <optional>
-      <ref name="logo"/>
+      <ref name="logo">
+        <a:documentation>A logo for the organization</a:documentation>
+      </ref>
     </optional>
   </define>
   <define name="orgname">
@@ -467,11 +499,16 @@ Can be used instead of forenames, if formatted-initials are not provided
     </element>
   </define>
   <define name="subdivision">
+    <a:documentation>Subdivision of organization associated with a bibliographic item</a:documentation>
     <element name="subdivision">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The type of subdivision</a:documentation>
+        </attribute>
       </optional>
-      <ref name="OrganizationType"/>
+      <ref name="OrganizationType">
+        <a:documentation>The subdivision, modelled recursively as an organization</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="logo">
@@ -496,10 +533,12 @@ Can be used instead of forenames, if formatted-initials are not provided
   </define>
   <define name="NameWithVariants">
     <element name="primary">
+      <a:documentation>Primary name of the organization</a:documentation>
       <ref name="LocalizedString"/>
     </element>
     <zeroOrMore>
       <element name="variant">
+        <a:documentation>A variant name of the organization</a:documentation>
         <ref name="NameWithVariants1"/>
       </element>
     </zeroOrMore>
@@ -521,12 +560,17 @@ Can be used instead of forenames, if formatted-initials are not provided
     </element>
   </define>
   <define name="uri">
-    <a:documentation>URI</a:documentation>
+    <a:documentation>URI associated with a type</a:documentation>
     <element name="uri">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The types of URI are open-ended, but include the IANA link relations specified in RFC 8288</a:documentation>
+        </attribute>
       </optional>
-      <data type="anyURI"/>
+      <ref name="LocalizedStringAttrs"/>
+      <data type="anyURI">
+        <a:documentation>URI content</a:documentation>
+      </data>
     </element>
   </define>
   <!-- TODO may change -->
@@ -540,11 +584,16 @@ Can be used instead of forenames, if formatted-initials are not provided
     </choice>
   </define>
   <define name="phone">
+    <a:documentation>The phone number associated with a person or organization</a:documentation>
     <element name="phone">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The type of phone number; can include "Fax" and "Mobile"</a:documentation>
+        </attribute>
       </optional>
-      <text/>
+      <text>
+        <a:documentation>The phone number itself</a:documentation>
+      </text>
     </element>
   </define>
   <define name="email">
@@ -618,23 +667,27 @@ Can be used instead of forenames, if formatted-initials are not provided
     </element>
   </define>
   <define name="person-identifier">
+    <a:documentation>An identifier of a person according to an international identifier scheme</a:documentation>
     <element name="identifier">
       <attribute name="type">
-        <choice>
-          <value>isni</value>
-          <value>orcid</value>
-          <value>uri</value>
-        </choice>
+        <a:documentation>The international identifier scheme for the identifier of the person.
+Examples include "isni", "orcid", "uri"</a:documentation>
       </attribute>
-      <text/>
+      <text>
+        <a:documentation>The identifier value</a:documentation>
+      </text>
     </element>
   </define>
   <define name="org-identifier">
+    <a:documentation>An identifier of an organization according to an international identifier scheme</a:documentation>
     <element name="identifier">
       <attribute name="type">
-        <data type="string" datatypeLibrary=""/>
+        <a:documentation>The international identifier scheme for the identifier of the organization.
+Examples include GRID, LEI, CrossRef, and Ringgold</a:documentation>
       </attribute>
-      <text/>
+      <text>
+        <a:documentation>The identifier value</a:documentation>
+      </text>
     </element>
   </define>
   <define name="citation">
@@ -754,6 +807,15 @@ e.g. "Chapter 7, paragraph 9–11"</a:documentation>
     </optional>
   </define>
   <define name="LocalityType">
+    <a:documentation>Type of indicator of a location or extent within a bibliographic item.
+When the value `whole` or `title` is used, the corresponding `BibItemLocality`
+attribute `identifier` should be empty
+`whole` refers to the entire document.
+`list` is used for ordered lists in standards documents
+`time` is used for timestamps in audio and visual media
+`anchor` is used for locations within web pages
+`line` is a line number, dependent on printed form of document
+`locality:...` is an extension point: it allows a free-form text string that is human-readable</a:documentation>
     <data type="string">
       <param name="pattern">section|clause|part|paragraph|chapter|page|title|line|whole|table|annex|figure|note|list|example|volume|issue|time|anchor|locality:[a-zA-Z0-9_]+</param>
     </data>
@@ -783,16 +845,31 @@ e.g. "Chapter 7, paragraph 9–11"</a:documentation>
     </element>
   </define>
   <define name="relaton_collection">
+    <a:documentation>Used to present a group of bibliographic items as a single group;
+e.g. when summarising the collection of standards created by a standards body.
+A collection may be used for bibliographic exchange but is typically not necesary for citation purposes</a:documentation>
     <element name="relaton-collection">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The type of grouping of bibliographic items</a:documentation>
+        </attribute>
       </optional>
-      <ref name="btitle"/>
+      <ref name="btitle">
+        <a:documentation>The title given to the grouping of bibliographic items</a:documentation>
+      </ref>
       <zeroOrMore>
-        <ref name="contributor"/>
+        <ref name="contributor">
+          <a:documentation>Contributors to the production of the bibliographic items as a grouping,
+with corporate responsibility for all the items in the group 
+(e.g. as compilers of a collection or corporate authors)</a:documentation>
+        </ref>
       </zeroOrMore>
       <zeroOrMore>
-        <ref name="docrelation"/>
+        <ref name="docrelation">
+          <a:documentation>The individual items which constitute the group, expressed as relations to the
+document group. The `type` attribute of each relation is expected to be either `includes` or `hasPart`, 
+depending on whether the items exist as independent documents, or are parts of a multi-part document</a:documentation>
+        </ref>
       </zeroOrMore>
     </element>
   </define>
@@ -1064,6 +1141,8 @@ NOTE: This should preferably be encoded as  a URI or short identifier, rather th
     </optional>
   </define>
   <define name="ReducedBibliographicItem">
+    <a:documentation>Reduced description of a bibliographic resource, without mandatory title and docidentifier, used for document relations
+Refer to `BibliographicItem` for definitions</a:documentation>
     <optional>
       <attribute name="type">
         <ref name="BibItemType"/>
@@ -1164,6 +1243,7 @@ NOTE: This should preferably be encoded as  a URI or short identifier, rather th
     </optional>
   </define>
   <define name="btitle">
+    <a:documentation>A title of a bibliographic item, associated with a type of title</a:documentation>
     <element name="title">
       <ref name="TypedTitleString"/>
     </element>
@@ -1191,15 +1271,23 @@ NOTE: This should preferably be encoded as  a URI or short identifier, rather th
     </element>
   </define>
   <define name="validity">
+    <a:documentation>The time interval for which a bibliographic item is determined valid, and the associated revision date</a:documentation>
     <element name="validity">
       <optional>
-        <ref name="validityBegins"/>
+        <ref name="validityBegins">
+          <a:documentation>The date and time when this bibliographic item becomes valid</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="validityEnds"/>
+        <ref name="validityEnds">
+          <a:documentation>The date and time when this bibliographic item becomes invalid</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="validityRevision"/>
+        <ref name="validityRevision">
+          <a:documentation>The date and time of issuance of the version of the document
+for which this claim of validity is made, if applicable</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
@@ -1220,9 +1308,18 @@ NOTE: This should preferably be encoded as  a URI or short identifier, rather th
   </define>
   <define name="TypedTitleString">
     <optional>
-      <attribute name="type"/>
+      <attribute name="type">
+        <a:documentation>Type of title given to a bibliographic item. Indicative values include:
+"alternative": alternate title for the item
+"original": The original title of the item. Includes the source language title of a translated item
+"unofficial": A title that has become prevalent but has never been the official or intended title of the item
+"subtitle": Subsidiary title of the item
+"main": The default title of the item, privileged in citation</a:documentation>
+      </attribute>
     </optional>
-    <ref name="LocalizedMarkedUpString"/>
+    <ref name="LocalizedMarkedUpString">
+      <a:documentation>Content of title</a:documentation>
+    </ref>
   </define>
   <!-- TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" ) -->
   <define name="TypedUri">
@@ -1381,17 +1478,31 @@ is for a particular instance of the document, e.g. for a particular format or ed
     </element>
   </define>
   <define name="bplace">
+    <a:documentation>Place associated with the production of a bibliographic item</a:documentation>
     <element name="place">
       <choice>
-        <text/>
+        <text>
+          <a:documentation>Name of the place, not broken down semantically</a:documentation>
+        </text>
         <group>
-          <ref name="bibliocity"/>
+          <ref name="bibliocity">
+            <a:documentation>City</a:documentation>
+          </ref>
           <zeroOrMore>
-            <ref name="biblioregion"/>
+            <ref name="biblioregion">
+              <a:documentation>Region that city is located in, given for disambiguation purposes.</a:documentation>
+            </ref>
           </zeroOrMore>
           <zeroOrMore>
-            <ref name="bibliocountry"/>
+            <ref name="bibliocountry">
+              <a:documentation>Country that city is located in, given for disambiguation purposes.</a:documentation>
+            </ref>
           </zeroOrMore>
+          <optional>
+            <ref name="uri">
+              <a:documentation>URI in a geographical registry identifying the place</a:documentation>
+            </ref>
+          </optional>
         </group>
       </choice>
     </element>
@@ -1412,26 +1523,38 @@ is for a particular instance of the document, e.g. for a particular format or ed
     </element>
   </define>
   <define name="RegionType">
+    <a:documentation>Encoding of region in bibliographic `place`. ISO 3166 encoding is recommended</a:documentation>
     <optional>
-      <attribute name="iso"/>
+      <attribute name="iso">
+        <a:documentation>ISO 3166 encoding</a:documentation>
+      </attribute>
     </optional>
     <optional>
       <attribute name="recommended">
+        <a:documentation>Whether the region should be included in rendering of the place, for disambiguation</a:documentation>
         <data type="boolean"/>
       </attribute>
     </optional>
-    <text/>
+    <optional>
+      <text>
+        <a:documentation>Name of the region</a:documentation>
+      </text>
+    </optional>
   </define>
   <define name="CurrencyType">
     <a:documentation>Code for currencies, taken from ISO 4217</a:documentation>
     <text/>
   </define>
   <define name="bprice">
+    <a:documentation>The price set on accessing the bibliographic item</a:documentation>
     <element name="price">
       <attribute name="currency">
+        <a:documentation>The currency denomination for the price</a:documentation>
         <ref name="CurrencyType"/>
       </attribute>
-      <text/>
+      <text>
+        <a:documentation>The currency amount for the price</a:documentation>
+      </text>
     </element>
   </define>
   <define name="medium">
@@ -1557,48 +1680,80 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </element>
   </define>
   <define name="series">
+    <a:documentation>Series to which a bibliographic item belongs. Series is to be understood broadly,
+and it includes monograph series, journals, newspapers, and report series within
+which the bibliographic item has appeared</a:documentation>
     <element name="series">
       <optional>
         <attribute name="type">
+          <a:documentation>The type of series description expressed in this container</a:documentation>
           <ref name="SeriesType"/>
         </attribute>
       </optional>
       <optional>
-        <ref name="formattedref"/>
+        <ref name="formattedref">
+          <a:documentation>A pre-formatted version of the series description, incorporating
+all needed disambiguating information in human-readable format</a:documentation>
+        </ref>
       </optional>
       <oneOrMore>
-        <ref name="btitle"/>
+        <ref name="btitle">
+          <a:documentation>The title of the series</a:documentation>
+        </ref>
       </oneOrMore>
       <optional>
-        <ref name="bplace"/>
+        <ref name="bplace">
+          <a:documentation>The place where the series is issued; used for disambiguation</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriesorganization"/>
+        <ref name="seriesorganization">
+          <a:documentation>The organization issuing the series; used for disambiguation</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="abbreviation"/>
+        <ref name="abbreviation">
+          <a:documentation>The abbreviation under which the series is known</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriesfrom"/>
+        <ref name="seriesfrom">
+          <a:documentation>The start of the date range when the series has been known under the given title</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriesto"/>
+        <ref name="seriesto">
+          <a:documentation>The end of the date range when the series has been known under the given title</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriesnumber"/>
+        <ref name="seriesnumber">
+          <a:documentation>The number of the bibliographic item within the series</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriespartnumber"/>
+        <ref name="seriespartnumber">
+          <a:documentation>The part-number of the bibliographic item within the series. For example,
+if the series is a journal, the number is the volume number, and the partnumber is the issue number</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="seriesrun"/>
+        <ref name="seriesrun">
+          <a:documentation>An iteration of numbering of the series, if the series has restarted numbering
+(as occurs in some journals); referred to as "series" in the context of journals.
+For example, "n.s." (new series) or "2" indicates
+that the `number` given for the series applies to the second iteration of numbering</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
   <define name="SeriesType">
+    <a:documentation>The type of series description given</a:documentation>
     <choice>
       <value>main</value>
+      <a:documentation>Default type: The current, authoritative series description</a:documentation>
       <value>alt</value>
+      <a:documentation>An alternative, potentially historical series description</a:documentation>
       <text/>
     </choice>
   </define>
@@ -1633,11 +1788,17 @@ or different kinds of measures, e.g. pages + plates</a:documentation>
     </element>
   </define>
   <define name="biblionote">
+    <a:documentation>A note associated with the bibliographic item</a:documentation>
     <element name="note">
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <a:documentation>The class of the note associated with the bibliographic item.
+May be used to differentiate rendering of notes in bibliographies</a:documentation>
+        </attribute>
       </optional>
-      <ref name="LocalizedMarkedUpString"/>
+      <ref name="LocalizedMarkedUpString">
+        <a:documentation>The content of the note</a:documentation>
+      </ref>
     </element>
   </define>
   <define name="bibabstract">
@@ -1802,12 +1963,17 @@ provided that it is not the entire bibliographic item that is so related</a:docu
     </element>
   </define>
   <define name="version">
+    <a:documentation>A version of the bibliographic item (within an edition). Can be used for drafts</a:documentation>
     <element name="version">
       <optional>
-        <ref name="revision-date"/>
+        <ref name="revision-date">
+          <a:documentation>The date at which the current version of the bibliographic item was produced</a:documentation>
+        </ref>
       </optional>
       <optional>
-        <ref name="draft"/>
+        <ref name="draft">
+          <a:documentation>The identifier for the current draft of the bibliographic item</a:documentation>
+        </ref>
       </optional>
     </element>
   </define>
@@ -1864,20 +2030,26 @@ provided that it is not the entire bibliographic item that is so related</a:docu
     </element>
   </define>
   <define name="vocabid">
+    <a:documentation>Item in a controlled vocabulary</a:documentation>
     <element name="vocabid">
-      <attribute name="type"/>
+      <attribute name="type">
+        <a:documentation>A label for the controlled vocabulary</a:documentation>
+      </attribute>
       <optional>
         <attribute name="uri">
+          <a:documentation>A URI for the controlled vocabulary item</a:documentation>
           <data type="anyURI"/>
         </attribute>
       </optional>
       <optional>
         <element name="code">
+          <a:documentation>The code or identifier for the controlled vocabulary item</a:documentation>
           <text/>
         </element>
       </optional>
       <optional>
         <element name="term">
+          <a:documentation>The term itself for the controlled vocabulary item</a:documentation>
           <text/>
         </element>
       </optional>
