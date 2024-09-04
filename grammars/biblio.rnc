@@ -158,12 +158,18 @@ ContributorInfo =
 roledescription =
   element description { LocalizedMarkedUpString }
 
+## Person associated with a bibliographic item
 person =
   element person {
+    ## The name of the person
     fullname?,
+    ## Credentials given for the person postnominally, e.g. "PhD"
     credential*,
+    ## The affiliation of the person within an organization
     affiliation*,
+    ## An identifier of the person according to an international identifier scheme
     person-identifier*,
+    ## Contact information for the person, including URI, address, phone number, and email
     contact*
 }
 
@@ -218,8 +224,12 @@ forename = element forename {
 }
 completeName = element completename { LocalizedString }
 
+## A variant name of a person
 variantname = element variant {
+  ## The type of variant name for the person. Examples include pseudonyms; user names (online);
+  ## real names (if the person is named with a pseudonym or user name); previous legal names
   attribute type { text },
+  ## The variant name itself
   FullNameType
 }
 
@@ -238,13 +248,32 @@ affiliationname = element name { LocalizedString }
 
 affiliationdescription = element description {  LocalizedMarkedUpString }
 
+## Organization associated with a bibliographic item
 organization = element organization { OrganizationType}
+
 OrganizationType =
-    orgname+, subdivision*, abbreviation?, uri*, org-identifier*, contact*, logo?
+    ## The name of the organization
+    orgname+,
+    ## The subdivision of the organization directly involved with the production of the bibliographic item
+    subdivision*,
+    ## Abbreviation under which the organization is known
+    abbreviation?,
+    ## A URI with information about the organization
+    uri*,
+    ## An identifier of the organization according to an international identifier scheme
+    org-identifier*,
+    ## Contact information for the organization, including address, phone number, and email
+    contact*,
+    ## A logo for the organization
+    logo?
 
 orgname = element name { LocalizedString | NameWithVariants }
+
+## Subdivision of organization associated with a bibliographic item
 subdivision = element subdivision { 
+   ## The type of subdivision
    attribute type { text }?,
+   ## The subdivision, modelled recursively as an organization
    OrganizationType 
 }
 logo = element logo { image-no-id }
@@ -258,7 +287,9 @@ depiction = element depiction {
 }
 
 NameWithVariants =
+  ## Primary name of the organization
   element primary { LocalizedString },
+  ## A variant name of the organization
   element variant { NameWithVariants1 }*
 
 NameWithVariants1 =
@@ -269,10 +300,13 @@ NameWithVariants1 =
 abbreviation =
   element abbreviation { LocalizedString }
 
-## URI
+## URI associated with a type
 uri =
   element uri {
+    ## The types of URI are open-ended, but include the IANA link relations specified in RFC 8288
     attribute type { text }?,
+    LocalizedStringAttrs,
+    ## URI content
     xsd:anyURI
   }
 
@@ -281,9 +315,13 @@ uri =
 contact =
   ( address | phone | email | uri )
 
+## The phone number associated with a person or organization
 phone = element phone {
+  ## The type of phone number; can include "Fax" and "Mobile"
   attribute type { text }?,
-  text }
+  ## The phone number itself
+  text
+}
 
 ## Email address
 email = element email { text }
@@ -315,15 +353,23 @@ country = element country { text }
 postcode = element postcode { text }
 formattedAddress = element formattedAddress { text }
 
+## An identifier of a person according to an international identifier scheme
 person-identifier =
   element identifier {
-    attribute type { ("isni" | "orcid" | "uri") },
+    ## The international identifier scheme for the identifier of the person.
+    ## Examples include "isni", "orcid", "uri"
+    attribute type { text },
+    ## The identifier value
     text
   }
 
+## An identifier of an organization according to an international identifier scheme
 org-identifier =
   element identifier {
-    attribute type { string },
+    ## The international identifier scheme for the identifier of the organization.
+    ## Examples include GRID, LEI, CrossRef, and Ringgold
+    attribute type { text },
+    ## The identifier value
     text
   }
 
@@ -390,6 +436,15 @@ BibItemLocality =
     ## The end value of the extent as a range, if applicable
     referenceTo?
 
+## Type of indicator of a location or extent within a bibliographic item.
+## When the value `whole` or `title` is used, the corresponding `BibItemLocality`
+## attribute `identifier` should be empty
+## `whole` refers to the entire document.
+## `list` is used for ordered lists in standards documents
+## `time` is used for timestamps in audio and visual media
+## `anchor` is used for locations within web pages
+## `line` is a line number, dependent on printed form of document
+## `locality:...` is an extension point: it allows a free-form text string that is human-readable
 LocalityType = xsd:string { pattern = "section|clause|part|paragraph|chapter|page|title|line|whole|table|annex|figure|note|list|example|volume|issue|time|anchor|locality:[a-zA-Z0-9_]+" }
 
 referenceFrom = element referenceFrom { text }
@@ -407,10 +462,22 @@ bibitem_no_id =
      BibliographicItem
 }
 
+## Used to present a group of bibliographic items as a single group;
+## e.g. when summarising the collection of standards created by a standards body.
+## A collection may be used for bibliographic exchange but is typically not necesary for citation purposes
 relaton_collection =
   element relaton-collection {
+    ## The type of grouping of bibliographic items
     attribute type { text }?,
-    btitle, contributor*,
+    ## The title given to the grouping of bibliographic items
+    btitle,
+    ## Contributors to the production of the bibliographic items as a grouping,
+    ## with corporate responsibility for all the items in the group 
+    ## (e.g. as compilers of a collection or corporate authors)
+    contributor*,
+    ## The individual items which constitute the group, expressed as relations to the
+    ## document group. The `type` attribute of each relation is expected to be either `includes` or `hasPart`, 
+    ## depending on whether the items exist as independent documents, or are parts of a multi-part document
     docrelation*
 }
 
@@ -582,6 +649,8 @@ BibliographicItem =
     ## Depiction of the bibliographic item, typically an image
     depiction?
 
+## Reduced description of a bibliographic resource, without mandatory title and docidentifier, used for document relations
+## Refer to `BibliographicItem` for definitions
 ReducedBibliographicItem =
     attribute type { BibItemType }?,
     attribute schema-version { text }?,
@@ -616,15 +685,24 @@ ReducedBibliographicItem =
     validity?,
     depiction?
 
+## A title of a bibliographic item, associated with a type of title
 btitle = element title { TypedTitleString }
+
 bsource = element uri { TypedUri }
 formattedref = element formattedref { TextElement+ }
 license = element license { text }
 
 fetched = element fetched { ISO8601DateTime }
 
+## The time interval for which a bibliographic item is determined valid, and the associated revision date
 validity = element validity {
-  validityBegins?, validityEnds?, validityRevision?
+  ## The date and time when this bibliographic item becomes valid
+  validityBegins?,
+  ## The date and time when this bibliographic item becomes invalid
+  validityEnds?,
+  ## The date and time of issuance of the version of the document
+  ## for which this claim of validity is made, if applicable
+  validityRevision?
 }
 validityBegins = element validityBegins { ISO8601DateTime }
 validityEnds = element validityEnds { ISO8601DateTime }
@@ -632,7 +710,14 @@ validityRevision = element revision { ISO8601DateTime }
 
 
 TypedTitleString =
+  ## Type of title given to a bibliographic item. Indicative values include:
+  ## "alternative": alternate title for the item
+  ## "original": The original title of the item. Includes the source language title of a translated item
+  ## "unofficial": A title that has become prevalent but has never been the official or intended title of the item
+  ## "subtitle": Subsidiary title of the item
+  ## "main": The default title of the item, privileged in citation
   attribute type { text }?,
+  ## Content of title
   LocalizedMarkedUpString
 
 # TitleType = ( "alternative" | "original" | "unofficial" | "subtitle" | "main" )
@@ -737,8 +822,20 @@ bclassification = element classification {
   text
 }
 
+## Place associated with the production of a bibliographic item
 bplace = element place {
-  text | ( bibliocity, biblioregion*, bibliocountry*)
+  ## Name of the place, not broken down semantically
+  text |
+  (
+    ## City
+    bibliocity,
+    ## Region that city is located in, given for disambiguation purposes.
+    biblioregion*,
+    ## Country that city is located in, given for disambiguation purposes.
+    bibliocountry*,
+    ## URI in a geographical registry identifying the place
+    uri?
+  )
 }
 
 bibliocity = element city { text }
@@ -746,16 +843,23 @@ bibliocity = element city { text }
 biblioregion = element region { RegionType }
 bibliocountry = element country { RegionType }
 
+## Encoding of region in bibliographic `place`. ISO 3166 encoding is recommended
 RegionType =
+  ## ISO 3166 encoding
   attribute iso { text }?,
+  ## Whether the region should be included in rendering of the place, for disambiguation
   attribute recommended { xsd:boolean }?,
-  text
+  ## Name of the region
+  text?
 
 ## Code for currencies, taken from ISO 4217
 CurrencyType = text
 
+## The price set on accessing the bibliographic item
 bprice = element price {
+   ## The currency denomination for the price
    attribute currency { CurrencyType },
+   ## The currency amount for the price
    text
 }
 
@@ -819,16 +923,46 @@ extent = element extent  {
   locality* | localityStack*
 }
 
+## Series to which a bibliographic item belongs. Series is to be understood broadly,
+## and it includes monograph series, journals, newspapers, and report series within
+## which the bibliographic item has appeared
 series = element series {
+  ## The type of series description expressed in this container
   attribute type { SeriesType }?,
+  ## A pre-formatted version of the series description, incorporating
+  ## all needed disambiguating information in human-readable format
   formattedref?,
-  btitle+, bplace?, seriesorganization?,
+  ## The title of the series
+  btitle+,
+  ## The place where the series is issued; used for disambiguation
+  bplace?,
+  ## The organization issuing the series; used for disambiguation
+  seriesorganization?,
+  ## The abbreviation under which the series is known
   abbreviation?,
-  seriesfrom?, seriesto?,
-  seriesnumber?, seriespartnumber?, seriesrun?
+  ## The start of the date range when the series has been known under the given title
+  seriesfrom?,
+  ## The end of the date range when the series has been known under the given title
+  seriesto?,
+  ## The number of the bibliographic item within the series
+  seriesnumber?,
+  ## The part-number of the bibliographic item within the series. For example,
+  ## if the series is a journal, the number is the volume number, and the partnumber is the issue number
+  seriespartnumber?,
+  ## An iteration of numbering of the series, if the series has restarted numbering
+  ## (as occurs in some journals); referred to as "series" in the context of journals.
+  ## For example, "n.s." (new series) or "2" indicates
+  ## that the `number` given for the series applies to the second iteration of numbering
+  seriesrun?
 }
 
-SeriesType = ( "main" | "alt" | text )
+## The type of series description given
+SeriesType =
+  ## Default type: The current, authoritative series description
+  "main" |
+  ## An alternative, potentially historical series description
+  "alt" |
+  text 
 
 seriesorganization = element organization { text }
 seriesfrom = element from { ISO8601Date }
@@ -837,8 +971,12 @@ seriesnumber = element number { text }
 seriespartnumber = element partnumber { text }
 seriesrun = element run { text }
 
+## A note associated with the bibliographic item
 biblionote = element note {
+  ## The class of the note associated with the bibliographic item.
+  ## May be used to differentiate rendering of notes in bibliographies
   attribute type { text }?,
+  ## The content of the note
   LocalizedMarkedUpString
 }
 
@@ -949,9 +1087,13 @@ docrelation =
     (sourceLocality* | sourceLocalityStack*)
 }
 
+## A version of the bibliographic item (within an edition). Can be used for drafts
 version =
   element version {
-    revision-date?, draft?
+    ## The date at which the current version of the bibliographic item was produced
+    revision-date?,
+    ## The identifier for the current draft of the bibliographic item
+    draft?
 }
 
 vedition = element edition { xsd:int }
@@ -979,10 +1121,15 @@ bkeyword = element keyword {
     )
 }
 
+## Item in a controlled vocabulary
 vocabid = element vocabid {
+    ## A label for the controlled vocabulary
     attribute type { text },
+    ## A URI for the controlled vocabulary item
     attribute uri { xsd:anyURI }?,
+    ## The code or identifier for the controlled vocabulary item
     element code { text }?,
+    ## The term itself for the controlled vocabulary item
     element term { text }?
 }
 

@@ -2,7 +2,7 @@ class PersonIdentifier {
   definition {
     An identifier of a person according to an international identifier scheme.
   }
-  +type: PersonalIdentifierType {
+  +type: String {
     definition {
       The international identifier scheme for the identifier of the person.
     }
