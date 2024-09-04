@@ -6,8 +6,10 @@
 
 include "biblio.rnc" { 
 
+## The bibliographic description of a standardisation document
 BibData =
   StandardBibliographicItem,
+  ## The extension point of the bibliographic description of a standardisation document
   ext?
 
 docrelation =
@@ -21,19 +23,32 @@ docrelation =
 
 }
 
+## The extension point of the bibliographic description of a standardisation document
 ext =
   element ext { BibDataExtensionType }
 
 BibDataExtensionType =
+  ## The version of the flavour-specific schema that this extension point conforms to
   attribute schema-version { text }?,
+  ## Classification of the standardisation document that is treated as a distinct series by the
+  ## standards defining organization, and that is rendered in a distinct manner
   doctype,
+  ## Subclass of the standardisation document, that is treated or processed differently
+  ## from other documents in the same doctype
   docsubtype?,
+  ## Groups associated with the production of the standards document, typically within
+  ## a standards definition organization
   editorialgroup?,
+  ## Classification of the document contents taken from the International Classification of Standards
   ics*,
+  ## Representation of the identifier for the standardisation document, giving its individual semantic components
   structuredidentifier*
 
+## Classification of the standardisation document
 doctype = element doctype {
+    ## Standard abbreviation for the doctype value used by the standards defining organization
     attribute abbreviation { text }?,
+    ## Name of the doctype
     DocumentType
 }
 
@@ -43,45 +58,78 @@ docsubtype = element subdoctype { DocumentSubtype }
 
 DocumentSubtype = text
 
+## A group associated with the production of the standards document, typically within
+## a standards definition organization
 editorialgroup = element editorialgroup {
+  ## A technical committee associated with the production of the standards document
   technical-committee+
 }
 
+## Technical committee associated with the production of a standards document
 technical-committee =
   element technical-committee { IsoWorkgroup }
 
 IsoWorkgroup =
+    ## Numeric identifier of the technical committee
     attribute number { text }?,
+    ## Type of the technical committee, used in identifying the technical committee
     attribute type { text }?,
+    ## Non-numeric, complete identifier of the technical committee
     attribute identifier { text }?,
+    ## Disambiguating prefix added to number to form the identifier of the technical committee,
+    ## typically indicating its type
     attribute prefix { text }?,
+    ## Name of the technical committee
     text
 
+## Classification taken from the International Classification of Standards. 
+## ICS is defined by ISO here -- https://www.iso.org/publication/PUB100033.html
 ics = element ics { 
+  ## Classification code taken from the ICS
   element code { text },
+  ## Text string associated with the classification code
   element text { text }?
 } 
 
+## Representation of the identifier for a standardisation document, giving its individual semantic components
 structuredidentifier = element structuredidentifier {
+  ## Representation in the identifier of the type of standard document, corresponds to bibitem/ext/doctype
   attribute type { text }?,
+  ## Representation in the identifier of the agency responsible for the standard document
   element agency { text }+,
+  ## Representation in the identifier of the class of standard document (as a subclass of the document type),
+  ## corresponds to bibitem/item/docsubtype
   element class { text }?,
+  ## Representation in the identifier of the (typically numeric) component uniquely identifying the document
+  ## or standard. If a document includes parts or supplements, the docnumber identifies the document as whole,
+  ## and not those document components
   element docnumber { text },
+  ## Representation in the identifier of the document part, if this is a document part. May be compound
   element partnumber { text }?,
+  ## Representation in the identifier of the document edition, if this is a published document
   element edition { text }?,
+  ## Representation in the identifier of the document version, which can include document drafts
   element version { text }?,
+  ## Representation in the identifier of the type of document supplement, if this is a document supplement
   element supplementtype { text }?,
+  ## Representation in the identifier of the document supplement, if this is a document supplement
   element supplementnumber { text }?,
+  ## Representation in the identifier of the document amendment, if this is a document amendment
   element amendment { text }?,
+  ## Representation in the identifier of the document corrigendum, if this is a document corrigendum
   element corrigendum { text }?,
+  ## Representation in the identifier of the language of the document
   element language { text }?,
+  ## Representation in the identifier of the year of publication or issuance of the document
   element year { text }?
 }
 
 StandardBibliographicItem =
   BibliographicItem,
+  ## Description of changes specific to this document
   amend*
 
 StandardReducedBibliographicItem =
   ReducedBibliographicItem,
+  ## Description of changes specific to this document
   amend*
