@@ -357,7 +357,7 @@ state = element state { text }
 country = element country { text }
 postcode = element postcode { text }
 
-formattedAddress = element formattedAddress { (text | linebreak)+ }
+formattedAddress = element formattedAddress { (text | br)+ }
 
 ## An identifier of a person according to an international identifier scheme
 person-identifier =

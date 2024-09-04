@@ -664,7 +664,7 @@ real names (if the person is named with a pseudonym or user name); previous lega
       <oneOrMore>
         <choice>
           <text/>
-          <ref name="linebreak"/>
+          <ref name="br"/>
         </choice>
       </oneOrMore>
     </element>
