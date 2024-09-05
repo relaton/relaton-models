@@ -73,13 +73,13 @@ edition = element edition {
 }
 
 ## multiple values are comma-delimited
-LocalizedStringAttrs = 
+LocalizedStringAttributes = 
   attribute language { LanguageType }?,
   attribute locale { LocaleType }?,
   attribute script { ScriptType }?
 
 LocalizedString1 =
-  LocalizedStringAttrs,
+  LocalizedStringAttributes,
   text
 
 ## FormattedString which optionally specifies its language, locale, and/or script
@@ -89,7 +89,7 @@ LocalizedString =
   element variant { LocalizedString1 }+
 
 LocalizedMarkedUpString1 =
-  LocalizedStringAttrs,
+  LocalizedStringAttributes,
   TextElement+
 
 LocalizedMarkedUpString =
@@ -112,7 +112,7 @@ FormattedString =
   LocalizedStringOrXsAny
 
 LocalizedStringOrXsAny1 =
-  LocalizedStringAttrs,
+  LocalizedStringAttributes,
   ( text | AnyElement )+
 
 LocalizedStringOrXsAny =
@@ -310,7 +310,7 @@ uri =
   element uri {
     ## The types of URI are open-ended, but include the IANA link relations specified in RFC 8288
     attribute type { text }?,
-    LocalizedStringAttrs,
+    LocalizedStringAttributes,
     ## URI content
     xsd:anyURI
   }
@@ -737,7 +737,7 @@ TypedTitleString =
 TypedUri =
   ## Type of URI
   attribute type { text }?,
-  LocalizedStringAttrs,
+  LocalizedStringAttributes,
   xsd:anyURI
 
 ## Type which allows date and time to be specified as either a Gregorian
@@ -993,7 +993,7 @@ biblionote = element note {
 
 ## Abstract of bibliographic item
 bibabstract = element abstract { 
-  LocalizedStringAttrs,
+  LocalizedStringAttributes,
   (
     ## Multiple blocks of content
     BasicBlockNoId+ |
