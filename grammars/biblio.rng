@@ -116,7 +116,7 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
       </text>
     </element>
   </define>
-  <define name="LocalizedStringAttrs">
+  <define name="LocalizedStringAttributes">
     <a:documentation>multiple values are comma-delimited</a:documentation>
     <optional>
       <attribute name="language">
@@ -135,7 +135,7 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
     </optional>
   </define>
   <define name="LocalizedString1">
-    <ref name="LocalizedStringAttrs"/>
+    <ref name="LocalizedStringAttributes"/>
     <text/>
   </define>
   <define name="LocalizedString">
@@ -151,7 +151,7 @@ NOTE: The number attribute can be used to represent the numeric equivalent of th
     </choice>
   </define>
   <define name="LocalizedMarkedUpString1">
-    <ref name="LocalizedStringAttrs"/>
+    <ref name="LocalizedStringAttributes"/>
     <oneOrMore>
       <ref name="TextElement"/>
     </oneOrMore>
@@ -195,7 +195,7 @@ NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types</a:
     </ref>
   </define>
   <define name="LocalizedStringOrXsAny1">
-    <ref name="LocalizedStringAttrs"/>
+    <ref name="LocalizedStringAttributes"/>
     <oneOrMore>
       <choice>
         <text/>
@@ -565,7 +565,7 @@ real names (if the person is named with a pseudonym or user name); previous lega
           <a:documentation>The types of URI are open-ended, but include the IANA link relations specified in RFC 8288</a:documentation>
         </attribute>
       </optional>
-      <ref name="LocalizedStringAttrs"/>
+      <ref name="LocalizedStringAttributes"/>
       <data type="anyURI">
         <a:documentation>URI content</a:documentation>
       </data>
@@ -1337,7 +1337,7 @@ for which this claim of validity is made, if applicable</a:documentation>
         <a:documentation>Type of URI</a:documentation>
       </attribute>
     </optional>
-    <ref name="LocalizedStringAttrs"/>
+    <ref name="LocalizedStringAttributes"/>
     <data type="anyURI"/>
   </define>
   <define name="DateType">
@@ -1807,7 +1807,7 @@ May be used to differentiate rendering of notes in bibliographies</a:documentati
   <define name="bibabstract">
     <a:documentation>Abstract of bibliographic item</a:documentation>
     <element name="abstract">
-      <ref name="LocalizedStringAttrs"/>
+      <ref name="LocalizedStringAttributes"/>
       <choice>
         <oneOrMore>
           <ref name="BasicBlockNoId">

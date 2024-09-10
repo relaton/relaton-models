@@ -261,8 +261,6 @@ OrganizationType =
     subdivision*,
     ## Abbreviation under which the organization is known
     abbreviation?,
-    ## A URI with information about the organization
-    uri*,
     ## An identifier of the organization according to an international identifier scheme
     org-identifier*,
     ## Contact information for the organization, including address, phone number, and email
