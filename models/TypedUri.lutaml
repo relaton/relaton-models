@@ -18,6 +18,11 @@ class TypedUri{
       Script of string.
     }
   }
+  +locale: Iso3166Code[0..*] {
+    definition {
+      Locale of string.
+    }
+  }
   +content: Uri {
     definition {
       URI.

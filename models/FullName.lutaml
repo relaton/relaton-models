@@ -23,7 +23,8 @@ class FullName{
   +abbreviation: LocalizedString[0..1] {
     definition {
       The initials of the person, used as an abbreviation for the person, and including the
-      surname. Can be used instead of the complete name.
+      surname. Can be used instead of the complete name. Distinct from formatted-initials,
+      which are the initials only of the forenames of the person.
     }
   }
   +surname: LocalizedString {
@@ -41,7 +42,7 @@ class FullName{
       A preformatted version of the name of the person, not broken down into its component parts.
     }
   }
-  +note: LocalizedString[0..1] {
+  +note: LocalizedString[0..*] {
     definition {
       An additional note about the name of the person.
     }

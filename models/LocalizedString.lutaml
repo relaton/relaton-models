@@ -1,6 +1,6 @@
 class LocalizedString{
   definition {
-     Stringwhich optionally specifies its language and/or script.
+     FormattedString which optionally specifies its language, locale, and/or script.
   }
   +language: Iso639Code[0..*] {
     definition {

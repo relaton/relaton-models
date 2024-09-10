@@ -13,7 +13,7 @@ class Forename{
       Does not include final punctuation, but can include hyphens.
       Can be used instead of forenames,
       if formatted-initials are not provided (in which case each initial will be punctuated
-      following local practice.).
+      following local practice).
     }
   }
 }

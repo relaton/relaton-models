@@ -12,7 +12,7 @@ class KeywordType {
   }
   +vocab: LocalizedString[0..1] {
     definition {
-      The keyword as an controlled vocabulary term.
+      The keyword as a controlled vocabulary term.
     }
   }
   +taxon: String[0..*] {

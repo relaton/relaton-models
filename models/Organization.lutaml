@@ -22,11 +22,6 @@ class Organization{
       Abbreviation under which the organization is known.
     }
   }
-  +uri: TypedUri[0..*] {
-    definition {
-      A URI with information about the organization.
-    }
-  }
   +identifier: OrgIdentifier[0..*] {
     definition {
       An identifier of the organization according to an international identifier scheme.

@@ -24,7 +24,7 @@ class Address {
       The region of the country in the address.
     }
   }
-  +country: String[0..1] {
+  +country: String {
     definition {
       The country in the address.
     }

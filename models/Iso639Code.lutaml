@@ -1,7 +1,6 @@
 data_type Iso639Code {
   definition { 
     Code for language or language family, as specified in <<iso639>>.
-    The specification is open as to whether the two-letter code or the three-letter
-    code for languages is used.
+    The two-letter code for languages is used where available.
   }
 }
