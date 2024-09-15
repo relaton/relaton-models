@@ -652,10 +652,12 @@ Examples include "isni", "orcid", "uri"</a:documentation>
   <define name="org-identifier">
     <a:documentation>An identifier of an organization according to an international identifier scheme</a:documentation>
     <element name="identifier">
-      <attribute name="type">
-        <a:documentation>The international identifier scheme for the identifier of the organization.
+      <optional>
+        <attribute name="type">
+          <a:documentation>The international identifier scheme for the identifier of the organization.
 Examples include GRID, LEI, CrossRef, and Ringgold</a:documentation>
-      </attribute>
+        </attribute>
+      </optional>
       <text>
         <a:documentation>The identifier value</a:documentation>
       </text>
@@ -1291,6 +1293,11 @@ for which this claim of validity is made, if applicable</a:documentation>
 "unofficial": A title that has become prevalent but has never been the official or intended title of the item
 "subtitle": Subsidiary title of the item
 "main": The default title of the item, privileged in citation</a:documentation>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="format">
+        <a:documentation>(legacy attribute) format; can have value text/plain</a:documentation>
       </attribute>
     </optional>
     <ref name="LocalizedMarkedUpString">

@@ -373,7 +373,7 @@ org-identifier =
   element identifier {
     ## The international identifier scheme for the identifier of the organization.
     ## Examples include GRID, LEI, CrossRef, and Ringgold
-    attribute type { text },
+    attribute type { text }?,
     ## The identifier value
     text
 }
@@ -727,6 +727,8 @@ TypedTitleString =
   ## "subtitle": Subsidiary title of the item
   ## "main": The default title of the item, privileged in citation
   attribute type { text }?,
+  ## (legacy attribute) format; can have value text/plain
+  attribute format { text }?,
   ## Content of title
   LocalizedMarkedUpString
 
