@@ -73,52 +73,56 @@ edition = element edition {
 }
 
 ## multiple values are comma-delimited
-LocalizedStringAttributes = 
+LocalizedStringAttributes =
   attribute language { LanguageType }?,
   attribute locale { LocaleType }?,
   attribute script { ScriptType }?
 
-LocalizedString1 =
+LocalizedString =
   LocalizedStringAttributes,
   text
 
-## FormattedString which optionally specifies its language, locale, and/or script
-LocalizedString =
-  LocalizedString1 |
-  ## Variants of the string, with the same content, but in different language, script, or format
-  element variant { LocalizedString1 }+
-
-LocalizedMarkedUpString1 =
-  LocalizedStringAttributes,
-  TextElement+
+#LocalizedString =
+#  LocalizedStringAttributes,
+#  text
+#
+#LocalizedString =
+#  LocalizedString1 |
+#  element variant { LocalizedString1 }+
 
 LocalizedMarkedUpString =
-  LocalizedMarkedUpString1 |
-  ## Variants of the string, with the same content, but in different language, script, or format
-  element variant { LocalizedMarkedUpString1 }+
+  LocalizedStringAttributes,
+  PureTextElement+
+
+#LocalizedMarkedUpString =
+  #LocalizedMarkedUpString1 |
+  # Variants of the string, with the same content, but in different language, script, or format
+  #element variant { LocalizedMarkedUpString1 }+
 
 # Unlike UML, change type to format: type is overloaded
 # Would be need if plain were default value and could omit the attribute
 # Added LocalizedStringOrXsAny
-## String which is formatted according to conventions specified in a named MIME type 
-FormattedString =
-  ## MIME type for string (defailts to text/plain). 
-  ## NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types
-  attribute format { 
-    "text/plain" | "text/html" | "application/docbook+xml" |
-    "application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text 
-  }?,
-  ## String
-  LocalizedStringOrXsAny
 
-LocalizedStringOrXsAny1 =
+#LocalizedStringOrXsAny1 =
+
+LocalizedStringOrXsAny =
   LocalizedStringAttributes,
   ( text | AnyElement )+
 
-LocalizedStringOrXsAny =
-  LocalizedStringOrXsAny1 |
-  ## Variants of the string, with the same content, but in different language, script, or format
-  element variant { LocalizedStringOrXsAny1 }+
+#LocalizedStringOrXsAny =
+#  LocalizedStringOrXsAny1 |
+#  element variant { LocalizedStringOrXsAny1 }+
+
+## String which is formatted according to conventions specified in a named MIME type 
+#FormattedString =
+  ## MIME type for string (defailts to text/plain). 
+  ## NOTE: `docbook`, `AsciiDoc`, `Metanorma` are not registered IANA Media Types
+  #attribute format { 
+    #"text/plain" | "text/html" | "application/docbook+xml" |
+    #"application/tei+xml" | "text/x-asciidoc" | "text/markdown" | "application/x-metanorma+xml" | text 
+  #}?,
+  ### String
+  #LocalizedStringOrXsAny
 
 ## Description of a contributor to the production of the bibliographic item
 contributor =
@@ -185,7 +189,6 @@ FullNameType =
     ## which are the initials only of the forenames of the person
     name_abbreviation?,
     (
-      (
         ## A prefixed addition to the name of the person, such as "Dr"
         prefix*,
         ## A forename or given name of the person. Includes middle names
@@ -196,12 +199,11 @@ FullNameType =
         ## or "J-P.". Can be used instead of forenames
         formatted-initials?,
         ## The surname, family name, or equivalent of the person
-        surname,
+        surname?,
         ## A suffixed addition to the name of the person, such as "Jr"
-        addition*
-      ) |
-     ## A preformatted version of the name of the person, not broken down into its component parts
-     completeName
+        addition*,
+        ## A preformatted version of the name of the person, not broken down into its component parts
+        completeName?
     ),
     ## An additional note about the name of the person
     biblionote*,
@@ -249,10 +251,10 @@ affiliation =
 
 affiliationname = element name { LocalizedString }
 
-affiliationdescription = element description {  LocalizedMarkedUpString }
+affiliationdescription = element description { LocalizedMarkedUpString }
 
 ## Organization associated with a bibliographic item
-organization = element organization { OrganizationType}
+organization = element organization { OrganizationType }
 
 OrganizationType =
     ## The name of the organization
@@ -268,7 +270,11 @@ OrganizationType =
     ## A logo for the organization
     logo?
 
-orgname = element name { LocalizedString | NameWithVariants }
+orgname = element name {
+   ## Type of organisation name, to differentiate variant names
+   attribute type { text }?,
+   LocalizedString
+}
 
 ## Subdivision of organization associated with a bibliographic item
 subdivision = element subdivision { 
@@ -288,17 +294,14 @@ depiction = element depiction {
   image-no-id*
 }
 
-NameWithVariants =
-  ## Primary name of the organization
-  element primary { LocalizedString },
-  ## A variant name of the organization
-  element variant { NameWithVariants1 }*
-
-NameWithVariants1 =
-  ## Type of variant name of organisation
-  attribute type { text },
-  ## Value of variant name
-  LocalizedString
+#NameWithVariants =
+  #element primary { LocalizedString },
+  #element variant { NameWithVariants1 }*
+#
+#NameWithVariants1 =
+  #attribute type { text },
+  #element primary { LocalizedString },
+  #element variant { NameWithVariants1 }*
 
 abbreviation =
   element abbreviation { LocalizedString }
@@ -332,21 +335,19 @@ email = element email { text }
 ## An address for a person or organization
 address =
   element address {
-    # iso191606 TODO
-    (
+      # iso191606 TODO
       ## The street and street number or equivalent in the address, as one or more lines of text
       street*,
       ## The settlement or municipality in the address
-      city,
+      city?,
       ## The region of the country in the address
       state?,
       ## The country in the address
-      country,
+      country?,
       ## The postal code or equivalent in the address
-      postcode?
-    ) |
-    ## Preformatted version of the address, not decomposed into its component parts
-    formattedAddress
+      postcode?,
+      ## Preformatted version of the address, not decomposed into its component parts
+      formattedAddress?
 }
 
 street = element street { text }
@@ -365,17 +366,17 @@ person-identifier =
     attribute type { text },
     ## The identifier value
     text
-  }
+}
 
 ## An identifier of an organization according to an international identifier scheme
 org-identifier =
   element identifier {
     ## The international identifier scheme for the identifier of the organization.
     ## Examples include GRID, LEI, CrossRef, and Ringgold
-    attribute type { text },
+    attribute type { text }?,
     ## The identifier value
     text
-  }
+}
 
 ## Representation of a citation of a bibliographic item, typically within a document
 citation =
@@ -726,6 +727,8 @@ TypedTitleString =
   ## "subtitle": Subsidiary title of the item
   ## "main": The default title of the item, privileged in citation
   attribute type { text }?,
+  ## (legacy attribute) format; can have value text/plain
+  attribute format { text }?,
   ## Content of title
   LocalizedMarkedUpString
 
@@ -832,22 +835,20 @@ bclassification = element classification { DocIdentifierType }
 
 ## Place associated with the production of a bibliographic item
 bplace = element place {
-  ## Name of the place, not broken down semantically
-  text |
-  (
     ## City
-    bibliocity,
+    bibliocity?,
     ## Region that city is located in, given for disambiguation purposes.
     biblioregion*,
     ## Country that city is located in, given for disambiguation purposes.
     bibliocountry*,
+    ## Name of the place, not broken down semantically
+    formattedPlace?,
     ## URI in a geographical registry identifying the place
     uri?
-  )
 }
 
 bibliocity = element city { text }
-
+formattedPlace = element formattedPlace { text }
 biblioregion = element region { RegionType }
 bibliocountry = element country { RegionType }
 
@@ -920,7 +921,8 @@ accesslocation = element accesslocation { text }
 ## A sequence of sizes can be used to indicate different numberings, e.g. xii + 40 pp.,
 ## or different kinds of measures, e.g. pages + plates
 sizevalue = element value {
-  ## The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), data (including unit), value (free-form string)
+  ## The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), 
+  ## data (including unit), value (free-form string)
   attribute type { text },
   ## The quantity of the size
   text?
@@ -1116,25 +1118,27 @@ vedition = element edition { xsd:int }
 revision-date = element revision-date { ISO8601Date }
 draft = element draft { text }
 
+#bkeyword = element keyword {
+    #LocalizedString |
+    #(
+       #element vocab { LocalizedString },
+       #vocabid+
+    #) |
+    #(
+       #element taxon { LocalizedString }+,
+       #vocabid+
+    #)
+#}
+
 ## Keyword for a bibliographic item
 bkeyword = element keyword {
-    ## Representation of keyword as a string in an uncontrolled vocabulary
-    LocalizedString |
-    ## Representation of keyword as a string in a controlled vocabulary
-    (
-       ## The keyword as a controlled vocabulary item
-       element vocab { LocalizedString },
-       ## Identifiers for the keyword as a controlled vocabulary
-       vocabid+
-    ) |
-    ## Reprsentation of keyword as a hierarchical sequence of strings with associated identifiers (taxonomy)
-    (
-       ## The keyword as a taxonomy. For example, the sequence of `taxon` elements
-       ## `pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic classification
-       element taxon { LocalizedString }+,
-       ## Identifiers for the keyword in a taxonomy
-       vocabid+
-    )
+   ## The keyword as a single, controlled or uncontrolled vocabulary item
+   element vocab { LocalizedString }?,
+   ## The keywords as a hierarchical taxonomy. For example, the sequence of `taxon` elements
+   ## `pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic classification
+   element taxon { LocalizedString }+,
+   ## Identifiers for the keyword as a controlled vocabulary
+   vocabid*
 }
 
 ## Item in a controlled vocabulary
