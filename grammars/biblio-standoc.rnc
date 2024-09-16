@@ -16,7 +16,7 @@ BibData =
 docrelation =
   element relation {
     attribute type { DocRelationType },
-    element description { FormattedString }?,
+    element description { LocalizedMarkedUpString }?,
     element bibitem { StandardReducedBibliographicItem },
     (locality* | localityStack*),
     (sourceLocality* | sourceLocalityStack*)
