@@ -10,19 +10,7 @@ diagram RelBib_DataTypes {
   include ../models/DateTime.lutaml
   include ../models/TypedUri.lutaml
   include ../models/LocalizedString.lutaml
-  include ../models/FormattedString.lutaml
-  include ../models/StringFormat.lutaml
 
-  association {
-    owner LocalizedString
-    member FormattedString
-    owner_type inheritance
-  }
-  association {
-    owner FormattedString
-    member StringFormat
-    owner_type inheritance
-  }
   association {
     owner Uri
     member TypedUri
