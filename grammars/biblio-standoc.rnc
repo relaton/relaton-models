@@ -37,6 +37,8 @@ BibDataExtensionType =
   ## Subclass of the standardisation document, that is treated or processed differently
   ## from other documents in the same doctype
   docsubtype?,
+  ## Flavour of Metanorma used to process this document
+  flavour,
   ## Groups associated with the production of the standards document, typically within
   ## a standards definition organization
   editorialgroup?,
@@ -58,6 +60,12 @@ DocumentType = text
 docsubtype = element subdoctype { DocumentSubtype }
 
 DocumentSubtype = text
+
+flavour = element flavour { MetanormaFlavor }
+
+## This is in fact an enum, as of this writing: standoc iso generic ietf ieee itu nist ogc csa cc iho ribose jis iec bsi bipm plateau.
+## However we prefer not to hardcode it, given ongoing extension.
+MetanormaFlavor = text
 
 ## A group associated with the production of the standards document, typically within
 ## a standards definition organization
