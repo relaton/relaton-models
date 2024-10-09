@@ -1884,6 +1884,10 @@ Detailed in https://www.relaton.org/model/relations/</a:documentation>
       <value>hasAnnotation</value>
       <value>draftOf</value>
       <value>hasDraft</value>
+      <value>preliminaryDraftOf</value>
+      <value>hasPreliminaryDraft</value>
+      <value>revisionDraftOf</value>
+      <value>hasRevisionDraft</value>
       <value>editionOf</value>
       <value>hasEdition</value>
       <value>updates</value>

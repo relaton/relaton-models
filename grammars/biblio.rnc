@@ -1060,6 +1060,10 @@ DocRelationType =
 "hasAnnotation" |
 "draftOf" |
 "hasDraft" |
+"preliminaryDraftOf" |
+"hasPreliminaryDraft" |
+"revisionDraftOf" |
+"hasRevisionDraft" |
 "editionOf" |
 "hasEdition" |
 "updates" |

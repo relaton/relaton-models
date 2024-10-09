@@ -221,6 +221,36 @@ enum DocumentRelationType  {
       in the one record.
     }
   }
+  hasPreliminaryDraft {
+    definition {
+      The main document is a generic reference
+      to a work (whether published or pre-published), and the target document
+      is a specific pre-publication version preparatory to the main document. 
+    }
+  }
+  preliminaryDraftOf {
+    definition {
+      The main document is a specific pre-publication version of the work represented
+      by the target document (whether the target document published or pre-published),
+      and preparatory to it.
+      Inverse of `hasPreliminaryDraft` relation.
+    }
+  }
+  hasRevisionDraft {
+    definition {
+      The main document is a generic reference
+      to a work (whether published or pre-published), and the target document
+      is a specific pre-publication version revising the main document. 
+    }
+  }
+  revisionDraftOf {
+    definition {
+      The main document is a specific pre-publication version of the work represented
+      by the target document (whether the target document published or pre-published),
+      and revising it.
+      Inverse of `hasRevisionDraft` relation.
+    }
+  }
   editionOf {
     definition {
       The main document is a specific published version of the work represented
