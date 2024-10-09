@@ -798,10 +798,7 @@ BibliographicDateType =
 
 ## Significant date in the lifecycle of the bibliographic item, including its production and its access
 bdate = element date {
-  ## The phase of the production of or access to a bibliographic item
-  attribute type { ( BibliographicDateType | text ) },
-  ## An optional textual description of the date, especially when a Gregorian date is not applicable
-  attribute text { text }?,
+  bDateAttributes,
   (
     (
        ## The start of the date range described
@@ -813,6 +810,12 @@ bdate = element date {
     element on { ISO8601Date }
   )?
 }
+
+bDateAttributes =
+  ## The phase of the production of or access to a bibliographic item
+  attribute type { ( BibliographicDateType | text ) },
+  ## An optional textual description of the date, especially when a Gregorian date is not applicable
+  attribute text { text }?
 
 ## An identifier of a bibliographic item in an international standard scheme
 docidentifier = element docidentifier { DocIdentifierType }
