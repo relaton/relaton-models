@@ -72,7 +72,7 @@ standards defining organization, and that is rendered in a distinct manner</a:do
 from other documents in the same doctype</a:documentation>
       </ref>
     </optional>
-    <ref name="flavour">
+    <ref name="flavor">
       <a:documentation>Flavour of Metanorma used to process this document</a:documentation>
     </ref>
     <optional>
@@ -116,8 +116,8 @@ a standards definition organization</a:documentation>
   <define name="DocumentSubtype">
     <text/>
   </define>
-  <define name="flavour">
-    <element name="flavour">
+  <define name="flavor">
+    <element name="flavor">
       <ref name="MetanormaFlavor"/>
     </element>
   </define>

@@ -38,7 +38,7 @@ BibDataExtensionType =
   ## from other documents in the same doctype
   docsubtype?,
   ## Flavour of Metanorma used to process this document
-  flavour,
+  flavor,
   ## Groups associated with the production of the standards document, typically within
   ## a standards definition organization
   editorialgroup?,
@@ -61,7 +61,7 @@ docsubtype = element subdoctype { DocumentSubtype }
 
 DocumentSubtype = text
 
-flavour = element flavour { MetanormaFlavor }
+flavor = element flavor { MetanormaFlavor }
 
 ## This is in fact an enum, as of this writing: standoc iso generic ietf ieee itu nist ogc csa cc iho ribose jis iec bsi bipm plateau.
 ## However we prefer not to hardcode it, given ongoing extension.
