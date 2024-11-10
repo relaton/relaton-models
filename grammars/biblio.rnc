@@ -991,7 +991,13 @@ biblionote = element note {
   ## May be used to differentiate rendering of notes in bibliographies
   attribute type { text }?,
   ## The content of the note
-  LocalizedMarkedUpString
+  LocalizedStringAttributes,
+  ( 
+    ## Multiple blocks of content
+    BasicBlockNoId+ |
+    ## Single block of content
+    TextElement+
+  )
 }
 
 ## Abstract of bibliographic item
