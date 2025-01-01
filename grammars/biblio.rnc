@@ -175,7 +175,7 @@ person =
     ## An identifier of the person according to an international identifier scheme
     person-identifier*,
     ## Contact information for the person, including URI, address, phone number, and email
-    contact*
+    contact?
 }
 
 ## The name of a person
@@ -266,7 +266,7 @@ OrganizationType =
     ## An identifier of the organization according to an international identifier scheme
     org-identifier*,
     ## Contact information for the organization, including address, phone number, and email
-    contact*,
+    contact?,
     ## A logo for the organization
     logo?
 
@@ -319,7 +319,7 @@ uri =
 # TODO may change
 ## Contact information for a person or organization
 contact =
-  ( address | phone | email | uri )
+  ( address*, phone*, email*, uri* )
 
 ## The phone number associated with a person or organization
 phone = element phone {
