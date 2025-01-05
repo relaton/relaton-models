@@ -714,9 +714,9 @@ validity = element validity {
   ## for which this claim of validity is made, if applicable
   validityRevision?
 }
-validityBegins = element validityBegins { ISO8601DateTime }
-validityEnds = element validityEnds { ISO8601DateTime }
-validityRevision = element revision { ISO8601DateTime }
+validityBegins = element validityBegins { ISO8601Date }
+validityEnds = element validityEnds { ISO8601Date }
+validityRevision = element revision { ISO8601Date }
 
 
 TypedTitleString =
