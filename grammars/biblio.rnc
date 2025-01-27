@@ -580,6 +580,8 @@ BibItemType |=
     "message" |
      ## An exchange of messages between two or more persons. May be electronic (e.g. web chat) or voice (e.g. phone call)
     "conversation" |
+     ## A compound resource consisting of other resources, which are themselves presupposed to have their type specified..
+    "collection" |
      ## Bibliographic type not adequately described in the foregoing
     "misc"
 
