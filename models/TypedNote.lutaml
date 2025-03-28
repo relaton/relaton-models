@@ -1,4 +1,4 @@
-class TypedNote{
+class TypedNote {
   definition {
     A note associated with the bibliographic item.
   }

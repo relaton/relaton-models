@@ -5,9 +5,8 @@ class Citation {
 
   +date: Iso8601DateTime[0..1] {
     definition {
-    	Date of the citation, typically date of publication. A combination of the date time elements
-    	year, month and day should be specified.
-        Specification of month and day are optional.
+    	Date of the citation, typically date of publication. A combination of the
+    	date time elements year, month and day should be specified.
 
       NOTE: Specification of month and day are optional.
 

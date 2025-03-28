@@ -1,13 +1,13 @@
-class MediumType{
+class MediumType {
   definition {
-     Information about the medium and transmission of a bibliographic item.
+    Information about the medium and transmission of a bibliographic item.
   }
 
   +content: String[0..1] {
     definition {
       The content type of the bibliographic item, reflecting the form of
       communication with which it is expressed and perceived. For example,
-      `text`, `video`, `audio`. 
+      `text`, `video`, `audio`.
 
       NOTE: This field is intended to convey the
       Content attribute of the MARC and Resource Description and Access
@@ -37,7 +37,7 @@ class MediumType{
   +carrier: String[0..1] {
     definition {
       The storage medium of the physical representation of the bibliographic item.
-            
+
       NOTE: This field is intended to convey the
       Carrier attribute of the MARC and Resource Description and Access
       standards, although its values are not restricted to that

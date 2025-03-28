@@ -1,4 +1,4 @@
-class Organization{
+class Organization {
   definition {
     Organization associated with a bibliographic item.
   }

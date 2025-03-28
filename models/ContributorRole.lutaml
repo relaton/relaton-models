@@ -1,4 +1,4 @@
-class ContributorRole{
+class ContributorRole {
   definition {
     A description of the role of the contributor in the production of a bibliographic item.
   }

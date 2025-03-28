@@ -1,4 +1,4 @@
-class Phone{
+class Phone {
   definition {
     The phone number associated with a person or organization.
   }

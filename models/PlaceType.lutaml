@@ -1,4 +1,4 @@
-class PlaceType{
+class PlaceType {
   definition {
     Place associated with the production of a bibliographic item.
   }

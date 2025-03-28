@@ -67,7 +67,7 @@ class BibliographicItem {
   }
   +note: TypedNote[0..*] {
     definition {
-      Note(s) associated with the bibliographic item. 
+      Note(s) associated with the bibliographic item.
     }
   }
   +language: Iso639Code[0..*] {
@@ -110,12 +110,11 @@ class BibliographicItem {
       The series of the bibliographic item.
     }
   }
-
   +medium: MediumType[0..1] {
     definition {
       The medium the subject is realized on.
 
-      Medium can be used to differentiate between "electronic" and
+      NOTE: Medium can be used to differentiate between "electronic" and
       "physical" manifestations of an information resource.
     }
   }
@@ -151,9 +150,9 @@ class BibliographicItem {
   }
   +license: String[0..*] {
     definition {
-       A license under which the bibliographic item has been issued. 
+       A license under which the bibliographic item has been issued.
 
-       NOTE: This should preferably be encoded as  a URI or short identifier, rather than descriptive text.
+       NOTE: This should preferably be encoded as an URI or short identifier, rather than descriptive text.
     }
   }
   +classification: DocumentIdentifier[0..*] {
@@ -173,7 +172,7 @@ class BibliographicItem {
   }
   +depiction: Depiction[0..*] {
     definition {
-      Depiction of the bibliographic item, typically an image.
+      Depiction of the bibliographic item.
     }
   }
 }

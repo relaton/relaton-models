@@ -1,4 +1,4 @@
-class VariantOrgName{
+class VariantOrgName {
   definition {
     A variant name of an organization.
   }

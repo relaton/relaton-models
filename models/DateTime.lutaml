@@ -1,9 +1,9 @@
-class DateTime{
+class DateTime {
   definition {
     Type which allows date and time to be specified as either a Gregorian
     date and time, as specified in <<iso8601>>, as text, or as both.
   }
-  +text:String[0..1] {
+  +text: String[0..1] {
     definition {
       Date and time, as specified in text.
     }

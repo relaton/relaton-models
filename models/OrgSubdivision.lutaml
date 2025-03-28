@@ -1,4 +1,4 @@
-class OrgSubdivision{
+class OrgSubdivision {
   definition {
     Subdivision of organization associated with a bibliographic item.
   }

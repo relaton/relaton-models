@@ -1,4 +1,4 @@
-class BibItemSize{
+class BibItemSize {
   definition {
     The size of a bibliographic item being referred to.
 

@@ -1,4 +1,4 @@
-class OrgIdentifier{
+class OrgIdentifier {
   definition {
     An identifier of an organization according to an international identifier scheme.
   }

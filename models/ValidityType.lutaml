@@ -1,4 +1,4 @@
-class ValidityType{
+class ValidityType {
   definition {
     The time interval for which a bibliographic item
     is determined valid, and the associated revision date.

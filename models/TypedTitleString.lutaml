@@ -1,4 +1,4 @@
-class TypedTitleString{
+class TypedTitleString {
   definition {
     A title of a bibliographic item, associated with a type of title.
   }
