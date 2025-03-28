@@ -4,7 +4,7 @@ class Depiction {
   }
   +scope: String[0..1] {
     definition {
-      Description of what is being depicted
+      Description of what is being depicted.
     }
   }
   +image: <<Basicdoc>>Image[0..*] {

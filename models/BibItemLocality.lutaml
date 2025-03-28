@@ -1,4 +1,4 @@
-class BibItemLocality{
+class BibItemLocality {
   definition {
     The extent or location of a bibliographic item being referred to.
 

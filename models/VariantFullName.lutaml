@@ -1,4 +1,4 @@
-class VariantFullName{
+class VariantFullName {
   definition {
     A variant name of a person.
   }

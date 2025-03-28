@@ -1,17 +1,30 @@
-class LocalityStack{
+class LocalityStack {
   definition {
-    Hierarchical arrangement of bibliographic localities, to designate a single span of text in a bibliographic item.
+    Hierarchical arrangement of bibliographic localities, to designate a single
+    span of text in a bibliographic item.
+
+    NOTE: A LocalityStack with a single element indicates that there is only one
+    level of locality reference.
   }
   +connective: LocalityConnective[0..1] {
     definition {
-      Logical connective linking localities. If not supplied, "and" is understood.
+      Logical connective linking localities given in bibLocality.
+      Defaults to "and" if not provided.
     }
   }
+
   +bibLocality: BibItemLocality[0..*] {
     definition {
-      Component bibliographic localities which group together to designate a single span of text.
-      Earlier localities are assumed to include later localities, and be of different types;
-      e.g. "Chapter 7, paragraph 9–11".
+      Describes the location of the cited information resource within
+      the subject of the bibliographic item in a hierarchy.
+
+      The hierarchy is specified with localities provided in a sequence, that
+      earlier localities are assumed to contain later localities in a hierarchy,
+      where these specified localities are of different types.
+
+      [example]
+      "Chapter 7, paragraph 9–11" is considered to be in a hierarchy where
+      "Chapter 7" contains "paragraph 9-11".
     }
   }
 }

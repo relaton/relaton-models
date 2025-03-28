@@ -1,4 +1,4 @@
-class Affiliation{
+class Affiliation {
   definition {
     The affiliation of a person with an organization.
   }

@@ -1,4 +1,4 @@
-class CopyrightAssociation{
+class CopyrightAssociation {
   definition {
     The copyright status of a bibliographic item.
   }

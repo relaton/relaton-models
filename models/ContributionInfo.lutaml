@@ -1,4 +1,4 @@
-class ContributionInfo{
+class ContributionInfo {
   definition {
     Description of a contributor to the production of the bibliographic item.
   }

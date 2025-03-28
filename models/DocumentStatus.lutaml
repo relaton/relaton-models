@@ -1,4 +1,4 @@
-class DocumentStatus{
+class DocumentStatus {
   definition {
     The publication or preparation status of a document.
   }

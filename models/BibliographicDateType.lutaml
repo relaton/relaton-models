@@ -13,11 +13,11 @@ enum BibliographicDateType {
   accessed {
     definition {
       Date a document was last accessed by the compiler of the bibliographic record;
-      routinely used for online publications. 
+      routinely used for online publications.
 
       NOTE: Unlike in <<iso690>>, no distinction is made between
       "viewed" and "accessed" based on whether the resource is human-readable or
-      machine-readable.)
+      machine-readable.
     }
   }
   created {

@@ -1,4 +1,4 @@
-class ContactMethod{
+class ContactMethod {
   definition {
     Contact information for a person or organization.
   }

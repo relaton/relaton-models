@@ -1,4 +1,4 @@
-class Forename{
+class Forename {
   definition {
     A forename of a person.
   }

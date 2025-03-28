@@ -1,4 +1,4 @@
-class VersionInfo{
+class VersionInfo {
   definition {
     A version of the bibliographic item (within an edition). Can be used for drafts.
   }

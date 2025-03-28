@@ -1,6 +1,6 @@
-class TypedUri{
+class TypedUri {
   definition {
-    URI associated with a type. 
+    URI associated with a type.
   }
   +type: String[0..1] {
     definition {
@@ -11,8 +11,8 @@ class TypedUri{
   +language: Iso639Code[0..*] {
     definition {
       Language of string.
-    } 
-  }   
+    }
+  }
   +script: Iso15924Code[0..*] {
     definition {
       Script of string.

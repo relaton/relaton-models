@@ -1,4 +1,4 @@
-class FullName{
+class FullName {
   definition {
     The name of a person.
   }

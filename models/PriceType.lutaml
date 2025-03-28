@@ -1,6 +1,6 @@
-class PriceType{
+class PriceType {
   definition {
-    The price set on accessing the bibliographic item.   
+    The price set on accessing the bibliographic item.
   }
   +currency: Iso4217Code[0..1] {
     definition {
