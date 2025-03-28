@@ -9,35 +9,28 @@ class Citation {
     	year, month and day should be specified.
         Specification of month and day are optional.
 
-        This date is not intended for disambiguation, since `bibitemid`
-        already identifies the source unambiguously; it is added for ease of processing, in case author-date
-        citations cannot straightforwardly extract the date from the bibliographic source.
-    }
-  }
+      NOTE: Specification of month and day are optional.
 
-  +bibLocality: BibItemLocality[0..*] {
-    definition {
-      Describes the location of the cited information resource within
-      the subject of the bibliographic item.
-      Multiple ``bibLocality``s are interpreted as discontinuous references.
-
-      NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
+      NOTE: This date is not intended for disambiguation, since `bibitemid`
+      already identifies the source unambiguously; it is added for ease of
+      processing, in case author-date citations cannot straightforwardly extract
+      the date from the bibliographic source.
     }
   }
 
   +bibLocalityStack: LocalityStack[0..*] {
     definition {
-      Describes the location of the cited information resource within
-      the subject of the bibliographic item in a multi-level manner.
-      For example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" 
-      is represented as a single `bibLocalityStack`, composed of those three localities
-      (as opposed to three `bibLocality` references, which would be treated as
-      three discontinuous references).
-      Multiple ``bibLocalityStack``s are themselves interpreted as discontinuous references.
+      Describes the location of the cited information resource within the
+      subject of the bibliographic item in a hierarchical manner.
 
-      NOTE: `bibLocality` and `bibLocalityStack` are mutually exclusive.
+      [example]
+      The hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" is
+      represented as a single `bibLocalityStack`, composed of those three
+      localities.
+
+      Multiple `bibLocalityStack` elements are interpreted as discontinuous
+      references.
     }
-
   }
 
   +bibItem: BibliographicItem[0..1] {
