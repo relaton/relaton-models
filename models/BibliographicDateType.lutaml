@@ -107,7 +107,7 @@ enum BibliographicDateType {
        published or not.
     }
   }
-  stable-until {
+  stableUntil {
     definition {
        The document is guaranteed not to be changed or updated until this date.
     }
