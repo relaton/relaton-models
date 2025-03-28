@@ -34,7 +34,7 @@ class BibliographicItem {
       The URI(s) associated with the bibliographic item.
     }
   }
-  +docidentifier: DocumentIdentifier[1..*] {
+  +docidentifier: DocumentIdentifier[0..*] {
     definition {
       The identifier(s) of the bibliographic item in an international standard scheme.
     }
