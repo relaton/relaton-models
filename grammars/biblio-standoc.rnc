@@ -1,10 +1,12 @@
+include "biblio.rnc" { 
+# ALERT: we cannot have comments on root element, as they intervene with https://github.com/metanorma/metanorma/issues/437 fix
+
 # Add-ons to biblio.rnc for standoc model: defines the extension point BibDataExtensionType
 # of relaton
 #
 # Specialisations as for biblio.rnc. Extension point can be redefined completely for a flavour of standoc
 # (SDO); but other elements in Bibdata can only be extended (more specialised vocabularies for Bibdata)
 
-include "biblio.rnc" { 
 
 ## The bibliographic description of a standardisation document
 BibData =
