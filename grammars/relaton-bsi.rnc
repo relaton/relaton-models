@@ -1,8 +1,7 @@
 include "biblio-standoc.rnc" {
 
-BibDataExtensionType =
-  attribute schema-version { text }?,
-        doctype, docsubtype?, flavor, editorialgroup, ics*, structuredidentifier,
+BibDataExtensionType &=
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
         stagename?
 
 bdate = element date {
