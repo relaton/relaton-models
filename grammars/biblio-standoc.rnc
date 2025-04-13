@@ -47,7 +47,9 @@ BibDataExtensionType =
   ## Classification of the document contents taken from the International Classification of Standards
   ics*,
   ## Representation of the identifier for the standardisation document, giving its individual semantic components
-  structuredidentifier*
+  structuredidentifier*,
+  ## Coverpage and other images to be rendered with document
+  DocumentImages
 
 ## Classification of the standardisation document
 doctype = element doctype {
@@ -134,6 +136,16 @@ structuredidentifier = element structuredidentifier {
   ## Representation in the identifier of the year of publication or issuance of the document
   element year { text }?
 }
+
+DocumentImages =
+  ## Images to be displayed on the coverpage of the document
+  element coverpage-image { image-no-id }*
+  ## Images to be displayed on the inner coverpage of the document
+  element innercoverpage-image { image-no-id }*
+  ## Images to be displayed on the Table of Contents page of the document
+  element tocside-image { image-no-id }*
+  ## Images to be displayed on the backpage of the document
+  element backpage-image { image-no-id }*
 
 StandardBibliographicItem =
   BibliographicItem,
