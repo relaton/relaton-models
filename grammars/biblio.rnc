@@ -1011,6 +1011,8 @@ biblionote = element note {
 ## Abstract of bibliographic item
 bibabstract = element abstract { 
   LocalizedStringAttributes,
+  ## What format the formatted abstract is in. In Metanorma, assumed to be Metanorma XML
+  attribute format { text }?,
   (
     ## Multiple blocks of content
     BasicBlockNoId+ |
