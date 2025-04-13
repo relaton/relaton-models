@@ -702,7 +702,12 @@ ReducedBibliographicItem =
 btitle = element title { TypedTitleString }
 
 bsource = element uri { TypedUri }
-formattedref = element formattedref { TextElement+ }
+
+formattedref = element formattedref { 
+  ## format of formatted reference; Metanorma assumes references are formatted as Metanorma XML
+  attribute format { text }?,
+  TextElement+ 
+}
 license = element license { text }
 
 fetched = element fetched { ISO8601DateTime }
