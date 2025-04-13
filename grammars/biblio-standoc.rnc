@@ -139,11 +139,11 @@ structuredidentifier = element structuredidentifier {
 
 DocumentImages =
   ## Images to be displayed on the coverpage of the document
-  element coverpage-image { image-no-id }*
+  element coverpage-image { image-no-id }*,
   ## Images to be displayed on the inner coverpage of the document
-  element innercoverpage-image { image-no-id }*
+  element innercoverpage-image { image-no-id }*,
   ## Images to be displayed on the Table of Contents page of the document
-  element tocside-image { image-no-id }*
+  element tocside-image { image-no-id }*,
   ## Images to be displayed on the backpage of the document
   element backpage-image { image-no-id }*
 
