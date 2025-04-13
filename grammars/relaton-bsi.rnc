@@ -1,9 +1,5 @@
 include "biblio-standoc.rnc" {
 
-BibDataExtensionType &=
-        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
-        stagename?
-
 bdate = element date {
   attribute type { ( BibliographicDateType | text ) },
   (
@@ -16,6 +12,9 @@ element on { ISO8601Date | "--" | "–" }
 
 }
 
+BibDataExtensionType &=
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
+        stagename?
 
 DocumentType =
      "british-standard" | "draft-for-development" | "published-document" |
