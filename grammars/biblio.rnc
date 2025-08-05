@@ -260,7 +260,9 @@ organization = element organization { OrganizationType }
 OrganizationType =
     ## The name of the organization
     orgname+,
-    ## The subdivision of the organization directly involved with the production of the bibliographic item
+    ## The subdivision of the organization directly involved with the production of the bibliographic item.
+    ## Multiple subdivisions can be specified for an organization, with no implication of hierarchical
+    ## relation between them
     subdivision*,
     ## Abbreviation under which the organization is known
     abbreviation?,
@@ -281,6 +283,8 @@ orgname = element name {
 subdivision = element subdivision { 
    ## The type of subdivision
    attribute type { text }?,
+   ## The subtype of subdivision; e.g. different types of technical committee
+   attribute subtype { text }?,
    ## The subdivision, modelled recursively as an organization
    OrganizationType 
 }
