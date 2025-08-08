@@ -84,7 +84,7 @@ ItuGroup =
   attribute type { ItuGroupType }?,
   tname,
   groupacronym?,
-  groupperiod?
+  studyperiod?
 
 ItuGroupType =  "tsag" | "study-group" | "focus-group" | "adhoc-group" | "correspondence-group" | "joint-coordination-activity" | "working-party" |
  "working-group" | "rapporteur-group" | "intersector-rapporteur-group" | "regional-group" 
