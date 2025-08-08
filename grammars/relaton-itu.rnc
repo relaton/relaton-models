@@ -28,6 +28,8 @@ BibDataExtensionType &=
         recommendationstatus?, 
         ## ITU has received a notice of intellectual property, protected by patents, which may be required to implement this Recommendation
         ipnoticereceived?,
+        ## Study period that the editorial groups working on this document fall under
+        studyperiod?,
         ## Name of meeting that generated this document (for resolutions, technical reports, technical papers, implementers guides) 
         meeting?, 
         ## Place of meeting that generated this document (for resolutions, technical reports, technical papers, implementers guides)
@@ -89,7 +91,7 @@ ItuGroupType =  "tsag" | "study-group" | "focus-group" | "adhoc-group" | "corres
 
 groupacronym = element acronym { text }
 
-groupperiod = element period {
+studyperiod = element studyperiod {
   groupperiodstart,
   groupperiodend?
 }
