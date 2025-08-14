@@ -161,6 +161,8 @@ role =
 ContributorInfo =
   ( person | organization )
 
+## A more detailed description of the role of the contributor
+## Some descriptions are reserved words; in particular, the editorial committee of a standard has the role description "committee"
 roledescription =
   element description { LocalizedMarkedUpString }
 
@@ -263,6 +265,7 @@ OrganizationType =
     ## The subdivision of the organization directly involved with the production of the bibliographic item.
     ## Multiple subdivisions can be specified for an organization, with no implication of hierarchical
     ## relation between them
+    ## Editorial and advisory groups are represented as consecutive subdivisions of the SDO
     subdivision*,
     ## Abbreviation under which the organization is known
     abbreviation?,
