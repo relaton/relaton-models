@@ -5,23 +5,9 @@ DocumentType =
 
 DocumentSubtype = "conceptual-model" | "conceptual-model-and-encoding" | "conceptual-model-and-implementation" | "encoding" | "extension" | "implementation" | "profile" | "profile-with-extension" | "general"
 
-editorialgroup = element editorialgroup {
-  committee, subcommittee?, workgroup?
-}
-
 stage = element stage { StageType }
 
 }
-
-committee = element committee {
-    "technical" | "planning" | "strategic-member-advisory"
-}
-
-subcommittee =
-  element subcommittee { IsoWorkgroup }
-
-workgroup =
-  element workgroup { IsoWorkgroup }
 
 StageType = "rfc" | "candidate" | "published" | "deprecated" | "retired" | "legacy" | "rescinded" | "draft" | "work-item-draft" |
   "swg-draft" | "oab-review" | "public-ref" | "tc-vote" | "approved" | "deprecated" | "rescinded" | "retired" | "legacy"
