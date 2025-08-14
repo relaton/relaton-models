@@ -6,7 +6,7 @@ DocumentSubtype = "spec" | "release"
 
 BibDataExtensionType =
   attribute schema-version { text }?,
-        doctype, docsubtype?, editorialgroup?, ics*, radiotechnology?, common-ims-spec?, internal?, release?
+        doctype, docsubtype?, ics*, radiotechnology?, common-ims-spec?, internal?, release?
 
 }
 
