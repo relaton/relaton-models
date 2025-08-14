@@ -4,20 +4,11 @@ DocumentType =
 "policy-and-procedures" | "best-practices" | "supporting-document" | "report" | "legal" | "directives" | "proposal" |
         "standard"
 
-editorialgroup = element editorialgroup {
-  committee+
-}
-
 }
 
 BibDataExtensionType &=
     ## Security level classification. For example, "confidential", "client confidential"
     security?
-
-committee = element committee {
-    attribute type { ( "technical" | "provisional" ) },
-    text
-}
 
 security = element security { text }
 
