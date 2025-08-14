@@ -1,9 +1,5 @@
 include "biblio-standoc.rnc" {
 
-editorialgroup = element editorialgroup {
-  committee*
-}
-
 DocumentType = "rfc" | "internet-draft"
 
 }
@@ -34,8 +30,6 @@ BibDataExtensionType &=
         toc-depth?,
         ## Display organization of author on front page of IAB documents. Applied to all organizations named in the document front matter
         show-on-front-page?
-
-committee = element committee { IsoWorkgroup }
 
 area = element area { "art" | "gen" | "int" | "ops" | "rtg" | "sec" | "tsv" |
 "Applications and Real-Time" | "General" |  "Internet" | "Operations and Management" |
