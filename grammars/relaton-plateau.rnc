@@ -4,8 +4,6 @@ DocumentType =
     "handbook" | "technical-report" | "annex"
 
 
-editorialgroup = element editorialgroup { ISOProjectGroup }
-
 }
 
 BibDataExtensionType &=
@@ -14,11 +12,6 @@ BibDataExtensionType &=
         ## Size of output file, in bytes
         filesize?
 
-
-ISOProjectGroup =
-  agency*, technical-committee+, subcommittee*, workgroup*, secretariat?
-
-agency = element agency { text }
 
 documentnumber =
   element project-number {
@@ -29,15 +22,6 @@ documentnumber =
     attribute origyr { ISO8601Date }?,
     text
    }
-
-subcommittee =
-  element subcommittee { IsoWorkgroup }
-
-workgroup =
-  element workgroup { IsoWorkgroup }
-
-secretariat =
-  element secretariat { text }
 
 stagename = element stagename {
   attribute abbreviation { text }?,
