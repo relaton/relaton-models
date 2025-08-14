@@ -4,13 +4,6 @@ DocumentType =
 "recommendation" | "recommendation-supplement" | "recommendation-amendment" | "recommendation-corrigendum" | "recommendation-errata" |
 "recommendation-annex" | "focus-group" | "implementers-guide" | "technical-paper" | "technical-report" | "joint-itu-iso-iec" | "resolution" | "service-publication" | "handbook" | "question" | "contribution"
 
-editorialgroup = element editorialgroup {
-  (bureau | sector),
-  group?,
-  subgroup?,
-  workgroup?
-}
-
 structuredidentifier = element structuredidentifier {
   bureau,
   element docnumber { text },
@@ -74,22 +67,9 @@ approvalstage = element approvalstage {
 }
 
 bureau = element bureau { "T" | "D" | "R" }
-sector = element sector { text }
-
-group = element group { ItuGroup }
-
-subgroup = element subgroup { ItuGroup }
-
-ItuGroup =
-  attribute type { ItuGroupType }?,
-  tname,
-  groupacronym?,
-  studyperiod?
 
 ItuGroupType =  "tsag" | "study-group" | "focus-group" | "adhoc-group" | "correspondence-group" | "joint-coordination-activity" | "working-party" |
  "working-group" | "rapporteur-group" | "intersector-rapporteur-group" | "regional-group" 
-
-groupacronym = element acronym { text }
 
 studyperiod = element studyperiod {
   groupperiodstart,
@@ -98,8 +78,6 @@ studyperiod = element studyperiod {
 
 groupperiodstart = element start { xsd:gYear }
 groupperiodend = element end { xsd:gYear }
-
-workgroup = element workgroup { ItuGroup }
 
 question = element question {
         element identifier { text },
