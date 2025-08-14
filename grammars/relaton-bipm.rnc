@@ -14,11 +14,6 @@ DocumentType =
 "resolution" |
 "policy"
 
-editorialgroup = element editorialgroup {
-  committee+,
-  workgroup*
-}
-
 structuredidentifier = element structuredidentifier {
   element docnumber { text },
   element part { text }?,
@@ -54,34 +49,6 @@ si-aspect = element si-aspect {
 "m_c" |
 "mol_NA" |
 "s_deltanu"
-}
-
-committee = element committee { 
-  attribute acronym {
-"CGPM" |
-"CIPM" |
-"BIPM" |
-"CCAUV" |
-"CCEM" |
-"CCL" |
-"CCM" |
-"CCPR" |
-"CCQM" |
-"CCRI" |
-"CCT" |
-"CCTF" |
-"CCU" |
-"CCL-CCTF-WGFS" |
-"JCGM" |
-"JCRB" |
-"JCTLM" |
-"INetQI" },
-  LocalizedString
-}
-
-workgroup = element workgroup { 
-  attribute acronym { text }?,
-  text
 }
 
 meeting-note = element meeting-note { text }
