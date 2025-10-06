@@ -505,7 +505,7 @@ relaton_collection =
 ## publication types, and therefore any BibTeX type value can be
 ## mapped to these values. Some values here do not have a corresponding
 ## entry in BibTeX, for instance, "standard" and "website".
-BibItemType |=
+BibItemType =
     ## An article from a journal or magazine
     "article" |
     ## A monograph
