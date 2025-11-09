@@ -392,7 +392,7 @@ citation =
 
 CitationType =
     ## Bibliographic item that the citation applies to, referenced as the anchor of a bibliographic description
-    attribute bibitemid { xsd:IDREF },
+    attribute bibitemid { IdRefType },
     (
        ## Describes the location of the cited information resource within the subject of the bibliographic item.
        ## Multiple ``bibLocality``s are interpreted as discontinuous references.
