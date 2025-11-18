@@ -7,6 +7,11 @@ class Depiction {
       Description of what is being depicted.
     }
   }
+  +type: String[0..1] {
+    definition {
+      Description of type of depiction.
+    }
+  }
   +image: <<Basicdoc>>Image[0..*] {
     definition {
       A visual depiction of the bibliographic item.

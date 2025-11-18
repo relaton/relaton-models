@@ -302,6 +302,8 @@ logo = element logo {
 depiction = element depiction {
   ## Description of what is being depicted
   attribute scope { text }?,
+  ## Description of what kind of depiction this
+  attribute type { text }?,
   ## A visual depiction of the bibliographic item
   image-no-id*
 }
@@ -707,7 +709,7 @@ ReducedBibliographicItem =
     bclassification*,
     bkeyword*,
     validity?,
-    depiction?
+    depiction*
 
 ## A title of a bibliographic item, associated with a type of title
 btitle = element title { TypedTitleString }
