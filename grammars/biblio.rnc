@@ -274,7 +274,7 @@ OrganizationType =
     ## Contact information for the organization, including address, phone number, and email
     contact?,
     ## A logo for the organization
-    logo?
+    logo*
 
 orgname = element name {
    ## Type of organisation name, to differentiate variant names
@@ -292,7 +292,11 @@ subdivision = element subdivision {
    OrganizationType 
 }
 
-logo = element logo { image-no-id }
+logo = element logo {
+   ## The type of logo
+   attribute type { text }?,
+   image-no-id
+}
 
 ## Depiction of the bibliographic item
 depiction = element depiction {

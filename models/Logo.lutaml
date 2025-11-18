@@ -1,0 +1,15 @@
+class Logo {
+  definition {
+      A logo for the organization.
+  }
++type: String[0..*] {
+    definition {
+      Type of logo.
+    }
+  }
++logo: <<Basicdoc>>Image[0..*] {
+    definition {
+      A logo for the organization.
+    }
+  }
+}

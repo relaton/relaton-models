@@ -20,6 +20,7 @@ diagram RelBib_BibliographicItem {
   include ../models/BibItemSize.lutaml
   include ../models/BibItemSizeType.lutaml
   include ../models/Depiction.lutaml
+  include ../models/Logo.lutaml
 
   association {
     owner BibliographicItem
@@ -28,6 +29,11 @@ diagram RelBib_BibliographicItem {
   }
   association {
     owner BibliographicItem
+    member Logo
+    member_type direct
+  }
+  association {
+    owner Logo
     member Basicdoc_Image
     member_type direct
   }
