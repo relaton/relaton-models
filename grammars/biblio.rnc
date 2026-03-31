@@ -1172,7 +1172,7 @@ bkeyword = element keyword {
    element vocab { LocalizedString }?,
    ## The keywords as a hierarchical taxonomy. For example, the sequence of `taxon` elements
    ## `pump`, `centrifugal pump`, `line shaft pump` represents a taxonomic classification
-   element taxon { LocalizedString }+,
+   element taxon { LocalizedString }*,
    ## Identifiers for the keyword as a controlled vocabulary
    vocabid*
 }
