@@ -4,11 +4,10 @@ DocumentType = "TR" | "TS"
 
 DocumentSubtype = "spec" | "release"
 
-BibDataExtensionType =
-  attribute schema-version { text }?,
-        doctype, docsubtype?, ics*, radiotechnology?, common-ims-spec?, internal?, release?
-
 }
+
+BibDataExtensionType &=
+        radiotechnology?, common-ims-spec?, internal?, release?
 
 RadioTechnologyType = "2G" | "3G" | "LTE" | "5G"
 
