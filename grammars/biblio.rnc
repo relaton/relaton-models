@@ -673,7 +673,7 @@ BibliographicItem =
     ## Information about how long the current description of the bibliographic item is valid for
     validity?,
     ## Depiction of the bibliographic item, typically an image
-    depiction?
+    depiction*
 
 ## Reduced description of a bibliographic resource, without mandatory title and docidentifier, used for document relations
 ## Refer to `BibliographicItem` for definitions
