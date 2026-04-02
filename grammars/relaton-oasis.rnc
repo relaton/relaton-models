@@ -1,17 +1,12 @@
-include "biblio-standoc.rnc" {
-
-BibDataExtensionType =
-  attribute schema-version { text }?,
-  doctype,
-  docsubtype?,
-  ics*,
-  structuredidentifier*,
-  technology-area*
+include "biblio-standoc.rnc" { 
 
 DocumentType = 
 "specification" | "memorandum" | "resolution" | "standard" 
 
 }
+
+BibDataExtensionType &=
+  technology-area*
 
 technology-area = element technology-area { TechnologyArea }
 
