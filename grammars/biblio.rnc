@@ -1143,11 +1143,11 @@ docrelation =
 
 ## A version of the bibliographic item (within an edition). Can be used for drafts
 version =
-  element version {
-    ## The date at which the current version of the bibliographic item was produced
-    revision-date?,
-    ## The identifier for the current draft of the bibliographic item
-    draft?
+  element version { 
+    ## Versioning scheme, in case of multiple versioning schemes
+    attribute type { text }?
+    text
+  }
 }
 
 vedition = element edition { xsd:int }
