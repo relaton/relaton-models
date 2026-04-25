@@ -1148,7 +1148,6 @@ version =
     attribute type { text }?,
     text
   }
-}
 
 vedition = element edition { xsd:int }
 revision-date = element revision-date { ISO8601Date }
