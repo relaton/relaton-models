@@ -1145,7 +1145,7 @@ docrelation =
 version =
   element version { 
     ## Versioning scheme, in case of multiple versioning schemes
-    attribute type { text }?
+    attribute type { text }?,
     text
   }
 }
