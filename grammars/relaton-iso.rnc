@@ -17,7 +17,7 @@ DocumentType =
      "technical-report" | "publicly-available-specification" |
     "international-workshop-agreement" | "guide" | "recommendation" |
     "amendment" | "technical-corrigendum" | "directive" | "committee-document" | 
-    "addendum" | "supplement"
+    "addendum" | "supplement" | "extract"
 
 DocumentSubtype = "specification" | "method-of-test" | "vocabulary" | "code-of-practice"
 
