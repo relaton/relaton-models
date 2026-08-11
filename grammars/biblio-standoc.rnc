@@ -24,6 +24,15 @@ docrelation =
     (sourceLocality* | sourceLocalityStack*)
 }
 
+## Footnotes are admitted in formatted references in the standoc context:
+## free-form bibliography entries may carry authored footnotes
+## (metanorma-model-iso#154)
+formattedref = element formattedref {
+  ## format of formatted reference; Metanorma assumes references are formatted as Metanorma XML
+  attribute format { text }?,
+  ( TextElement | fn )+
+}
+
 }
 
 ## The extension point of the bibliographic description of a standardisation document
