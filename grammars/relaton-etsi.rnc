@@ -1,12 +1,5 @@
 include "biblio-standoc.rnc" {
 
-status =
-  element status {
-     ( stage )
-}
-
-stage = element stage { StageType }
-
 doctype = element doctype {
     attribute abbreviation { DocumentTypeAbbreviation }?,
     DocumentType
@@ -21,6 +14,13 @@ DocumentType = "European Standard" | "ETSI Standard" | "ETSI Guide" | "Technical
 }
 
 BibDataExtensionType &=
+        ## The stage of the document being authored, validated against the flavor's stage vocabulary.
+        ## This is a shadow of /bibdata/status/stage, which remains schema-generic
+        ## (the status/stage narrowing formerly imposed here also bound every cited
+        ## bibitem): the status of cited bibliographic items carries the vocabulary
+        ## of the SDO that published them, and is never constrained by the flavor
+        ## (metanorma-model-iso#156)
+        element stage { StageType }?,
         marker, frequency*, mandate*, custom-collection?
 
 StageType = "EN approval" | "SG approval" | "ES approval" | "Published" | "Withdrawn" | "Historical"
