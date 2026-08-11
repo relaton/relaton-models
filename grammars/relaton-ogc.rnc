@@ -16,4 +16,4 @@ BibDataExtensionType &=
   element stage { StageType }?
 
 StageType = "rfc" | "candidate" | "published" | "deprecated" | "retired" | "legacy" | "rescinded" | "draft" | "work-item-draft" |
-  "swg-draft" | "oab-review" | "public-ref" | "tc-vote" | "approved" | "deprecated" | "rescinded" | "retired" | "legacy"
+  "swg-draft" | "oab-review" | "public-rfc" | "tc-vote" | "approved" | "deprecated" | "rescinded" | "retired" | "legacy"
