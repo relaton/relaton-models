@@ -1,0 +1,19 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"abstract-specification-topic" | "best-practice" | "change-request-supporting-document" | "community-practice" | "community-standard" | "discussion-paper" | "engineering-report" | "other" | "policy" | "reference-model" | "release-notes" | "standard" | "user-guide" | "white-paper" | "test-suite" | "draft-standard"
+
+DocumentSubtype = "conceptual-model" | "conceptual-model-and-encoding" | "conceptual-model-and-implementation" | "encoding" | "extension" | "implementation" | "profile" | "profile-with-extension" | "general"
+
+}
+
+BibDataExtensionType &=
+  ## The stage of the document being authored, validated against the flavor's stage vocabulary.
+  ## This is a shadow of /bibdata/status/stage, which remains schema-generic:
+  ## the status of cited bibliographic items carries the vocabulary of the SDO
+  ## that published them, and is never constrained by the flavor
+  ## (metanorma-model-iso#156)
+  element stage { StageType }?
+
+StageType = "rfc" | "candidate" | "published" | "deprecated" | "retired" | "legacy" | "rescinded" | "draft" | "work-item-draft" |
+  "swg-draft" | "oab-review" | "public-rfc" | "tc-vote" | "approved" | "deprecated" | "rescinded" | "retired" | "legacy"
