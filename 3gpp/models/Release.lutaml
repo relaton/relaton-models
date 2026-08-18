@@ -1,0 +1,22 @@
+class Release {
+  +version2G: String[0..1]
+  +version3G: String[0..1]
+  +defunct: Boolean[0..1]
+  +wpm-code-2G: String[0..1]
+  +wpm-code-3G: String[0..1]
+  +freeze-meeting: String[0..1]
+  +freeze-stage1-meeting: String[0..1]
+  +freeze-stage2-meeting: String[0..1]
+  +freeze-stage3-meeting: String[0..1]
+  +close-meeting: String[0..1]
+  +project-start: Date[0..1] {
+    definition{
+      Project start date
+    }
+  }
+  +project-end: Date[0..1] {
+    definition{
+      Project end date
+    }
+  }
+}
