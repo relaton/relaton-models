@@ -20,19 +20,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Self-contained plantuml setup. The former shared workflow
+      # Self-contained tool setup. The former shared workflow
       # (relaton/support make.yml) pinned
       # metanorma/metanorma-build-scripts/plantuml-setup-action@main, which
       # was removed upstream on 2026-08-17, breaking every @main consumer
-      # at action-download time. Install per-OS directly instead.
+      # at action-download time — and the unpinned legacy lutaml gem stack
+      # no longer resolves to a loadable combination. This repository now
+      # renders diagrams with lutaml-lml (graphviz-backed); graphviz is
+      # preinstalled on all GitHub-hosted runners, installed defensively
+      # only when missing.
       - if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y plantuml
+        run: command -v dot >/dev/null || { sudo apt-get update && sudo apt-get install -y graphviz; }
       - if: runner.os == 'macOS'
-        run: brew install plantuml
+        run: command -v dot >/dev/null || brew install graphviz
       - if: runner.os == 'Windows'
-        run: choco install -y plantuml
+        shell: pwsh
+        run: if (-not (Get-Command dot -ErrorAction SilentlyContinue)) { choco install -y graphviz }
 
       # workaround for https://github.com/actions/runner-images/issues/37
       - if: matrix.os == 'ubuntu-latest'
@@ -46,3 +49,17 @@ jobs:
           bundler-cache: true
 
       - run: bundle exec make clean all
+
+      - name: Verify PNG output (ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          set -eu
+          count=0
+          for p in images/*.png; do
+            count=$((count+1))
+            if ! file -b "$p" | grep -q "^PNG image data"; then
+              echo "ERROR: $p is not a valid PNG ($(file -b "$p"))" >&2
+              exit 1
+            fi
+          done
+          echo "verify: $count PNG file(s) OK"
