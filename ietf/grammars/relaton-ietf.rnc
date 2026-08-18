@@ -1,0 +1,87 @@
+include "biblio-standoc.rnc" {
+
+DocumentType = "rfc" | "internet-draft"
+
+}
+
+BibDataExtensionType &=
+        ## which IETF area this document relates to. Value should be either the full name or the abbreviation of one of the IETF areas as
+        ## listed on <http://www.ietf.org/iesg/area.html
+        area*,
+        ## Document stream of document described in https://tools.ietf.org/html/rfc7841
+        stream?,
+        ## IP status of document. See https://tools.ietf.org/html/rfc7991#section-2.45.5
+        ipr?,
+        ## Processing instructions which will be added to generated RFC XML in the form `<?rfc keyword='value'?>
+        processing-instructions?,
+        ## Document consensus for this document       
+        consensus?,
+        ## Specifies whether formatter should include an index in generated files. If the source file has no `<iref>` elements, an index is never generated
+        index-include?,
+        ## Identifies a section that can be extracted from text. See https://tools.ietf.org/html/rfc7991#section-2.45.6
+        ipr-extract?,
+        ## Specifies whether the prep tool for RFC XML should sort references
+        sort-refs?,
+        ## Specifies whether the RFC XML formatter should use symbolic references (such as "`[RFC2119]`") or not (such as "`[3]`")
+        sym-refs?,
+        ## Specifies whether the RFC XML formatter should contain a table of contents
+        toc-include?,
+        ## Determines the depth of the table-of-contents; e.g. a value of `3` means three levels of heading are included
+        toc-depth?,
+        ## Display organization of author on front page of IAB documents. Applied to all organizations named in the document front matter
+        show-on-front-page?
+
+area = element area { "art" | "gen" | "int" | "ops" | "rtg" | "sec" | "tsv" |
+"Applications and Real-Time" | "General" |  "Internet" | "Operations and Management" |
+"Routing" | "Security" | "Transport" }
+
+ipr = element ipr { text }
+consensus = element consensus { text }
+index-include = element indexInclude { text }
+ipr-extract = element iprExtract { text }
+sort-refs = element sortRefs { text }
+sym-refs = element symRefs { text }
+toc-include = element tocInclude { text }
+toc-depth = element tocDepth { text }
+show-on-front-page = element showOnFrontPage { text }
+
+# not relevant to relaton
+processing-instructions = element pi {
+ element artworkdelimiter { text }?,
+ element artworklines { text }?,
+ element authorship { text }?,
+ element autobreaks { text }?,
+ element background { text }?,
+ element colonspace { text }?,
+ element comments { text }?,
+ element docmapping { text }?,
+ element editing { text }?,
+ element emoticonic { text }?,
+ element footer { text }?,
+ element header { text }?,
+ element inline { text }?,
+ element iprnotified { text }?,
+ element linkmailto { text }?,
+ element linefile { text }?,
+ element notedraftinprogress { text }?,
+ element private { text }?,
+ element refparent { text }?,
+ element rfcedstyle { text }?,
+ element slides { text }?,
+ element text-list-symbols { text }?,
+ element tocappendix { text }?,
+ element tocindent { text }?,
+ element tocnarrow { text }?,
+ element tocompact { text }?,
+ element topblock { text }?,
+ element useobject { text }?,
+ element strict { text }?,
+ element compact { text }?,
+ element subcompact { text }?,
+ element tocinclude { text }?,
+ element tocdepth { text }?,
+ element symrefs { text }?,
+ element sortrefs { text }?
+}
+
+stream = element stream { "IAB" | "IETF" | "Independent" | "IRTF" | "Legacy" | "Editorial" }
