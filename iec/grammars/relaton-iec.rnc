@@ -1,0 +1,90 @@
+include "biblio-standoc.rnc" {
+
+bdate = element date {
+  attribute type { ( BibliographicDateType | text ) },
+  (
+(
+element from { ISO8601Date },
+element to { ISO8601Date }?
+) |
+element on { ISO8601Date | "--" | "–" }
+)
+
+}
+
+DocumentType =
+     "international-standard" | "technical-specification" |
+     "technical-report" | "publicly-available-specification" |
+    "international-workshop-agreement" | "guide" | "industry-technical-agreement" |
+    "system-reference-deliverable"
+
+DocumentSubtype = "specification" | "method-of-test" | "vocabulary" | "code-of-practice"
+
+structuredidentifier =
+  element structuredidentifier {
+    attribute type { text }?,
+    (documentnumber, tc-documentnumber? )
+}
+
+}
+
+BibDataExtensionType &=
+        ## Whether the document is a horizontal standard
+        horizontal?,
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
+        stagename?,
+        ## If this is an update to another document (e.g. an amendment), the `doctype` will not indicate what type of
+        ## document is being updated (e.g. that this is an amendment to a technical report, as opposed to an amendment to a technical standard).
+        ## The `updates-document-type` value indicates the document type of the document being updated; this may be needed for proper rendering, or
+        ## to formulate the document identifier properly
+        updates_document_type?,
+        ## Whether this is a fast-track standard
+        fast_track?,
+        ## The price code of the standard, as documented in https://www.iec.ch/members_experts/tools/pdf/IEC_DATA_FEEDS.pdf
+        ## Used for legacy ISO documents
+        price-code?,
+        ## Function of document
+        function?,
+        ## Indication that document contains colour content
+        accessibility-color-inside?,
+        ## CEN (European Committee for Standardization) processing
+        cen-processing?,
+        ## Secretary of the secretariat
+        secretary?,
+        ## Draft is of interest to these committees
+        interest-to-committees?
+
+updates_document_type = element updates-document-type { DocumentType }
+
+fast_track = element fast-track { xsd:boolean }
+
+horizontal = element horizontal { xsd:boolean }
+
+documentnumber =
+  element project-number {
+    attribute part { xsd:int }?,
+    attribute subpart { xsd:int }?,
+    attribute amendment { xsd:int }?,
+    attribute corrigendum { xsd:int }?,
+    attribute origyr { ISO8601Date }?,
+    text
+   }
+
+tc-documentnumber =
+  element tc-document-number {
+    xsd:int
+   }
+
+stagename = element stagename {
+  attribute abbreviation { text }?,
+  text
+}
+
+function = element function { "emc" | "safety" | "environment" | "quality-assurance" }
+accessibility-color-inside = element accessibility-color-inside { xsd:boolean }
+price-code = element price-code { text }
+cen-processing = element cen-processing { xsd:boolean }
+secretary = element secretary { text }
+interest-to-committees = element interest-to-committees { text }
+tc-sc-officers-note = element tc-sc-officers-note { BasicBlock* }
+
