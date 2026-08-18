@@ -1,0 +1,29 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"policy-and-procedures" | "best-practices" | "supporting-document" | "report" | "legal" | "directives" | "proposal" |
+        "standard" | "specification" | "resolution" | "regulation"
+
+structuredidentifier = element structuredidentifier {
+  element docnumber { text },
+  element part { text }?,
+  element annexid { text }?,
+  element appendixid { text }?,
+  element supplementid { text }?
+}
+
+}
+
+BibDataExtensionType &=
+        ## The period during which comments may be submitted to the document draft
+        commentperiod?
+
+## The period during which comments may be submitted to the document draft
+commentperiod = element commentperiod {
+## The beginning of the period during which comments may be submitted to the document draft
+element from { ISO8601Date },
+## The end of the period during which comments may be submitted to the document draft. 
+## The end of the period may change, and may be left open-ended (omitted)
+element to { ISO8601Date }?
+}
+

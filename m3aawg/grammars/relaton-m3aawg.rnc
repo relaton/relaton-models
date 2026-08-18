@@ -1,0 +1,8 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"guidance" | "proposal" | "standard" | "report" | "whitepaper" | "charter" | "policy" |
+        "glossary" | "case-study"
+
+}
+

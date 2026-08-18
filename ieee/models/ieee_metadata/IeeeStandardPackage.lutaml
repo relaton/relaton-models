@@ -1,0 +1,30 @@
+enum IeeeStandardPackage {
+  definition {
+    IEEE Standard Package.
+  }
+
+  iel  {
+    definition {
+      [source,xml]
+      ----
+      <packagemember>IEL</packagemember>
+      ----
+    }
+  }
+  stdselect {
+    definition {
+      [source,xml]
+      ----
+      <packagemember>STDSELECT</packagemember>
+      ----
+    }
+  }
+  none {
+    definition {
+      [source,xml]
+      ----
+      <packagemember>None</packagemember>
+      ----
+    }
+  }
+}

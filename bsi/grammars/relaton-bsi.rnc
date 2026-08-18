@@ -1,0 +1,61 @@
+include "biblio-standoc.rnc" {
+
+bdate = element date {
+  attribute type { ( BibliographicDateType | text ) },
+  (
+(
+element from { ISO8601Date },
+element to { ISO8601Date }?
+) |
+element on { ISO8601Date | "--" | "–" }
+)
+
+}
+
+DocumentType =
+     "british-standard" | "draft-for-development" | "published-document" |
+     "privately-subscribed-standard" | "publicly-available-specification" |
+     "flex-standard" | "international-standard" | "technical-specification" |
+     "technical-report" | "guide" | "international-workshop-agreement" |
+     "industry-technical-agreement" | "standard" | "european-workshop-agreement" |
+     "fast-track-standard" | "expert-commentary"
+
+DocumentSubtype = "specification" | "method-of-test" | "method-of-specifying" |
+                  "vocabulary" | "code-of-practice"
+
+structuredidentifier =
+  element structuredidentifier {
+    attribute type { text }?,
+    (documentnumber, tc-documentnumber? )
+}
+
+}
+
+BibDataExtensionType &=
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
+        stagename?
+
+updates_document_type = element updates-document-type { DocumentType }
+
+horizontal = element horizontal { xsd:boolean }
+
+documentnumber =
+  element project-number {
+    attribute part { xsd:int }?,
+    attribute subpart { xsd:int }?,
+    attribute amendment { xsd:int }?,
+    attribute corrigendum { xsd:int }?,
+    attribute origyr { ISO8601Date }?,
+    text
+   }
+
+tc-documentnumber =
+  element tc-document-number {
+    xsd:int
+   }
+
+stagename = element stagename {
+  attribute abbreviation { text }?,
+  text
+}
+

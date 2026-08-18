@@ -1,0 +1,80 @@
+class IeeeDocumentIdentifier{
+  definition {
+    Representation of the identifier for an IEEE document, giving its individual semantic components.
+  }
+  +id: String {
+    definition {
+      The identifier string.
+    }
+  }
+  +type: String[0..1] {
+    definition {
+      The scheme or namespace of the identifier.
+    }
+  }
+  +projectNumber: Integer[0..1] {
+    definition {
+      Numerical component uniquely identifying the document.
+    }
+  }
+  +partNumber: Integer[0..1] {
+     definition {
+       Representation in the identifier of the document part, if this is a document part.
+     }
+  }
+  +subpartNumber: Integer[0..1] {
+    definition {
+      Representation in the identifier of the document subpart, if this is a document subpart.
+    }
+  }
+  +draftNumber: Integer[0..1] {
+    definition {
+      Draft number of the document.
+    }
+  }
+  +amendmentNumber: Integer[0..1] {
+    definition {
+      Representation in the identifier of the type of document amendment, if this is a document amendment.
+    }
+  }
+  +corrigendumNumber: Integer[0..1] {
+    definition {
+      Representation in the identifier of the type of document technical corrigendum, if this is a document technical corrigendum.
+    }
+  }
+  +revisionNumber: Integer[0..1] {
+    definition {
+      Number of revision.
+    }
+  }
+  +conformanceNumber: Integer[0..1] {
+    definition {
+      Representation in the identifier of the sequential number of conformance document type, if this is a conformance document to a standard.
+    }
+  }
+  +firstYear: Integer[0..1] {
+    definition {
+      Year of first publication of the document.
+    }
+  }
+  +firstMonth: Integer[0..1] {
+    definition {
+      Month of first publication of the document.
+    }
+  }
+  +year: Integer[0..1] {
+    definition {
+      Year of publication of the document in its current version or edition.
+    }
+  }
+  +month: Integer[0..1] {
+    definition {
+      Month of publication of the document in its current version or edition.
+    }
+  }
+  +modifier: IeeeStandardModifier[0..*] {
+    definition {
+      Modifier applied to the document, such as a "redline" version.
+    }
+  }
+}

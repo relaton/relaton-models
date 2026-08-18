@@ -1,0 +1,10 @@
+enum DocumentType {
+  definition {
+    Type of CCSDS document.
+  }
+  standard
+  practice
+  report
+  specification
+  record
+}

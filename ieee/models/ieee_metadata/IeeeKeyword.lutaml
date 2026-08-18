@@ -1,0 +1,4 @@
+class IeeeKeyword {
+  +terms: String
+  +type: IeeeKeywordType
+}

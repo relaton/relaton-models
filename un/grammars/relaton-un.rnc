@@ -1,0 +1,28 @@
+include "biblio-standoc.rnc" {
+DocumentType = "recommendation" | "plenary" | "addendum" | "communication" | "corrigendum" |
+    "reissue" | "agenda" | "budgetary" | "sec-gen-notes" | "expert-report" | "resolution"
+
+}
+
+BibDataExtensionType &=
+    submissionlanguage*, distribution?, session?, job_number?
+
+session = element session {
+  session-number?, session-date?, item-number*, item-name*, subitem-name*, collaborator?, agenda-id?, item-footnote?
+}
+
+session-number = element number { text }
+session-date = element session-date { xsd:date }
+item-number = element item-number { text }
+collaborator = element collaborator { text }
+agenda-id = element agenda-id { text }
+item-name = element item-name { text }
+subitem-name = element subitem-name { text }
+item-footnote = element item-footnote { text }
+
+submissionlanguage = element submissionlanguage { text }
+
+distribution = element distribution { "general" | "limited" | "restricted" | "provisional" }
+
+job_number = element job_number { text }
+

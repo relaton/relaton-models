@@ -1,0 +1,10 @@
+enum IeeeDocumentSubType {
+  definition {
+    Subtype of IEEE document.
+  }
+  standard {
+    definition {
+      IEEE Standard
+    }
+  }
+}

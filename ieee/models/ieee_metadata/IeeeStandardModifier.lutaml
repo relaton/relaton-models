@@ -1,0 +1,37 @@
+enum IeeeStandardModifier {
+  Approved {
+    definition {
+      This document is an approved standard.
+    }
+  }
+
+  Draft {
+    definition {
+      This document is a draft standard.
+    }
+  }
+
+  Redline {
+    definition {
+      This document is a standard provided with redline format.
+    }
+  }
+
+  Reserved {
+    definition {
+      This document is a reserved standard.
+    }
+  }
+
+  Superseded {
+    definition {
+      This document is a superseded standard.
+    }
+  }
+
+  Withdrawn {
+    definition {
+      This document is a withdrawn standard.
+    }
+  }
+}

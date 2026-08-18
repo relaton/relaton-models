@@ -1,0 +1,15 @@
+class IeeeDocumentRelation {
+  +productNumber: String
+  +relationshipDate: Iso8601DateTime
+  +type: IeeeDocumentRelationshipType
+  +url: Url
+
+  definition {
+    Relationship between this document and another document.
+
+    [source,xml]
+    ----
+    <standard_relationship prodnum="" relationship_date="12/31/1969 7:00:00 PM" type="I">https://standards.ieee.org/content/dam/ieee-standards/standards/web/documents/interpretations/493-1997_interp.pdf</standard_relationship>
+    ----
+  }
+}

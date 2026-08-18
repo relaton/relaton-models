@@ -1,0 +1,24 @@
+enum IeeeStandardStatus {
+  definition {
+    Standard status.
+  }
+
+  active {
+    definition {
+      This document is active.
+    }
+  }
+
+  inactive {
+    definition {
+      This document is now inactive.
+    }
+  }
+
+  superseded {
+    definition {
+      This document has been superseded.
+    }
+  }
+
+}

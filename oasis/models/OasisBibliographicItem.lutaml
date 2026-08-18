@@ -1,0 +1,3 @@
+class OasisBibliographicItem {
+  +technology-area: TechnologyArea[0..*]
+}

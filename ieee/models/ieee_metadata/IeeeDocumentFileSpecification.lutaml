@@ -1,0 +1,32 @@
+class IeeeDocumentFileSpecification {
+
+  definition {
+    File information of the IEEE document.
+
+    [source,xml]
+    ----
+    <filename docpartition="7" filetype="MainPDF">08932690.pdf</filename>
+    ----
+  }
+
+  name: String {
+    definition {
+      File name.
+    }
+  }
+  type: String {
+    definition {
+      File type.
+    }
+  }
+  docPartition: Number {
+    definition {
+      Document partition number.
+    }
+  }
+  size: Number {
+    definition {
+      File size in bytes.
+    }
+  }
+}

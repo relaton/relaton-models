@@ -1,0 +1,31 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+    "handbook" | "technical-report" | "annex"
+
+
+}
+
+BibDataExtensionType &=
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
+        stagename?,
+        ## Size of output file, in bytes
+        filesize?
+
+
+documentnumber =
+  element project-number {
+    attribute part { xsd:int }?,
+    attribute subpart { xsd:int }?,
+    attribute amendment { xsd:int }?,
+    attribute corrigendum { xsd:int }?,
+    attribute origyr { ISO8601Date }?,
+    text
+   }
+
+stagename = element stagename {
+  attribute abbreviation { text }?,
+  text
+}
+
+filesize = element filesize { xsd:int }

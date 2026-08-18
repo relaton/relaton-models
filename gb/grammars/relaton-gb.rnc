@@ -1,0 +1,70 @@
+include "biblio-standoc.rnc" {
+
+bdate = element date {
+  attribute type { ( BibliographicDateType | text ) },
+  (
+(
+element from { ISO8601Date },
+element to { ISO8601Date }?
+) |
+element on { ISO8601Date | "--" | "–" }
+)
+
+}
+
+DocumentType = "standard" | "recommendation"
+
+DocumentSubtype = "specification" | "method-of-test" | "vocabulary" | "code-of-practice"
+
+structuredidentifier =
+  element structuredidentifier {
+    attribute type { text }?,
+    (documentnumber, tc-documentnumber? )
+}
+
+}
+
+BibDataExtensionType &=
+    stagename?, gbtype, gbccs+, gbplannumber?
+
+updates_document_type = element updates-document-type { DocumentType }
+
+horizontal = element horizontal { xsd:boolean }
+
+documentnumber =
+  element project-number {
+    attribute part { xsd:int }?,
+    attribute subpart { xsd:int }?,
+    attribute amendment { xsd:int }?,
+    attribute corrigendum { xsd:int }?,
+    attribute origyr { ISO8601Date }?,
+    text
+   }
+
+tc-documentnumber =
+  element tc-document-number {
+    xsd:int
+   }
+
+stagename = element stagename {
+  attribute abbreviation { text }?,
+  text
+}
+
+gbccs = element ccs { 
+  element code {text},
+  element text {text}?
+}
+
+gbplannumber = element plannumber { text }
+
+gbtype =
+  element gbtype {
+    gbscope, gbprefix, gbmandate, gbtopic
+}
+
+gbscope = element gbscope { ( "national" | "sector" | "professional" | "local" | "enterprise" | "social-group" ) }
+gbmandate = element gbmandate { ( "mandatory" | "recommended" | "guidelines" ) }
+gbprefix = element gbprefix { text }
+gbtopic = element gbtopic { "basic" | "health-and-safety" | "environment-protection" | "engineering-and-construction" | "product" | "method" | "management-techniques" | "other" }
+

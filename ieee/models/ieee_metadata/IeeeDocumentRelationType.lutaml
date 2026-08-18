@@ -1,0 +1,70 @@
+enum IeeeDocumentRelationType {
+  definition {
+    Document relation type.
+  }
+
+  corrigendumOf {
+    definition {
+      This document is a corrigendum to the target document.
+      Represented in XML as `C`.
+    }
+  }
+
+  reaffirmedAt {
+    definition {
+      This document was reaffirmed at the provided date.
+      Represented in XML as `F`.
+    }
+  }
+
+  interpretationOf {
+    definition {
+      Target document provides interpretation of the current document.
+      Represented in XML as `I`.
+    }
+  }
+
+  adoptionOf {
+    definition {
+      This document is an adoption of the target document.
+      Represented in XML as `O`.
+    }
+  }
+
+  supplementOf {
+    definition {
+      This document is a supplement to the target document.
+      Represented in XML as `P`.
+    }
+  }
+
+  supersededBy {
+    definition {
+      Target document supersedes the current document.
+      Represented in XML as `S`.
+    }
+  }
+
+  amendmentOf {
+    definition {
+      This document is an amendment to the target document.
+      Represented in XML as `T`.
+    }
+  }
+
+  revisionOf {
+    definition {
+      This document is a revision of the target document.
+      Represented in XML as `V`.
+    }
+  }
+
+  withdrawnAt {
+    definition {
+      This document was withdrawn at the inactivation date
+      provided.
+      Represented in XML as `W`.
+    }
+  }
+
+}

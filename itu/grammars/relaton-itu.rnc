@@ -1,0 +1,87 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"recommendation" | "recommendation-supplement" | "recommendation-amendment" | "recommendation-corrigendum" | "recommendation-errata" |
+"recommendation-annex" | "focus-group" | "implementers-guide" | "technical-paper" | "technical-report" | "joint-itu-iso-iec" | "resolution" | "service-publication" | "handbook" | "question" | "contribution"
+
+structuredidentifier = element structuredidentifier {
+  bureau,
+  element docnumber { text },
+  element annexid { text }?,
+  element amendment { xsd:int }?,
+  element corrigendum { xsd:int }?
+}
+
+}
+
+BibDataExtensionType &=
+        ## The Questions that the document addresses.  A document can address multiple questions
+        question*, 
+        ## Status of approval of Recommendation status
+        recommendationstatus?, 
+        ## ITU has received a notice of intellectual property, protected by patents, which may be required to implement this Recommendation
+        ipnoticereceived?,
+        ## Study period that the editorial groups working on this document fall under
+        studyperiod?,
+        ## Name of meeting that generated this document (for resolutions, technical reports, technical papers, implementers guides) 
+        meeting?, 
+        ## Place of meeting that generated this document (for resolutions, technical reports, technical papers, implementers guides)
+        meeting-place?, 
+        ## Date of meeting that generated this document (for resolutions, technical reports, technical papers, implementers guides)
+        meeting-date?, 
+        ## Intended type for this document (for technical reports) (`R`, `C`, `TD`) 
+        intended-type?, 
+        ## Source for this document (for technical reports, technical papers, implementers guides) 
+        ext_source?
+
+meeting = element meeting {
+   attribute acronym { text }?,
+   text
+}
+
+meeting-place = element meeting-place { text }
+
+meeting-date = element meeting-date {
+(
+element from { ISO8601Date },
+element to { ISO8601Date }?
+) |
+element on { ISO8601Date }
+}
+
+intended-type = element intended-type { "R" | "C" | "TD" }
+
+ext_source = element source { text }
+
+ipnoticereceived = element ip-notice-received { xsd:boolean }
+
+recommendationstatus = element recommendationstatus {
+element from { ISO8601Date },
+element to { ISO8601Date },
+approvalstage?
+}
+
+approvalstage = element approvalstage {
+  attribute process { "tap" | "aap" },
+  ( "determined" | "in-force" | "a" | "lc" | "ac" | "lj" | "aj" | "na" | "ar" | "ri" | "at" | "sg" | "c" | "tap" )
+}
+
+bureau = element bureau { "T" | "D" | "R" }
+
+ItuGroupType =  "tsag" | "study-group" | "focus-group" | "adhoc-group" | "correspondence-group" | "joint-coordination-activity" | "working-party" |
+ "working-group" | "rapporteur-group" | "intersector-rapporteur-group" | "regional-group" 
+
+studyperiod = element studyperiod {
+  groupperiodstart,
+  groupperiodend?
+}
+
+groupperiodstart = element start { xsd:gYear }
+groupperiodend = element end { xsd:gYear }
+
+question = element question {
+        element identifier { text },
+        element name { text }?
+}
+
+

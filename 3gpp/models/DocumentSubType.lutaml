@@ -1,0 +1,7 @@
+enum DocumentSubType {
+  definition {
+    Subtype of 3GPP document.
+  }
+  spec 
+  release
+}

@@ -1,0 +1,7 @@
+enum DocumentType {
+  definition {
+    Type of 3GPP document.
+  }
+  TR
+  TS
+}

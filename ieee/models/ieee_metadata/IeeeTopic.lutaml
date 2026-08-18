@@ -1,0 +1,16 @@
+class IeeeTopic {
+  definition {
+    Publication topic for browsing.
+
+    [source,xml]
+    ----
+    <pubtopicalbrowse>Power, Energy and Industry Applications</pubtopicalbrowse>
+    ----
+  }
+
+  name: String {
+    definition {
+      Name of the publication topic.
+    }
+  }
+}

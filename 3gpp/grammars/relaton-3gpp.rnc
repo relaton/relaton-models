@@ -1,0 +1,34 @@
+include "biblio-standoc.rnc" {
+
+DocumentType = "TR" | "TS"
+
+DocumentSubtype = "spec" | "release"
+
+}
+
+BibDataExtensionType &=
+        radiotechnology?, common-ims-spec?, internal?, release?
+
+RadioTechnologyType = "2G" | "3G" | "LTE" | "5G"
+
+radiotechnology = element radiotechnology { RadioTechnologyType }
+
+common-ims-spec = element common-ims-spec { xsd:boolean }
+
+internal = element internal { xsd:boolean }
+
+release = element release {
+  element version2G { text }?,
+  element version3G { text }?,
+  element defunct { xsd:boolean }?,
+  element wpm-code-2G { text }?,
+  element wpm-code-3G { text }?,
+  element freeze-meeting { text }?,
+  element freeze-stage1-meeting { text }?,
+  element freeze-stage2-meeting { text }?,
+  element freeze-stage3-meeting { text }?,
+  element close-meeting { text }?,
+  element project-start { xsd:date }?,
+  element project-end { xsd:date  }?
+}
+

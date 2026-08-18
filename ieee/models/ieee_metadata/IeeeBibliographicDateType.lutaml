@@ -1,0 +1,56 @@
+enum IeeeBibliographicDateType {
+  original-publication {
+    definition {
+      Initial publication date.
+
+      [source,xml]
+      ----
+      <date datetype="OriginalPub">
+        <year>2019</year>
+        <month>Dec.</month>
+        <day>13</day>
+      </date>
+      ----
+    }
+  }
+
+  epub-publication {
+    definition {
+      Publication of the ePub version.
+
+      [source,xml]
+      ----
+      <date datetype="ePub">
+        <year>2019</year>
+        <month>12</month>
+        <day>13</day>
+      </date>
+      ----
+    }
+  }
+
+  last-inspect {
+    definition {
+      Date of most recent inspection.
+
+      [source,xml]
+      ----
+      <date datetype="LastInspecUpd">
+        <year>2008</year>
+        <month>3</month>
+        <day>17</day>
+      </date>
+      ----
+    }
+  }
+  approval {
+    definition {
+      Date of approval.
+
+      [source,xml]
+      ----
+      <PubApprovalDate>16 Sept. 1997</PubApprovalDate>
+      ----
+    }
+  }
+}

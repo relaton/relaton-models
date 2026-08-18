@@ -1,0 +1,9 @@
+enum W3cDocumentType {
+  candidateRecommendation
+  groupNote
+  proposedEditedRecommendation
+  proposedRecommendation
+  recommendation
+  retired
+  workingDraft
+}

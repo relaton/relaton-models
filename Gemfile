@@ -2,5 +2,4 @@
 # See https://github.com/metanorma/cimas
 source "https://rubygems.org"
 
-gem "lutaml"
-gem "lutaml-uml"
+gem "lutaml-lml", ">= 0.1.2"

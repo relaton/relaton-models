@@ -1,0 +1,4 @@
+class IeeeCopyrightAssignment {
+  +year: Iso8601Year
+  +holder: IeeeCopyrightHolder
+}

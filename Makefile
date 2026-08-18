@@ -10,25 +10,14 @@ RM    := rm -f
 endif
 
 SRC := $(wildcard views/*.lutaml)
-
-ifeq ($(SRC),)
-SRC := $(patsubst models/%.wsd,views/%.lutaml,$(wildcard models/*.wsd))
-endif
-
 PNG := $(patsubst views/%.lutaml,images/%.png,$(SRC))
 
 all: $(PNG)
 
 images/%.png: views/%.lutaml
-	lutaml -t png -o $@ $<
-
-views/%.lutaml: models/%.wsd | views
-	lutaml-wsd2uml $< > $@
-
-views:
-	mkdir views
+	lutaml-lml generate $< -o $@ -t png
 
 clean:
 	$(RM) images/*.png
 
-.PHONY: clean
+.PHONY: all clean

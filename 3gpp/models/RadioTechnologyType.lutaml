@@ -1,0 +1,6 @@
+enum RadioTechnologyType {
+  2G
+  3G
+  LTE
+  5G
+}

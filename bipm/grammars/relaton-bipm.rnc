@@ -1,0 +1,56 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"brochure" |
+"mise-en-pratique" |
+"rapport" |
+"monographie" |
+"guide" |
+"meeting-report" |
+"technical-report" |
+"working-party-note" |
+"strategy" |
+"cipm-mra" |
+"resolution" |
+"policy"
+
+structuredidentifier = element structuredidentifier {
+  element docnumber { text },
+  element part { text }?,
+  element appendix { text }?
+}
+
+}
+
+BibDataExtensionType &=
+        ## Period during which comments are allowed on the document draft
+        comment-period?, 
+        ## The domain of SI covered by the document; used to select logo in PDF cover page. The logo nominates one primary SI base units, and defining consonants for that unit and possibly others as well
+        si-aspect?, 
+        ## Note on when and where a guide was adopted
+        meeting-note?
+
+comment-period = element comment-period {
+element from { ISO8601Date },
+element to { ISO8601Date }
+}
+
+si-aspect = element si-aspect {
+"A_e_deltanu" |
+"A_e" |
+"cd_Kcd_h_deltanu" |
+"cd_Kcd" |
+"full" |
+"K_k_deltanu" |
+"K_k" |
+"kg_h_c_deltanu" |
+"kg_h" |
+"m_c_deltanu" |
+"m_c" |
+"mol_NA" |
+"s_deltanu"
+}
+
+meeting-note = element meeting-note { text }
+
+

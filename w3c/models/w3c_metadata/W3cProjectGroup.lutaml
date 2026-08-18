@@ -1,0 +1,3 @@
+class W3cProjectGroup {
+  +name: String
+}

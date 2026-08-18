@@ -1,0 +1,5 @@
+class TgppBibliographicItem {
+  +radiotechnology: RadioTechnologyType[0..1]
+  +common-ims-spec: Boolean[0..1]
+  +release: Release[0..1]
+}

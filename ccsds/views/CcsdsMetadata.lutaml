@@ -1,0 +1,17 @@
+diagram CcsdsMetadata {
+  include ../models/CcsdsBibliographicItem.lutaml
+  include ../models/DocumentType.lutaml
+  include ../models/TechnologyArea.lutaml
+
+  association {
+    owner BibliographicItem
+    member CcsdsBibliographicItem
+    owner_type inheritance
+  }
+
+  association {
+    owner TechnologyArea
+    member CcsdsBibliographicItem
+    member_type direct
+  }
+}
