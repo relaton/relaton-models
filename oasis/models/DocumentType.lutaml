@@ -1,0 +1,9 @@
+enum DocumentType {
+  definition {
+    Type of OASIS document.
+  }
+  specification
+  memorandum
+  resolution
+  standard
+}

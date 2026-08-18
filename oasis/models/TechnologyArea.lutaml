@@ -1,0 +1,20 @@
+enum TechnologyArea {
+  Cloud
+  Content-Technologies
+  Cybersecurity
+  e-Business
+  eGov/Legal
+  Emergency-Management
+  Energy
+  Information-Modeling
+  IoT
+  Lifecycle-Integration
+  Localization
+  Messaging
+  Privacy/Identity
+  Security
+  SOA
+  Software-Development
+  Web-Services
+  Virtualization
+}
