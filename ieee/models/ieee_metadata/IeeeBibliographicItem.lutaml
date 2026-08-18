@@ -1,0 +1,34 @@
+class IeeeBibliographicItem {
+  +type: IeeeDocumentType
+  +subtype: IeeeDocumentSubtype
+
+  +docidentifier: IeeeDocumentIdentifier[0..*] {
+    definition {
+      The identifier(s) of the IEEE bibliographic item.
+    }
+  }
+  +standardNumber: String
+  +standardFamily: IeeeStandardFamily[0..*]
+
+  +idDoi: DoiLink[0..1]
+  +idIsbn: IsbnNumber[0..1]
+  +idAms: String[0..1]
+  +idIdams: String[0..1]
+  +productNumber: String[0..1]
+
+  +sponsoringCommittee: IeeeCommittee[0..*]
+  //+documentStatus: IeeeDocumentStatus
+  +holdStatus: IeeeHoldStatus
+  +dates: IeeeBibliographicDate[0..*]
+  +relations: IeeeDocumentRelation[0..*]
+
+  +standardPackage: IeeeStandardPackage[0..*]
+  +icsCode: IcsCode[0..*]
+  +keywords: IeeeKeyword[0..*]
+  +topics: IeeeTopic[0..*]
+
+  +openAccess: Boolean
+  +copyrightAssignments: IeeeCopyrightAssignment[0..*]
+  +file: IeeeDocumentFileSpecification[0..1]
+  +pageNum: IeeeDocumentPageNum[0..1]
+}

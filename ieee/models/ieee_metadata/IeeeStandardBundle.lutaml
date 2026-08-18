@@ -1,0 +1,31 @@
+class IeeeStandardBundle {
+  name: String {
+    definition {
+      Name of bundle.
+
+      EXAMPLE: ISO/IEC/IEEE International Standard - Systems and software engineering - Life cycle processes - Project management - Redline
+    }
+  }
+
+  type: IeeeStandardBundleType {
+    definition {
+      Type of bundle.
+    }
+  }
+
+  baseStandardProductNumber: String {
+    definition {
+      Product number of the base standard.
+
+      EXAMPLE: STD23976
+    }
+  }
+
+  bundleProductNumber: String {
+    definition {
+      Product number of the bundle.
+
+      EXAMPLE: STDRL23976
+    }
+  }
+}

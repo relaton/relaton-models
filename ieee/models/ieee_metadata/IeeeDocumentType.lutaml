@@ -1,0 +1,10 @@
+enum IeeeDocumentType {
+  definition {
+    Type of IEEE document.
+  }
+  standard {
+    definition {
+      IEEE Standard
+    }
+  }
+}

@@ -1,0 +1,16 @@
+diagram IeeeMetadata {
+
+  include ../models/relaton/IsbnNumber.lutaml
+
+  association {
+    owner IsbnNumberScheme
+    member IsbnNumber
+    member_type direct
+  }
+
+  association {
+    owner IsbnNumberMediaType
+    member IsbnNumber
+    member_type direct
+  }
+}

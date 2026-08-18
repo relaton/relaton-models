@@ -1,0 +1,17 @@
+enum IeeeKeywordType {
+  IEEEFree {
+    definition {
+      IEEE defined keywords for public use.
+    }
+  }
+  IEEE {
+    definition {
+      IEEE defined keywords for IEEE internal use.
+    }
+  }
+  AuthorFree {
+    definition {
+      Author defined keywords.
+    }
+  }
+}

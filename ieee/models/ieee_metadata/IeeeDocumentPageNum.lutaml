@@ -1,0 +1,14 @@
+class IeeeDocumentPageNum {
+  +firstPage: number
+  +lastPage: number
+  +range: String
+
+  definition {
+    Page number information for the IEEE document.
+
+    [source,xml]
+    ----
+    <artpagenums endpage="42" startpage="1">1-42</artpagenums>
+    ----
+  }
+}

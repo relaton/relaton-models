@@ -1,0 +1,4 @@
+class IeeeBibliographicDate {
+  +date: Iso8601Date
+  +type: IeeeBibliographicDateType
+}

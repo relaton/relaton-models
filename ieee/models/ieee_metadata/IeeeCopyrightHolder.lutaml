@@ -1,0 +1,134 @@
+enum IeeeCopyrightHolder {
+  AIEE {
+    definition {
+      AIEE
+    }
+  }
+
+  ANSI/IEEE {
+    definition {
+      ANSI/IEEE
+    }
+  }
+
+  ANSI {
+    definition {
+      ANSI
+    }
+  }
+
+  ASA {
+    definition {
+      ASA
+    }
+  }
+
+  IEEE/AIEE {
+    definition {
+      IEEE/AIEE
+    }
+  }
+
+  IEEE/ANSI {
+    definition {
+      IEEE/ANSI
+    }
+  }
+
+  IEEE/ASA {
+    definition {
+      IEEE/ASA
+    }
+  }
+
+  IEEE/ASHRAE {
+    definition {
+      IEEE/ASHRAE
+    }
+  }
+
+  IEEE/ASTM {
+    definition {
+      IEEE/ASTM
+    }
+  }
+
+  IEEE/CSA {
+    definition {
+      IEEE/CSA
+    }
+  }
+
+  IEEE/IEC {
+    definition {
+      IEEE/IEC
+    }
+  }
+
+  IEEE/ISO/IEC {
+    definition {
+      IEEE/ISO/IEC
+    }
+  }
+
+  IEEE/ISO {
+    definition {
+      IEEE/ISO
+    }
+  }
+
+  IEEE/NACE International {
+    definition {
+      IEEE/NACE International
+    }
+  }
+
+  IEEE/NACE {
+    definition {
+      IEEE/NACE
+    }
+  }
+
+  IEEE/NSF {
+    definition {
+      IEEE/NSF
+    }
+  }
+
+  IEEE/Open Group {
+    definition {
+      IEEE/Open Group
+    }
+  }
+
+  IEEE {
+    definition {
+      IEEE
+    }
+  }
+
+  IRE/IEEE {
+    definition {
+      IRE/IEEE
+    }
+  }
+
+  IRE {
+    definition {
+      IRE
+    }
+  }
+
+  ISO/IEC/IEEE {
+    definition {
+      ISO/IEC/IEEE
+    }
+  }
+
+  National Electrical Manufacturers Association {
+    definition {
+      National Electrical Manufacturers Association
+    }
+  }
+
+}

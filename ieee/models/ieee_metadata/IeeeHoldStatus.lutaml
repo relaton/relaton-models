@@ -1,0 +1,13 @@
+enum IeeeHoldStatus {
+  Hold {
+    definition {
+      This document is on hold.
+    }
+  }
+
+  Publish {
+    definition {
+      This document is published.
+    }
+  }
+}

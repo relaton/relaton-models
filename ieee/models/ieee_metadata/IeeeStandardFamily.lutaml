@@ -1,0 +1,19 @@
+class IeeeStandardFamily {
+  definition {
+    Standard family.
+
+    [source,xml]
+    ----
+    <standard_family>800</standard_family>
+    <standard_family>802.10</standard_family>
+    <standard_family>802.11.2</standard_family>
+    <standard_family>802.11</standard_family>
+    <standard_family>802.11F</standard_family>
+    <standard_family>802.11aa</standard_family>
+    <standard_family>802.11ad</standard_family>
+    <standard_family>802.15.10</standard_family>
+    ----
+  }
+  identifier: String
+  name: String
+}

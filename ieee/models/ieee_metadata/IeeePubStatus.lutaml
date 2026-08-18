@@ -1,0 +1,18 @@
+enum IeeePubStatus {
+  definition {
+    Publication status.
+  }
+
+  active {
+    definition {
+      Active.
+    }
+  }
+
+  inactive {
+    definition {
+      Inactive.
+    }
+  }
+
+}

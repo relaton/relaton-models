@@ -1,0 +1,54 @@
+include "biblio-standoc.rnc" {
+
+DocumentType = "guide" | "recommended-practice" | "standard" | "whitepaper" | "redline" | "other"
+
+DocumentSubtype = "amendment" | "corrigendum" | "erratum" | "icap" | "document" | "industry-connections-report" | "industry-affiliate-network"
+
+}
+
+BibDataExtensionType &=
+        ## The stage of the document being authored, validated against the flavor's stage vocabulary.
+        ## This is a shadow of /bibdata/status/stage, which remains schema-generic:
+        ## the status of cited bibliographic items carries the vocabulary of the SDO
+        ## that published them, and is never constrained by the flavor
+        ## (metanorma-model-iso#156)
+        element stage { StageType }?,
+        ## Document published for a limited period of time.  Can apply to any of the document types
+        ## A Trial-Use standard is only described in the text of the introduction, it is not prominently displayed nor is it fielded data.
+        ## https://standards.ieee.org/about/policies/opman/sect5/
+        trialuse?,
+        ## Status of standard: Inactive, Active, Superseded
+        standard_status?,
+        ## Modification status of standard: Draft, Withdrawn, Superseded, Approved, Reserved, Redline
+        standard_modified?,
+        ## Publication status of standard: Active, Inactive
+        pubstatus?,
+        # On-Hold status of standard: Hold, Publish
+        holdstatus?,
+        ## Program under which a white paper was authored
+        program?
+
+
+StageType = "draft" | "approved" | "superseded" | "withdrawn"
+
+standard_status = element standard_status { "Inactive" | "Active" | "Superseded" }
+
+standard_modified = element standard_modified { "Draft" | "Withdrawn" | "Superseded" | "Approved" | "Reserved" | "Redline" }
+
+pubstatus = element pubstatus { "Active" | "Inactive"}
+
+holdstatus = element holdstatus { "Hold" | "Publish" }
+
+program = element program { text }
+
+BibliographicDateType |=
+  ## Date on which feedback on the document must be received by
+  "feedback-ended" |
+  ## Date that the document was approved by the IEEE SA Standards Body
+  "ieee-sasb-approved" 
+
+
+trialuse = element trial-use { xsd:boolean }
+
+
+

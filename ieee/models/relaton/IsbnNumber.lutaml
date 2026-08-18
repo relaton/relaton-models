@@ -1,0 +1,16 @@
+class IsbnNumber {
+  scheme: IsbnNumberScheme
+  mediaType: IsbnNumberMediaType
+  id: String
+}
+
+enum IsbnNumberScheme {
+  New-2005
+  Historical
+}
+
+enum IsbnNumberMediaType {
+  Electronic
+  Online
+  Paper
+}
