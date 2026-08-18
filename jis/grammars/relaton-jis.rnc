@@ -1,0 +1,40 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+    "japanese-industrial-standard" | "technical-report" | "technical-specification" | "amendment"
+
+
+structuredidentifier =
+  element structuredidentifier {
+    attribute type { text }?,
+    (documentnumber, tc-documentnumber? )
+}
+
+}
+
+BibDataExtensionType &=
+        ## Human-readable name of the stage of publication, corresponding to the numeric stage code given in `/bibdata/status/stage`
+        stagename?
+
+
+documentnumber =
+  element project-number {
+    attribute part { xsd:int }?,
+    attribute subpart { xsd:int }?,
+    attribute amendment { xsd:int }?,
+    attribute corrigendum { xsd:int }?,
+    attribute origyr { ISO8601Date }?,
+    text
+   }
+
+tc-documentnumber =
+  element tc-document-number {
+    xsd:int
+   }
+
+stagename = element stagename {
+  attribute abbreviation { text }?,
+  text
+}
+
+
