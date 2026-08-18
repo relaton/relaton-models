@@ -2,6 +2,9 @@
 # See https://github.com/metanorma/cimas
 name: make
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ main, master ]
