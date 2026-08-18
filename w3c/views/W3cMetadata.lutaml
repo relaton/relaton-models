@@ -1,0 +1,25 @@
+diagram W3cMetadata {
+
+  include ../models/relaton/BibliographicItem.lutaml
+
+  include ../models/w3c_metadata/W3cBibliographicItem.lutaml
+  include ../models/w3c_metadata/W3cProjectGroup.lutaml
+  include ../models/w3c_metadata/W3cDocumentType.lutaml
+
+  association {
+    owner BibliographicItem
+    member W3cBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner W3cProjectGroup
+    member W3cBibliographicItem
+    member_type direct
+  }
+  association {
+    owner W3cBibliographicItem
+    member W3cDocumentType
+    owner_type direct
+  }
+
+}

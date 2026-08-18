@@ -1,0 +1,4 @@
+class W3cBibliographicItem {
+  +doctype: W3cDocumentType
+  +workgroup: W3cProjectGroup[0..*]
+}

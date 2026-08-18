@@ -1,0 +1,6 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"groupNote" | "technicalReport"
+
+}
