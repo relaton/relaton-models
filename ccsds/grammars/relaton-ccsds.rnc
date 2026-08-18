@@ -1,0 +1,15 @@
+include "biblio-standoc.rnc" {
+
+BibDataExtensionType =
+  attribute schema-version { text }?,
+  doctype,
+  structuredidentifier*,
+  technology-area?
+
+DocumentType = "standard" | "practice" | "report" | "specification" | "record"
+
+}
+
+technology-area = element technology-area { TechnologyArea }
+
+TechnologyArea = "SEA" | "MOIMS" | "CSS" | "SOIS" | "SLS" | "SIS"

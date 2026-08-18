@@ -1,0 +1,3 @@
+class CcsdsBibliographicItem {
+  +technology-area: TechnologyArea[0..1]
+}

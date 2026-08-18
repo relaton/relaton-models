@@ -1,0 +1,8 @@
+enum TechnologyArea {
+  SEA
+  MOIMS
+  CSS
+  SOIS
+  SLS
+  SIS
+}
