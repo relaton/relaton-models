@@ -1,0 +1,15 @@
+include "biblio-standoc.rnc" {
+
+DocumentType =
+"policy-and-procedures" | "best-practices" | "supporting-document" | "report" | "legal" | "directives" | "proposal" |
+        "standard"
+
+}
+
+BibDataExtensionType &=
+    ## Security level classification. For example, "confidential", "client confidential"
+    security?
+
+security = element security { text }
+
+
