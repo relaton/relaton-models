@@ -19,6 +19,16 @@ https://github.com/metanorma/standoc-models/tree/main/grammars[Grammars]. The
 base grammars for the BibliographicItem, Citation and Contributor models live
 in `grammars/` here.
 
+== Building
+
+One root `Gemfile` (lutaml-lml) and one root `Makefile`:
+
+  make            # regenerate images/ from views/*.lutaml
+  make verify     # assert PNG magic bytes on every committed diagram
+  make clean
+
+The workflow runs the same build on ubuntu, macOS and Windows.
+
 == Bibliography UML Models
 
 === Bibliographic Item

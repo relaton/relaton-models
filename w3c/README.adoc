@@ -1,65 +1,19 @@
-= Relaton W3cBibliographic Model
+= Relaton W3C bibliographic model
 
-This bibliographic model is developed to consolidate and standardize
-the data model used for bibliographic and citation purposes.
+Bibliographic model for W3C — the flavour overlay of the shared RelBib
+BibliographicItem model.
 
-This model is meant to be fully compatible with ISO 690 and
-ISO TC 46's (and SC 4, SC 9) work on bibliography.
+This directory is the `w3c` flavour of the unified
+https://github.com/relaton/relaton-models[relaton-models] repository
+(formerly the standalone relaton-model-w3c repository; merged with its
+git history on 2026-08-18).
 
+== Layout
 
-== W3cBibliography UML Models
+* `models/`, `views/` — LutaML model sources
+* `images/` — generated model diagrams, committed
+* `grammars/relaton-w3c.rnc` — the flavour grammar overlay
 
-image::images/W3cMetadata.png[]
-
-== Example
-
-[source,xml]
-----
-<bibdata type="standard">
-  <title language="en" format="plain" type="main">JSON-LD 1.1</title>
-  <uri type="src">https://www.w3.org/TR/2020/CR-json-ld11-20200305/</uri>
-  <docidentifier>JSON-LD 1.1</docidentifier>
-  <date type='published'><on>2020-03-05</on></date>
-  <contributor>
-    <role type="editor"/>
-    <person>
-      <name>
-        <completename>Gregg Kellogg</completename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="editor"/>
-    <person>
-      <name>
-        <completename>Pierre-Antoine Champin</completename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="editor"/>
-    <person>
-      <name>
-        <completename>Dave Longley</completename>
-      </name>
-    </person>
-  </contributor>
-  <language>en</language>
-  <script>Latn</script>
-  <copyright>
-    <from>2020</from>
-    <owner>
-      <organization>
-        <name>W3C</name>
-      </organization>
-    </owner>
-  </copyright>
-  <keyword>Data</keyword>
-  <ext>
-    <doctype>candidateRecommendation</doctype>
-    <editorialgroup>
-      <technical-committee>JSON-LD Working Group</technical-committee>
-    </editorialgroup>
-  </ext>
-</bibdata>
-----
+Diagrams regenerate via the root `Makefile`; the overlay is consumed by
+the Metanorma grammar hub
+(https://github.com/metanorma/standoc-models[standoc-models]).

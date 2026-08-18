@@ -20,4 +20,25 @@ images/%.png: views/%.lutaml
 clean:
 	$(RM) images/*.png
 
-.PHONY: all clean
+# Defensive content-type check: assert PNG magic bytes on every committed
+# diagram (same gate as standoc-models). Skipped on Windows — git-bash
+# file(1) misreports Windows-Graphviz output.
+ifeq ($(OS),Windows_NT)
+verify:
+	@echo "verify: skipped on Windows"
+else
+verify:
+	@count=0; bad=0; \
+	for p in images/*.png; do \
+	  [ -e "$$p" ] || continue; \
+	  count=$$((count+1)); \
+	  if ! file -b "$$p" | grep -q "^PNG image data"; then \
+	    echo "ERROR: $$p is not a valid PNG ($$(file -b $$p))" >&2; \
+	    bad=$$((bad+1)); \
+	  fi; \
+	done; \
+	if [ $$bad -gt 0 ]; then echo "verify: $$bad of $$count PNG(s) invalid" >&2; exit 1; fi; \
+	echo "verify: $$count PNG file(s) OK"
+endif
+
+.PHONY: all clean verify
