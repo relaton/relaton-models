@@ -9,16 +9,15 @@ ISO TC 46's (and SC 4, SC 9) work on bibliography.
 They are used extensively in the following projects as containers
 for bibliographic data management and for managing document metadata:
 
-* https://github.com/metanorma/metanorma-model-iso[ISO Standards]
-* https://github.com/metanorma/metanorma-model-cc[CalConnect Standards]
+* https://github.com/metanorma/standoc-models[Metanorma document models]
 
 Below are the UML diagrams.
 
 The document models are expressed as LutaML-UML and as RelaxNG Compact (RNC) grammars;
 see discussion under
-https://github.com/metanorma/metanorma-model-iso/tree/master/grammars[Grammars]. This
-repository contains the RNC grammars for the base BibliographicItem model,
-Citation model and the Contributor model.
+https://github.com/metanorma/standoc-models/tree/main/grammars[Grammars]. The
+base grammars for the BibliographicItem, Citation and Contributor models live
+in `grammars/` here.
 
 == Bibliography UML Models
 
@@ -236,3 +235,20 @@ teneur en protéines brutes -- Méthode de Kjeldahl</title>
 </bibitem>
 ----
 
+
+== Repository layout — unified Relaton models
+
+This repository consolidates the shared Relaton bibliographic models and every
+former per-flavour `relaton-model-*` repository (relaton-model-ieee,
+relaton-model-iso, ... 29 in total), each merged in under its own top-level
+directory with its full git history preserved:
+
+* `models/`, `views/`, `images/`, `grammars/` — the shared RelBib models and
+  base grammars (`biblio.rnc`, `biblio-standoc.rnc`, `biblio-compile.rnc`)
+* `<flavour>/` — each former `relaton-model-<flavour>` repository: its models,
+  views, images, and the flavour-specific grammar overlay
+  `<flavour>/grammars/relaton-<flavour>.rnc`
+
+The Metanorma grammar hub
+(https://github.com/metanorma/standoc-models[standoc-models]) consumes the
+base grammars and flavour overlays from this repository.
