@@ -9,6 +9,8 @@ SHELL := /bin/bash
 RM    := rm -f
 endif
 
+# views/*.lutaml are the rendered diagrams; models/*.lutaml are the
+# definition modules they build on - only views generate images.
 SRC := $(wildcard views/*.lutaml)
 PNG := $(patsubst views/%.lutaml,images/%.png,$(SRC))
 
