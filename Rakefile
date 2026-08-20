@@ -82,7 +82,8 @@ task :parity do
   end
 
   abort "parity: #{errors.size} issue(s):\n  #{errors.join("\n  ")}" unless errors.empty?
-  puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{Dir['*/models/**/*.lml'].size} LML model files)"
+  own = Dir["*/models/**/*.lml"].reject { |p| p.start_with?("basicdoc/") }
+  puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{own.size} LML model files)"
 end
 
 desc "Render, verify PNGs, and check LML/RNC parity"

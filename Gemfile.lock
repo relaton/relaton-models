@@ -1,0 +1,92 @@
+GIT
+  remote: https://github.com/lutaml/lutaml-lml.git
+  revision: b0da23147dc96431e24d5590bbd92d0ed279b430
+  ref: b0da231
+  specs:
+    lutaml-lml (0.1.3)
+      lutaml-model (~> 0.8.0)
+      moxml (>= 0.1.24)
+      parslet (~> 2.0)
+      ruby-graphviz
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.3.0)
+    bigdecimal (4.1.2)
+    canon (0.2.12)
+      diff-lcs
+      json
+      moxml (~> 0.1.22)
+      nokogiri
+      paint
+      rainbow
+      table_tennis
+      thor
+      unicode-name
+    concurrent-ruby (1.3.8)
+    csv (3.3.6)
+    diff-lcs (2.0.0)
+    ffi (1.17.4)
+    ffi (1.17.4-arm64-darwin)
+    ffi (1.17.4-x86_64-darwin)
+    json (2.21.2)
+    liquid (5.13.0)
+      bigdecimal
+      strscan (>= 3.1.1)
+    lutaml-model (0.8.19)
+      base64
+      bigdecimal
+      canon
+      concurrent-ruby
+      liquid (>= 4.0, < 6.0)
+      moxml (~> 0.1.25)
+      ostruct
+      rubyzip (~> 2.3)
+      thor
+    memo_wise (1.13.0)
+    mini_portile2 (2.8.9)
+    moxml (0.1.26)
+    nokogiri (1.19.4)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
+    nokogiri (1.19.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.19.4-x86_64-darwin)
+      racc (~> 1.4)
+    ostruct (0.6.3)
+    paint (2.3.0)
+    parslet (2.0.0)
+    racc (1.8.1)
+    rainbow (3.1.1)
+    rake (13.4.2)
+    rexml (3.4.4)
+    ruby-graphviz (1.2.5)
+      rexml
+    rubyzip (2.4.1)
+    strscan (3.1.8)
+    table_tennis (1.0.0)
+      csv (~> 3.3)
+      ffi (~> 1.17)
+      memo_wise (~> 1.13)
+      paint (~> 2.3)
+      unicode-display_width (~> 3.2)
+    thor (1.5.0)
+    unicode-display_width (3.2.0)
+      unicode-emoji (~> 4.1)
+    unicode-emoji (4.2.0)
+    unicode-name (1.14.0)
+      unicode-types (~> 1.11)
+    unicode-types (1.11.0)
+
+PLATFORMS
+  arm64-darwin-21
+  ruby
+  x86_64-darwin-19
+
+DEPENDENCIES
+  lutaml-lml!
+  rake
+
+BUNDLED WITH
+   2.3.4
