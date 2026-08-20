@@ -276,9 +276,17 @@ directory with its full git history preserved:
   `<flavour>/grammars/relaton-<flavour>.rnc`
 
 Every module directory — the base (`relaton/`) and each flavour — uses the
-same internal layout: `models/` (LutaML definitions), `views/` (LutaML
-diagram views), `images/` (rendered PNGs), `grammars/` (RNC implementation
-grammars accompanying the models).
+same internal layout:
+
+* `models/` — LutaML **definition modules** (`class` / `enum` / `data_type` only)
+* `views/` — LutaML **diagram views** (one `diagram` each; `include`s + `association`s only)
+* `images/` — rendered PNGs (committed; regenerated from views)
+* `grammars/` — RNC implementation grammars accompanying the LML models
+
+Views and models are a hard separation: never put class bodies in `views/`,
+never put `diagram` / `association` in `models/`. Cross-module reuse is a
+relative `include` of the real file — never a stub copy.
+
 
 The Metanorma grammar hub
 (https://github.com/metanorma/standoc-models[standoc-models]) consumes the
