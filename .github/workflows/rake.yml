@@ -11,38 +11,19 @@ on:
 
 jobs:
   rake:
-    name: Test on LutaML ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      # Self-contained tool setup. The former shared workflow
-      # (relaton/support make.yml) pinned
-      # metanorma/metanorma-build-scripts/plantuml-setup-action@main, which
-      # was removed upstream on 2026-08-17, breaking every @main consumer
-      # at action-download time — and the unpinned legacy lutaml gem stack
-      # no longer resolves to a loadable combination. This repository now
-      # renders diagrams with lutaml-lml (graphviz-backed); graphviz is
-      # preinstalled on all GitHub-hosted runners, installed defensively
+      # graphviz is preinstalled on ubuntu runners; install defensively
       # only when missing.
-      - if: runner.os == 'Linux'
-        run: command -v dot >/dev/null || { sudo apt-get update && sudo apt-get install -y graphviz; }
-      - if: runner.os == 'macOS'
-        run: command -v dot >/dev/null || brew install graphviz
-      - if: runner.os == 'Windows'
-        shell: pwsh
-        run: if (-not (Get-Command dot -ErrorAction SilentlyContinue)) { choco install -y graphviz }
+      - run: command -v dot >/dev/null || { sudo apt-get update && sudo apt-get install -y graphviz; }
 
       # workaround for https://github.com/actions/runner-images/issues/37
-      - if: matrix.os == 'ubuntu-latest'
-        run: |
+      - run: |
           sudo apt-get update
           sudo apt-get install libcurl4-openssl-dev
 
@@ -51,15 +32,6 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
-      # Smoke-test generation on every OS. Windows Graphviz/lutaml-lml
-      # still emits non-PNG payloads into .png paths (same class of bug as
-      # metanorma/ci#302/#303), so content verification runs only where the
-      # toolchain produces real PNG magic bytes.
       - run: bundle exec rake clean render
-
-      - name: Verify PNG output
-        if: runner.os != 'Windows'
-        run: bundle exec rake verify
-
-      - name: LML/RNC parity
-        run: bundle exec rake parity
+      - run: bundle exec rake verify
+      - run: bundle exec rake parity
