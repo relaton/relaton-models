@@ -86,6 +86,12 @@ task :parity do
   puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{own.size} LML model files)"
 end
 
+desc "Build static model catalog into _site/ from */views/*.lml metadata + */images/"
+task :site do
+  require_relative "site/generate"
+  RelatonSite.build!
+end
+
 desc "Render, verify PNGs, and check LML/RNC parity"
 task check: %i[render verify parity]
 

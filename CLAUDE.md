@@ -53,6 +53,7 @@ bundle exec rake clean           # remove regenerable PNGs only
 bundle exec rake verify          # assert PNG magic bytes on every committed diagram
 bundle exec rake parity          # assert every flavour has LML models + RNC overlay; basicdoc submodule present
 bundle exec rake check           # render + verify + parity
+bundle exec rake site            # build the model catalog site into _site/ (deployed by .github/workflows/pages.yml)
 bundle exec rake <module>/images/<Name>.png   # render a single diagram
 ```
 

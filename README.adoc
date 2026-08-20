@@ -41,8 +41,11 @@ One root `Gemfile` (lutaml-lml) and one root `Rakefile`. Initialise the
   bundle exec rake parity   # assert LML models exist for every RNC overlay
   bundle exec rake check    # render + verify + parity
   bundle exec rake clean
+  bundle exec rake site     # build the model catalog into _site/
 
-The workflow runs the same build on ubuntu, macOS and Windows.
+The workflow runs the same build on ubuntu.
+A https://relaton.github.io/relaton-models/[model catalog site] is generated
+from the views and deployed to GitHub Pages by the `pages` workflow.
 
 == Bibliography UML Models
 

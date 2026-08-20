@@ -1,0 +1,77 @@
+<article class="plate-page wrap">
+  <header class="plate-head">
+    <div>
+      <p class="crumb">
+        <a href="<%= asset_path('index.html') %>">Catalog</a>
+        <span class="punct"> · </span>
+        <a href="<%= asset_path('index.html') %>" data-module-link="<%= h(plate.module_name) %>"><%= h(plate.module_name) %></a>
+        <span class="punct"> · </span> card <%= h(plate.call_no) %>
+      </p>
+      <p class="eyebrow"><%= plate.kind == 'base' ? 'RelBib base module' : 'SDO flavour overlay' %></p>
+      <h1><%= h(plate.title) %></h1>
+      <p class="plate-summary">
+        View <code><%= h(plate.module_name) %>/views/<%= h(plate.view_file) %></code>
+        composing <%= plate.includes.size %> LML include<%= plate.includes.size == 1 ? '' : 's' %>
+        and <%= plate.associations %> association<%= plate.associations == 1 ? '' : 's' %>.
+      </p>
+    </div>
+    <div class="side-stats" aria-label="Card statistics">
+      <div class="stat"><b>Includes</b><span><%= plate.includes.size %></span></div>
+      <div class="stat"><b>Associations</b><span><%= plate.associations %></span></div>
+      <div class="stat"><b>Module files</b><span><%= mod.model_files %></span></div>
+    </div>
+  </header>
+
+  <figure class="diagram-stage">
+    <img src="<%= asset_path("images/#{plate.image}") %>" alt="Full UML diagram for <%= h(plate.title) %>">
+  </figure>
+
+  <div class="panel-grid">
+    <section class="panel">
+      <h2>Included models</h2>
+      <ul class="include-list">
+        <% plate.includes.each do |inc| %>
+          <li><%= h(inc) %></li>
+        <% end %>
+      </ul>
+    </section>
+    <section class="panel">
+      <h2>Catalogue entry</h2>
+      <dl class="entry-list">
+        <div><dt>Call number</dt><dd><code><%= h(plate.call_no) %></code></dd></div>
+        <div><dt>Module</dt><dd><%= h(plate.module_name) %> (<%= plate.kind %>)</dd></div>
+        <div><dt>LML files</dt><dd><%= mod.model_files %> under <code><%= h(plate.module_name) %>/models/</code></dd></div>
+        <% if mod.rnc_overlay %>
+        <div><dt>RNC companion</dt><dd><code><%= h(mod.rnc_overlay) %></code></dd></div>
+        <% end %>
+      </dl>
+      <div class="note">
+        <strong>Source of truth</strong>
+        Definition modules live under <code>models/</code>. This page is a
+        view — class bodies are never authored inside <code>views/</code>.
+      </div>
+      <p class="plate-links">
+        <a href="<%= h(plate.github_view_url) %>">Open view on GitHub</a>
+        <span class="punct"> · </span>
+        <a href="<%= asset_path("images/#{plate.image}") %>">Open PNG</a>
+      </p>
+    </section>
+  </div>
+
+  <nav class="pager" aria-label="Card pagination">
+    <% if prev_plate %>
+      <a href="<%= asset_path("plates/#{prev_plate.module_name}/#{prev_plate.slug}.html") %>">
+        <span>Previous</span>
+        ← <%= h(prev_plate.title) %>
+      </a>
+    <% else %>
+      <span></span>
+    <% end %>
+    <% if next_plate %>
+      <a href="<%= asset_path("plates/#{next_plate.module_name}/#{next_plate.slug}.html") %>" style="text-align:right">
+        <span>Next</span>
+        <%= h(next_plate.title) %> →
+      </a>
+    <% end %>
+  </nav>
+</article>
