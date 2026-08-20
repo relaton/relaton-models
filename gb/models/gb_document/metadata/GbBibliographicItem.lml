@@ -1,0 +1,31 @@
+class GbBibliographicItem {
+  definition {
+    Bibliographic description of a Chinese standard.
+
+    Adoption from international standards is achieved using BibliographicItem.relations:
+
+    * identical (等同采用)
+    * equivalent (等效采用)
+    * nonequivalent (参照采用)
+
+    Standard state (active, pending_active, revoked) is modeled using BibliographicDate:
+
+    * activated (Current, 现行)
+    * published (Pending activition, 即将实施)
+    * obsoleted (Revoked, 废止) as N1
+  }
+
+  +committee: GbTechnicalCommittee[0..1]
+  +gbtype: GbStandardType
+  +topic: GbStandardTopic[0..1]
+  +ccs: Ccs[1..*]
+
+  +planNumber: String[0..1] {
+    definition {
+      Plan number registered at the General Administration of Quality Supervision, Inspection and Quarantine.
+      计划项目编号, 国家技术监督局的国家标准制定计划中的项目编号。
+    }
+  }
+
+  +type: GbDocumentType
+}

@@ -1,0 +1,102 @@
+diagram ItuBibliographicItem {
+  title 'ITU Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/ItuBibliographicItem.lml
+  include ../models/ItuDocumentId.lml
+  include ../models/ItuSerie.lml
+  include ../models/ItuIntendedDate.lml
+  include ../models/ItuBureau.lml
+  include ../models/ItuProjectGroup.lml
+  include ../models/ItuGroupType.lml
+  include ../models/ItuGroup.lml
+  include ../models/ItuStudyPeriod.lml
+  include ../models/ItuDocumentStatus.lml
+  include ../models/ItuRecommendationStatus.lml
+  include ../models/ItuApprovalProcessStage.lml
+  include ../models/ItuApprovalProcess.lml
+  include ../models/ItuAapStatusCode.lml
+  include ../models/ItuTapStatusCode.lml
+  include ../models/ItuDocumentType.lml
+
+  association {
+    owner BibliographicItem
+    member ItuBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuDocumentId
+    owner_type direct
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuProjectGroup
+    owner_type direct
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuDocumentType
+    owner_type direct
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuDocumentStatus
+    owner_type direct
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuRecommendationStatus
+    owner_type direct
+  }
+  association {
+    owner ItuBibliographicItem
+    member ItuIntendedDate
+    owner_type direct
+  }
+  association {
+    owner ItuDocumentId
+    member ItuSerie
+    owner_type direct
+  }
+  association {
+    owner ItuProjectGroup
+    member ItuGroup
+    owner_type direct
+  }
+  association {
+    owner ItuProjectGroup
+    member ItuBureau
+    owner_type direct
+  }
+  association {
+    owner ItuGroup
+    member ItuStudyPeriod
+    owner_type direct
+  }
+  association {
+    owner ItuGroup
+    member ItuGroupType
+    owner_type direct
+  }
+  association {
+    owner ItuRecommendationStatus
+    member ItuApprovalProcessStage
+    owner_type direct
+  }
+  association {
+    owner ItuApprovalProcessStage
+    member ItuAapStatusCode
+    owner_type direct
+  }
+  association {
+    owner ItuApprovalProcessStage
+    member ItuTapStatusCode
+    owner_type direct
+  }
+  association {
+    owner ItuApprovalProcessStage
+    member ItuApprovalProcess
+    owner_type direct
+  }
+}

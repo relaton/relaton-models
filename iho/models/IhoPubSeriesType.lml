@@ -1,0 +1,5 @@
+class IhoPubSeriesType {
+  +type: String
+  +title: IhoPubSeriesEnum
+  +abbreviation: String[0..1]
+}

@@ -1,0 +1,5 @@
+class StructuredIdentifierType <<StandardDocument>> {
+  definition {
+    Representation of the identifier for a _StandardDocument_, giving its individual semantic components.
+  }
+}

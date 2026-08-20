@@ -14,6 +14,6 @@ git history on 2026-08-18).
 * `images/` — generated model diagrams, committed
 * `grammars/relaton-oasis.rnc` — the flavour grammar overlay
 
-Diagrams regenerate via the root `Makefile`; the overlay is consumed by
+Diagrams regenerate via the root `Rakefile` (`bundle exec rake render`); the overlay is consumed by
 the Metanorma grammar hub
 (https://github.com/metanorma/standoc-models[standoc-models]).

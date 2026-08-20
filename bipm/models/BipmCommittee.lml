@@ -1,0 +1,24 @@
+class BipmCommittee {
+  definition {
+    CGPM: General Conference on Weights and Measures.
+    CIPM: International Committee for Weights and Measures.
+    BIPM: International Bureau of Weights and Measures.
+    CCAUV: Consultative Committee for Acoustics, Ultrasound and Vibration.
+    CCEM: Consultative Committee for Electricity and Magnetism.
+    CCL: Consultative Committee for Length.
+    CCM: Consultative Committee for Mass and Related Quantities.
+    CCPR: Consultative Committee for Photometry and Radiometry.
+    CCQM: Consultative Committee for Amount of Substance: Metrology in Chemistry and Biology.
+    CCRI: Consultative Committee for Ionizing Radiation.
+    CCT: Consultative Committee for Thermometry.
+    CCTF: Consultative Committee for Time and Frequency.
+    CCU: Consultative Committee for Units.
+    CCL-CCTF: Frequency Standards Working Group.
+    JCGM: Joint Committee for Guides in Metrology.
+    JCRB: Joint Committee of the Regional Metrology Organizations and the BIPM.
+    JCTLM: Joint Committee for Traceability in Laboratory Medicine.
+    INetQI: International Network on Quality Infrastructure.
+  }
+  +acronym: BipmCommitteeAcronym
+  +name: String
+}

@@ -1,0 +1,10 @@
+class GbStandardType {
+  definition {
+    Type of Chinese standard.
+  }
+
+  +scope: GbStandardScope
+  +prefix: GbStandardPrefix
+  +mandate: GbStandardMandate
+}
+

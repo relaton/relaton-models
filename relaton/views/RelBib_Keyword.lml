@@ -1,0 +1,11 @@
+diagram RelBib_Keyword {
+  
+  include ../models/KeywordType.lml
+  include ../models/VocabIdType.lml
+
+  association {
+    owner KeywordType
+    member VocabIdType
+    owner_type direct
+  }
+}

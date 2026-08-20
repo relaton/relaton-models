@@ -1,0 +1,17 @@
+diagram OasisMetadata {
+  include ../models/OasisBibliographicItem.lml
+  include ../models/DocumentType.lml
+  include ../models/TechnologyArea.lml
+
+  association {
+    owner BibliographicItem
+    member OasisBibliographicItem
+    owner_type inheritance
+  }
+
+  association {
+    owner TechnologyArea
+    member OasisBibliographicItem
+    member_type direct
+  }
+}

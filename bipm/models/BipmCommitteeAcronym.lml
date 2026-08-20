@@ -1,0 +1,20 @@
+enum BipmCommitteeAcronym {
+  cgpm
+  cipm
+  bipm
+  ccauv
+  ccem
+  ccl
+  ccm
+  ccpr
+  ccqm
+  ccri
+  cct
+  cctf
+  ccu
+  ccl-cctfwg
+  jcgm
+  jcrb
+  jctlm
+  inetqi
+}

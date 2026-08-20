@@ -1,0 +1,5 @@
+enum ItuGroupType {
+  tsag
+  study-group
+  work-group
+}

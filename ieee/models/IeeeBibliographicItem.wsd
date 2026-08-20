@@ -1,0 +1,31 @@
+@startuml IeeeDoc_IeeeBibliographicItem
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class IsoBibliographicItem <<Bibliography>> {
+
+}
+
+class IeeeBibliographicItem{
+  +scope: LocalizedString[0..1]
+  +purpose: LocalizedString[0..1]
+  +iee_version: IeeeVersion[0..*]
+}
+
+class IeeeVersion{
+  +date: Date
+  +status: DocumentStatus
+  +id: DocumentId
+  +uri: TypedUri
+}
+
+'******* NOTES ********************************************************
+
+'******* CLASS RELATIONS **********************************************
+IsoBibliographicItem <|-- IeeeBibliographicItem
+
+IeeeBibliographicItem <-- IeeeVersion
+
+@enduml

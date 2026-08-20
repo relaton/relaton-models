@@ -1,0 +1,189 @@
+@startuml nist-bibliographic-item
+/'
+Diagram:        NistBibliographicItem
+DateCreate:     19/02/2019
+Description:    Metanorma IsoDoc is a family of document models intended to represent ISO Standards and similarly structured standards,
+                based on the Metanorma StandardDocument ("StanDoc") and BasicDocument ("BasicDoc") models.
+                It is used to abstract the automated generation of standard documents in various formats from well-defined authoring tools;
+                and to validate the structural conformance of authored standards to specifications.
+'/
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<StandardDocument>>{
+
+}
+
+class NistBibliographicItem {
+  +type: BibItemType
+  +documentIdentifier: NistDocumentId
+  +title: FormattedString[1..*]
+  +subtitle: FormattedString[0..*]
+  +short-title: FormattedString[0..*]
+  +short-subtitle: FormattedString[0..*]
+  +document_class_title: FormattedString[0..*]
+  +link: TypedUri
+  'e.g. https://csrc.nist.gov/publications/detail/fips/202/final
+  '+uri: Uri
+  'e.g. https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+  +doi: TypedUri
+  'e.g. https://doi.org/10.6028/NIST.FIPS.202
+  +dates: NistBibliographicDate[0..*]
+  +relation: NistDocumentRelation[0..*]
+  +docemail: TypedUri[0..1]
+  +series: NistPubSeriesType
+  +documentStatus: NistDocumentStatus[0..1]
+  'edition can be "-1" in "FIPS 198-1" or "Rev. 1" in "SP 800-179 Rev. 1"
+  +revision: String
+  +keyword: String[1..*]
+  +commentPeriod: NistCommentPeriod[0..1]
+}
+
+class BibliographicDate <<biblio>> {
+}
+
+class NistBibliographicDate {
+  +type: NistBibliographicDateType | text
+}
+
+enum BibliographicDateType <<biblio>> {
+}
+
+enum NistBibliographicDateType <<enumeration>> {
+  abandoned
+  superseded
+}
+
+class NistDocumentId {
+  'id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in "SP 1800-19" ("-19" is part)
+  +id: String
+}
+
+class SeriesType <<biblio>> {
+}
+
+class NistPubSeriesType {
+   +type: "main"
+   +title: NistPubSeriesEnum
+   +abbreviation: String[0..1]
+}
+
+enum NistPubSeriesEnum <<enumeration>> {
+  'Advanced Manufacturing Series (NIST AMS)                     value="2747816"
+  nist-ams
+  'Building Science Series                                      value="8726"
+  building-science
+  'Federal Inf. Process. Stds. (NIST FIPS)                      value="8701"
+  nist-fips
+  'Grant/Contract Reports (NISTGCR)                             value="8691"
+  nist-gcr
+  'Handbook (NIST HB)                                           value="8676"
+  nist-hb
+  'ITL Bulletin                                                 value="8736"
+  itl-bulletin
+  'J. Phys. &amp; Chem. Ref. Data (JPCRD)                       value="8671"
+  jpcrd
+  'Journal of Research (NIST JRES)                              value="8666"
+  nist-jres
+  'Letter Circular                                              value="8721"
+  letter-circular
+  'Monograph (NIST MN)                                          value="8716"
+  nist-monograph
+  'National Construction Safety Team Act Reports (NIST NCSTAR)  value="8706"
+  nist-ncstar
+  'Natl Std. Ref. Data Series (NIST NSRDS)                      value="8696"
+  nist-nsrds
+  'NIST Interagency/Internal Report (NISTIR)                    value="8711"
+  nistir
+  'Product Standards                                            value="8731"
+  product-standards
+  'Special Publication (NIST SP)                                value="8681"
+  nist-sp
+  'Technical Note (NIST TN)                                     value="8686"
+  nist-tn
+  'Other                                                        value="8741"
+  other
+  csrc-white-paper
+  csrc-book
+  csrc-use-case
+  csrc-building-block
+}
+
+class NistDocumentStatus {
+  +stage: NistDocumentStatusType
+  +iteration: String[0..1]
+  +substage: NistDocumentSubstageType[0..1]
+}
+
+class NistCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+  +extended: Date[0..1]
+}
+
+enum NistDocumentStatusType <<enumeration>> {
+  draft-internal
+  draft-wip
+  draft-prelim
+  draft-public
+  final
+  final-review
+}
+
+enum NistDocumentSubstageType <<enumeration>> {
+  active
+  withdrawn
+  retired
+}
+
+class DocumentRelation <<biblio>> {
+}
+
+class NistDocumentRelation {
+  +type: NistDocumentRelationType
+}
+
+class DocumentRelationType <<biblio>> {
+}
+
+enum NistDocumentRelationType <<enumeration>> {
+  supersedes
+  supersededBy
+  obsoletedBy
+}
+
+
+'******* NOTES ********************************************************
+note right of NistBibliographicItem: The type of uri is omitted.\nThe type of doi is "doi".
+note right of NistBibliographicItem: The various types of title are realised through\ntype attributes on Title.
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- NistBibliographicItem
+
+NistBibliographicItem <-- NistDocumentId
+NistBibliographicItem <-- NistTitle
+NistBibliographicItem <-- NistPubSeriesType
+NistBibliographicItem <-- NistDocumentStatus
+NistBibliographicItem <-- NistCommentPeriod
+NistBibliographicItem <-- NistDocumentRelation
+NistBibliographicItem <-- NistBibliographicDate
+
+BibliographicDate <|-- NistBibliographicDate
+BibliographicDateType <|-- NistBibliographicDateType
+BibliographicDate <-- BibliographicDateType
+NistBibliographicDate <-- NistBibliographicDateType
+
+NistDocumentStatus <-- NistDocumentStatusType
+
+SeriesType <|-- NistPubSeriesType
+NistPubSeriesType <-- NistPubSeriesEnum
+
+DocumentRelation <|-- NistDocumentRelation
+DocumentRelationType <|-- NistDocumentRelationType
+DocumentRelation <-- DocumentRelationType
+NistDocumentRelation <-- NistDocumentRelationType
+
+@enduml
+

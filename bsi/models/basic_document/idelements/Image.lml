@@ -1,0 +1,5 @@
+class Image <<BasicDocument>> {
+  definition {
+    Container for image content.
+  }
+}

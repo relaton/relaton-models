@@ -1,0 +1,40 @@
+class IsoBibliographicItem {
+  definition {
+    The bibliographical description of an ISO/IEC document.
+  }
+  +docIdentifier: IsoDocumentId {
+    definition {
+      Identifier of the document.
+    }
+  }
+  +title: IsoLocalizedTitle {
+    definition {
+      Title of the document.
+    }
+  }
+  +type: IsoDocumentType {
+    definition {
+      Type of the document.
+    }
+  }
+  +status: IsoDocumentStatus {
+    definition {
+      Publication status of the document.
+    }
+  }
+  +source: TypeUri[0..*] {
+    definition {
+      URIs associated with the document.
+    }
+  }
+  +abstract: FormattedString[0..*] {
+    definition {
+      Abstract of the document.
+    }
+  }
+  +ext: IsoBibDataExtensionType {
+    definition {
+      Extension point of the bibliographical description.
+    }
+  }
+}

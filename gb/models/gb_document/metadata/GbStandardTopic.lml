@@ -1,0 +1,46 @@
+enum GbStandardTopic {
+  definition {
+    Topic addressed by this standard. 国家标准类别.
+  }
+
+  basic {
+    definition {
+      Fundamental topic. 基础.
+    }
+  }
+  health_and_safety {
+    definition {
+      Health and safety. 安全卫生.
+    }
+  }
+  environment_protection {
+    definition {
+      Environment protection. 环境保护.
+    }
+  }
+  engineering_and_construction {
+    definition {
+      Engineering and construction. 工程建设.
+    }
+  }
+  product {
+    definition {
+      Product standard. 产品.
+    }
+  }
+  method {
+    definition {
+      Methodology. 方法.
+    }
+  }
+  management_techniques {
+    definition {
+      Management techniques. 管理技术.
+    }
+  }
+  others {
+    definition {
+      Other topics. 其他.
+    }
+  }
+}

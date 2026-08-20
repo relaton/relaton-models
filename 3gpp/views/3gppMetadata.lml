@@ -1,0 +1,25 @@
+diagram IeeeMetadata {
+  include ../models/3gppBibliographicItem.lml
+  include ../models/DocumentType.lml
+  include ../models/DocumentSubType.lml
+  include ../models/RadioTechnologyType.lml
+  include ../models/Release.lml
+
+  association {
+    owner BibliographicItem
+    member TgppBibliographicItem
+    owner_type inheritance
+  }
+
+  association {
+    owner RadioTechnologyType
+    member TgppBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner Release
+    member TgppBibliographicItem
+    member_type direct
+  }
+}

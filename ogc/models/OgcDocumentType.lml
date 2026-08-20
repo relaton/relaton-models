@@ -1,0 +1,16 @@
+enum OgcDocumentType {
+  abstract-specification-topic
+  best-practice
+  change-request-supporting-document
+  community-practice
+  community-standard
+  discussion-paper
+  engineering-report
+  other
+  policy
+  reference-model
+  release-notes
+  standard
+  user-guide
+  white-paper
+}

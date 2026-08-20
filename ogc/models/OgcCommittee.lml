@@ -1,0 +1,5 @@
+enum OgcCommittee {
+  technical
+  planning
+  strategic-member-advisory
+}

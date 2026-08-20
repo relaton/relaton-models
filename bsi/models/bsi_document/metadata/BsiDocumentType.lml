@@ -1,0 +1,93 @@
+enum BsiDocumentType {
+  definition {
+    Type of BSI document.
+  }
+
+  internationalStandard {
+    definition {
+      International Standard (adopted from ISO, IEC).
+    }
+  }
+  standard {
+    definition {
+      Standard (adopted from CEN, CENELEC).
+    }
+  }
+  britishStandard {
+    definition {
+      British Standard.
+    }
+  }
+  draftForDevelopment {
+    definition {
+      Draft for Development.
+    }
+  }
+  publishedDocument {
+    definition {
+      Published Document.
+    }
+  }
+  privatelySubscribedStandard {
+    definition {
+      Privately Subscribed Standard.
+    }
+  }
+  flexStandard {
+    definition {
+      Flex Standard.
+    }
+  }
+  technicalSpecification {
+    definition {
+      Technical Specification.
+    }
+  }
+  technicalReport {
+    definition {
+      Technical Report.
+    }
+  }
+  publiclyAvailableSpecification {
+    definition {
+      Publicly Available Specification.
+    }
+  }
+  internationalWorkshopAgreement {
+    definition {
+      International Workshop Agreement (adopted from ISO, IEC).
+    }
+  }
+  europeanWorkshopAgreement {
+    definition {
+      European Workshop Agreement (adopted from CEN, CENELEC).
+    }
+  }
+  guide {
+    definition {
+      Guide.
+    }
+  }
+  expertCommentary {
+    definition {
+      Expert commentary. e.g. BS EN ISO 13485:2016 Expert commentary.
+    }
+  }
+  vocabulary {
+    definition {
+      Compendium of terms and definitions, which helps harmonize the use of
+      language within a given sector, field or discipline.
+      e.g. BS 8887:2009
+    }
+  }
+  industryTechnicalAgreement {
+    definition {
+      Industry Technical Agreement (adopted from IEC).
+    }
+  }
+  expertCommentary {
+    definition {
+      Expert Commentary (on another document).
+    }
+  }
+}

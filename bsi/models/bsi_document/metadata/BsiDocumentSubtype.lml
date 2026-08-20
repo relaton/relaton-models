@@ -1,0 +1,31 @@
+enum BsiDocumentSubtype {
+  definition {
+    Subtype of BSI document.
+  }
+
+  specification {
+    definition {
+      Specification.
+    }
+  }
+  methodOfTest {
+    definition {
+      Method of Test.
+    }
+  }
+  methodOfSpecifying {
+    definition {
+      Method of Specifying.
+    }
+  }
+  vocabulary {
+    definition {
+      Vocabulary.
+    }
+  }
+  codeOfPractice {
+    definition {
+      Code of Practice.
+    }
+  }
+}

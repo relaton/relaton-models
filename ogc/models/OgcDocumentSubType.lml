@@ -1,0 +1,12 @@
+enum OgcDocumentSubType {
+  conceptual-model
+  conceptual-model-and-encoding
+  conceptual-model-and-implementation
+  encoding
+  extension
+  implementation
+  profile
+  profile-with-extension
+  general
+  test-suite
+}

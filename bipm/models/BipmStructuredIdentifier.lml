@@ -1,0 +1,6 @@
+class BipmStructuredIdentifier {
+  +docnumber: String
+  +part: String[0..1]
+  +subpart: String[0..1]
+  +appendix: String[0..1]
+}

@@ -1,0 +1,9 @@
+class MpfaBibliographicItem {
+  definition {
+    version, edition, contributors (enquiry) are provided in
+    BibliographicItem. OrganizationProfile includes contact methods and
+    website information.
+  }
+  +schemeName: String
+  +status: MpfaDocStatus
+}

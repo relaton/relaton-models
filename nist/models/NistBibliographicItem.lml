@@ -1,0 +1,23 @@
+class NistBibliographicItem {
+  definition {
+    The type of uri is omitted. The type of doi is "doi".
+    The various types of title are realised through type attributes on Title.
+  }
+  +type: BibItemType
+  +documentIdentifier: NistDocumentId
+  +title: FormattedString[1..*]
+  +subtitle: FormattedString[0..*]
+  +short-title: FormattedString[0..*]
+  +short-subtitle: FormattedString[0..*]
+  +document_class_title: FormattedString[0..*]
+  +link: TypedUri
+  +doi: TypedUri
+  +dates: NistBibliographicDate[0..*]
+  +relation: NistDocumentRelation[0..*]
+  +docemail: TypedUri[0..1]
+  +series: NistPubSeriesType
+  +documentStatus: NistDocumentStatus[0..1]
+  +revision: String
+  +keyword: String[1..*]
+  +commentPeriod: NistCommentPeriod[0..1]
+}

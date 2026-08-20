@@ -1,0 +1,7 @@
+class GbStandardSectorPrefix {
+  definition {
+    Sector codes for Chinese sector standards.
+  }
+
+  sector: GbSectorCodes
+}

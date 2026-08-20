@@ -1,0 +1,647 @@
+enum GbSectorCodes {
+
+  definition {
+    Code representing a sector allowed in Chinese sector
+    standards.
+  }
+
+  AQ_production_safety {
+    definition {
+      Industry code:: AQ
+      Industry name (English):: Production safety
+      Industry name (Chinese):: 安全生产
+      Administration (English):: State Administration of Work Safety
+      Administration (Chinese):: 国家安全生产管理局
+    }
+  }
+
+  BB_packaging {
+    definition {
+      Industry code:: BB
+      Industry name (English):: Packaging
+      Industry name (Chinese):: 包装
+      Administration (English):: China National Packaging Industry Corporation
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  CB_ships {
+    definition {
+      Industry code:: CB
+      Industry name (English):: Ships
+      Industry name (Chinese):: 船舶
+      Administration (English):: National Defense Commission
+      Administration (Chinese):: 国防科学工业委员会
+    }
+  }
+
+  CH_surveying {
+    definition {
+      Industry code:: CH
+      Industry name (English):: Surveying and Mapping
+      Industry name (Chinese):: 测绘
+      Administration (English):: National Bureau of Surveying and Mapping
+      Administration (Chinese):: 国家测绘局
+    }
+  }
+
+  CJ_town_construction {
+    definition {
+      Industry code:: CJ
+      Industry name (English):: Town construction
+      Industry name (Chinese):: 城镇建设
+      Administration (English):: Ministry of Construction
+      Administration (Chinese):: 建设部
+    }
+  }
+
+  CY_news_publishing {
+    definition {
+      Industry code:: CY
+      Industry name (English):: News Publishing
+      Industry name (Chinese):: 新闻出版
+      Administration (English):: State Press and Publication Administration
+      Administration (Chinese):: 国家新闻出版总署
+    }
+  }
+
+  DA_archiving {
+    definition {
+      Industry code:: DA
+      Industry name (English):: Archiving
+      Industry name (Chinese):: 档案
+      Administration (English):: National Archival Bureau
+      Administration (Chinese):: 国家档案局
+    }
+  }
+
+  DB_seismology {
+    definition {
+      Industry code:: DB
+      Industry name (English):: Seismology
+      Industry name (Chinese):: 地震
+      Administration (English):: National Seismological Bureau
+      Administration (Chinese):: 中国地震局
+    }
+  }
+
+  DL_electricity {
+    definition {
+      Industry code:: DL
+      Industry name (English):: Electricity
+      Industry name (Chinese):: 电力
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  DZ_geological {
+    definition {
+      Industry code:: DZ
+      Industry name (English):: Geological and mineral products
+      Industry name (Chinese):: 地质矿产
+      Administration (English):: Ministry of Land and Resources
+      Administration (Chinese):: 国土资源部
+    }
+  }
+
+  EJ_nuclear_industry {
+    definition {
+      Industry code:: EJ
+      Industry name (English):: Nuclear Industry
+      Industry name (Chinese):: 核工业
+      Administration (English):: National Defense Commission
+      Administration (Chinese):: 国防科学工业委员会
+    }
+  }
+
+  FZ_textile {
+    definition {
+      Industry code:: FZ
+      Industry name (English):: Textile
+      Industry name (Chinese):: 纺织
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  GA_public_safety {
+    definition {
+      Industry code:: GA
+      Industry name (English):: Public safety
+      Industry name (Chinese):: 公共安全
+      Administration (English):: Ministry of Public Security
+      Administration (Chinese):: 公安部
+    }
+  }
+
+  GH_supply_marketing {
+    definition {
+      Industry code:: GH
+      Industry name (English):: Supply and marketing
+      Industry name (Chinese):: 供销
+      Administration (English):: China Federation of Supply and Marketing Cooperatives
+      Administration (Chinese):: 中华全国供销合作总社
+    }
+  }
+
+  GM_cryptography {
+    definition {
+      Industry code:: GM
+      Industry name (English):: Cryptography
+      Industry name (Chinese):: 密码
+      Administration (English):: State Administration Of Cryptography
+      Administration (Chinese):: 国家密码管理局
+    }
+  }
+
+  GY_media {
+    definition {
+      Industry code:: GY
+      Industry name (English):: Radio, film and television
+      Industry name (Chinese):: 广播电影电视
+      Administration (English):: State Administration of Radio, Film and Television
+      Administration (Chinese):: 国家广播电影电视总局
+    }
+  }
+
+  HB_aviation {
+    definition {
+      Industry code:: HB
+      Industry name (English):: Aviation
+      Industry name (Chinese):: 航空
+      Administration (English):: National Defense Commission
+      Administration (Chinese):: 国防科学工业委员会
+    }
+  }
+
+  HG_chemical_industry {
+    definition {
+      Industry code:: HG
+      Industry name (English):: Chemical industry
+      Industry name (Chinese):: 化工
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  HJ_environment_protection {
+    definition {
+      Industry code:: HJ
+      Industry name (English):: Environmental protection
+      Industry name (Chinese):: 环境保护
+      Administration (English):: State Environmental Protection Administration
+      Administration (Chinese):: 国家环境保护总局
+    }
+  }
+
+  HS_customs {
+    definition {
+      Industry code:: HS
+      Industry name (English):: Customs
+      Industry name (Chinese):: 海关
+      Administration (English):: General Administration of Customs
+      Administration (Chinese):: 海关总署
+    }
+  }
+
+  HY_oceanic {
+    definition {
+      Industry code:: HY
+      Industry name (English):: Oceanic
+      Industry name (Chinese):: 海洋
+      Administration (English):: State Oceanic Administration
+      Administration (Chinese):: 国家海洋局
+    }
+  }
+
+  JB_mechanical {
+    definition {
+      Industry code:: JB
+      Industry name (English):: Mechanical
+      Industry name (Chinese):: 机械
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  JC_building_materials {
+    definition {
+      Industry code:: JC
+      Industry name (English):: Building materials
+      Industry name (Chinese):: 建材
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  JG_construction_industry {
+    definition {
+      Industry code:: JG
+      Industry name (English):: Construction Industry
+      Industry name (Chinese):: 建筑工业
+      Administration (English):: Ministry of Construction
+      Administration (Chinese):: 建设部
+    }
+  }
+
+  JR_financial {
+    definition {
+      Industry code:: JR
+      Industry name (English):: Financial
+      Industry name (Chinese):: 金融
+      Administration (English):: People's Bank of China
+      Administration (Chinese):: 中国人民银行
+    }
+  }
+
+  JT_traffic {
+    definition {
+      Industry code:: JT
+      Industry name (English):: Traffic
+      Industry name (Chinese):: 交通
+      Administration (English):: Ministry of Communications
+      Administration (Chinese):: 交通部
+    }
+  }
+
+  JY_education {
+    definition {
+      Industry code:: JY
+      Industry name (English):: Education
+      Industry name (Chinese):: 教育
+      Administration (English):: Ministry of Education
+      Administration (Chinese):: 教育部
+    }
+  }
+
+  LB_tourism {
+    definition {
+      Industry code:: LB
+      Industry name (English):: Tourism
+      Industry name (Chinese):: 旅游
+      Administration (English):: National Tourism Bureau
+      Administration (Chinese):: 国家旅游局
+    }
+  }
+
+  LD_work_safety {
+    definition {
+      Industry code:: LD
+      Industry name (English):: Labor and work safety
+      Industry name (Chinese):: 劳动和劳动安全
+      Administration (English):: Ministry of Labor and Social Security
+      Administration (Chinese):: 劳动和社会保障部
+    }
+  }
+
+  LS_food {
+    definition {
+      Industry code:: LS
+      Industry name (English):: Food
+      Industry name (Chinese):: 粮食
+      Administration (English):: National Food Administration
+      Administration (Chinese):: 国家粮食局
+    }
+  }
+
+  LY_forestry {
+    definition {
+      Industry code:: LY
+      Industry name (English):: Forestry
+      Industry name (Chinese):: 林业
+      Administration (English):: State Forestry Administration
+      Administration (Chinese):: 国家林业局
+    }
+  }
+
+  MN_civil_aviation {
+    definition {
+      Industry code:: MH
+      Industry name (English):: Civil Aviation
+      Industry name (Chinese):: 民用航空
+      Administration (English):: Civil Aviation Administration
+      Administration (Chinese):: 中国民航管理总局
+    }
+  }
+
+  MT_coal {
+    definition {
+      Industry code:: MT
+      Industry name (English):: Coal
+      Industry name (Chinese):: 煤炭
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  MZ_civil_affairs {
+    definition {
+      Industry code:: MZ
+      Industry name (English):: Civil affairs
+      Industry name (Chinese):: 民政
+      Administration (English):: Ministry of Civil Affairs
+      Administration (Chinese):: 民政部
+    }
+  }
+
+  NY_agriculture {
+    definition {
+      Industry code:: NY
+      Industry name (English):: Agriculture
+      Industry name (Chinese):: 农业
+      Administration (English):: Ministry of Agriculture
+      Administration (Chinese):: 农业部
+    }
+  }
+
+  QB_light_industry {
+    definition {
+      Industry code:: QB
+      Industry name (English):: Light industry
+      Industry name (Chinese):: 轻工
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  QC_automotive {
+    definition {
+      Industry code:: QC
+      Industry name (English):: Automotive
+      Industry name (Chinese):: 汽车
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  QJ_aerospace {
+    definition {
+      Industry code:: QJ
+      Industry name (English):: Aerospace
+      Industry name (Chinese):: 航天
+      Administration (English):: National Defense Commission
+      Administration (Chinese):: 国防科学工业委员会
+    }
+  }
+
+  QX_meteorological {
+    definition {
+      Industry code:: QX
+      Industry name (English):: Meteorological
+      Industry name (Chinese):: 气象
+      Administration (English):: China Meteorological Administration
+      Administration (Chinese):: 中国气象局
+    }
+  }
+
+  SB_business {
+    definition {
+      Industry code:: SB
+      Industry name (English):: Domestic Business
+      Industry name (Chinese):: 国内贸易
+      Administration (English):: Ministry of Commerce
+      Administration (Chinese):: 商务部
+    }
+  }
+
+  SC_aquatic {
+    definition {
+      Industry code:: SC
+      Industry name (English):: Aquatic products
+      Industry name (Chinese):: 水产
+      Administration (English):: Ministry of Agriculture
+      Administration (Chinese):: 农业部
+    }
+  }
+
+  SH_petrochemical {
+    definition {
+      Industry code:: SH
+      Industry name (English):: Petrochemical
+      Industry name (Chinese):: 石油化工
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  SJ_electronics {
+    definition {
+      Industry code:: SJ
+      Industry name (English):: Electronics
+      Industry name (Chinese):: 电子
+      Administration (English):: Ministry of Information Industry
+      Administration (Chinese):: 信息产业部
+    }
+  }
+
+  SL_water_resources {
+    definition {
+      Industry code:: SL
+      Industry name (English):: Water resources
+      Industry name (Chinese):: 水利
+      Administration (English):: Ministry of Water Resources
+      Administration (Chinese):: 水利部
+    }
+  }
+
+  SN_inspection {
+    definition {
+      Industry code:: SN
+      Industry name (English):: Inspection
+      Industry name (Chinese):: 商检
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+    }
+  }
+
+  SY_natural_gas {
+    definition {
+      Industry code:: SY
+      Industry name (English):: Natural gas
+      Industry name (Chinese):: 石油天然气
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  TB_rail_transport {
+    definition {
+      Industry code:: TB
+      Industry name (English):: Rail transport
+      Industry name (Chinese):: 铁道
+      Administration (English):: Ministry of Railways
+      Administration (Chinese):: 铁道部
+    }
+  }
+
+  TD_land_management {
+    definition {
+      Industry code:: TD
+      Industry name (English):: Land management
+      Industry name (Chinese):: 土地管理
+      Administration (English):: Ministry of Land and Resources
+      Administration (Chinese):: 国土资源部
+    }
+  }
+
+  TJ_railway_traffic {
+    definition {
+      Industry code:: TJ
+      Industry name (English):: Railway traffic
+      Industry name (Chinese):: 铁道交通
+      Administration (English):: Ministry of Railways Standards
+      Administration (Chinese):: 铁道部标准所
+    }
+  }
+
+  TY_sports {
+    definition {
+      Industry code:: TY
+      Industry name (English):: Sports
+      Industry name (Chinese):: 体育
+      Administration (English):: National Department of Sport
+      Administration (Chinese):: 国家体育总局
+    }
+  }
+
+  WB_materials_management {
+    definition {
+      Industry code:: WB
+      Industry name (English):: Material management
+      Industry name (Chinese):: 物资管理
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  WH_culture {
+    definition {
+      Industry code:: WH
+      Industry name (English):: Culture
+      Industry name (Chinese):: 文化
+      Administration (English):: Ministry of Culture
+      Administration (Chinese):: 文化部
+    }
+  }
+
+  WJ_ordnance {
+    definition {
+      Industry code:: WJ
+      Industry name (English):: Ordnance
+      Industry name (Chinese):: 兵工民品
+      Administration (English):: National Defense Commission
+      Administration (Chinese):: 国防科学工业委员会
+    }
+  }
+
+  WM_foreign_trade {
+    definition {
+      Industry code:: WM
+      Industry name (English):: Foreign Trade
+      Industry name (Chinese):: 外经贸
+      Administration (English):: Ministry of Foreign Trade and Economic Cooperation
+      Administration (Chinese):: 外经贸部科技司
+    }
+  }
+
+  WS_health {
+    definition {
+      Industry code:: WS
+      Industry name (English):: Health
+      Industry name (Chinese):: 卫生
+      Administration (English):: Ministry of Health
+      Administration (Chinese):: 卫生部
+    }
+  }
+
+  WW_cultural_relics {
+    definition {
+      Industry code:: WW
+      Industry name (English):: Cultural relics protection
+      Industry name (Chinese):: 文物保护
+      Administration (English):: National Heritage Board
+      Administration (Chinese):: 国家文物局
+    }
+  }
+
+  XB_rare_earth {
+    definition {
+      Industry code:: XB
+      Industry name (English):: Rare earth
+      Industry name (Chinese):: 稀土
+      Administration (English):: State Planning Commission Rare Earth Office
+      Administration (Chinese):: 国家发改委稀土办公室
+    }
+  }
+
+  YB_ferrous_metallurgy {
+    definition {
+      Industry code:: YB
+      Industry name (English):: Ferrous metallurgy
+      Industry name (Chinese):: 黑色冶金
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  YC_tobacco {
+    definition {
+      Industry code:: YC
+      Industry name (English):: Tobacco
+      Industry name (Chinese):: 烟草
+      Administration (English):: State Tobacco Monopoly Bureau
+      Administration (Chinese):: 国家烟草专卖局
+    }
+  }
+
+  YD_communication {
+    definition {
+      Industry code:: YD
+      Industry name (English):: Communication
+      Industry name (Chinese):: 通信
+      Administration (English):: Ministry of Information Industry
+      Administration (Chinese):: 信息产业部
+    }
+  }
+
+  YS_nonferrous_metallurgy {
+    definition {
+      Industry code:: YS
+      Industry name (English):: Non-ferrous metallurgy
+      Industry name (Chinese):: 有色冶金
+      Administration (English):: State Economic and Trade Commission
+      Administration (Chinese):: 国家发改委
+    }
+  }
+
+  YY_medicine {
+    definition {
+      Industry code:: YY
+      Industry name (English):: Medicine
+      Industry name (Chinese):: 医药
+      Administration (English):: State Food and Drug Administration
+      Administration (Chinese):: 国家食品药品监督管理局
+    }
+  }
+
+  YZ_postal {
+    definition {
+      Industry code:: YZ
+      Industry name (English):: Postal
+      Industry name (Chinese):: 邮政
+      Administration (English):: State Post Office
+      Administration (Chinese):: 国家邮政局
+    }
+  }
+
+  ZY_chinese_medicine {
+    definition {
+      Industry code:: ZY
+      Industry name (English):: Chinese medicine
+      Industry name (Chinese):: 中医药
+      Administration (English):: State Administration of Traditional Chinese Medicine
+      Administration (Chinese):: 国家中医药管理局
+    }
+  }
+}

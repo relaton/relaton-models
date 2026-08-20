@@ -1,0 +1,26 @@
+enum GbStandardMandate {
+  definition {
+    Mandate of a Chinese standard.
+
+    NOTE: 'recommended' standards have suffix '/T' (推荐), 'guideline' standards have suffix '/Z' (指南).
+  }
+
+  mandatory {
+    definition {
+      This standard is mandatory in implementation.
+    }
+  }
+
+  recommended {
+    definition {
+      This standard is recommended in implementation.
+    }
+  }
+
+  guideline {
+    definition {
+      This standard provides guidelines for implementation.
+    }
+  }
+}
+

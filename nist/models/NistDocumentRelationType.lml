@@ -1,0 +1,5 @@
+enum NistDocumentRelationType {
+  supersedes
+  supersededBy
+  obsoletedBy
+}

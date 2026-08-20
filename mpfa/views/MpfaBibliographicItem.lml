@@ -1,0 +1,18 @@
+diagram MpfaBibliographicItem {
+  title 'MPFA Offering Document Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/MpfaBibliographicItem.lml
+  include ../models/MpfaDocStatus.lml
+
+  association {
+    owner BibliographicItem
+    member MpfaBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner MpfaBibliographicItem
+    member MpfaDocStatus
+    owner_type direct
+  }
+}

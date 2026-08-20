@@ -1,0 +1,172 @@
+diagram IeeeMetadata {
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/relaton/IsbnNumber.lml
+
+  include ../models/ieee_metadata/IeeeBibliographicDate.lml
+  include ../models/ieee_metadata/IeeeBibliographicDateType.lml
+  include ../models/ieee_metadata/IeeeBibliographicItem.lml
+  include ../models/ieee_metadata/IeeeCommittee.lml
+  include ../models/ieee_metadata/IeeeCopyrightAssignment.lml
+  include ../models/ieee_metadata/IeeeCopyrightHolder.lml
+  include ../models/ieee_metadata/IeeeDocumentFileSpecification.lml
+  include ../models/ieee_metadata/IeeeDocumentPageNum.lml
+  include ../models/ieee_metadata/IeeeDocumentRelation.lml
+  include ../models/ieee_metadata/IeeeDocumentRelationType.lml
+  include ../models/ieee_metadata/IeeeDocumentType.lml
+  include ../models/ieee_metadata/IeeeDocumentSubType.lml
+  include ../models/ieee_metadata/IeeeKeyword.lml
+  include ../models/ieee_metadata/IeeeKeywordType.lml
+  include ../models/ieee_metadata/IeeePubStatus.lml
+  include ../models/ieee_metadata/IeeeStandardBundle.lml
+  include ../models/ieee_metadata/IeeeStandardBundleType.lml
+  include ../models/ieee_metadata/IeeeStandardFamily.lml
+  include ../models/ieee_metadata/IeeeStandardModifier.lml
+  include ../models/ieee_metadata/IeeeStandardPackage.lml
+  include ../models/ieee_metadata/IeeeStandardStatus.lml
+  include ../models/ieee_metadata/IeeeTopic.lml
+  include ../models/ieee_metadata/IeeeHoldStatus.lml
+
+  association {
+    owner BibliographicItem
+    member IeeeBibliographicItem
+    owner_type inheritance
+  }
+
+  association {
+    owner IeeeCommittee
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeBibliographicDate
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeBibliographicDateType
+    member IeeeBibliographicDate
+    member_type direct
+  }
+
+  association {
+    owner IeeeDocumentFileSpecification
+    member IeeeBibliographicItem
+    member_type direct
+  }
+  association {
+    owner IeeeDocumentPageNum
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeDocumentRelation
+    member IeeeBibliographicItem
+    member_type direct
+  }
+  association {
+    owner IeeeDocumentRelationType
+    member IeeeDocumentRelation
+    member_type direct
+  }
+
+  association {
+    owner IeeeCopyrightAssignment
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeCopyrightHolder
+    member IeeeCopyrightAssignment
+    member_type direct
+  }
+
+  association {
+    owner IeeeDocumentType
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeDocumentSubType
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeKeyword
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeKeywordType
+    member IeeeKeyword
+    member_type direct
+  }
+
+  association {
+    owner IeeePubStatus
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardBundle
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardBundleType
+    member IeeeStandardBundle
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardFamily
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardModifier
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardPackage
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeStandardStatus
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeTopic
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IeeeHoldStatus
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+  association {
+    owner IsbnNumber
+    member IeeeBibliographicItem
+    member_type direct
+  }
+
+}

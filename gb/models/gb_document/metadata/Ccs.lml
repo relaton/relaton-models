@@ -1,0 +1,9 @@
+class Ccs {
+  definition {
+    Chinese standards categorization codes.
+
+    NOTE: See https://github.com/metanorma/cn-ccs-codes for CCS codes.
+  }
+  +code: String
+  +text: String[0..1]
+}

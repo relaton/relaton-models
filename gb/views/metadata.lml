@@ -1,0 +1,45 @@
+diagram GbMetadata {
+
+  include ../models/gb_document/metadata/GbStandardPrefix.lml
+  include ../models/gb_document/metadata/GbStandardNationalPrefix.lml
+  include ../models/gb_document/metadata/GbSectorCodes.lml
+  include ../models/gb_document/metadata/GbStandardSectorPrefix.lml
+  include ../models/gb_document/metadata/GbProfessionCodes.lml
+  include ../models/gb_document/metadata/GbStandardProfessionalPrefix.lml
+  include ../models/gb_document/metadata/GbLocalCodes.lml
+  include ../models/gb_document/metadata/GbStandardLocalPrefix.lml
+  include ../models/gb_document/metadata/GbStandardEnterprisePrefix.lml
+  include ../models/gb_document/metadata/GbStandardSocialPrefix.lml
+
+  association {
+    owner GbStandardPrefix
+    member GbStandardNationalPrefix
+    owner_type inheritance
+  }
+  association {
+    owner GbStandardPrefix
+    member GbStandardSectorPrefix
+    owner_type inheritance
+  }
+  association {
+    owner GbStandardPrefix
+    member GbStandardProfessionalPrefix
+    owner_type inheritance
+  }
+  association {
+    owner GbStandardPrefix
+    member GbStandardLocalPrefix
+    owner_type inheritance
+  }
+  association {
+    owner GbStandardPrefix
+    member GbStandardEnterprisePrefix
+    owner_type inheritance
+  }
+  association {
+    owner GbStandardPrefix
+    member GbStandardSocialPrefix
+    owner_type inheritance
+  }
+
+}

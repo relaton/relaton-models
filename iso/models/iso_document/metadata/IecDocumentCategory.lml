@@ -1,0 +1,26 @@
+enum IecDocumentCategory {
+  definition {
+    Categories of IEC standards document.
+  }
+
+  emc {
+    definition {
+      Electromagnetic Compatibility (EMC).
+    }
+  }
+  safety {
+    definition {
+      Safety.
+    }
+  }
+  environment {
+    definition {
+      Environment.
+    }
+  }
+  quality-assurance {
+    definition {
+      Quality Assurance.
+    }
+  }
+}

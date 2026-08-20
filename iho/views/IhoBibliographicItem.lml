@@ -1,0 +1,142 @@
+diagram IhoBibliographicItem {
+  title 'IHO Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../../relaton/models/BibliographicDate.lml
+  include ../../relaton/models/BibliographicDateType.lml
+  include ../../relaton/models/Citation.lml
+  include ../../relaton/models/DocumentRelation.lml
+  include ../../relaton/models/DocumentRelationType.lml
+  include ../../relaton/models/SeriesType.lml
+  include ../models/IhoBibliographicItem.lml
+  include ../models/IhoProjectTeam.lml
+  include ../models/IhoBibliographicDate.lml
+  include ../models/IhoBibliographicDateType.lml
+  include ../models/IhoCommentPeriod.lml
+  include ../models/IhoCommittee.lml
+  include ../models/IhoWorkingGroup.lml
+  include ../models/IhoDocumentStatus.lml
+  include ../models/IhoDocumentStatusType.lml
+  include ../models/IhoDocumentType.lml
+  include ../models/IhoPubSeriesType.lml
+  include ../models/IhoPubSeriesEnum.lml
+  include ../models/IhoDocumentRelation.lml
+  include ../models/IhoDocumentRelationType.lml
+  include ../models/IhoDocumentCitation.lml
+
+  association {
+    owner BibliographicItem
+    member IhoBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDate
+    member IhoBibliographicDate
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDateType
+    member IhoBibliographicDateType
+    owner_type inheritance
+  }
+  association {
+    owner Citation
+    member IhoDocumentCitation
+    owner_type inheritance
+  }
+  association {
+    owner SeriesType
+    member IhoPubSeriesType
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelation
+    member IhoDocumentRelation
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelationType
+    member IhoDocumentRelationType
+    owner_type inheritance
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoProjectTeam
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoDocumentType
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoDocumentStatus
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoPubSeriesType
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoCommentPeriod
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoDocumentRelation
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoBibliographicDate
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicItem
+    member IhoDocumentCitation
+    owner_type direct
+  }
+  association {
+    owner IhoProjectTeam
+    member IhoCommittee
+    owner_type direct
+  }
+  association {
+    owner IhoProjectTeam
+    member IhoWorkingGroup
+    owner_type direct
+  }
+  association {
+    owner BibliographicDate
+    member BibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner IhoBibliographicDate
+    member IhoBibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner IhoDocumentStatus
+    member IhoDocumentStatusType
+    owner_type direct
+  }
+  association {
+    owner IhoPubSeriesType
+    member IhoPubSeriesEnum
+    owner_type direct
+  }
+  association {
+    owner DocumentRelation
+    member DocumentRelationType
+    owner_type direct
+  }
+  association {
+    owner IhoDocumentRelation
+    member IhoDocumentRelationType
+    owner_type direct
+  }
+}

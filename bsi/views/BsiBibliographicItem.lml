@@ -1,0 +1,40 @@
+diagram IsoDoc_IsoBibliographicItem {
+  include ../models/bsi_document/metadata/BsiBibliographicItem.lml
+  include ../models/bsi_document/metadata/BsiDocumentType.lml
+  include ../models/bsi_document/metadata/BsiDocumentSubtype.lml
+  include ../models/bsi_document/metadata/BsiBibDataExtensionType.lml
+  include ../models/standard_document/metadata/IcsType.lml
+  include ../models/standard_document/metadata/StructuredIdentifierType.lml
+  include ../models/basic_document/idelements/Image.lml
+
+  association {
+    owner BsiBibliographicItem
+    member BsiDocumentType
+    owner_type direct
+  }
+  association {
+    owner BsiBibliographicItem
+    member BsiBibDataExtensionType
+    owner_type direct
+  }
+  association {
+    owner BsiBibDataExtensionType
+    member BsiDocumentSubtype
+    owner_type direct
+  }
+  association {
+    owner BsiBibDataExtensionType
+    member IcsType
+    owner_type direct
+  }
+  association {
+    owner BsiBibDataExtensionType
+    member StructuredIdentifierType
+    owner_type direct
+  }
+  association {
+    owner BsiBibDataExtensionType
+    member Image
+    owner_type direct
+  }
+}

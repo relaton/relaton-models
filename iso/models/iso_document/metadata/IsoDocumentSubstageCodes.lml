@@ -1,0 +1,18 @@
+enum IsoDocumentSubstageCodes {
+  definition {
+    Substage-level code in the International Harmonized Stage Codes.
+    These codes are used by ISO and IEC to indicate development stage.
+
+    NOTE: See https://www.iso.org/stage-codes.html for the full list.
+  }
+
+  00
+  20
+  60
+  90
+  92
+  93
+  98
+  99
+
+}

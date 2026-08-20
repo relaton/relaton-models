@@ -1,0 +1,42 @@
+enum NistPubSeriesEnum {
+  definition {
+    nist-ams: Advanced Manufacturing Series (NIST AMS).
+    building-science: Building Science Series.
+    nist-fips: Federal Information Processing Standards (NIST FIPS).
+    nist-gcr: Grant/Contract Reports (NISTGCR).
+    nist-hb: Handbook (NIST HB).
+    itl-bulletin: ITL Bulletin.
+    jpcrd: Journal of Physical and Chemical Reference Data (JPCRD).
+    nist-jres: Journal of Research (NIST JRES).
+    letter-circular: Letter Circular.
+    nist-monograph: Monograph (NIST MN).
+    nist-ncstar: National Construction Safety Team Act Reports (NIST NCSTAR).
+    nist-nsrds: National Standard Reference Data Series (NIST NSRDS).
+    nistir: NIST Interagency/Internal Report (NISTIR).
+    product-standards: Product Standards.
+    nist-sp: Special Publication (NIST SP).
+    nist-tn: Technical Note (NIST TN).
+    other: Other.
+  }
+  nist-ams
+  building-science
+  nist-fips
+  nist-gcr
+  nist-hb
+  itl-bulletin
+  jpcrd
+  nist-jres
+  letter-circular
+  nist-monograph
+  nist-ncstar
+  nist-nsrds
+  nistir
+  product-standards
+  nist-sp
+  nist-tn
+  other
+  csrc-white-paper
+  csrc-book
+  csrc-use-case
+  csrc-building-block
+}

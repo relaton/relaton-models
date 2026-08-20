@@ -1,0 +1,9 @@
+enum BipmDocumentStatusType {
+  definition {
+    Phases: Proposed Phase Draft, Development Phase Draft, In-force, Retired.
+  }
+  draft-proposal
+  draft-development
+  in-force
+  retired
+}

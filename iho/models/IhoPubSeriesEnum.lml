@@ -1,0 +1,12 @@
+enum IhoPubSeriesEnum {
+  definition {
+    B: Bathymetric Publications. C: Capacity Building Publications.
+    P: Periodic Publications. S: Standards and Specifications.
+    misc: Miscellaneous Publications (including Basic Documents).
+  }
+  iho-bathymetric
+  iho-capacity
+  iho-misc
+  iho-resolutions
+  iho-standards
+}

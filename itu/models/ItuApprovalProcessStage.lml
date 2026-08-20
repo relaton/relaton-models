@@ -1,0 +1,5 @@
+class ItuApprovalProcessStage {
+  +process: ItuApprovalProcess
+  +tapStatusCode: ItuTapStatusCode[0..1]
+  +aapStatusCode: ItuAapStatusCode[0..1]
+}

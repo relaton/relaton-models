@@ -1,0 +1,142 @@
+diagram BipmBibliographicItem {
+  title 'BIPM Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../../relaton/models/BibliographicDate.lml
+  include ../../relaton/models/BibliographicDateType.lml
+  include ../../relaton/models/Citation.lml
+  include ../../relaton/models/DocumentRelation.lml
+  include ../../relaton/models/DocumentRelationType.lml
+  include ../models/BipmBibliographicItem.lml
+  include ../models/BipmSIAspect.lml
+  include ../models/BipmStructuredTitle.lml
+  include ../models/BipmStructuredIdentifier.lml
+  include ../models/BipmProjectTeam.lml
+  include ../models/BipmBibliographicDate.lml
+  include ../models/BipmCommentPeriod.lml
+  include ../models/BipmCommittee.lml
+  include ../models/BipmCommitteeAcronym.lml
+  include ../models/BipmWorkingGroup.lml
+  include ../models/BipmDocumentStatus.lml
+  include ../models/BipmDocumentStatusType.lml
+  include ../models/BipmDocumentType.lml
+  include ../models/BipmDocumentRelation.lml
+  include ../models/BipmDocumentRelationType.lml
+  include ../models/BipmDocumentCitation.lml
+
+  association {
+    owner BibliographicItem
+    member BipmBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDate
+    member BipmBibliographicDate
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDateType
+    member BipmBibliographicDateType
+    owner_type inheritance
+  }
+  association {
+    owner Citation
+    member BipmDocumentCitation
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelation
+    member BipmDocumentRelation
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelationType
+    member BipmDocumentRelationType
+    owner_type inheritance
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmProjectTeam
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmDocumentType
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmDocumentStatus
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmSIAspect
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmStructuredTitle
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmStructuredIdentifier
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmCommentPeriod
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmDocumentRelation
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmBibliographicDate
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicItem
+    member BipmDocumentCitation
+    owner_type direct
+  }
+  association {
+    owner BipmProjectTeam
+    member BipmCommittee
+    owner_type direct
+  }
+  association {
+    owner BipmProjectTeam
+    member BipmWorkingGroup
+    owner_type direct
+  }
+  association {
+    owner BibliographicDate
+    member BibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner BipmBibliographicDate
+    member BipmBibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner BipmDocumentStatus
+    member BipmDocumentStatusType
+    owner_type direct
+  }
+  association {
+    owner DocumentRelation
+    member DocumentRelationType
+    owner_type direct
+  }
+  association {
+    owner BipmDocumentRelation
+    member BipmDocumentRelationType
+    owner_type direct
+  }
+}

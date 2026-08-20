@@ -51,18 +51,8 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true
 
-      - run: bundle exec make clean all
+      - run: bundle exec rake clean render
 
-      - name: Verify PNG output (ubuntu)
+      - name: Verify PNG output
         if: matrix.os == 'ubuntu-latest'
-        run: |
-          set -eu
-          count=0
-          for p in images/*.png; do
-            count=$((count+1))
-            if ! file -b "$p" | grep -q "^PNG image data"; then
-              echo "ERROR: $p is not a valid PNG ($(file -b "$p"))" >&2
-              exit 1
-            fi
-          done
-          echo "verify: $count PNG file(s) OK"
+        run: bundle exec rake verify

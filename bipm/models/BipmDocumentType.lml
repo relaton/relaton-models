@@ -1,0 +1,18 @@
+enum BipmDocumentType {
+  definition {
+    brochure (SI Brochure), mise-en-pratique, rapport, monographie, guide,
+    meeting-report, technical-report, working-party-note, strategy,
+    cipm-mra, resolutions.
+  }
+  brochure
+  mise-en-pratique
+  rapport
+  monographie
+  guide
+  meeting-report
+  technical-report
+  working-party-note
+  strategy
+  cipm-mra
+  resolutions
+}

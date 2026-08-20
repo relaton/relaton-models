@@ -1,0 +1,8 @@
+enum NistDocumentStatusType {
+  draft-internal
+  draft-wip
+  draft-prelim
+  draft-public
+  final
+  final-review
+}

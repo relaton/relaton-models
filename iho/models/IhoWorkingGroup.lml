@@ -1,0 +1,3 @@
+class IhoWorkingGroup {
+  +name: FormattedString
+}

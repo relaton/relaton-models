@@ -1,0 +1,51 @@
+diagram CcMetadata {
+  title 'CalConnect Bibliographic Items'
+  caption 'Bibliographic items of CalConnect Standard Model'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/cc_document/metadata/CcBibliographicItem.lml
+  include ../models/cc_document/metadata/CcTechnicalCommittee.lml
+  include ../models/cc_document/metadata/CcDocumentStatus.lml
+  include ../models/cc_document/metadata/CcStatusType.lml
+  include ../models/cc_document/metadata/CcDocumentType.lml
+  include ../models/cc_document/metadata/CcTechnicalCommitteeType.lml
+
+  association {
+    owner BibliographicItem
+    member CcBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner CcStandardDocument
+    member CcBibliographicItem
+    owner_type direct
+  }
+
+  association {
+    owner CcBibliographicItem
+    member CcTechnicalCommittee
+    owner_type direct
+  }
+  association {
+    owner CcBibliographicItem
+    member CcDocumentType
+    owner_type direct
+  }
+  association {
+    owner CcBibliographicItem
+    member CcDocumentStatus
+    owner_type direct
+  }
+
+  association {
+    owner CcTechnicalCommittee
+    member CcTechnicalCommitteeType
+    owner_type direct
+  }
+  association {
+    owner CcDocumentStatus
+    member CcStatusType
+    owner_type direct
+  }
+
+}

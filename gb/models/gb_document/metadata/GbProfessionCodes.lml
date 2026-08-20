@@ -1,0 +1,99 @@
+enum GbProfessionCodes {
+  definition {
+    Code representing a profession allowed in Chinese professional
+    standards.
+  }
+
+  A {
+    definition {
+      Profession (English):: General
+      Profession (Chinese):: 综合
+      Administrator (English)::
+      Administrator (Chinese):: 国家测绘局、国家技术监督局等
+    }
+  }
+
+  B {
+    definition {
+      Profession (English):: Agriculture, forestry
+      Profession (Chinese):: 农、林业
+      Administrator (English)::
+      Administrator (Chinese):: 农业部、林业部
+    }
+  }
+
+  C {
+    definition {
+      Profession (English):: Medicine, healthcare, labor protection
+      Profession (Chinese):: 医药、卫生、劳动保护
+      Administrator (English)::
+      Administrator (Chinese):: 公安部
+    }
+  }
+
+  D {
+    definition {
+      Profession (English):: Mining
+      Profession (Chinese):: 矿业
+      Administrator (English)::
+      Administrator (Chinese):: 地矿部、化工部、能源部等
+    }
+  }
+
+  G {
+    definition {
+      Profession (English):: Chemical industry
+      Profession (Chinese):: 化工
+      Administrator (English)::
+      Administrator (Chinese):: 化工部、机械电子工业部
+    }
+  }
+
+  J {
+    definition {
+      Profession (English):: Machinary
+      Profession (Chinese):: 机械
+      Administrator (English)::
+      Administrator (Chinese):: 机械电子工业部
+    }
+  }
+
+
+  K {
+    definition {
+      Profession (English):: Electronics
+      Profession (Chinese):: 电工
+      Administrator (English)::
+      Administrator (Chinese):: 机械电子工业部
+    }
+  }
+
+
+  N {
+    definition {
+      Profession (English):: Instruments, meters
+      Profession (Chinese):: 仪器、仪表
+      Administrator (English)::
+      Administrator (Chinese):: 机械电子工业部、机械工业委员会、化工部等
+    }
+  }
+
+  Q {
+    definition {
+      Profession (English):: Building material
+      Profession (Chinese):: 建材
+      Administrator (English)::
+      Administrator (Chinese):: 国家建材局、冶金工业部
+    }
+  }
+
+  Y {
+    definition {
+      Profession (English):: Light manufacturing, cultural and daily goods
+      Profession (Chinese):: 轻工、文化与生活用品
+      Administrator (English)::
+      Administrator (Chinese):: 国家仪器仪表工业总局、国家进出口商品检验局等
+    }
+  }
+
+}

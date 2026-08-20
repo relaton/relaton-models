@@ -1,0 +1,7 @@
+class NistDocumentId {
+  definition {
+    id can be "201-2" in "FIPS 201-2" ("-2" is edition), or "1800-19" in
+    "SP 1800-19" ("-19" is part).
+  }
+  +id: String
+}

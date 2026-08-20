@@ -1,0 +1,15 @@
+class GbStandardEnterprisePrefix {
+  definition {
+    Prefix for a Chinese enterprise standard document identifier.
+
+    Format: "Q/XXX YYYY-ZZZZ"
+
+    * XXX enterprise code: 3 or more characters
+    * YYYY document code: 4 characters
+    * ZZZZ year: 4 characters
+  }
+
+  enterpriseCode: Character[3]
+  prefix: String
+}
+

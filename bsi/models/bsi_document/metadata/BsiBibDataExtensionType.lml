@@ -1,0 +1,35 @@
+class BsiBibDataExtensionType {
+    definition {
+      Extension point for bibliographical definitions of BSI documents.
+    }
+    +editorialGroup: IsoProjectGroup {
+       definition {
+         Editorial groups associated with the production of the document.
+       }
+    }
+    +stageName: String[0..1] {
+       definition {
+         Name of the publication stage of the document.
+       }
+    }
+    +subtype: BSIDocumentSubtype[0..1] {
+       definition {
+         Category of BSI document applicable.
+       }
+    }
+  +ics: IcsType[0..*] {
+    definition {
+      Classifications of the document contents taken from the International Classification of Standards.
+    }
+  }
+  +structuredidentifier: StructuredIdentifierType[0..*] {
+    definition {
+      Representation of the identifier for the _StandardDocument_, giving its individual semantic components.
+    }
+  }
+  +coverimages: Image[0..*] {
+    definition {
+      Images to display on cover page.
+    }
+  }
+}

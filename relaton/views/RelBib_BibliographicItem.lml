@@ -1,0 +1,120 @@
+diagram RelBib_BibliographicItem {
+
+  include ../models/Basicdoc_Image.lml
+  include ../models/Basicdoc_BasicElement.lml
+  include ../models/Basicdoc_BasicBlock.lml
+  include ../models/BibliographicItem.lml
+  include ../models/Edition.lml
+  include ../models/TypedNote.lml
+  include ../models/DocumentIdentifier.lml
+  include ../models/DocumentStatus.lml
+  include ../models/CopyrightAssociation.lml
+  include ../models/MediumType.lml
+  include ../models/PriceType.lml
+  include ../models/TypedTitleString.lml
+  include ../models/ValidityType.lml
+  include ../models/TitleType.lml
+  include ../models/VersionInfo.lml
+  include ../models/PlaceType.lml
+  include ../models/RegionType.lml
+  include ../models/BibItemSize.lml
+  include ../models/BibItemSizeType.lml
+  include ../models/Depiction.lml
+  include ../models/Logo.lml
+
+  association {
+    owner BibliographicItem
+    member DocumentIdentifier
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Logo
+    member_type direct
+  }
+  association {
+    owner Logo
+    member Basicdoc_Image
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member DocumentStatus
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member CopyrightAssociation
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member MediumType
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member BibItemSize
+    member_type direct
+  }
+  association {
+    owner BibItemSize
+    member BibItemSizeType
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member VersionInfo
+    member_type direct
+  }
+  association {
+    owner BibliographicItem
+    member TypedTitleString
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member ValidityType
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member TypedNote
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Depiction
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member Edition
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member PriceType
+    owner_type direct
+  }
+  association {
+    owner BibliographicItem
+    member PlaceType
+    owner_type direct
+  }
+  association {
+    owner PlaceType
+    member RegionType
+    owner_type direct
+  }
+  association {
+    owner TypedTitleString
+    member TitleType
+    owner_type direct
+  }
+  association {
+    owner TypedTitleString
+    member Basicdoc_BasicElement
+    owner_type direct
+  }
+}

@@ -1,0 +1,119 @@
+diagram NistBibliographicItem {
+  title 'NIST Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../../relaton/models/BibliographicDate.lml
+  include ../../relaton/models/BibliographicDateType.lml
+  include ../../relaton/models/DocumentRelation.lml
+  include ../../relaton/models/DocumentRelationType.lml
+  include ../../relaton/models/SeriesType.lml
+  include ../models/NistBibliographicItem.lml
+  include ../models/NistBibliographicDate.lml
+  include ../models/NistBibliographicDateType.lml
+  include ../models/NistDocumentId.lml
+  include ../models/NistPubSeriesType.lml
+  include ../models/NistPubSeriesEnum.lml
+  include ../models/NistDocumentStatus.lml
+  include ../models/NistDocumentStatusType.lml
+  include ../models/NistDocumentSubstageType.lml
+  include ../models/NistCommentPeriod.lml
+  include ../models/NistDocumentRelation.lml
+  include ../models/NistDocumentRelationType.lml
+  include ../models/NistTitle.lml
+
+  association {
+    owner BibliographicItem
+    member NistBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDate
+    member NistBibliographicDate
+    owner_type inheritance
+  }
+  association {
+    owner BibliographicDateType
+    member NistBibliographicDateType
+    owner_type inheritance
+  }
+  association {
+    owner SeriesType
+    member NistPubSeriesType
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelation
+    member NistDocumentRelation
+    owner_type inheritance
+  }
+  association {
+    owner DocumentRelationType
+    member NistDocumentRelationType
+    owner_type inheritance
+  }
+  association {
+    owner NistBibliographicItem
+    member NistDocumentId
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistTitle
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistPubSeriesType
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistDocumentStatus
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistCommentPeriod
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistDocumentRelation
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicItem
+    member NistBibliographicDate
+    owner_type direct
+  }
+  association {
+    owner BibliographicDate
+    member BibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner NistBibliographicDate
+    member NistBibliographicDateType
+    owner_type direct
+  }
+  association {
+    owner NistDocumentStatus
+    member NistDocumentStatusType
+    owner_type direct
+  }
+  association {
+    owner NistPubSeriesType
+    member NistPubSeriesEnum
+    owner_type direct
+  }
+  association {
+    owner DocumentRelation
+    member DocumentRelationType
+    owner_type direct
+  }
+  association {
+    owner NistDocumentRelation
+    member NistDocumentRelationType
+    owner_type direct
+  }
+}

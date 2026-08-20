@@ -1,0 +1,14 @@
+class GbStandardLocalPrefix {
+  definition {
+    Prefix for a Chinese local standard document identifier.
+
+    Format: "DBXX YYYY-ZZZZ"
+
+    * XX location code: 2 characters (see location code list)
+    * YYYY document identifier: 4 or more characters
+    * ZZZZ year: 4 characters
+  }
+
+  locationCode: GbLocalCodes
+  prefix: String 
+}
