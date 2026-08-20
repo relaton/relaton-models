@@ -1,0 +1,7 @@
+enum ItuDocumentStatus {
+  in-force
+  superseded
+  in-force-prepublished
+  withdrawn
+  draft
+}

@@ -1,0 +1,211 @@
+enum GbLocalCodes {
+  definition {
+    Chinese provincial location code.
+  }
+
+  11 {
+    definition {
+      Location (English):: Beijing City
+      Location (Chinese):: 北京市
+    }
+  }
+  12 {
+    definition {
+      Location (English):: Tianjin
+      Location (Chinese):: 天津市
+    }
+  }
+  13 {
+    definition {
+      Location (English):: Hebei Province
+      Location (Chinese):: 河北省
+    }
+  }
+  14 {
+    definition {
+      Location (English):: Shanxi Province
+      Location (Chinese):: 山西省
+    }
+  }
+  15 {
+    definition {
+      Location (English):: Inner Mongolia Autonomous Region
+      Location (Chinese):: 内蒙古自治区
+    }
+  }
+  21 {
+    definition {
+      Location (English):: Liaoning Province
+      Location (Chinese):: 辽宁省
+    }
+  }
+  22 {
+    definition {
+      Location (English):: Jilin Province
+      Location (Chinese):: 吉林省
+    }
+  }
+  23 {
+    definition {
+      Location (English):: Heilongjiang Province
+      Location (Chinese):: 黑龙江省
+    }
+  }
+  31 {
+    definition {
+      Location (English):: Shanghai
+      Location (Chinese):: 上海市
+    }
+  }
+  32 {
+    definition {
+      Location (English):: Jiangsu Province
+      Location (Chinese):: 江苏省
+    }
+  }
+  33 {
+    definition {
+      Location (English):: Zhejiang Province
+      Location (Chinese):: 浙江省
+    }
+  }
+  34 {
+    definition {
+      Location (English):: Anhui Province
+      Location (Chinese):: 安徽省
+    }
+  }
+  35 {
+    definition {
+      Location (English):: Fujian Province
+      Location (Chinese):: 福建省
+    }
+  }
+  36 {
+    definition {
+      Location (English):: Jiangxi Province
+      Location (Chinese):: 江西省
+    }
+  }
+  37 {
+    definition {
+      Location (English):: Shandong Province
+      Location (Chinese):: 山东省
+    }
+  }
+  41 {
+    definition {
+      Location (English):: Henan Province
+      Location (Chinese):: 河南省
+    }
+  }
+  42 {
+    definition {
+      Location (English):: Hubei Province
+      Location (Chinese):: 湖北省
+    }
+  }
+  43 {
+    definition {
+      Location (English):: Hunan Province
+      Location (Chinese):: 湖南省
+    }
+  }
+  44 {
+    definition {
+      Location (English):: Guangdong Province
+      Location (Chinese):: 广东省
+    }
+  }
+  45 {
+    definition {
+      Location (English):: Guangxi Zhuang Autonomous Region
+      Location (Chinese):: 广西壮族自治区
+    }
+  }
+  46 {
+    definition {
+      Location (English):: Hainan
+      Location (Chinese):: 海南省
+    }
+  }
+  50 {
+    definition {
+      Location (English):: Chongqing
+      Location (Chinese):: 重庆市
+    }
+  }
+  51 {
+    definition {
+      Location (English):: Sichuan Province
+      Location (Chinese):: 四川省
+    }
+  }
+  52 {
+    definition {
+      Location (English):: Guizhou Province
+      Location (Chinese):: 贵州省
+    }
+  }
+  53 {
+    definition {
+      Location (English):: Yunnan Province
+      Location (Chinese):: 云南省
+    }
+  }
+  54 {
+    definition {
+      Location (English):: Tibet Autonomous Region
+      Location (Chinese):: 西藏自治区
+    }
+  }
+  61 {
+    definition {
+      Location (English):: Shaanxi Province
+      Location (Chinese):: 陕西省
+    }
+  }
+  62 {
+    definition {
+      Location (English):: Gansu province
+      Location (Chinese):: 甘肃省
+    }
+  }
+  63 {
+    definition {
+      Location (English):: Qinghai Province
+      Location (Chinese):: 青海省
+    }
+  }
+  64 {
+    definition {
+      Location (English):: Ningxia Hui Autonomous Region
+      Location (Chinese):: 宁夏回族自治区
+    }
+  }
+  65 {
+    definition {
+      Location (English):: Xinjiang Uygur Autonomous Region
+      Location (Chinese):: 新疆维吾尔自治区
+    }
+  }
+  71 {
+    definition {
+      Location (English):: Taiwan Province
+      Location (Chinese):: 台湾省
+    }
+  }
+  81 {
+    definition {
+      Location (English):: Hong Kong Special Administrative Region
+      Location (Chinese):: 香港特别行政区
+    }
+  }
+  82 {
+    definition {
+      Location (English):: Macao Special Administrative Region
+      Location (Chinese):: 澳门特别行政区
+    }
+  }
+
+}

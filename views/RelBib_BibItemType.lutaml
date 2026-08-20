@@ -1,5 +1,0 @@
-diagram RelBib_BibItemType {
-
-  include ../models/BibItemType.lutaml
-
-}

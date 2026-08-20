@@ -1,0 +1,12 @@
+diagram OmgBibliographicItem {
+  title 'OMG Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/OmgBibliographicItem.lml
+
+  association {
+    owner BibliographicItem
+    member OmgBibliographicItem
+    owner_type inheritance
+  }
+}

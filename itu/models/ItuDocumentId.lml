@@ -1,0 +1,7 @@
+class ItuDocumentId {
+  +series: ItuSerie
+  +code: Integer
+  +annex: String[0..1]
+  +amendment: Integer[0..1]
+  +corrigendum: Integer[0..1]
+}

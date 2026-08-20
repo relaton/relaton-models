@@ -1,5 +1,0 @@
-data_type Image <<Basicdoc>> {
-  definition {
-    Image
-  }
-}

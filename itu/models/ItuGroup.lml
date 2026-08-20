@@ -1,0 +1,6 @@
+class ItuGroup {
+  +name: FormattedString
+  +type: ItuGroupType[0..1]
+  +acronym: String[0..1]
+  +period: ItuStudyPeriod[0..1]
+}

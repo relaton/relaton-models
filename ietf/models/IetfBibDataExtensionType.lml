@@ -1,0 +1,60 @@
+class IetfBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of IETF documents.
+  }
+  +area: IetfArea[0..*] {
+    definition {
+      IETF area this document relates to.
+    }
+  }
+  +stream: IetfStream[0..1] {
+    definition {
+      Document stream.
+    }
+  }
+  +ipr: String[0..1] {
+    definition {
+      IP status of the document. See RFC 7991 section 2.45.5.
+    }
+  }
+  +consensus: String[0..1] {
+    definition {
+      Document consensus.
+    }
+  }
+  +indexInclude: String[0..1] {
+    definition {
+      Whether the formatter should include an index.
+    }
+  }
+  +iprExtract: String[0..1] {
+    definition {
+      Section that can be extracted from text. See RFC 7991 section 2.45.6.
+    }
+  }
+  +sortRefs: String[0..1] {
+    definition {
+      Whether the prep tool should sort references.
+    }
+  }
+  +symRefs: String[0..1] {
+    definition {
+      Whether the formatter should use symbolic references.
+    }
+  }
+  +tocInclude: String[0..1] {
+    definition {
+      Whether the formatter should contain a table of contents.
+    }
+  }
+  +tocDepth: String[0..1] {
+    definition {
+      Depth of the table of contents.
+    }
+  }
+  +showOnFrontPage: String[0..1] {
+    definition {
+      Display organization of author on front page of IAB documents.
+    }
+  }
+}

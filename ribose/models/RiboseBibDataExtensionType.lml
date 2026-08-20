@@ -1,0 +1,10 @@
+class RiboseBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of Ribose documents.
+  }
+  +security: String[0..1] {
+    definition {
+      Security level classification. For example, confidential, client confidential.
+    }
+  }
+}

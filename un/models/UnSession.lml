@@ -1,0 +1,13 @@
+class UnSession {
+  definition {
+    Session metadata of a UN document.
+  }
+  +number: String[0..1]
+  +sessionDate: Date[0..1]
+  +itemNumber: String[0..*]
+  +itemName: String[0..*]
+  +subitemName: String[0..*]
+  +collaborator: String[0..1]
+  +agendaId: String[0..1]
+  +itemFootnote: String[0..1]
+}

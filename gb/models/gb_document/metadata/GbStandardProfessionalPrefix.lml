@@ -1,0 +1,13 @@
+class GbStandardProfessionalPrefix {
+  definition {
+    Type of Chinese professional standard.
+
+    Format: "ZB" followed by the profession code.
+
+    [example]
+    ZBA is general, ZBB is agricultural, ZBC is medical.
+  }
+
+  professionCode: GbProfessionCode
+  prefix: String
+}

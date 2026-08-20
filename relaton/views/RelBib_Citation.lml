@@ -1,0 +1,35 @@
+diagram RelBib_Citation {
+
+  include ../models/Citation.lml
+  include ../models/BibItemLocality.lml
+  include ../models/LocalityStack.lml
+  include ../models/LocalityConnective.lml
+  include ../models/SpecificLocalityType.lml
+
+  association {
+    owner Citation
+    member BibItemLocality
+    owner_type direct
+  }
+  association {
+    owner Citation
+    member LocalityStack
+    owner_type direct
+  }
+  association {
+    owner LocalityStack
+    member BibItemLocality
+    owner_type direct
+  }
+  association {
+    owner LocalityStack
+    member LocalityConnective
+    owner_type direct
+  }
+  association {
+    owner BibItemLocality
+    member SpecificLocalityType
+    owner_type direct
+  }
+
+}

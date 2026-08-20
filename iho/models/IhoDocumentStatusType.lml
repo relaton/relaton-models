@@ -1,0 +1,14 @@
+enum IhoDocumentStatusType {
+  definition {
+    Proposed Phase Draft, Development Phase Draft (Draft Publications for
+    discussion), Testing Phase Draft, Implementation Stage Draft (Draft
+    Publications awaiting approval by Member States), In-force (prior to
+    effective date, or effective), Retired.
+  }
+  draft-proposal
+  draft-development
+  draft-testing
+  draft-implementation
+  in-force
+  retired
+}

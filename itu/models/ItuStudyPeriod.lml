@@ -1,0 +1,4 @@
+class ItuStudyPeriod {
+  +yearStart: Integer
+  +yearEnd: Integer[0..1]
+}

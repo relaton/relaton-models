@@ -1,0 +1,18 @@
+diagram M3aawgBibliographicItem {
+  title 'M3AAWG Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/M3aawgBibliographicItem.lml
+  include ../models/M3aawgDocumentType.lml
+
+  association {
+    owner BibliographicItem
+    member M3aawgBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner M3aawgBibliographicItem
+    member M3aawgDocumentType
+    owner_type direct
+  }
+}

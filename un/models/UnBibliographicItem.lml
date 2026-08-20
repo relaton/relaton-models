@@ -1,0 +1,7 @@
+class UnBibliographicItem {
+  definition {
+    Bibliographic description of a UN document.
+  }
+  +type: UnDocumentType
+  +ext: UnBibDataExtensionType
+}

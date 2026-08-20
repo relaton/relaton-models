@@ -1,0 +1,7 @@
+class RiboseBibliographicItem {
+  definition {
+    Bibliographic description of a Ribose document.
+  }
+  +type: RiboseDocumentType
+  +ext: RiboseBibDataExtensionType
+}

@@ -1,0 +1,15 @@
+class StageName {
+    definition {
+      Stage name for current document (specific to document type).
+    }
+    +abbreviation: String[0..1] {
+      definition {
+        Abbreviation of stage name.
+      }
+    }
+    +value: String {
+      definition {
+        Stage name.
+      }
+    }
+}

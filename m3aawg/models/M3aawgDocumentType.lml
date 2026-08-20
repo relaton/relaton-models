@@ -1,0 +1,14 @@
+enum M3aawgDocumentType {
+  definition {
+    Type of M3AAWG document.
+  }
+  guidance
+  proposal
+  standard
+  report
+  whitepaper
+  charter
+  policy
+  glossary
+  case-study
+}

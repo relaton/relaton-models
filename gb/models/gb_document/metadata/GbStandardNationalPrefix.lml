@@ -1,0 +1,137 @@
+enum GbStandardNationalPrefix {
+  definition {
+    Document identifier prefix of a Chinese standard.
+
+    If a GbStandardNationalPrefix or GbStandardSectorPrefix is
+    'recommended' then add a '/T' suffix to the prefix.
+
+    If 'guideline' add a '/Z' to suffix.
+  }
+
+  GB {
+    definition {
+      Standard name (English):: National standard
+      Standard name (Chinese):: 中华人民共和国国家标准
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China
+      Administration (Chinese):: 中华人民共和国国家质量监督检验检疫总局，中国国家标准化管理委员会
+    }
+  }
+
+  GB/T {
+    definition {
+      Standard name (English):: National standard (Recommended)
+      Standard name (Chinese):: 中华人民共和国国家标准
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+    }
+  }
+
+  GB/Z {
+    definition {
+      Standard name (English):: Standardized guidelines
+      Standard name (Chinese):: 中华人民共和国国家标准化指导性技术文件
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+    }
+  }
+
+  GBZ {
+    definition {
+      Standard name (English):: National occupational health standards
+      Standard name (Chinese):: 中华人民共和国国家职业卫生标准
+      Administration (English):: Ministry of Health
+      Administration (Chinese):: 中华人民共和国卫生部
+    }
+  }
+
+  GJB {
+    definition {
+      Standard name (English):: National military standards
+      Standard name (Chinese):: 中华人民共和国国家军用标准
+      Administration (English):: Chinese People's Liberation Army equipment headquarters
+      Administration (Chinese):: 中国人民解放军装备总部
+    }
+  }
+
+  GBW {
+    definition {
+      Standard name (English):: National reference material standard
+      Standard name (Chinese):: 中华人民共和国国家标准物质
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+
+      // NOTE: No sample found.
+    }
+  }
+
+  GSB {
+    definition {
+      Standard name (English):: National physical reference standard
+      Standard name (Chinese):: 中华人民共和国国家实物标准
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+
+      // NOTE: No sample found.
+    }
+  }
+
+  GBn {
+    definition {
+      Standard name (English):: National internal standards
+      Standard name (Chinese):: 中华人民共和国国家内部标准
+      Administration (English):: Unknown
+      Administration (Chinese):: Unknown
+
+      // NOTE: No sample found.
+    }
+  }
+
+  GHZB {
+    definition {
+      Standard name (English):: National environmental quality standards
+      Standard name (Chinese):: 中华人民共和国国家环境质量标准
+      Administration (English):: Ministry of Environmental Protection
+      Administration (Chinese):: 环境保护部
+
+      // NOTE: No sample found.
+    }
+  }
+
+  GWKB {
+    definition {
+      Standard name (English):: National Environmental Protection Standards
+      Standard name (Chinese):: 中华人民共和国国家环境保护标准
+      Administration (English):: Ministry of Environmental Protection
+      Administration (Chinese):: 环境保护部
+    }
+  }
+
+  GWPB {
+    definition {
+      Standard name (English):: National pollutant discharge standards
+      Standard name (Chinese):: 中华人民共和国国家污染物排放标准
+      Administration (English):: Ministry of Environmental Protection
+      Administration (Chinese):: 环境保护部
+    }
+  }
+
+  JJF {
+    definition {
+      Standard name (English):: National calibration specifications
+      Standard name (Chinese):: 中华人民共和国国家计量技术规范
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+    }
+  }
+
+  JJG {
+    definition {
+      Standard name (English):: National calibration verification regulations
+      Standard name (Chinese):: 中华人民共和国国家计量检定规程
+      Administration (English):: General Administration of Quality Supervision, Inspection and Quarantine
+      Administration (Chinese):: 国家质量监督检验检疫总局
+    }
+  }
+}
+
+

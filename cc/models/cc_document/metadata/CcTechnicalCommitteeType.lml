@@ -1,0 +1,16 @@
+enum CcTechnicalCommitteeType {
+    definition {
+      Type of CalConnect technical committee.
+    }
+
+  technical {
+    definition {
+      Technical.
+    }
+  }
+  provisional {
+    definition {
+      Provisional.
+    }
+  }
+}

@@ -1,0 +1,3 @@
+class OgcDocumentStatus {
+  +status: OgcStatusType
+}

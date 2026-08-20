@@ -1,0 +1,4 @@
+class GbTechnicalCommittee {
+  +type: GbtechnicalCommitteeType
+  +name: String
+}

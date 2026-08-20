@@ -1,0 +1,11 @@
+diagram RelBib_Date {
+
+  include ../models/BibliographicDate.lml
+  include ../models/BibliographicDateType.lml
+
+  association {
+    owner BibliographicDate
+    member BibliographicDateType
+    owner_type direct
+  }
+}

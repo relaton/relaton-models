@@ -1,0 +1,41 @@
+enum GbStandardScope {
+  definition {
+    Scope of Chinese standard.
+  }
+
+  national {
+    definition {
+      Chinese national standard. 国家标准.
+    }
+  }
+
+  sector {
+    definition {
+      Chinese sector standard. 行业标准.
+    }
+  }
+
+  professional {
+    definition {
+      Chinese professional standard. 专业标准.
+    }
+  }
+
+  local {
+    definition {
+      Chinese local standard. 地方标准.
+    }
+  }
+
+  enterprise {
+    definition {
+      Chinese enterprise standard. 企业标准.
+    }
+  }
+  
+  social_group {
+    definition {
+      Chinese social_group standard. 社会团体标准.
+    }
+  }
+}

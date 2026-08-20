@@ -1,0 +1,4 @@
+class IhoProjectTeam {
+  +committee: IhoCommittee
+  +workgroup: IhoWorkingGroup
+}

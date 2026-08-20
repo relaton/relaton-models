@@ -1,0 +1,54 @@
+enum IsoDocumentStageCodes {
+  definition {
+    Stage-level code in the International Harmonized Stage Codes
+    used by ISO/IEC for their documents.
+    
+    NOTE: See https://www.iso.org/stage-codes.html
+  }
+
+  00 {
+    definition {
+      Preliminary.
+    }
+  }
+  10 {
+    definition {
+      Proposal.
+    }
+  }
+  20 {
+    definition {
+      Preparatory.
+    }
+  }
+  30 {
+    definition {
+      Committee.
+    }
+  }
+  40 {
+    definition {
+      Enquiry.
+    }
+  }
+  50 {
+    definition {
+      Approval.
+    }
+  }
+  60 {
+    definition {
+      Publication.
+    }
+  }
+  90 {
+    definition {
+      Review.
+    }
+  }
+  95 {
+    definition {
+      Withdrawal.
+    }
+  }
+}

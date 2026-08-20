@@ -1,0 +1,8 @@
+class EtsiBibliographicItem {
+  definition {
+    Bibliographic description of an ETSI document.
+  }
+  +type: EtsiDocumentType
+  +typeAbbreviation: EtsiDocumentTypeAbbreviation[0..1]
+  +ext: EtsiBibDataExtensionType
+}

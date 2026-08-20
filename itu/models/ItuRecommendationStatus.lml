@@ -1,0 +1,8 @@
+class ItuRecommendationStatus {
+  definition {
+    Only applies to Recommendations.
+  }
+  +from: Date
+  +to: Date
+  +approvalStage: ItuApprovalProcessStage[0..1]
+}

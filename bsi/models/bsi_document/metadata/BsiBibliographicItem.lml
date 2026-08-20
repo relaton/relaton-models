@@ -1,0 +1,41 @@
+class BsiBibliographicItem {
+  definition {
+    The bibliographical description of an BSI document.
+  }
+  +docIdentifier: IsoDocumentId {
+    definition {
+      Identifier of the document.
+    }
+  }
+  +title: IsoLocalizedTitle {
+    definition {
+      Title of the document.
+    }
+  }
+  +type: BsiDocumentType {
+    definition {
+      Type of the document.
+    }
+  }
+  +status: IsoDocumentStatus {
+    definition {
+      Publication status of the document.
+    }
+  }
+  +source: TypeUri[0..*] {
+    definition {
+      URIs associated with the document.
+    }
+  }
+  +abstract: FormattedString[0..*] {
+    definition {
+      Abstract of the document.
+    }
+  }
+  +ext: BsiBibDataExtensionType {
+    definition {
+      Extension point of the bibliographical description.
+    }
+  }
+}
+

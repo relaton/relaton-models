@@ -1,0 +1,36 @@
+enum CcStatusType {
+  definition {
+    Publication status of CalConnect document.
+  }
+
+  proposal {
+    definition {
+      Proposal.
+    }
+  }
+  workingDraft {
+    definition {
+      Working Draft.
+    }
+  }
+  committeeDraft {
+    definition {
+      Committee Draft.
+    }
+  }
+  finalDraft {
+    definition {
+      Final Draft.
+    }
+  }
+  published {
+    definition {
+      Published.
+    }
+  }
+  withdrawn {
+    definition {
+      Withdrawn.
+    }
+  }
+}

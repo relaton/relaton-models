@@ -1,0 +1,150 @@
+@startuml IhoBibliographicItem
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<biblio>>{
+
+}
+
+class IhoBibliographicItem {
+  +projectGroup: IhoProjectTeam[1..*]
+  +type: IhoDocumentType
+  +title: FormattedString
+  +series: IhoPubSeriesType
+  +dates: IhoBibliographicDate[0..*]
+  +relation: IhoDocumentRelation[0..*]
+  +documentStatus: IhoDocumentStatus
+  +commentPeriod: IhoCommentPeriod[0..1]
+}
+
+class IhoProjectTeam{
+  +committee: IhoCommittee
+  +workgroup: IhoWorkingGroup
+}
+
+class BibliographicDate <<biblio>> {
+}
+
+class IhoBibliographicDate {
+  +type: IhoBibliographicDateType | text
+}
+
+enum BibliographicDateType <<biblio>> {
+}
+
+enum IhoBibliographicDateType <<enumeration>> {
+  effective
+  superseded
+}
+
+class IhoCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+}
+
+enum IhoCommittee <<enumeration>>{
+  hssc
+  ircc
+}
+
+class IhoWorkingGroup{
+  +name: FormattedString
+}
+
+class IhoDocumentStatus{
+  +status: IhoStatusType
+}
+
+enum IhoDocumentStatusType <<enumeration>>{
+  draft-proposal
+  draft-development
+  draft-testing
+  draft-implementation
+  in-force
+  retired
+}
+
+enum IhoDocumentType <<enumeration>>{
+  standard
+  specification
+  resolutions
+  regulations
+}
+
+class SeriesType <<biblio>> {
+}
+
+class IhoPubSeriesType {
+  +type: "main"
+  +title: IhoPubSeriesEnum
+  +abbreviation: String[0..1]
+}
+
+enum IhoPubSeriesEnum <<enumeration>> {
+  iho-bathymetric
+  iho-capacity
+  iho-misc
+  iho-resolutions
+  iho-standards
+}
+
+enum IhoDocumentRelationType <<enumeration>> {
+  supersedes
+  supersededBy
+}
+
+class DocumentRelation <<biblio>> {
+}
+
+class DocumentRelationType <<biblio>> {
+}
+
+
+'******* NOTES ********************************************************
+
+note bottom of IhoPubSeriesEnum: * B: Bathymetric Publications\n* C: Capacity Building Publications\n* P: Periodic Publications\n* S: Standards and Specifications\n* misc: Miscellaneous Publications (including Basic Documents)
+
+note bottom of IhoDocumentType: * standard (framework document, e.g. S-57, S-100)\n* specification (implementation of framework, e.g. S-101, S-111)\n* resolutions (e.g. M-3)\n* regulations (e.g. S-4, M-7)\n* localities\n** chapter (e.g. S-57 Appendix A, Chapter {1,2})\n** appendix (e.g. S-52 Appendix 1)\n** annex (e.g. S-52 Annex A; S-57 Appendix A, Annex A; )
+
+note bottom of IhoDocumentStatusType: * Proposed Phase Draft\n* Development Phase Draft ("Draft Publications for discussion")\n* Testing Phase Draft\n* Implementation Stage Draft ("Draft Publications awaiting approval by Member States")\n* In-force publications:\n** In-force but prior to effective date ("Draft Publications in the final stage of editing following adoption by Member States")\n** In-force and effective\n* Retired publications
+
+note bottom of IhoCommittee: * Hydrographic Services and Standards Committee (HSSC)\n* Inter-Regional Coordination Committee (IRCC)
+
+note bottom of IhoDocumentRelation: Also indicates current document's relationship\nwith parent documents (e.g. this document is\n annex B of section 3\n of an appendix A)
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- IhoBibliographicItem
+
+IhoBibliographicItem <-- IhoProjectTeam
+IhoBibliographicItem <-- IhoDocumentType
+IhoBibliographicItem <-- IhoDocumentStatus
+IhoBibliographicItem <-- IhoPubSeriesType
+
+IhoProjectTeam <-- IhoCommittee
+IhoProjectTeam <-- IhoWorkingGroup
+
+IhoBibliographicItem <-- IhoCommentPeriod
+IhoBibliographicItem <-- IhoDocumentRelation
+IhoBibliographicItem <-- IhoBibliographicDate
+
+BibliographicDate <|-- IhoBibliographicDate
+BibliographicDateType <|-- IhoBibliographicDateType
+BibliographicDate <-- BibliographicDateType
+IhoBibliographicDate <-- IhoBibliographicDateType
+
+Citation <|-- IhoDocumentCitation
+IhoBibliographicItem <-- IhoDocumentCitation
+
+IhoDocumentStatus <-- IhoDocumentStatusType
+
+SeriesType <|-- IhoPubSeriesType
+IhoPubSeriesType <-- IhoPubSeriesEnum
+
+DocumentRelation <|-- IhoDocumentRelation
+DocumentRelationType <|-- IhoDocumentRelationType
+DocumentRelation <-- DocumentRelationType
+IhoDocumentRelation <-- IhoDocumentRelationType
+
+@enduml

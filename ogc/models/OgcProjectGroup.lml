@@ -1,0 +1,5 @@
+class OgcProjectGroup {
+  +committee: OgcCommittee
+  +subcommittee: OgcSubGroup[0..1]
+  +workgroup: OgcSubGroup[0..1]
+}

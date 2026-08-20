@@ -1,0 +1,8 @@
+enum IhoCommittee {
+  definition {
+    hssc: Hydrographic Services and Standards Committee (HSSC).
+    ircc: Inter-Regional Coordination Committee (IRCC).
+  }
+  hssc
+  ircc
+}

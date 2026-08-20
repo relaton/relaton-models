@@ -1,0 +1,9 @@
+enum MpfaDocStatus {
+  internal_draft
+  working_draft
+  committee_draft
+  approval_draft
+  final_draft
+  published
+  withdrawn
+}

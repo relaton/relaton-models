@@ -1,0 +1,5 @@
+class OgcSubGroup {
+  +type: String[0..1]
+  +number: Integer[0..1]
+  +name: String
+}

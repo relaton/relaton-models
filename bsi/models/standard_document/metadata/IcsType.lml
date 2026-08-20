@@ -1,0 +1,5 @@
+class IcsType <<StandardDocument>> {
+  definition {
+    Classification taken from the International Classification of Standards.
+  }
+}

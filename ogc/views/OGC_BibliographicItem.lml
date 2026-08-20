@@ -1,0 +1,54 @@
+diagram OGC_BibliographicItem {
+  title 'OGC Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/OgcBibliographicItem.lml
+  include ../models/OgcProjectGroup.lml
+  include ../models/OgcCommittee.lml
+  include ../models/OgcSubGroup.lml
+  include ../models/OgcDocumentStatus.lml
+  include ../models/OgcStatusType.lml
+  include ../models/OgcDocumentType.lml
+  include ../models/OgcDocumentSubType.lml
+
+  association {
+    owner BibliographicItem
+    member OgcBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner OgcBibliographicItem
+    member OgcProjectGroup
+    owner_type direct
+  }
+  association {
+    owner OgcBibliographicItem
+    member OgcDocumentType
+    owner_type direct
+  }
+  association {
+    owner OgcBibliographicItem
+    member OgcDocumentSubType
+    owner_type direct
+  }
+  association {
+    owner OgcBibliographicItem
+    member OgcDocumentStatus
+    owner_type direct
+  }
+  association {
+    owner OgcProjectGroup
+    member OgcCommittee
+    owner_type direct
+  }
+  association {
+    owner OgcProjectGroup
+    member OgcSubGroup
+    owner_type direct
+  }
+  association {
+    owner OgcDocumentStatus
+    member OgcStatusType
+    owner_type direct
+  }
+}

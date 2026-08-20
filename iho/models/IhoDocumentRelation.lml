@@ -1,0 +1,6 @@
+class IhoDocumentRelation {
+  definition {
+    Also indicates current document's relationship with parent documents
+    (e.g. this document is annex B of section 3 of an appendix A).
+  }
+}

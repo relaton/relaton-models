@@ -1,0 +1,4 @@
+class BipmWorkingGroup {
+  +acronym: String[0..1]
+  +name: FormattedString
+}

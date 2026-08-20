@@ -1,0 +1,18 @@
+class ItuBibliographicItem {
+  +type: ItuDocumentType
+  +documentIdentifier: ItuDocumentId[0..1]
+  +provisionalName: DocumentIdentifier[0..1]
+  +title: TypedTitleString
+  +uri: Uri
+  +documentStatus: ItuDocumentStatus[0..1]
+  +version: VersionInfo
+  +projectStatus: ItuRecommendationStatus[0..1]
+  +keyword: FormattedString[0..*]
+  +editorialGroup: ItuProjectGroup[1..*]
+  +series: SeriesType[0..*]
+  +ipnoticereceived: Boolean[0..*]
+  +meeting: String[0..1]
+  +meeting-date: BibliographicDate[0..1]
+  +intended-type: ItuIntendedDate[0..1]
+  +source: String[0..1]
+}

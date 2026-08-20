@@ -1,0 +1,4 @@
+class IhoCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+}

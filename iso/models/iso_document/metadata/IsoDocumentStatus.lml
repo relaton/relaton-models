@@ -1,0 +1,30 @@
+class IsoDocumentStatus {
+    definition {
+      Publication status of an ISO/IEC document.
+    }
+    +stage: IsoDocumentStageCodes {
+      definition {
+        Publication stage of the ISO/IEC document, expressed as an International Harmonized Stage Code.
+      }
+    }
+    +stageAbbreviation: String[0..1] {
+      definition {
+        Standard abbreviation of the publication stage.
+      }
+    }
+    +substage: IsoDocumentSubstageCodes[0..1] {
+      definition {
+        Substage code for the ISO/IEC document.
+      }
+    }
+    +substageAbbreviation: String[0..1] {
+      definition {
+        Standard abbreviation of the publication substage.
+      }
+    }
+    +iteration: Integer[0..1] {
+      definition {
+        Number of the iteration of the publication stage that the document is in.
+      }
+    }
+}

@@ -11,56 +11,84 @@ for bibliographic data management and for managing document metadata:
 
 * https://github.com/metanorma/standoc-models[Metanorma document models]
 
+[IMPORTANT]
+====
+The models ARE the LML files. Every model is defined in LutaML
+(`models/*.lml` definition modules, `views/*.lml` diagram views); the RNC
+files in `grammars/` are implementation grammars that *accompany* the LML
+models — never a substitute for them. A flavour directory containing only
+an RNC overlay is incomplete: its model must exist as LML. This cannot be
+violated.
+====
+
 Below are the UML diagrams.
 
 The document models are expressed as LutaML-UML and as RelaxNG Compact (RNC) grammars;
 see discussion under
 https://github.com/metanorma/standoc-models/tree/main/grammars[Grammars]. The
 base grammars for the BibliographicItem, Citation and Contributor models live
-in `grammars/` here.
+in `relaton/grammars/` here.
+
+== Building
+
+One root `Gemfile` (lutaml-lml) and one root `Rakefile`. Initialise the
+`basicdoc` submodule first:
+
+  git submodule update --init --recursive
+  bundle install
+  bundle exec rake render   # regenerate */images/ from */views/*.lml
+  bundle exec rake verify   # assert PNG magic bytes on every committed diagram
+  bundle exec rake parity   # assert LML models exist for every RNC overlay
+  bundle exec rake check    # render + verify + parity
+  bundle exec rake clean
+  bundle exec rake site     # build the model catalog into _site/
+
+The workflow runs the same build on ubuntu.
+A https://relaton.github.io/relaton-models/[model catalog site] is generated
+from the views and deployed to GitHub Pages by the `pages` workflow.
 
 == Bibliography UML Models
 
 === Bibliographic Item
 
-image::images/RelBib_BibliographicItem.png[]
+image::relaton/images/RelBib_BibliographicItem.png[]
 
 === Bibliographic Item Types
 
-image::images/RelBib_BibItemType.png[]
+image::relaton/images/RelBib_BibItemType.png[]
 
 === Citation
 
-image::images/RelBib_Citation.png[]
+image::relaton/images/RelBib_Citation.png[]
 
 === Contributor
 
-image::images/RelBib_Contributor.png[]
-image::images/RelBib_Contribution.png[]
+image::relaton/images/RelBib_Contributor.png[]
+image::relaton/images/RelBib_Contribution.png[]
 
 === Date
 
-image::images/RelBib_Date.png[]
+image::relaton/images/RelBib_Date.png[]
 
 === Document Relations
 
-image::images/RelBib_DocumentRelation.png[]
+image::relaton/images/RelBib_DocumentRelation.png[]
 
 === Series
 
-image::images/RelBib_Series.png[]
+image::relaton/images/RelBib_Series.png[]
 
 === Keyword
 
-image::images/RelBib_Keyword.png[]
+image::relaton/images/RelBib_Keyword.png[]
 
 === Data Types
 
-image::images/RelBib_DataTypes.png[]
+image::relaton/images/RelBib_DataTypes.png[]
 
 === Collection
 
-image::images/RelBib_Collection.png[]
+image::relaton/images/RelBib_Collection.png[]
 
 == Example
 
@@ -243,11 +271,25 @@ former per-flavour `relaton-model-*` repository (relaton-model-ieee,
 relaton-model-iso, ... 29 in total), each merged in under its own top-level
 directory with its full git history preserved:
 
-* `models/`, `views/`, `images/`, `grammars/` — the shared RelBib models and
-  base grammars (`biblio.rnc`, `biblio-standoc.rnc`, `biblio-compile.rnc`)
+* `relaton/` — the shared RelBib base models and base grammars
+* `basicdoc/` — git submodule of metanorma/basicdoc-models (Basicdoc types)
+  (`biblio.rnc`, `biblio-standoc.rnc`, `biblio-compile.rnc`)
 * `<flavour>/` — each former `relaton-model-<flavour>` repository: its models,
   views, images, and the flavour-specific grammar overlay
   `<flavour>/grammars/relaton-<flavour>.rnc`
+
+Every module directory — the base (`relaton/`) and each flavour — uses the
+same internal layout:
+
+* `models/` — LutaML **definition modules** (`class` / `enum` / `data_type` only)
+* `views/` — LutaML **diagram views** (one `diagram` each; `include`s + `association`s only)
+* `images/` — rendered PNGs (committed; regenerated from views)
+* `grammars/` — RNC implementation grammars accompanying the LML models
+
+Views and models are a hard separation: never put class bodies in `views/`,
+never put `diagram` / `association` in `models/`. Cross-module reuse is a
+relative `include` of the real file — never a stub copy.
+
 
 The Metanorma grammar hub
 (https://github.com/metanorma/standoc-models[standoc-models]) consumes the

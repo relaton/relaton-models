@@ -1,0 +1,12 @@
+diagram CieBibliographicItem {
+  title 'CIE Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/CieBibliographicItem.lml
+
+  association {
+    owner BibliographicItem
+    member CieBibliographicItem
+    owner_type inheritance
+  }
+}

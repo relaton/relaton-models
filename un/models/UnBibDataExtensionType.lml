@@ -1,0 +1,9 @@
+class UnBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of UN documents.
+  }
+  +submissionLanguage: String[0..*]
+  +distribution: UnDistribution[0..1]
+  +session: UnSession[0..1]
+  +jobNumber: String[0..1]
+}

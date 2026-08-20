@@ -1,0 +1,3 @@
+[submodule "basicdoc"]
+	path = basicdoc
+	url = https://github.com/metanorma/basicdoc-models.git

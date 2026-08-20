@@ -1,0 +1,5 @@
+class BipmStructuredTitle {
+  +title-main: FormattedString
+  +title-part: FormattedString[0..1]
+  +title-subpart: FormattedString[0..1]
+}

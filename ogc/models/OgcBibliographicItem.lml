@@ -1,0 +1,6 @@
+class OgcBibliographicItem {
+  +projectGroup: OgcProjectGroup[1..*]
+  +type: OgcDocumentType
+  +subtype: OgcDocumentSubType[0..1]
+  +title: FormattedString
+}

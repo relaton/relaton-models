@@ -1,0 +1,22 @@
+enum ItuAapStatusCode {
+  definition {
+    a: Approved. LC: Last Call. AC: Approved with Substantial Changes.
+    LJ: Last Call Judgment (includes Last Call Comment resolution).
+    AJ: Additional Review Judgment. NA: Not Approved. AR: Additional Review.
+    RI: Re-Initiate Last Call. AT: Approved with Typographical Corrections.
+    SG: Referred to Study Group Approval. C: Consented.
+    TAP: Moved to TAP (ITU-T A.8 5.2).
+  }
+  a
+  lc
+  ac
+  lj
+  aj
+  na
+  ar
+  ri
+  at
+  sg
+  c
+  tap
+}

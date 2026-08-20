@@ -1,0 +1,20 @@
+class CcBibliographicItem {
+    definition {
+       Bibliographic description of CalConnect document.
+    }
+    +committee: CcTechnicalCommittee[1..*] {
+      definition {
+        Editorial committee responsible for producing the document.
+      }
+    }
+    +type: CcDocumentType {
+      definition {
+        Type of document.
+      }
+    }
+    +title: FormattedString {
+      definition {
+        Title of document.
+      }
+    }
+}

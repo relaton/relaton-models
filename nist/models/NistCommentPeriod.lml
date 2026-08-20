@@ -1,0 +1,5 @@
+class NistCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+  +extended: Date[0..1]
+}

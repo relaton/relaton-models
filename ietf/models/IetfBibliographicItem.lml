@@ -1,0 +1,7 @@
+class IetfBibliographicItem {
+  definition {
+    Bibliographic description of an IETF document.
+  }
+  +type: IetfDocumentType
+  +ext: IetfBibDataExtensionType
+}

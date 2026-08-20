@@ -1,24 +1,19 @@
-= Relaton IEEE Bibliographic Data Model
+= Relaton IEEE bibliographic model
 
-This bibliographic model is developed to consolidate and standardize
-the data model used for bibliographic and citation purposes.
+Bibliographic model for IEEE — the flavour overlay of the shared RelBib
+BibliographicItem model.
 
-This model is meant to be fully compatible with ISO 690 and
-ISO TC 46's (and SC 4, SC 9) work on bibliography.
+This directory is the `ieee` flavour of the unified
+https://github.com/relaton/relaton-models[relaton-models] repository
+(formerly the standalone relaton-model-ieee repository; merged with its
+git history on 2026-08-18).
 
-These models were developed based on the `IEEE//IDAMS Exchange V2.0.0//EN" "ieee_idams_exchange.dtd"` model.
+== Layout
 
-NOTE: The modelled components represent a subset of the XML model; omitted
-elements are implementation details that are not important in the generation of
-bibliographic data.
+* `models/`, `views/` — LutaML model sources
+* `images/` — generated model diagrams, committed
+* `grammars/relaton-ieee.rnc` — the flavour grammar overlay
 
-image:https://github.com/relaton/relaton-model-ieee/workflows/make/badge.svg["Build Status", link="https://github.com/relaton/relaton-model-ieee/actions/workflows/make.yml"]
-
-
-== IEEE Metadata UML Models
-
-image::images/IeeeMetadata.png[]
-
-== ISBN Number Model
-
-image::images/IsbnNumber.png[]
+Diagrams regenerate via the root `Rakefile` (`bundle exec rake render`); the overlay is consumed by
+the Metanorma grammar hub
+(https://github.com/metanorma/standoc-models[standoc-models]).

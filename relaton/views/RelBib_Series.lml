@@ -1,0 +1,11 @@
+diagram RelBib_Series {
+
+  include ../models/SeriesType.lml
+  include ../models/SeriesTypeType.lml
+
+  association {
+    owner SeriesType
+    member SeriesTypeType
+    owner_type direct
+  }
+}

@@ -1,0 +1,4 @@
+enum ItuApprovalProcess {
+  tap
+  aap
+}

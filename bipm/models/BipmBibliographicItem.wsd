@@ -1,0 +1,211 @@
+@startuml BipmBibliographicItem
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<biblio>>{
+
+}
+
+class BipmBibliographicItem {
+  +projectGroup: BipmProjectTeam[1..*]
+  +type: BipmDocumentType
+  +title: BipmStructuredTitle
+  +dates: BipmBibliographicDate[0..*]
+  +relation: BipmDocumentRelation[0..*]
+  +documentStatus: BipmDocumentStatus
+  +commentPeriod: BipmCommentPeriod[0..1]
+  +structuredIdentifier: BipmStructuredIdentifier
+  +si-aspect: BipmSIAspect[0..1]
+  +meeting-note: string[0..1]
+}
+
+enum BipmSIAspect <<enumeration>> {
+  A_e_deltanu
+  A_eD
+  cd_Kcd_h_deltanu
+  cd_Kc
+  full
+  K_k_deltanu
+  K_k
+  kg_h_c_deltanu
+  kg_h
+  m_c_deltanu
+  m_c
+  mol_NA
+  s_deltanu
+}
+
+class BipmStructuredTitle {
+  +title-main: FormattedString
+  +title-part: FormattedString[0..1]
+  +title-subpart: FormattedString[0..1]
+}
+
+class BipmStructuredIdentifier {
+  +docnumber: string
+  +part: string[0..1]
+  +subpart: string[0..1]
+  +appendix: string[0..1]
+}
+
+class BipmProjectTeam{
+  +committee: BipmCommittee
+  +workgroup: BipmWorkingGroup
+}
+
+class BibliographicDate <<biblio>> {
+}
+
+class BipmBibliographicDate {
+  +type: BipmBibliographicDateType | text
+}
+
+enum BibliographicDateType <<biblio>> {
+}
+
+enum BipmBibliographicDateType <<enumeration>> {
+  effective
+  superseded
+}
+
+class BipmCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+}
+
+class BipmCommittee {
+  +acronym: BipmCommitteeAcronym
+  +name: string
+}
+
+enum BipmCommitteeAcronym <<enumeration>>{
+  cgpm
+  cipm
+  bipm
+  ccauv
+  ccem
+  ccl
+  ccm
+  ccpr
+  ccqm
+  ccri
+  cct
+  cctf
+  ccu
+  ccl-cctfwg
+  jcgm
+  jcrb
+  jctlm
+  inetqi
+}
+
+class BipmWorkingGroup{
+  +acronym: string[0..1]
+  +name: FormattedString
+}
+
+class BipmDocumentStatus{
+  +status: BipmStatusType
+}
+
+enum BipmDocumentStatusType <<enumeration>>{
+  draft-proposal
+  draft-development
+  in-force
+  retired
+}
+
+enum BipmDocumentType <<enumeration>>{
+  brochure
+  mise-en-pratique
+  rapport
+  monographie
+  guide
+  meeting-report
+  technical-report
+  working-party-note
+  strategy
+  cipm-mra
+  resolutions
+  ' mra-policy
+  ' mra-guidance
+  ' mra-others
+  ' mep-note
+  ' mep-guidelines
+  ' mep-recommendation
+  ' technical-annex
+}
+
+' strategy: https://www.bipm.org/utils/en/pdf/CCL-strategy-summary.pdf
+' working-party-note: https://www.bipm.org/en/publications/scientific-output/wpn.html
+' monographie: https://www.bipm.org/en/publications/scientific-output/monographies-ri.html
+' rapport: https://www.bipm.org/en/publications/rapports-bipm/
+' rapport: https://www.bipm.org/utils/common/pdf/rapportBIPM/RapportBIPM-2019-05.pdf
+' guide: https://www.bipm.org/utils/common/pdf/CC/CCL/CCL-GD-MeP-1.pdf
+' guide: https://www.bipm.org/en/committees/cc/cct/guide-its90.html
+' guide: https://www.bipm.org/utils/common/pdf/ITS-90/Guide-PLTS-2000.pdf
+' guide: https://www.bipm.org/utils/common/pdf/KCDB_2.0/CMC_services/TF_services.pdf
+' guide: https://www.bipm.org/utils/common/pdf/CC/CCEM/ccem_guidelines_revisedSI.pdf
+' guide (technical annex): https://www.bipm.org/utils/en/pdf/MeP_K_Technical_Annex.pdf
+' guide (note): https://www.bipm.org/utils/common/pdf/CC/CCM/CCM_Note-on-dissemination-after-redefinition.pdf
+' guide (note): https://www.bipm.org/utils/common/pdf/CC/CCM/BIPM_Note-on-kilogram-redefinition.pdf
+' guide (note): https://www.bipm.org/utils/common/pdf/CC/CCM/CCM_Note-on-dissemination-after-redefinition.pdf
+' guide (recommendation): https://www.bipm.org/utils/common/pdf/mep/115In+_1267THz_2017.pdf
+
+enum BipmDocumentRelationType <<enumeration>> {
+  supersedes
+  supersededBy
+}
+
+class DocumentRelation <<biblio>> {
+}
+
+class DocumentRelationType <<biblio>> {
+}
+
+
+'******* NOTES ********************************************************
+
+note bottom of BipmDocumentType: * brochure (SI Brochure)\n* Mise en pratique\n* Rapport\n* Monographie\n* Guide\n* Meeting report\n* Technical report\n* Working Party Note\n* Strategy\n* CIPM MRA\n* Resolutions\n* localities\n** chapter (e.g. S-57 Appendix A, Chapter {1,2})\n** appendix (e.g. S-52 Appendix 1)\n** annex (e.g. S-52 Annex A; S-57 Appendix A, Annex A; )
+
+note bottom of BipmDocumentStatusType: * Proposed Phase Draft\n* Development Phase Draft\n* In-force\n* Retired
+
+note bottom of BipmCommittee: * CGPM: General Conference on Weights and Measures\n* CIPM: International Committee for Weights and Measures\n* BIPM: International Bureau of Weights and Measures\n* CCAUV: Consultative Committee for Acoustics, Ultrasound and Vibration\n* CCEM: Consultative Committee for Electricity and Magnetism\n* CCL: Consultative Committee for Length\n* CCM: Consultative Committee for Mass and Related Quantities\n* CCPR: Consultative Committee for Photometry and Radiometry\n* CCQM: Consultative Committee for Amount of Substance: Metrology in Chemistry and Biology\n* CCRI: Consultative Committee for Ionizing Radiation\n* CCT: Consultative Committee for Thermometry\n* CCTF: Consultative Committee for Time and Frequency\n* CCU: Consultative Committee for Units\n* CCL-CCTF: Frequency Standards Working Group\n* JCGM: Joint Committee for Guides in Metrology\n* JCRB: Joint Committee of the Regional Metrology Organizations and the BIPM\n* JCTLM: Joint Committee for Traceability in Laboratory Medicine\n* INetQI: International Network on Quality Infrastructure
+
+note bottom of BipmDocumentRelation: Also indicates current document's relationship\nwith parent documents (e.g. this document is\n annex B of section 3\n of an appendix A)
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- BipmBibliographicItem
+
+BipmBibliographicItem <-- BipmProjectTeam
+BipmBibliographicItem <-- BipmDocumentType
+BipmBibliographicItem <-- BipmDocumentStatus
+BipmBibliographicItem <-- BipmSIAspect
+BipmBibliographicItem <-- BipmStructuredTitle
+BipmBibliographicItem <-- BipmStructuredIdentifier
+
+BipmProjectTeam <-- BipmCommittee
+BipmProjectTeam <-- BipmWorkingGroup
+
+BipmBibliographicItem <-- BipmCommentPeriod
+BipmBibliographicItem <-- BipmDocumentRelation
+BipmBibliographicItem <-- BipmBibliographicDate
+
+BibliographicDate <|-- BipmBibliographicDate
+BibliographicDateType <|-- BipmBibliographicDateType
+BibliographicDate <-- BibliographicDateType
+BipmBibliographicDate <-- BipmBibliographicDateType
+
+Citation <|-- BipmDocumentCitation
+BipmBibliographicItem <-- BipmDocumentCitation
+
+BipmDocumentStatus <-- BipmDocumentStatusType
+
+DocumentRelation <|-- BipmDocumentRelation
+DocumentRelationType <|-- BipmDocumentRelationType
+DocumentRelation <-- DocumentRelationType
+BipmDocumentRelation <-- BipmDocumentRelationType
+
+@enduml

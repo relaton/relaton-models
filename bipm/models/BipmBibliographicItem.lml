@@ -1,0 +1,12 @@
+class BipmBibliographicItem {
+  +projectGroup: BipmProjectTeam[1..*]
+  +type: BipmDocumentType
+  +title: BipmStructuredTitle
+  +dates: BipmBibliographicDate[0..*]
+  +relation: BipmDocumentRelation[0..*]
+  +documentStatus: BipmDocumentStatus
+  +commentPeriod: BipmCommentPeriod[0..1]
+  +structuredIdentifier: BipmStructuredIdentifier
+  +si-aspect: BipmSIAspect[0..1]
+  +meeting-note: String[0..1]
+}

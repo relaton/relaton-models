@@ -1,0 +1,7 @@
+class CieBibliographicItem {
+  definition {
+    Bibliographic description of a CIE document. The CIE flavour
+    currently adds no attributes beyond the base RelBib BibliographicItem;
+    this class is the flavour entry point.
+  }
+}

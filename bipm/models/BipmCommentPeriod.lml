@@ -1,0 +1,4 @@
+class BipmCommentPeriod {
+  +from: Date
+  +to: Date[0..1]
+}

@@ -1,0 +1,7 @@
+class IanaBibliographicItem {
+  definition {
+    Bibliographic description of a IANA document. The IANA flavour
+    currently adds no attributes beyond the base RelBib BibliographicItem;
+    this class is the flavour entry point.
+  }
+}

@@ -1,0 +1,87 @@
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">A card catalog for ISO 690</p>
+      <h1>The bibliographic reference, <em>modelled.</em></h1>
+      <p class="hero-lead">
+        Relaton gives the ISO 690 guidelines a rigorous information model:
+        citations, bibliographic references, and reference lists as
+        machine-readable data. One shared RelBib base defines the core;
+        twenty-nine standards bodies overlay their own flavour. Every card in
+        this catalog is drawn from the canonical LutaML sources.
+      </p>
+      <p class="hero-isbd" aria-hidden="true">
+        <span class="seg">RelBib base</span><span class="punct">. — </span><span class="seg">29 flavours</span><span class="punct"> : </span><span class="seg">LutaML sources</span><span class="punct"> / </span><span class="seg">RNC companions</span>
+      </p>
+    </div>
+    <aside class="drawer" aria-label="Catalog statistics">
+      <div class="drawer-head">Catalog contents</div>
+      <dl class="drawer-list">
+        <div><dt>Modules</dt><dd><%= mods.size %></dd></div>
+        <div><dt>Cards</dt><dd><%= plates.size %></dd></div>
+        <div><dt>LML model files</dt><dd><%= own_models %></dd></div>
+        <div><dt>RNC overlays</dt><dd><%= overlays %></dd></div>
+      </dl>
+      <div class="drawer-foot">1 base + <%= mods.size - 1 %> flavours</div>
+    </aside>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="reading-rule">
+    <strong>How to read the cards</strong>
+    <p>
+      The diagrams are rendered from the LML definition modules under
+      <code>*/models/**/*.lml</code> — the models <em>are</em> the LML files.
+      The RNC grammars in <code>grammars/</code> are implementation grammars
+      that accompany the LML, never a substitute for it: change the model by
+      editing the LML, never by editing only a grammar.
+    </p>
+  </div>
+</section>
+
+<section class="wrap catalog-section" aria-labelledby="cards-heading">
+  <div class="toolbar">
+    <div class="chip-row" role="group" aria-label="Filter by kind">
+      <button type="button" class="chip" data-kind-filter="all" aria-pressed="true">All cards</button>
+      <button type="button" class="chip" data-kind-filter="base" aria-pressed="false">RelBib base</button>
+      <button type="button" class="chip" data-kind-filter="flavour" aria-pressed="false">Flavours</button>
+    </div>
+    <label class="module-select-label">
+      <span class="visually-hidden">Module</span>
+      <select class="module-select" data-module-filter>
+        <option value="all">All modules</option>
+        <% mods.each do |m| %>
+          <option value="<%= h(m.name) %>"><%= h(m.name) %> (<%= m.plates %>)</option>
+        <% end %>
+      </select>
+    </label>
+    <input class="search" type="search" placeholder="Search cards…" data-card-search aria-label="Search cards">
+  </div>
+
+  <h2 id="cards-heading" class="visually-hidden">Cards</h2>
+  <ul class="card-grid">
+    <% plates.each do |plate| %>
+      <li data-card
+          data-kind="<%= plate.kind %>"
+          data-module="<%= h(plate.module_name) %>"
+          data-search="<%= h([plate.title, plate.module_name, plate.slug, plate.call_no, plate.includes.join(' ')].join(' ')) %>">
+        <a class="card" href="<%= asset_path("plates/#{plate.module_name}/#{plate.slug}.html") %>">
+          <div class="card-rule">
+            <span class="card-stamp"><%= h(plate.module_name.upcase) %></span>
+            <span class="card-kind"><%= plate.kind == 'base' ? 'base' : 'flavour' %></span>
+          </div>
+          <div class="card-frame">
+            <img src="<%= asset_path("images/#{plate.image}") %>" alt="UML diagram for <%= h(plate.title) %>" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title"><%= h(plate.title) %></h3>
+            <p class="card-meta"><%= isbd("#{plate.includes.size} includes", "#{plate.associations} associations") %></p>
+            <p class="card-call"><%= h(plate.call_no) %></p>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="empty-state" data-empty-state>No cards match this filter.</div>
+</section>

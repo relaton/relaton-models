@@ -1,0 +1,6 @@
+class M3aawgBibliographicItem {
+  definition {
+    Bibliographic description of a M3AAWG document.
+  }
+  +type: M3aawgDocumentType
+}

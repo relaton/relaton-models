@@ -1,0 +1,5 @@
+class NistDocumentStatus {
+  +stage: NistDocumentStatusType
+  +iteration: String[0..1]
+  +substage: NistDocumentSubstageType[0..1]
+}

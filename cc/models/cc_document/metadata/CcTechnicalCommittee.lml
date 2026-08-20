@@ -1,0 +1,15 @@
+class CcTechnicalCommittee {
+    definition {
+      CalConnect technical committee.
+    }
+    +type: CcTechnicalCommitteeType {
+      definition {
+        Type of technical committee.
+      }
+    }
+    +name: String {
+      definition {
+        Name of technical committee.
+      }
+    }
+}

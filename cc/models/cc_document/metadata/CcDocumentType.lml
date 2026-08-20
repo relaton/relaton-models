@@ -1,0 +1,46 @@
+enum CcDocumentType {
+  definition {
+    Type of CalConnect document.
+  }
+
+  directive {
+    definition {
+      Directive.
+    }
+  }
+  standard {
+    definition {
+      Standard.
+    }
+  }
+  guide {
+    definition {
+      Guide.
+    }
+  }
+  specification {
+    definition {
+      Specification.
+    }
+  }
+  amendment {
+    definition {
+      Amendment.
+    }
+  }
+  technicalCorrigendum {
+    definition {
+      Technical Corrigendum.
+    }
+  }
+  report {
+    definition {
+      Report.
+    }
+  }
+  administrative {
+    definition {
+      Administrative.
+    }
+  }
+}

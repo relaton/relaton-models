@@ -1,0 +1,270 @@
+@startuml ItuBibliographicItem
+/'
+Diagram:        ItuBibliographicItem
+DateCreate:     19/02/2019
+Description:    Metanorma IsoDoc is a family of document models intended to represent ISO Standards and similarly structured standards,
+                based on the Metanorma StandardDocument ("StanDoc") and BasicDocument ("BasicDoc") models.
+                It is used to abstract the automated generation of standard documents in various formats from well-defined authoring tools;
+                and to validate the structural conformance of authored standards to specifications.
+- 20190311: Moved Keyword from TextElement to ItuBibliographicItem
+- 20190311: Renamed projectGroup as editorialGroup (Relaton terminology)
+- 20190311: Made period/YearEnd optional
+- 20190311: Rename citationUri to uri
+- 20190311: Rename edition to version/revision-date
+- 20190312: Correct interpretation of provisionalName
+- 20191021: Add Resolution doctype
+- 20201007: Add amendment and corrigendum ids
+- 20201107: Technical report attributes
+- 20201111: Service Publication doctype
+'/
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<StandardDocument>>{
+
+}
+
+class ItuBibliographicItem {
+  +type: ItuDocumentType
+  +documentIdentifier: ItuDocumentId[0..1]
+  +provisionalName: DocumentIdentifier[0..1]
+  +title: TypedTitleString
+  ' e.g. https://www.itu.int/ITU-T/workprog/wp_item.aspx?isn=13511
+  +uri: Uri
+  +documentStatus: ItuDocumentStatus[0..1]
+  +version: VersionInfo
+  +projectStatus: ItuRecommendationStatus[0..1]
+  +keyword: FormattedString[0..*]
+  +editorialGroup: ItuProjectGroup[1..*]
+  +series: SeriesType[0..*]
+  +ipnoticereceived: boolean[0..*]
+  +meeting: String[0..1]
+  +meeting-date: BibliographicDate[0..1]
+  +intended-type: ItuIntendedDate[0..1]
+  +source: String[0..1]
+}
+
+class ItuDocumentId {
+  +series: ItuSerie
+  +code: Integer
+  +annex: String[0..1]
+  +amendment: Integer[0..1]
+  +corrigendum: Integer[0..1]
+}
+
+enum ItuIntendedDate <<enumeration>> {
+R
+C
+TD
+}
+
+enum ItuSerie <<enumeration>> {
+  A
+  D
+  E
+  F
+  G
+  H
+  I
+  J
+  K
+  L
+  M
+  N
+  O
+  P
+  Q
+  R
+  S
+  T
+  U
+  V
+  X
+  Y
+  Z
+}
+
+enum ItuBureau <<enumeration>> {
+T
+D
+R
+}
+
+class ItuProjectGroup{
+  +bureau: ItuBureau
+  +group: ItuGroup[0..1]
+  +subgroup: ItuGroup[0..1]
+  +workgroup: ItuGroup[0..1]
+}
+
+/'
+ITU Groups (we're not modelling this)
+https://www.itu.int/en/ITU-T/groups/Pages/default.aspx
+****
+TSAG
+Study Groups
+Review Committee
+Regional Groups (a Regional group is a type of group inside a Study group)
+Focus Groups (a Focus group is just a type of group in a Study group)
+Joint Coordination Activities
+Global Standards Initiatives
+Collaboration on ITS Communication Standards
+Standardization Committee for Vocabulary
+CTO Group
+TSB Director's Ad Hoc IPR Group
+TSB Director’s Ad hoc Group on Education about Standardization
+ITU/WMO/UNESCO IOC Joint Task Force
+****
+
+Under a Study Group, there can be:
+- "Working Parties" (a work group)
+- "Question Parties"
+- "Workgroups"
+
+'/
+
+enum ItuGroupType <<enumeration>> {
+  tsag
+  study-group
+  work-group
+}
+
+class ItuGroup {
+  +name: FormattedString
+  +type: ItuGroupType[0..1]
+  +acronym: String[0..1]
+  +period: ItuStudyPeriod[0..1]
+}
+
+class ItuStudyPeriod {
+  +yearStart: Integer
+  +yearEnd: Integer[0..1]
+}
+
+enum ItuDocumentStatus <<enumeration>> {
+  in-force
+  superseded
+  in-force-prepublished
+  withdrawn
+  draft
+}
+
+'Only applies to Recommendations
+class ItuRecommendationStatus {
+  +from: Date
+  +to: Date
+  +approvalStage: ItuApprovalProcessStage[0..1]
+}
+
+class ItuApprovalProcessStage {
+  +process: ItuApprovalProcess
+  +tapStatusCode: ItuTapStatusCode[0..1]
+  +aapStatusCode: ItuAapStatusCode[0..1]
+}
+
+enum ItuApprovalProcess <<enumeration>>{
+  tap
+  aap
+}
+
+/'
+* A	- Approved
+* LC	- Last Call
+* AC	- Approved with Substantial Changes
+* LJ	- Last Call Judgment (includes Last Call Comment resolution)
+* AJ	- Additional Review Judgment
+* NA	- Not Approved
+* AR	- Additional Review
+* RI	- Re-Initiate Last Call
+* AT	- Approved with Typographical Corrections
+* SG	- Referred to Study Group Approval
+* C	- Consented
+* TAP	- Moved to TAP (ITU-T A.8 / §5.2)
+'/
+enum ItuAapStatusCode <<enumeration>> {
+  a
+  lc
+  ac
+  lj
+  aj
+  na
+  ar
+  ri
+  at
+  sg
+  c
+  tap
+}
+
+enum ItuTapStatusCode <<enumeration>> {
+  determined
+  in-force
+}
+
+/'
+Document types
+
+* ITU-T Recommendation
+* ITU-T Supplement to Recommendation
+* ITU-T Amendment to Recommendation
+* ITU-T Corrigendum to Recommendation
+* ITU-T Errata to Recommendation
+* ITU-T Annex to Recommendation
+* ITU-T Focus Group document
+* ITU-T | ISO/IEC document
+* ITU-T Implementers' Guide
+* ITU-T Technical Paper
+* ITU-T Technical Report
+'/
+
+enum ItuDocumentType <<enumeration>>{
+    recommendation
+    recommendation-supplement
+    recommendation-amendment
+    recommendation-corrigendum
+    recommendation-errata
+    recommendation-annex
+    resolution
+    focus-group
+    implementers-guide
+    technical-paper
+    technical-report
+    joint-itu-iso-iec
+    service-publication
+}
+
+'******* NOTES ********************************************************
+
+'note right of ItuSubGroup: Under Technical Committee:\n\n* OAB\n* OGC-NA\n* Subcommittees\n* Working Groups\n** domain-working-group\n** standards-working-group\n** special-interest-group
+
+'note right of ItuDocumentType: Document types include:\n\n* OGC Policy Document\n* OGC Standard\n* OGC Standard with compliance suite\n* OGC Community Standard\n* Abstract Specification\n* Profile / Application Profile\n* Discussion Papers\n* Public Engineering Reports\n* OGC Reference Model\n* Best Practices Documents\n* User Guide\n* Internal administrative documents\n* 9.12 "Technical Amendment"\n* 9.11 "Corrigendum (errata) Changes to OGC Standards"\n
+
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- ItuBibliographicItem
+
+ItuBibliographicItem <-- ItuDocumentId
+ItuBibliographicItem <-- ItuProjectGroup
+ItuBibliographicItem <-- ItuDocumentType
+ItuBibliographicItem <-- ItuDocumentStatus
+ItuBibliographicItem <-- ItuRecommendationStatus
+ItuBibliographicItem <-- ItuIntendedType
+
+ItuDocumentId <-- ItuSerie
+
+ItuProjectGroup <-- ItuGroup
+ItuProjectGroup <-- ItuBureau
+
+ItuGroup <-- ItuStudyPeriod
+ItuGroup <-- ItuGroupType
+
+ItuRecommendationStatus <-- ItuApprovalProcessStage
+
+ItuApprovalProcessStage <-- ItuAapStatusCode
+ItuApprovalProcessStage <-- ItuTapStatusCode
+ItuApprovalProcessStage <-- ItuApprovalProcess
+
+@enduml
+

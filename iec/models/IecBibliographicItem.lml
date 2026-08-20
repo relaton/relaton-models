@@ -1,0 +1,9 @@
+class IecBibliographicItem {
+  definition {
+    Bibliographic description of an IEC document. Extends the ISO bibliographic
+    item with IEC-specific extensions.
+  }
+  +type: IecDocumentType
+  +subtype: IecDocumentSubtype[0..1]
+  +ext: IecBibDataExtensionType
+}

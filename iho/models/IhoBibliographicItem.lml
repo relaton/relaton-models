@@ -1,0 +1,10 @@
+class IhoBibliographicItem {
+  +projectGroup: IhoProjectTeam[1..*]
+  +type: IhoDocumentType
+  +title: FormattedString
+  +series: IhoPubSeriesType
+  +dates: IhoBibliographicDate[0..*]
+  +relation: IhoDocumentRelation[0..*]
+  +documentStatus: IhoDocumentStatus
+  +commentPeriod: IhoCommentPeriod[0..1]
+}

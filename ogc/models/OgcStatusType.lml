@@ -1,0 +1,11 @@
+enum OgcStatusType {
+  draft
+  work-item-draft
+  swg-draft
+  oab-review
+  public-rfc
+  tc-vote
+  published
+  deprecated
+  retired
+}

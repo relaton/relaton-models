@@ -1,0 +1,19 @@
+diagram RelBib_DataTypes {
+
+  include ../models/Uri.lml
+  include ../models/Iso8601DateTime.lml
+  include ../models/Iso8601Date.lml
+  include ../models/Iso639Code.lml
+  include ../models/Iso15924Code.lml
+  include ../models/Iso4217Code.lml
+  include ../models/Iso3166Code.lml
+  include ../models/DateTime.lml
+  include ../models/TypedUri.lml
+  include ../models/LocalizedString.lml
+
+  association {
+    owner Uri
+    member TypedUri
+    owner_type inheritance
+  }
+}

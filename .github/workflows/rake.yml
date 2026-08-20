@@ -1,0 +1,37 @@
+name: rake
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ v* ]
+  pull_request:
+
+jobs:
+  rake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # graphviz is preinstalled on ubuntu runners; install defensively
+      # only when missing.
+      - run: command -v dot >/dev/null || { sudo apt-get update && sudo apt-get install -y graphviz; }
+
+      # workaround for https://github.com/actions/runner-images/issues/37
+      - run: |
+          sudo apt-get update
+          sudo apt-get install libcurl4-openssl-dev
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+
+      - run: bundle exec rake clean render
+      - run: bundle exec rake verify
+      - run: bundle exec rake parity

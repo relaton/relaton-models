@@ -1,0 +1,46 @@
+class IsoDocumentId {
+    definition {
+      Representation of the identifier for an ISO/IEC document, giving its individual semantic components.
+    }
+    +tcDocumentNumber: Integer[0..*] {
+      definition {
+        N-numbers assigned to the document by technical committees.
+      }
+    }
+    +projectNumber: Integer[0..1] {
+       definition {
+         Numerical component uniquely identifying the document.
+       }
+    }
+    +partNumber: Integer[0..1] {
+       definition {
+         Representation in the identifier of the document part, if this is a document part.
+       }
+    }
+    +subpartNumber: Integer[0..1] {
+       definition {
+         Representation in the identifier of the document subpart, if this is a document subpart.
+         Only applicable to IEC documents.
+       }
+    }
+    +amendmentNumber: Integer[0..1] {
+       definition {
+      Representation in the identifier of the type of document amendment, if this is a document amendment.
+       }
+    }
+    +corrigendumNumber: Integer[0..1] {
+       definition {
+      Representation in the identifier of the type of document technical corrigendum, if this is a document technical corrigendum.
+       }
+    }
+    +addendumNumber: Integer[0..1] {
+       definition {
+      Representation in the identifier of the type of document addendum, if this is a document addendum (legacy type).
+       }
+    }
+    +originalyear: Integer[0..1] {
+       definition {
+         Year of publication of the document in its current version or edition.
+       }
+    }
+}

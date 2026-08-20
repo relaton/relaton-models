@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= h(page_title) %></title>
+  <meta name="description" content="<%= h(page_description) %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,500&family=Public+Sans:wght@400;600;700&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="<%= asset_path('assets/css/site.css') %>">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="<%= asset_path('index.html') %>">
+        <span class="brand-stamp">REL</span>
+        <span class="brand-title">Relaton<span class="brand-sub">Models</span></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="<%= asset_path('index.html') %>"<%= ' aria-current="page"' if index_page %>>Catalog</a>
+        <a href="https://github.com/relaton/relaton-models">Repository</a>
+        <a href="https://github.com/relaton/relaton-models/blob/main/README.adoc">README</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+<%= content %>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>Relaton bibliographic model catalog · generated from <code>*/views/*.lml</code> + <code>*/images/</code></div>
+      <div><a href="https://github.com/relaton/relaton-models">relaton/relaton-models</a></div>
+    </div>
+  </footer>
+  <% if index_page %>
+  <script src="<%= asset_path('assets/js/site.js') %>" defer></script>
+  <% end %>
+</body>
+</html>

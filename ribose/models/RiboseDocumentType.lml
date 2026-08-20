@@ -1,0 +1,13 @@
+enum RiboseDocumentType {
+  definition {
+    Type of Ribose document.
+  }
+  policy-and-procedures
+  best-practices
+  supporting-document
+  report
+  legal
+  directives
+  proposal
+  standard
+}

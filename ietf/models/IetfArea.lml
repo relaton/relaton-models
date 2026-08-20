@@ -1,0 +1,20 @@
+enum IetfArea {
+  definition {
+    IETF area. Value is either the abbreviation or the full name as listed on
+    http://www.ietf.org/iesg/area.html
+  }
+  art
+  gen
+  int
+  ops
+  rtg
+  sec
+  tsv
+  Applications-and-Real-Time
+  General
+  Internet
+  Operations-and-Management
+  Routing
+  Security
+  Transport
+}

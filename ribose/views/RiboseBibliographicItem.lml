@@ -1,0 +1,24 @@
+diagram RiboseBibliographicItem {
+  title 'Ribose Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/RiboseBibliographicItem.lml
+  include ../models/RiboseDocumentType.lml
+  include ../models/RiboseBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member RiboseBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner RiboseBibliographicItem
+    member RiboseDocumentType
+    owner_type direct
+  }
+  association {
+    owner RiboseBibliographicItem
+    member RiboseBibDataExtensionType
+    owner_type direct
+  }
+}

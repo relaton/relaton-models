@@ -1,0 +1,11 @@
+enum IhoDocumentType {
+  definition {
+    standard (framework document, e.g. S-57, S-100), specification
+    (implementation of framework, e.g. S-101, S-111), resolutions (e.g. M-3),
+    regulations (e.g. S-4, M-7).
+  }
+  standard
+  specification
+  resolutions
+  regulations
+}

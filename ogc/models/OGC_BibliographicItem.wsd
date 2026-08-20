@@ -1,0 +1,138 @@
+@startuml OgcBibliographicItem
+/'
+Diagram:        OgcBibliographicItem
+DateCreate:     22/08/2018
+Description:    Metanorma IsoDoc is a family of document models intended to represent ISO Standards and similarly structured standards,
+                based on the Metanorma StandardDocument ("StanDoc") and BasicDocument ("BasicDoc") models.
+                It is used to abstract the automated generation of standard documents in various formats from well-defined authoring tools;
+                and to validate the structural conformance of authored standards to specifications.
+'/
+
+'******* CONFIGURATION ************************************************
+
+
+'******* CLASS DEFINITION *********************************************
+class BibliographicItem <<StandardDocument>>{
+
+}
+
+class OgcBibliographicItem {
+    +projectGroup: OgcProjectGroup[1..*]
+    +type: OgcDocumentType
+    +subtype: OgcDocumentSubType[0..1]
+    +title: FormattedString
+}
+
+class OgcProjectGroup{
+    +committee: OgcCommittee
+    +subcommittee: OgcSubGroup[0..1]
+    +workgroup: OgcSubGroup[0..1]
+}
+
+enum OgcCommittee <<enumeration>>{
+    technical
+    planning
+    strategic-member-advisory
+}
+
+class OgcSubGroup{
+    +type: String[0..1]
+    +number: Integer[0..1]
+    +name: String
+}
+
+class DocumentStatus{
+    +status: OgcStatusType
+}
+
+enum OgcStatusType <<enumeration>>{
+    swg-draft
+    oab-review
+    public-rfc
+    tc-vote
+    published
+    deprecated
+    retired
+}
+
+/'
+Document types detailed in:
+http://docs.opengeospatial.org/pol/05-020r24/05-020r24.html#77
+
+* OGC Policy Document
+* Standards
+* OGC Reference Model
+* Discussion Papers
+* Public Engineering Reports
+* Best Practices Documents
+
+Undocumented:
+
+* User Guide
+
+Types of standards:
+
+* Implementation Standard
+* Abstract Specification
+* Community Standard
+* Profile
+
+
+'/
+
+enum OgcDocumentType <<enumeration>>{
+abstract-specification-topic
+best-practice
+change-request-supporting-document
+community-practice
+community-standard
+discussion-paper
+engineering-report
+other
+policy
+reference-model
+release-notes
+standard
+user-guide
+white-paper
+}
+
+enum OgcDocumentSubType <<enumeration>> {
+conceptual-model
+conceptual-model-and-encoding
+conceptual-model-and-implementation
+encoding
+extension
+implementation
+profile
+profile-with-extension
+general
+encoding
+extension
+profile
+profile-with-extension
+test-suite
+}
+
+'******* NOTES ********************************************************
+
+note right of OgcSubGroup: Under Technical Committee:\n\n* OAB\n* OGC-NA\n* Subcommittees\n* Working Groups\n** domain-working-group\n** standards-working-group\n** special-interest-group
+
+note right of OgcStatusType: * rfc: "OGC RFC", the proposal\n* candidate: "candidate standard"\n
+
+
+
+'******* CLASS RELATIONS **********************************************
+BibliographicItem <|-- OgcBibliographicItem
+
+OgcBibliographicItem <-- OgcProjectGroup
+OgcBibliographicItem <-- OgcDocumentType
+OgcBibliographicItem <-- OgcDocumentSubType
+OgcBibliographicItem <-- DocumentStatus
+
+OgcProjectGroup <-- OgcCommittee
+OgcProjectGroup <-- OgcSubGroup
+
+DocumentStatus <-- OgcStatusType
+
+@enduml

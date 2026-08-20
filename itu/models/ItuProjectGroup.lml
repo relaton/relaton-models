@@ -1,0 +1,6 @@
+class ItuProjectGroup {
+  +bureau: ItuBureau
+  +group: ItuGroup[0..1]
+  +subgroup: ItuGroup[0..1]
+  +workgroup: ItuGroup[0..1]
+}

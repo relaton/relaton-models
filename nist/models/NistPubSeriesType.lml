@@ -1,0 +1,5 @@
+class NistPubSeriesType {
+  +type: String
+  +title: NistPubSeriesEnum
+  +abbreviation: String[0..1]
+}

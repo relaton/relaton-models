@@ -1,0 +1,14 @@
+class GbStandardSocialPrefix {
+  definition {
+    Document identifier prefix for Chinese social standard.
+
+    Format: "T/XXX YYYY-ZZZZ"
+
+    * XXX social-group identifier: 3 characters (e.g. ABC)
+    * YYYY document code: 4 characters
+    * ZZZZ year: 4 characters
+  }
+
+  groupCode: Character[3]
+  prefix: String
+}
