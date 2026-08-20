@@ -6,6 +6,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **The models ARE the LML files.** Every model is defined in LutaML: `models/*.lml` are the definition modules, `views/*.lml` are the diagram views. The RNC files in `grammars/` are implementation grammars that *accompany* the LML models — never a substitute for them. A flavour directory containing only an RNC overlay is incomplete; its model must exist as LML. This is also stated prominently in README.adoc. Enforced by `rake parity`.
 
+
+## Views vs models (hard separation)
+
+| Path | Contains | Must NOT contain |
+|------|----------|------------------|
+| `*/models/**/*.lml` | `class` / `enum` / `data_type` definitions only | `diagram`, `view`, `association`, `title` |
+| `*/views/*.lml` | one `diagram`/`view`, `include`s, `association`s, title/caption | class/enum/data_type bodies |
+
+Rakefile globs **only** `*/views/*.lml` for PNG output. `rake parity` must fail if a `diagram` keyword appears under `models/` or a class body appears under `views/`. Cross-module reuse = relative `include` of the real file — never a stub copy under the consumer's `models/`.
+
 ## Repository layout
 
 One module per directory, uniform internal layout everywhere:

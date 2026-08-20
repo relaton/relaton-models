@@ -66,6 +66,21 @@ task :parity do
     errors << "#{flavour}: has LML models but no grammars/relaton-*.rnc overlay" if rnc.empty?
   end
 
+
+  # Views vs models hard separation.
+  Dir["*/models/**/*.lml", "relaton/models/**/*.lml"].each do |f|
+    if File.read(f) =~ /^\s*(diagram|view)\b/
+      errors << "#{f}: definition module contains diagram/view (belongs in views/)"
+    end
+  end
+  Dir["*/views/*.lml", "relaton/views/*.lml"].each do |f|
+    body = File.read(f)
+    # class/enum/data_type at the start of a line inside a view = leaked definition
+    if body =~ /^\s*(class|enum|data_type)\s+/
+      errors << "#{f}: view contains class/enum/data_type body (extract to models/ and include)"
+    end
+  end
+
   abort "parity: #{errors.size} issue(s):\n  #{errors.join("\n  ")}" unless errors.empty?
   puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{Dir['*/models/**/*.lml'].size} LML model files)"
 end
