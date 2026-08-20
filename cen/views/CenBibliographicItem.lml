@@ -1,7 +1,6 @@
 diagram CenBibliographicItem {
   title 'CEN Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/CenBibliographicItem.lml
 
   association {

@@ -1,7 +1,6 @@
 diagram JisBibliographicItem {
   title 'JIS Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/JisBibliographicItem.lml
   include ../models/JisDocumentType.lml
   include ../models/JisStructuredIdentifier.lml

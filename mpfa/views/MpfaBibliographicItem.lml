@@ -1,7 +1,6 @@
 diagram MpfaBibliographicItem {
   title 'MPFA Offering Document Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/MpfaBibliographicItem.lml
   include ../models/MpfaDocStatus.lml
 

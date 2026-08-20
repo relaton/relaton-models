@@ -1,7 +1,6 @@
 diagram RiboseBibliographicItem {
   title 'Ribose Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/RiboseBibliographicItem.lml
   include ../models/RiboseDocumentType.lml
   include ../models/RiboseBibDataExtensionType.lml

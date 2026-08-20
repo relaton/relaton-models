@@ -1,8 +1,5 @@
 diagram RelBib_BibliographicItem {
 
-  include ../../basicdoc/models/idelements/Image.lml
-  include ../../basicdoc/models/emptyelements/BasicElement.lml
-  include ../../basicdoc/models/blocks/BasicBlock.lml
   include ../models/BibliographicItem.lml
   include ../models/Edition.lml
   include ../models/TypedNote.lml

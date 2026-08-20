@@ -1,5 +1,6 @@
 diagram GbMetadata {
 
+  include ../models/gb_document/metadata/GbBibliographicItem.lml
   include ../models/gb_document/metadata/GbStandardPrefix.lml
   include ../models/gb_document/metadata/GbStandardNationalPrefix.lml
   include ../models/gb_document/metadata/GbSectorCodes.lml
@@ -11,6 +12,16 @@ diagram GbMetadata {
   include ../models/gb_document/metadata/GbStandardEnterprisePrefix.lml
   include ../models/gb_document/metadata/GbStandardSocialPrefix.lml
 
+  association {
+    owner BibliographicItem
+    member GbBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner GbBibliographicItem
+    member GbStandardType
+    owner_type direct
+  }
   association {
     owner GbStandardPrefix
     member GbStandardNationalPrefix

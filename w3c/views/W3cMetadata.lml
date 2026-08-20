@@ -1,6 +1,5 @@
 diagram W3cMetadata {
 
-  include ../../relaton/models/BibliographicItem.lml
 
   include ../models/w3c_metadata/W3cBibliographicItem.lml
   include ../models/w3c_metadata/W3cProjectGroup.lml

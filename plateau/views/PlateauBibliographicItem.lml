@@ -1,7 +1,6 @@
 diagram PlateauBibliographicItem {
   title 'PLATEAU Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/PlateauBibliographicItem.lml
   include ../models/PlateauDocumentType.lml
   include ../models/PlateauBibDataExtensionType.lml

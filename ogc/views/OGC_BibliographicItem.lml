@@ -1,7 +1,6 @@
 diagram OGC_BibliographicItem {
   title 'OGC Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/OgcBibliographicItem.lml
   include ../models/OgcProjectGroup.lml
   include ../models/OgcCommittee.lml

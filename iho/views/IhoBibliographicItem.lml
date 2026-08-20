@@ -1,13 +1,6 @@
 diagram IhoBibliographicItem {
   title 'IHO Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
-  include ../../relaton/models/BibliographicDate.lml
-  include ../../relaton/models/BibliographicDateType.lml
-  include ../../relaton/models/Citation.lml
-  include ../../relaton/models/DocumentRelation.lml
-  include ../../relaton/models/DocumentRelationType.lml
-  include ../../relaton/models/SeriesType.lml
   include ../models/IhoBibliographicItem.lml
   include ../models/IhoProjectTeam.lml
   include ../models/IhoBibliographicDate.lml

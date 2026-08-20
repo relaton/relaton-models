@@ -1,12 +1,6 @@
 diagram BipmBibliographicItem {
   title 'BIPM Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
-  include ../../relaton/models/BibliographicDate.lml
-  include ../../relaton/models/BibliographicDateType.lml
-  include ../../relaton/models/Citation.lml
-  include ../../relaton/models/DocumentRelation.lml
-  include ../../relaton/models/DocumentRelationType.lml
   include ../models/BipmBibliographicItem.lml
   include ../models/BipmSIAspect.lml
   include ../models/BipmStructuredTitle.lml

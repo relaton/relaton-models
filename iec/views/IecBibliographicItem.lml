@@ -1,7 +1,6 @@
 diagram IecBibliographicItem {
   title 'IEC Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/IecBibliographicItem.lml
   include ../models/IecDocumentType.lml
   include ../models/IecDocumentSubtype.lml

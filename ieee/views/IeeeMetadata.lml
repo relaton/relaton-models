@@ -1,6 +1,5 @@
 diagram IeeeMetadata {
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/relaton/IsbnNumber.lml
 
   include ../models/ieee_metadata/IeeeBibliographicDate.lml
