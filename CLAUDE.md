@@ -56,7 +56,7 @@ bundle exec rake check           # render + verify + parity
 bundle exec rake <module>/images/<Name>.png   # render a single diagram
 ```
 
-Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.github/workflows/rake.yml`) runs `rake clean render`, `rake verify`, and `rake parity` on ubuntu/windows/macos with `submodules: recursive`.
+Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.github/workflows/rake.yml`) runs `rake clean render` and `rake parity` on ubuntu/windows/macos with `submodules: recursive`. `rake verify` runs on ubuntu/macos only — Windows Graphviz still writes non-PNG payloads into `.png` paths.
 
 ## Model file conventions
 
