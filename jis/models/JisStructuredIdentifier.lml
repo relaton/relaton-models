@@ -1,0 +1,13 @@
+class JisStructuredIdentifier {
+  definition {
+    Structured identifier of a JIS document.
+  }
+  +type: String[0..1]
+  +projectNumber: String
+  +part: Integer[0..1]
+  +subpart: Integer[0..1]
+  +amendment: Integer[0..1]
+  +corrigendum: Integer[0..1]
+  +origyr: Date[0..1]
+  +tcDocumentNumber: Integer[0..1]
+}

@@ -1,0 +1,56 @@
+class IecBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of IEC documents.
+  }
+  +horizontal: Boolean[0..1] {
+    definition {
+      Whether the document is a horizontal standard.
+    }
+  }
+  +stageName: String[0..1] {
+    definition {
+      Human-readable name of the stage of publication.
+    }
+  }
+  +updatesDocumentType: IecDocumentType[0..1] {
+    definition {
+      Document type of the document being updated when this is an amendment
+      or similar update.
+    }
+  }
+  +fastTrack: Boolean[0..1] {
+    definition {
+      Whether this is a fast-track standard.
+    }
+  }
+  +priceCode: String[0..1] {
+    definition {
+      Price code of the standard.
+    }
+  }
+  +function: IecFunction[0..1] {
+    definition {
+      Function of the document.
+    }
+  }
+  +accessibilityColorInside: Boolean[0..1] {
+    definition {
+      Indication that the document contains colour content.
+    }
+  }
+  +cenProcessing: Boolean[0..1] {
+    definition {
+      CEN processing flag.
+    }
+  }
+  +secretary: String[0..1] {
+    definition {
+      Secretary of the secretariat.
+    }
+  }
+  +interestToCommittees: String[0..1] {
+    definition {
+      Draft is of interest to these committees.
+    }
+  }
+}

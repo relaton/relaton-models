@@ -1,0 +1,20 @@
+enum EtsiDocumentTypeAbbreviation {
+  definition {
+    Abbreviation of the ETSI document type.
+  }
+  EN
+  ES
+  EG
+  TS
+  GS
+  GR
+  TR
+  ETR
+  GTS
+  SR
+  TCRTR
+  TBR
+  ETS
+  I-ETS
+  NET
+}

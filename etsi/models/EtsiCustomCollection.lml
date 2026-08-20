@@ -1,0 +1,9 @@
+enum EtsiCustomCollection {
+  definition {
+    Custom collection classification for ETSI harmonised standards.
+  }
+  HSs-cited-in-OJ
+  HSs-not-yet-cited-in-OJ
+  HSs-RED-cited-in-OJ
+  HSs-EMC-cited-in-OJ
+}

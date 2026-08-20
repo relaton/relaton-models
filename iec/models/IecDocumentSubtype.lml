@@ -1,0 +1,9 @@
+enum IecDocumentSubtype {
+  definition {
+    Subtype of IEC document.
+  }
+  specification
+  method-of-test
+  vocabulary
+  code-of-practice
+}

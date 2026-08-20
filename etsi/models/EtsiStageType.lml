@@ -1,0 +1,11 @@
+enum EtsiStageType {
+  definition {
+    Stage of the ETSI document.
+  }
+  EN-approval
+  SG-approval
+  ES-approval
+  Published
+  Withdrawn
+  Historical
+}

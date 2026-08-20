@@ -1,0 +1,18 @@
+diagram CsaBibliographicItem {
+  title 'CSA Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/CsaBibliographicItem.lml
+  include ../models/CsaDocumentType.lml
+
+  association {
+    owner BibliographicItem
+    member CsaBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner CsaBibliographicItem
+    member CsaDocumentType
+    owner_type direct
+  }
+}

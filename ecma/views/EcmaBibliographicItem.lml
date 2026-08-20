@@ -1,0 +1,12 @@
+diagram EcmaBibliographicItem {
+  title 'ECMA Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/EcmaBibliographicItem.lml
+
+  association {
+    owner BibliographicItem
+    member EcmaBibliographicItem
+    owner_type inheritance
+  }
+}

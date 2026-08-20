@@ -1,0 +1,12 @@
+class JisBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of JIS documents.
+  }
+  +stageName: String[0..1] {
+    definition {
+      Human-readable name of the stage of publication.
+    }
+  }
+  +stageNameAbbreviation: String[0..1]
+  +structuredIdentifier: JisStructuredIdentifier[0..1]
+}

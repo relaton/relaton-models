@@ -1,0 +1,24 @@
+diagram PlateauBibliographicItem {
+  title 'PLATEAU Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/PlateauBibliographicItem.lml
+  include ../models/PlateauDocumentType.lml
+  include ../models/PlateauBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member PlateauBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner PlateauBibliographicItem
+    member PlateauDocumentType
+    owner_type direct
+  }
+  association {
+    owner PlateauBibliographicItem
+    member PlateauBibDataExtensionType
+    owner_type direct
+  }
+}

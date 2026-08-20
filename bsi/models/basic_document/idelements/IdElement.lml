@@ -1,5 +1,0 @@
-class IdElement <<BasicDocument>> {
-  definition {
-    `BasicElement` with an identifier, to be used in crossreferencing by Reference Elements.
-  }
-}

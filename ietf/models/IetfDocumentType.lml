@@ -1,0 +1,7 @@
+enum IetfDocumentType {
+  definition {
+    Type of IETF document.
+  }
+  rfc
+  internet-draft
+}

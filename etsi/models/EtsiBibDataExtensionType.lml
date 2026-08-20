@@ -1,0 +1,14 @@
+class EtsiBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of ETSI documents.
+  }
+  +stage: EtsiStageType[0..1] {
+    definition {
+      Stage of the document being authored.
+    }
+  }
+  +marker: EtsiMarker[0..1]
+  +frequency: String[0..*]
+  +mandate: String[0..*]
+  +customCollection: EtsiCustomCollection[0..1]
+}

@@ -1,0 +1,7 @@
+class JisBibliographicItem {
+  definition {
+    Bibliographic description of a JIS document.
+  }
+  +type: JisDocumentType
+  +ext: JisBibDataExtensionType
+}

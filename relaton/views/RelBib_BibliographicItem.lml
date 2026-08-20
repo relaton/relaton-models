@@ -1,8 +1,8 @@
 diagram RelBib_BibliographicItem {
 
-  include ../models/Basicdoc_Image.lml
-  include ../models/Basicdoc_BasicElement.lml
-  include ../models/Basicdoc_BasicBlock.lml
+  include ../../basicdoc/models/idelements/Image.lutaml
+  include ../../basicdoc/models/emptyelements/BasicElement.lutaml
+  include ../../basicdoc/models/blocks/BasicBlock.lutaml
   include ../models/BibliographicItem.lml
   include ../models/Edition.lml
   include ../models/TypedNote.lml
@@ -34,7 +34,7 @@ diagram RelBib_BibliographicItem {
   }
   association {
     owner Logo
-    member Basicdoc_Image
+    member Image
     member_type direct
   }
   association {
@@ -114,7 +114,7 @@ diagram RelBib_BibliographicItem {
   }
   association {
     owner TypedTitleString
-    member Basicdoc_BasicElement
+    member BasicElement
     owner_type direct
   }
 }

@@ -1,0 +1,16 @@
+class PlateauBibDataExtensionType {
+  definition {
+    Extension point for bibliographical definitions of PLATEAU documents.
+  }
+  +stageName: String[0..1] {
+    definition {
+      Human-readable name of the stage of publication.
+    }
+  }
+  +stageNameAbbreviation: String[0..1]
+  +filesize: Integer[0..1] {
+    definition {
+      Size of output file in bytes.
+    }
+  }
+}

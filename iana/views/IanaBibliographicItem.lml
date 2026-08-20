@@ -1,0 +1,12 @@
+diagram IanaBibliographicItem {
+  title 'IANA Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/IanaBibliographicItem.lml
+
+  association {
+    owner BibliographicItem
+    member IanaBibliographicItem
+    owner_type inheritance
+  }
+}

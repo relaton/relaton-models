@@ -1,0 +1,41 @@
+diagram IecBibliographicItem {
+  title 'IEC Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/IecBibliographicItem.lml
+  include ../models/IecDocumentType.lml
+  include ../models/IecDocumentSubtype.lml
+  include ../models/IecFunction.lml
+  include ../models/IecBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member IecBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner IecBibliographicItem
+    member IecDocumentType
+    owner_type direct
+  }
+  association {
+    owner IecBibliographicItem
+    member IecDocumentSubtype
+    owner_type direct
+  }
+  association {
+    owner IecBibliographicItem
+    member IecBibDataExtensionType
+    owner_type direct
+  }
+  association {
+    owner IecBibDataExtensionType
+    member IecDocumentType
+    owner_type direct
+  }
+  association {
+    owner IecBibDataExtensionType
+    member IecFunction
+    owner_type direct
+  }
+}

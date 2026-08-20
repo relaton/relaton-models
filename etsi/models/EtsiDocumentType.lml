@@ -1,0 +1,20 @@
+enum EtsiDocumentType {
+  definition {
+    Type of ETSI document.
+  }
+  European-Standard
+  ETSI-Standard
+  ETSI-Guide
+  Technical-Specification
+  Group-Specification
+  Group-Report
+  Technical-Report
+  ETSI-Technical-Report
+  GSM-Technical-Specification
+  Special-Report
+  Technical-Committee-Reference-Technical-Report
+  Technical-Basis-for-Regulation
+  European-Telecommunication-Standard
+  Interim-European-Telecommunication-Standard
+  Norme-Europeenne-de-Telecommunication
+}

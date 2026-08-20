@@ -1,0 +1,9 @@
+enum JisDocumentType {
+  definition {
+    Type of JIS document.
+  }
+  japanese-industrial-standard
+  technical-report
+  technical-specification
+  amendment
+}

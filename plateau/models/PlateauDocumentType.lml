@@ -1,0 +1,8 @@
+enum PlateauDocumentType {
+  definition {
+    Type of PLATEAU document.
+  }
+  handbook
+  technical-report
+  annex
+}

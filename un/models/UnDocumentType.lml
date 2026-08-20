@@ -1,0 +1,16 @@
+enum UnDocumentType {
+  definition {
+    Type of UN document.
+  }
+  recommendation
+  plenary
+  addendum
+  communication
+  corrigendum
+  reissue
+  agenda
+  budgetary
+  sec-gen-notes
+  expert-report
+  resolution
+}

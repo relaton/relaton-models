@@ -1,0 +1,36 @@
+diagram IetfBibliographicItem {
+  title 'IETF Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/IetfBibliographicItem.lml
+  include ../models/IetfDocumentType.lml
+  include ../models/IetfArea.lml
+  include ../models/IetfStream.lml
+  include ../models/IetfBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member IetfBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner IetfBibliographicItem
+    member IetfDocumentType
+    owner_type direct
+  }
+  association {
+    owner IetfBibliographicItem
+    member IetfBibDataExtensionType
+    owner_type direct
+  }
+  association {
+    owner IetfBibDataExtensionType
+    member IetfArea
+    owner_type direct
+  }
+  association {
+    owner IetfBibDataExtensionType
+    member IetfStream
+    owner_type direct
+  }
+}

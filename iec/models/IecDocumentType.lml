@@ -1,0 +1,13 @@
+enum IecDocumentType {
+  definition {
+    Type of IEC document.
+  }
+  international-standard
+  technical-specification
+  technical-report
+  publicly-available-specification
+  international-workshop-agreement
+  guide
+  industry-technical-agreement
+  system-reference-deliverable
+}

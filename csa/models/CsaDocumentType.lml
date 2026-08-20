@@ -1,0 +1,14 @@
+enum CsaDocumentType {
+  definition {
+    Type of CSA document.
+  }
+  guidance
+  proposal
+  standard
+  report
+  whitepaper
+  charter
+  policy
+  glossary
+  case-study
+}

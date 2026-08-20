@@ -1,0 +1,11 @@
+enum IetfStream {
+  definition {
+    Document stream as described in RFC 7841.
+  }
+  IAB
+  IETF
+  Independent
+  IRTF
+  Legacy
+  Editorial
+}

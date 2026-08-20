@@ -1,0 +1,12 @@
+diagram CenBibliographicItem {
+  title 'CEN Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/CenBibliographicItem.lml
+
+  association {
+    owner BibliographicItem
+    member CenBibliographicItem
+    owner_type inheritance
+  }
+}

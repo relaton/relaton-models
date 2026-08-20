@@ -1,0 +1,9 @@
+enum IecFunction {
+  definition {
+    Function of the IEC document.
+  }
+  emc
+  safety
+  environment
+  quality-assurance
+}

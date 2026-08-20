@@ -1,0 +1,7 @@
+class PlateauBibliographicItem {
+  definition {
+    Bibliographic description of a PLATEAU document.
+  }
+  +type: PlateauDocumentType
+  +ext: PlateauBibDataExtensionType
+}

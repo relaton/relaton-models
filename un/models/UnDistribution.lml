@@ -1,0 +1,9 @@
+enum UnDistribution {
+  definition {
+    Distribution classification of a UN document.
+  }
+  general
+  limited
+  restricted
+  provisional
+}

@@ -1,0 +1,7 @@
+enum EtsiMarker {
+  definition {
+    Currency marker of the ETSI document.
+  }
+  Current
+  Superseded
+}

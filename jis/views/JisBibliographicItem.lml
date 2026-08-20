@@ -1,0 +1,30 @@
+diagram JisBibliographicItem {
+  title 'JIS Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/JisBibliographicItem.lml
+  include ../models/JisDocumentType.lml
+  include ../models/JisStructuredIdentifier.lml
+  include ../models/JisBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member JisBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner JisBibliographicItem
+    member JisDocumentType
+    owner_type direct
+  }
+  association {
+    owner JisBibliographicItem
+    member JisBibDataExtensionType
+    owner_type direct
+  }
+  association {
+    owner JisBibDataExtensionType
+    member JisStructuredIdentifier
+    owner_type direct
+  }
+}

@@ -1,0 +1,36 @@
+diagram UnBibliographicItem {
+  title 'UN Bibliographic Item'
+
+  include ../../relaton/models/BibliographicItem.lml
+  include ../models/UnBibliographicItem.lml
+  include ../models/UnDocumentType.lml
+  include ../models/UnDistribution.lml
+  include ../models/UnSession.lml
+  include ../models/UnBibDataExtensionType.lml
+
+  association {
+    owner BibliographicItem
+    member UnBibliographicItem
+    owner_type inheritance
+  }
+  association {
+    owner UnBibliographicItem
+    member UnDocumentType
+    owner_type direct
+  }
+  association {
+    owner UnBibliographicItem
+    member UnBibDataExtensionType
+    owner_type direct
+  }
+  association {
+    owner UnBibDataExtensionType
+    member UnDistribution
+    owner_type direct
+  }
+  association {
+    owner UnBibDataExtensionType
+    member UnSession
+    owner_type direct
+  }
+}

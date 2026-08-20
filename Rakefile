@@ -1,5 +1,9 @@
 PNG_MAGIC = "\x89PNG\r\n\x1a\n".b
 
+# Every top-level module directory that carries models (base + flavours).
+MODULES = (Dir["*/models"].map { |d| File.dirname(d) } + Dir["*/views"].map { |d| File.dirname(d) })
+  .uniq.reject { |m| m == "basicdoc" }.sort
+
 VIEWS = Rake::FileList["*/views/*.lml"]
 IMAGES = VIEWS.pathmap("%{views,images}d/%n.png")
 
@@ -9,10 +13,10 @@ task render: IMAGES
 rule(%r{/images/.+\.png$}) do |t|
   source = t.name.sub("/images/", "/views/").sub(/\.png$/, ".lml")
   mkdir_p File.dirname(t.name)
-  sh "lutaml-lml generate #{source} -o #{t.name} -t png"
+  sh "lutaml-lml", "generate", source, "-o", t.name, "-t", "png"
 end
 
-VIEWS.map { |v| v.split("/").first }.uniq.sort.each do |mod|
+MODULES.each do |mod|
   desc "Render #{mod} diagrams"
   task mod => IMAGES.select { |i| i.start_with?("#{mod}/") }
 end
@@ -29,5 +33,44 @@ task :verify do
   abort "verify: #{bad.size} of #{pngs.size} PNG(s) invalid:\n  #{bad.join("\n  ")}" unless bad.empty?
   puts "verify: #{pngs.size} PNG file(s) OK"
 end
+
+desc "Assert LML/RNC parity: every flavour has LML models and an RNC overlay"
+task :parity do
+  errors = []
+
+  # Base module must carry the shared grammars and LML models.
+  %w[relaton/models relaton/views relaton/grammars/biblio.rnc].each do |p|
+    errors << "missing base path: #{p}" unless File.exist?(p)
+  end
+
+  # basicdoc is a submodule providing the Basicdoc types RelBib depends on.
+  errors << "missing basicdoc submodule (run: git submodule update --init)" unless File.directory?("basicdoc/models")
+
+  Dir["*/grammars/relaton-*.rnc"].each do |rnc|
+    flavour = rnc.split("/").first
+    next if flavour == "relaton"
+    models = Dir["#{flavour}/models/**/*.lml"]
+    views  = Dir["#{flavour}/views/*.lml"]
+    if models.empty?
+      errors << "#{flavour}: has RNC overlay but no LML models under #{flavour}/models/"
+    end
+    if views.empty?
+      errors << "#{flavour}: has RNC overlay but no LML views under #{flavour}/views/"
+    end
+  end
+
+  # Every LML-bearing flavour should also have its RNC overlay (or be the base).
+  Dir["*/models"].map { |d| File.dirname(d) }.each do |flavour|
+    next if flavour == "relaton" || flavour == "basicdoc"
+    rnc = Dir["#{flavour}/grammars/relaton-*.rnc"]
+    errors << "#{flavour}: has LML models but no grammars/relaton-*.rnc overlay" if rnc.empty?
+  end
+
+  abort "parity: #{errors.size} issue(s):\n  #{errors.join("\n  ")}" unless errors.empty?
+  puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{Dir['*/models/**/*.lml'].size} LML model files)"
+end
+
+desc "Render, verify PNGs, and check LML/RNC parity"
+task check: %i[render verify parity]
 
 task default: :render

@@ -1,0 +1,6 @@
+class CsaBibliographicItem {
+  definition {
+    Bibliographic description of a CSA document.
+  }
+  +type: CsaDocumentType
+}
