@@ -25,6 +25,8 @@
       <name>CalConnect</name>
     </organization>
   </contributor>
+  <contributor><role type="printer"/><organization><name>CalConnect Print Services</name></organization></contributor>
+  <edition audience="student">1</edition>
   <language>en</language>
   <script>Latn</script>
   <status><stage>draft</stage></status>

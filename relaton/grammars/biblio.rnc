@@ -66,6 +66,8 @@ script = element script { ScriptType }
 
 ## Edition of a bibliographic item
 edition = element edition {
+   ## Audience a differentiated edition is intended for, e.g. large print, student edition
+   attribute audience { text }?,
    ## Number of edition.
    ## NOTE: The number attribute can be used to represent the numeric equivalent of the edition string
    attribute number { text }?,
@@ -128,12 +130,29 @@ LocalizedStringOrXsAny =
 ## Description of a contributor to the production of the bibliographic item
 contributor =
   element contributor {
-    ## A description of the role of the contributor in the production of the bibliographic item
+    ## A description of the role of the contributor in the production of a bibliographic item
     role+,
     ## The contributor involved in the production of the bibliographic item.
     ## May be either a person or an organization
     ContributorInfo
 }
+
+## The broad class of role of a contributor to the production of a bibliographic item
+ContributorRoleType =
+  "author" |
+  "printer" |
+  "sponsor" |
+  "performer" |
+  "publisher" |
+  "editor" |
+  "adapter" |
+  "translator" |
+  "distributor" |
+  "realizer" |
+  "owner" |
+  "authorizer" |
+  "enabler" |
+  "subject"
 
 ## A description of the role of the contributor in the production of a bibliographic item
 role =
@@ -141,18 +160,7 @@ role =
     ## The broad class of role of the contributor. Mandatory in order to enforce orderly management of contributors.
     ## Detailed in https://www.relaton.org/model/creator/
     attribute type {
-      "author" |
-      "performer" |
-      "publisher" |
-      "editor" |
-      "adapter" |
-      "translator" |
-      "distributor" |
-      "realizer" |
-      "owner" |
-      "authorizer" |
-      "enabler" |
-      "subject"
+      ContributorRoleType
     },
     ## A more detailed description of the role of the contributor
     roledescription*
@@ -1092,10 +1100,6 @@ DocRelationType =
 "hasAnnotation" |
 "draftOf" |
 "hasDraft" |
-"predecessorDraftOf" |
-"hasPredecessorDraft" |
-"successorDraftOf" |
-"hasSuccessorDraft" |
 "editionOf" |
 "hasEdition" |
 "updates" |

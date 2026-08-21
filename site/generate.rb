@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "erb"
+require "json"
 require "fileutils"
 require "pathname"
 
@@ -126,6 +127,38 @@ module RelatonSite
     File.write(path, layout_html)
   end
 
+
+  def build_inventory(mods)
+    modules = mods.map do |m|
+      classes = []
+      Dir[ROOT.join("#{m.name}/models/**/*.lml")].sort.each do |f|
+        body = File.read(f)
+        body.scan(/^\s*(class|enum|data_type|primitive)\s+(\w+)(?:\s*<\s*(\w+))?\s*(?:<<[^>]*>>)?\s*\{/).each do |kind, name, parent|
+          attrs = body.scan(/^\s*[+#-]([a-zA-Z][\w-]*)\s*:\s*([^\[{?\n]+)/)
+                      .map { |n, t| { "name" => n, "type" => t.gsub(/<<[^>]*>>/, "").strip } }
+          values = kind == "enum" ? body.scan(/^  ([A-Za-z][\w-]*)[ ]*\{/).flatten - ["definition"] : []
+          entry = { "name" => name, "kind" => kind,
+                    "file" => f.sub(ROOT.to_s + "/", ""), "module" => m.name }
+          entry["parent"] = parent if parent
+          entry["attributes"] = attrs if attrs.any?
+          entry["values"] = values if values.any?
+          classes << entry
+        end
+      end
+      { "module" => m.name, "kind" => m.kind,
+        "modelFiles" => Dir[ROOT.join("#{m.name}/models/**/*.lml")].size,
+        "types" => classes }
+    end
+    relation = Dir[ROOT.join("relaton/models/DocumentRelationType.lml")].first
+    body = File.read(relation) if relation
+    { "generated" => Time.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+      "source" => REPO,
+      "modules" => modules,
+      "vocabularies" => {
+        "relationTypes" => body.to_s.scan(/^  ([A-Za-z][\w-]*)[ ]*\{/).flatten - ["definition"]
+      } }
+  end
+
   def build!
     mods = load_modules
     plates = load_plates(mods)
@@ -172,6 +205,8 @@ module RelatonSite
                  description: "UML card for #{plate.title} (#{plate.module_name}) in the Relaton model catalog.",
                  index_page: false, depth: 2)
     end
+
+    File.write(OUT.join("inventory.json"), JSON.pretty_generate(build_inventory(mods)))
 
     File.write(OUT.join(".nojekyll"), "")
     puts "site: wrote #{plates.size + 1} pages -> #{OUT}"

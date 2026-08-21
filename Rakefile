@@ -91,6 +91,36 @@ task :parity do
     end
   end
 
+  # 02 — Vocabulary parity: every mapped LML enum must equal its RNC vocabulary.
+  # Adding a vocabulary = adding one entry here (OCP).
+  vocab_parity = {
+    # LML enum => [RNC definition name, RNC path]
+    "DocumentRelationType" => ["DocRelationType", "relaton/grammars/biblio.rnc"],
+    "BibItemType" => ["BibItemType", "relaton/grammars/biblio.rnc"],
+    "BibliographicDateType" => ["BibliographicDateType", "relaton/grammars/biblio.rnc"],
+    "ContributorRoleType" => ["ContributorRoleType", "relaton/grammars/biblio.rnc"]
+  }
+  vocab_parity.each do |lml_type, (rnc_name, rnc_path)|
+    lml_file = Dir["*/models/#{lml_type}.lml"].first
+    if lml_file.nil?
+      errors << "vocab parity: no LML enum file for #{lml_type}"
+      next
+    end
+    lml_vals = File.read(lml_file).scan(/^  ([A-Za-z][\w-]*)[ ]*\{/).flatten - ["definition"]
+    rnc = File.read(rnc_path)
+    start_idx = rnc.index(/^#{Regexp.escape(rnc_name)} =/)
+    if start_idx.nil?
+      errors << "vocab parity: #{rnc_path} has no definition #{rnc_name}"
+      next
+    end
+    region = rnc[start_idx..]
+    stop = region.index(/^([A-Za-z-]+ =|^## )/, 1) || region.size
+    rnc_vals = region[0, stop].scan(/"([\w.-]+)"/).flatten
+    if lml_vals.uniq.sort != rnc_vals.uniq.sort
+      errors << "vocab parity #{lml_type}: LML-only=#{(lml_vals - rnc_vals).inspect} RNC-only=#{(rnc_vals - lml_vals).inspect}"
+    end
+  end
+
   abort "parity: #{errors.size} issue(s):\n  #{errors.join("\n  ")}" unless errors.empty?
   own = Dir["*/models/**/*.lml"].reject { |p| p.start_with?("basicdoc/") }
   puts "parity: OK (#{Dir['*/grammars/relaton-*.rnc'].size} flavour overlays, #{own.size} LML model files)"
