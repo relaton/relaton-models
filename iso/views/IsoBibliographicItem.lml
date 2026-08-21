@@ -3,9 +3,6 @@ diagram IsoDoc_IsoBibliographicItem {
   caption 'Bibliographic items of ISO Standard Model'
 
 
-  include ../../relaton/models/BibliographicItem.lml
-  include ../../relaton/models/DocumentStatus.lml
-  include ../../relaton/models/Organization.lml
   include ../models/standard_document/metadata/StandardBibDataExtensionType.lml
   include ../models/iso_document/metadata/IsoBibliographicItem.lml
   include ../models/iso_document/metadata/IsoDocumentId.lml

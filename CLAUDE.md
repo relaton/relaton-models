@@ -61,7 +61,8 @@ Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.gith
 
 ## Model file conventions
 
-- **Never duplicate a base model in a flavour.** If a flavour view needs a base type, include it by relative path across modules: `include ../../relaton/models/BibliographicItem.lml`. Same for Basicdoc: `include ../../basicdoc/models/idelements/Image.lml` (the submodule is modernized to `.lml`).
+- **Never duplicate a base model in a flavour.** Cross-module reuse is by reference, never by copy.
+- **Views are fully encapsulated.** A view includes only its own module's models; classes from other modules referenced in associations render as collapsed, name-only boxes. Including a cross-module model (`include ../../relaton/models/X.lml`) explodes its internals into the diagram — do that only when the internals are the subject of the card (the base RelBib views are the exploded reference).
 - gb's models live under `gb/models/gb_document/metadata/`; iso's bib models under `iso/models/iso_document/metadata/`.
 - LML parser notes (lutaml-lml >= 0.1.3): quoted titles accept any character (parentheses, Unicode); definition bodies track brace depth so `ZB{code}` is fine. A space is still conventional before `{` after class names.
 - `rake render` failure usually means an included path is broken — check that every `include` resolves relative to the including file.

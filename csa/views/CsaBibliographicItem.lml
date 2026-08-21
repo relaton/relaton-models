@@ -1,7 +1,6 @@
 diagram CsaBibliographicItem {
   title 'CSA Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/CsaBibliographicItem.lml
   include ../models/CsaDocumentType.lml
 

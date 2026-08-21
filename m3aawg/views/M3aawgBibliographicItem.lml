@@ -1,7 +1,6 @@
 diagram M3aawgBibliographicItem {
   title 'M3AAWG Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/M3aawgBibliographicItem.lml
   include ../models/M3aawgDocumentType.lml
 

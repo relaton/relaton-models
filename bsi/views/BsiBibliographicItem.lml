@@ -5,7 +5,6 @@ diagram IsoDoc_IsoBibliographicItem {
   include ../models/bsi_document/metadata/BsiBibDataExtensionType.lml
   include ../models/standard_document/metadata/IcsType.lml
   include ../models/standard_document/metadata/StructuredIdentifierType.lml
-  include ../../basicdoc/models/inline/id/Image.lml
 
   association {
     owner BsiBibliographicItem

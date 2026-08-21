@@ -1,12 +1,6 @@
 diagram NistBibliographicItem {
   title 'NIST Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
-  include ../../relaton/models/BibliographicDate.lml
-  include ../../relaton/models/BibliographicDateType.lml
-  include ../../relaton/models/DocumentRelation.lml
-  include ../../relaton/models/DocumentRelationType.lml
-  include ../../relaton/models/SeriesType.lml
   include ../models/NistBibliographicItem.lml
   include ../models/NistBibliographicDate.lml
   include ../models/NistBibliographicDateType.lml

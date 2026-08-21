@@ -1,7 +1,6 @@
 diagram EtsiBibliographicItem {
   title 'ETSI Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/EtsiBibliographicItem.lml
   include ../models/EtsiDocumentType.lml
   include ../models/EtsiDocumentTypeAbbreviation.lml

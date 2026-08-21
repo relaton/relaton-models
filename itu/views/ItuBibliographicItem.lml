@@ -1,7 +1,6 @@
 diagram ItuBibliographicItem {
   title 'ITU Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/ItuBibliographicItem.lml
   include ../models/ItuDocumentId.lml
   include ../models/ItuSerie.lml

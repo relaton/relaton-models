@@ -2,7 +2,6 @@ diagram CcMetadata {
   title 'CalConnect Bibliographic Items'
   caption 'Bibliographic items of CalConnect Standard Model'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/cc_document/metadata/CcBibliographicItem.lml
   include ../models/cc_document/metadata/CcTechnicalCommittee.lml
   include ../models/cc_document/metadata/CcDocumentStatus.lml

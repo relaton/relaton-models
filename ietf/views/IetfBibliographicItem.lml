@@ -1,7 +1,6 @@
 diagram IetfBibliographicItem {
   title 'IETF Bibliographic Item'
 
-  include ../../relaton/models/BibliographicItem.lml
   include ../models/IetfBibliographicItem.lml
   include ../models/IetfDocumentType.lml
   include ../models/IetfArea.lml
