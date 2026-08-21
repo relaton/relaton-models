@@ -12,7 +12,7 @@ class BsiBibDataExtensionType {
          Name of the publication stage of the document.
        }
     }
-    +subtype: BSIDocumentSubtype[0..1] {
+    +subtype: BsiDocumentSubtype[0..1] {
        definition {
          Category of BSI document applicable.
        }

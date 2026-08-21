@@ -52,12 +52,18 @@ bundle exec rake <module>        # render one module (e.g. rake iso, rake relato
 bundle exec rake clean           # remove regenerable PNGs only
 bundle exec rake verify          # assert PNG magic bytes on every committed diagram
 bundle exec rake parity          # assert every flavour has LML models + RNC overlay; basicdoc submodule present
-bundle exec rake check           # render + verify + parity
+bundle exec rake check           # render + verify + lint + parity
+bundle exec rake lint            # semantic LML lint: file/type match, in-module duplicates, attribute type resolution, view endpoints
+bundle exec rake fixtures        # validate examples/ fixtures (XML vs RNC via tools/validate_xml.py, YAML vs LML via tools/validate_yaml.rb)
 bundle exec rake site            # build the model catalog site into _site/ (deployed by .github/workflows/pages.yml)
 bundle exec rake <module>/images/<Name>.png   # render a single diagram
 ```
 
 Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.github/workflows/rake.yml`) runs `rake clean render`, `rake verify`, and `rake parity` on ubuntu-latest with `submodules: recursive`.
+
+## Instance fixtures
+
+`examples/` carries twin fixtures (`bibitem.xml` + `bibitem.yaml`) of the same BibliographicItem. The XML is validated against `relaton/grammars/biblio-standoc.rnc` (composed the way consuming document grammars compose it — see `tools/validate_xml.py`); the YAML is walked against the LML model (`tools/validate_yaml.rb`). Keep the README example and `examples/bibitem.xml` in sync: the README embeds the validated fixture.
 
 ## Model file conventions
 

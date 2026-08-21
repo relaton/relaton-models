@@ -1,0 +1,48 @@
+<!--
+  Reference instance of the RelBib BibliographicItem model (standoc
+  bibdata serialization), in the grammar's canonical child order:
+  typed titles, typed URIs, docidentifiers, dates, contributors with
+  roles, languages/scripts, status with stage, copyright with owner,
+  and a typed relation embedding a reduced bibliographic item.
+  Validated against relaton/grammars/biblio-standoc.rnc by `rake fixtures:xml`.
+-->
+<bibdata type="standard">
+  <title language="en" format="plain">Collaboration Agreement between CalConnect and ISO/TC 211</title>
+  <uri type="xml">standards/csd-datetime-explicit/csd-datetime-explicit.xml</uri>
+  <uri type="html">standards/csd-datetime-explicit/csd-datetime-explicit.html</uri>
+  <uri type="relaton">standards/csd-datetime-explicit/cc-18001.xml</uri>
+  <docidentifier>CD 18XX</docidentifier>
+  <date type="published"><on>2018-10-17</on></date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>CalConnect</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>CalConnect</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <script>Latn</script>
+  <status><stage>draft</stage></status>
+  <copyright>
+    <from>2018</from>
+    <owner>
+      <organization>
+        <name>CalConnect</name>
+      </organization>
+    </owner>
+  </copyright>
+  <relation type="partOf">
+    <bibitem type="standard">
+      <title>Standard document requirements</title>
+      <uri type="xml">standards/csd-document-requirements/csd-document-requirements.xml</uri>
+      <docidentifier>CC/DIR 10002</docidentifier>
+      <date type="updated"><on>2018-10-17</on></date>
+      <status><stage>proposal</stage></status>
+    </bibitem>
+  </relation>
+</bibdata>

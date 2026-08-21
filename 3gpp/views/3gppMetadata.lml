@@ -7,19 +7,19 @@ diagram IeeeMetadata {
 
   association {
     owner BibliographicItem
-    member TgppBibliographicItem
+    member 3gppBibliographicItem
     owner_type inheritance
   }
 
   association {
     owner RadioTechnologyType
-    member TgppBibliographicItem
+    member 3gppBibliographicItem
     member_type direct
   }
 
   association {
     owner Release
-    member TgppBibliographicItem
+    member 3gppBibliographicItem
     member_type direct
   }
 }

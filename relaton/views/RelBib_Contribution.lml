@@ -2,7 +2,7 @@ diagram RelBib_Contribution {
 
   include ../models/ContributionInfo.lml
   include ../models/ContributorRole.lml
-  include ../models/ContributorRoleTypes.lml
+  include ../models/ContributorRoleType.lml
 
   association {
     owner ContributionInfo
@@ -11,7 +11,7 @@ diagram RelBib_Contribution {
   }
   association {
     owner ContributorRole
-    member ContributorRoleTypes
+    member ContributorRoleType
     owner_type direct
   }
 }

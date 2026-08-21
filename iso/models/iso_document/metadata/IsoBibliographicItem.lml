@@ -22,7 +22,7 @@ class IsoBibliographicItem {
       Publication status of the document.
     }
   }
-  +source: TypeUri[0..*] {
+  +source: TypedUri[0..*] {
     definition {
       URIs associated with the document.
     }

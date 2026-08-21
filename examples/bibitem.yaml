@@ -1,0 +1,94 @@
+# YAML representation of the RelBib BibliographicItem model (same content as
+# bibitem.xml). Convention: every typed node carries `class` (the LML class
+# name); keys are LML attribute names (inherited attributes count); plain
+# scalars are date/URI/code values; `{text: ...}` maps are leaves of
+# BasicElement content sequences.
+# Validated against the LML model by `rake fixtures:yaml`.
+bibdata:
+  class: BibliographicItem
+  type: standard
+  title:
+    - class: TypedTitleString
+      content:
+        - text: "Collaboration Agreement between CalConnect and ISO/TC 211"
+  link:
+    - class: TypedUri
+      type: xml
+      content: "standards/csd-datetime-explicit/csd-datetime-explicit.xml"
+    - class: TypedUri
+      type: html
+      content: "standards/csd-datetime-explicit/csd-datetime-explicit.html"
+    - class: TypedUri
+      type: relaton
+      content: "standards/csd-datetime-explicit/cc-18001.xml"
+  docidentifier:
+    - class: DocumentIdentifier
+      id:
+        - text: "CD 18XX"
+  date:
+    - class: BibliographicDate
+      type: published
+      "on": "2018-10-17"
+  contributor:
+    - class: ContributionInfo
+      role:
+        - class: ContributorRole
+          type: author
+      entity:
+        class: Organization
+        name:
+          - class: LocalizedString
+            content: CalConnect
+    - class: ContributionInfo
+      role:
+        - class: ContributorRole
+          type: publisher
+      entity:
+        class: Organization
+        name:
+          - class: LocalizedString
+            content: CalConnect
+  language:
+    - en
+  script:
+    - Latn
+  status:
+    class: DocumentStatus
+    stage:
+      class: LocalizedString
+      content: draft
+  copyright:
+    - class: CopyrightAssociation
+      from: "2018"
+      owner:
+        - class: Organization
+          name:
+            - class: LocalizedString
+              content: CalConnect
+  relation:
+    - class: DocumentRelation
+      type: partOf
+      bibitem:
+        class: ReducedBibliographicItem
+        type: standard
+        title:
+          - class: TypedTitleString
+            content:
+              - text: "Standard document requirements"
+        link:
+          - class: TypedUri
+            type: xml
+            content: "standards/csd-document-requirements/csd-document-requirements.xml"
+        docidentifier:
+          - class: DocumentIdentifier
+            id:
+              - text: "CC/DIR 10002"
+        date:
+          - class: BibliographicDate
+            type: updated
+            "on": "2018-10-17"
+        status:
+          class: DocumentStatus
+          stage:
+            class: LocalizedString
+            content: proposal

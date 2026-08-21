@@ -1,6 +1,6 @@
 class IeeeDocumentPageNum {
-  +firstPage: number
-  +lastPage: number
+  +firstPage: Integer
+  +lastPage: Integer
   +range: String
 
   definition {
