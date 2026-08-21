@@ -200,4 +200,24 @@ enum BibItemType {
       Two or more bibliographic items grouped together and cited as a set.
     }
   }
+  electronic-resource {
+    definition {
+      An electronic resource, offline or online; the distinction is made through medium.
+    }
+  }
+  notated-music {
+    definition {
+      Notated music (a musical score or notation), per ISO 690 clause 8.
+    }
+  }
+  performed-music {
+    definition {
+      Recorded or performed music, per ISO 690 clause 8.
+    }
+  }
+  personal-communication {
+    definition {
+      A communication between individuals: letter, email, conversation, or interview.
+    }
+  }
 }

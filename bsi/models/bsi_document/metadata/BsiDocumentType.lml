@@ -1,66 +1,32 @@
 enum BsiDocumentType {
-  definition {
-    Type of BSI document.
-  }
-
-  internationalStandard {
-    definition {
-      International Standard (adopted from ISO, IEC).
-    }
-  }
-  standard {
-    definition {
-      Standard (adopted from CEN, CENELEC).
-    }
-  }
-  britishStandard {
+  british-standard {
     definition {
       British Standard.
     }
   }
-  draftForDevelopment {
+  draft-for-development {
     definition {
       Draft for Development.
     }
   }
-  publishedDocument {
-    definition {
-      Published Document.
-    }
-  }
-  privatelySubscribedStandard {
-    definition {
-      Privately Subscribed Standard.
-    }
-  }
-  flexStandard {
-    definition {
-      Flex Standard.
-    }
-  }
-  technicalSpecification {
-    definition {
-      Technical Specification.
-    }
-  }
-  technicalReport {
-    definition {
-      Technical Report.
-    }
-  }
-  publiclyAvailableSpecification {
-    definition {
-      Publicly Available Specification.
-    }
-  }
-  internationalWorkshopAgreement {
-    definition {
-      International Workshop Agreement (adopted from ISO, IEC).
-    }
-  }
-  europeanWorkshopAgreement {
+  european-workshop-agreement {
     definition {
       European Workshop Agreement (adopted from CEN, CENELEC).
+    }
+  }
+  expert-commentary {
+    definition {
+      Expert Commentary (on another document).
+    }
+  }
+  fast-track-standard {
+    definition {
+      Fast track standard document type.
+    }
+  }
+  flex-standard {
+    definition {
+      Flex Standard.
     }
   }
   guide {
@@ -68,26 +34,49 @@ enum BsiDocumentType {
       Guide.
     }
   }
-  expertCommentary {
-    definition {
-      Expert commentary. e.g. BS EN ISO 13485:2016 Expert commentary.
-    }
-  }
-  vocabulary {
-    definition {
-      Compendium of terms and definitions, which helps harmonize the use of
-      language within a given sector, field or discipline.
-      e.g. BS 8887:2009
-    }
-  }
-  industryTechnicalAgreement {
+  industry-technical-agreement {
     definition {
       Industry Technical Agreement (adopted from IEC).
     }
   }
-  expertCommentary {
+  international-standard {
     definition {
-      Expert Commentary (on another document).
+      International Standard (adopted from ISO, IEC).
+    }
+  }
+  international-workshop-agreement {
+    definition {
+      International Workshop Agreement (adopted from ISO, IEC).
+    }
+  }
+  privately-subscribed-standard {
+    definition {
+      Privately Subscribed Standard.
+    }
+  }
+  publicly-available-specification {
+    definition {
+      Publicly Available Specification.
+    }
+  }
+  published-document {
+    definition {
+      Published Document.
+    }
+  }
+  standard {
+    definition {
+      Standard (adopted from CEN, CENELEC).
+    }
+  }
+  technical-report {
+    definition {
+      Technical Report.
+    }
+  }
+  technical-specification {
+    definition {
+      Technical Specification.
     }
   }
 }

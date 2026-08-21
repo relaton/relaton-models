@@ -1,13 +1,14 @@
 # 09 — Generate the RNC from the LML (issue #35)
 
-**Status: open** · Repo: relaton-models + lutaml
+**Status: stage A partially realized** · Repo: relaton-models + lutaml
 
 ## Why
 The original sin: two hand-maintained artifacts. 02 freezes the drift; 09
 ends it — RNC becomes a derived artifact.
 
 ## Stages
-- **A — vocabularies**: emit RNC enumerated lists from LML enums
+- **A — vocabularies**: parity gate shipped (see 02; 19 vocabularies).
+  Emitting/rewriting the RNC lists from LML is the remaining step.
   (`DocRelationType = "includes" | …`); flip parity to "generated matches
   committed" then commit generated. Flavour `DocumentType` overlays included
   via the 02 map.
