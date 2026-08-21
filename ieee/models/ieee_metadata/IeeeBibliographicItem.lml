@@ -1,6 +1,6 @@
 class IeeeBibliographicItem {
   +type: IeeeDocumentType
-  +subtype: IeeeDocumentSubtype
+  +subtype: IeeeDocumentSubType
 
   +docidentifier: IeeeDocumentIdentifier[0..*] {
     definition {
@@ -10,7 +10,7 @@ class IeeeBibliographicItem {
   +standardNumber: String
   +standardFamily: IeeeStandardFamily[0..*]
 
-  +idDoi: DoiLink[0..1]
+  +idDoi: String[0..1]
   +idIsbn: IsbnNumber[0..1]
   +idAms: String[0..1]
   +idIdams: String[0..1]
@@ -23,7 +23,7 @@ class IeeeBibliographicItem {
   +relations: IeeeDocumentRelation[0..*]
 
   +standardPackage: IeeeStandardPackage[0..*]
-  +icsCode: IcsCode[0..*]
+  +icsCode: String[0..*]
   +keywords: IeeeKeyword[0..*]
   +topics: IeeeTopic[0..*]
 

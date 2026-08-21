@@ -92,7 +92,7 @@ diagram RelBib_Contributor {
   }
   association {
     owner OrgIdentifier
-    member OrgIdentifierType
+    member OrgIdentifier
     owner_type direct
   }
   association {

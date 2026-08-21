@@ -10,7 +10,17 @@ IMAGES = VIEWS.pathmap("%{views,images}d/%n.png")
 desc "Render diagrams from views (default)"
 task render: IMAGES
 
-rule(%r{/images/.+\.png$}) do |t|
+rule(
+  %r{/images/.+\.png$} => [
+    proc do |tn|
+      view = tn.sub("/images/", "/views/").sub(/\.png$/, ".lml")
+      includes = File.read(view).scan(/^\s*include\s+(\S+)/).flatten
+        .map { |inc| File.expand_path(inc, File.dirname(view)) }
+        .select { |path| File.exist?(path) }
+      [view] + includes
+    end
+  ]
+) do |t|
   source = t.name.sub("/images/", "/views/").sub(/\.png$/, ".lml")
   mkdir_p File.dirname(t.name)
   sh "lutaml-lml", "generate", source, "-o", t.name, "-t", "png"
@@ -92,7 +102,79 @@ task :site do
   RelatonSite.build!
 end
 
-desc "Render, verify PNGs, and check LML/RNC parity"
-task check: %i[render verify parity]
+BUILTIN_TYPES = %w[Integer Boolean Float Text String Date DateTime].freeze
+
+def lml_modules
+  Dir["*/models"].map { |d| File.dirname(d) }.reject { |m| m == "basicdoc" }.sort + ["basicdoc"]
+end
+
+def lml_defined_types(path)
+  File.read(path).scan(/^\s*(?:class|enum|data_type|primitive)\s+(\w+)/).flatten
+end
+
+desc "Lint LML semantics: names, duplicate types, type resolution, view references"
+task :lint do
+  errors = []
+
+  all_types = {}
+  lml_modules.each do |mod|
+    files = Dir["#{mod}/models/**/*.lml"]
+    defined = {}
+    files.each do |f|
+      types = lml_defined_types(f)
+      stem = File.basename(f, ".lml")
+      errors << "#{f}: file name is not a type defined in this file (defines: #{types.join(', ')})" unless types.include?(stem)
+      types.each { |t| (defined[t] ||= []) << f }
+    end
+    defined.each do |t, files2|
+      errors << "#{mod}: duplicate type #{t}: #{files2.join(', ')}" if files2.size > 1
+      all_types[t] = true
+    end
+  end
+
+  # attribute types must resolve somewhere in the repo or be builtins
+  Dir["*/models/**/*.lml"].each do |f|
+    File.foreach(f).with_index do |line, i|
+      m = line.match(/^\s*[+#-]([a-zA-Z][\w-]*)\s*:\s*(.+)$/)
+      next unless m
+
+      raw = m[2].split("[")[0].split("{")[0].gsub(/<<[^>]*>>/, "").strip
+      next if raw.empty? || raw.start_with?('"') || BUILTIN_TYPES.include?(raw)
+      next if all_types.key?(raw)
+
+      errors << "#{f}:#{i + 1}: attribute '#{m[1]}' references undefined type '#{raw}'"
+    end
+  end
+
+  # view association endpoints must resolve to a known type (own include
+  # closure or a cross-module reference rendered as a collapsed box)
+  Dir["*/views/*.lml"].each do |v|
+    File.foreach(v).with_index do |line, i|
+      m = line.match(/^\s*(owner|member)\s+(\w+)/)
+      next unless m
+
+      errors << "#{v}:#{i + 1}: association #{m[1]} '#{m[2]}' is not a known type" unless all_types.key?(m[2])
+    end
+  end
+
+  abort "lint: #{errors.size} issue(s):\n  #{errors.join("\n  ")}" unless errors.empty?
+  puts "lint: OK (#{all_types.size} types across #{lml_modules.size} modules)"
+end
+
+desc "Validate examples/*.xml against relaton/grammars/biblio-standoc.rnc (needs python3 + rnc2rng + lxml)"
+task :"fixtures:xml" do
+  sh "python3", "tools/validate_xml.py"
+end
+
+desc "Validate examples/*.yaml against the LML model"
+task :"fixtures:yaml" do
+  sh "ruby", "tools/validate_yaml.rb"
+end
+
+desc "Validate XML and YAML instance fixtures"
+task fixtures: [:"fixtures:xml", :"fixtures:yaml"]
+
+desc "Render, verify PNGs, lint, and check LML/RNC parity"
+task check: %i[render verify lint parity]
 
 task default: :render

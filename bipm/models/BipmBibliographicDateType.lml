@@ -1,0 +1,7 @@
+enum BipmBibliographicDateType {
+  definition {
+    Type of a significant date in the lifecycle of a BIPM document.
+  }
+  effective
+  superseded
+}

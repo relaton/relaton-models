@@ -1,8 +1,8 @@
 class IeeeDocumentRelation {
   +productNumber: String
   +relationshipDate: Iso8601DateTime
-  +type: IeeeDocumentRelationshipType
-  +url: Url
+  +type: IeeeDocumentRelationType
+  +url: Uri
 
   definition {
     Relationship between this document and another document.

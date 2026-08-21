@@ -17,7 +17,7 @@ class Person {
       The affiliation of the person within an organization.
     }
   }
-  +identifier: PersonalIdentifier[0..*] {
+  +identifier: PersonIdentifier[0..*] {
     definition {
       An identifier of the person according to an international identifier scheme.
     }
