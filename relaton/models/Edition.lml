@@ -2,6 +2,11 @@ class Edition {
   definition {
     Edition of a bibliographic item.
   }
+  +audience: String[0..1] {
+    definition {
+      Audience a differentiated edition is intended for, e.g. large print, student edition.
+    }
+  }
 
   +number: String[0..1] {
     definition {

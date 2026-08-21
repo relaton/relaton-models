@@ -88,13 +88,18 @@ enum BibliographicDateType {
        in content (includes translation).
     }
   }
-  voteStarted {
+  viewed {
+    definition {
+      Date a document was last viewed by the compiler of the bibliographic record.
+    }
+  }
+  vote-started {
     definition {
        The date on which a formal process for approval of a document was initiated.
        Typically applies to standards documents in draft.
     }
   }
-  voteEnded {
+  vote-ended {
     definition {
        The date on which a formal process for approval of a document was closed.
        Typically applies to standards documents in draft.
@@ -107,7 +112,7 @@ enum BibliographicDateType {
        published or not.
     }
   }
-  stableUntil {
+  stable-until {
     definition {
        The document is guaranteed not to be changed or updated until this date.
     }

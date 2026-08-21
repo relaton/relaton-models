@@ -49,7 +49,7 @@ enum BibItemType {
       A dissertation given in an academic institution, as a summation of research.
     }
   }
-  techReport {
+  techreport {
     definition {
       A technical report.
     }
@@ -72,16 +72,6 @@ enum BibItemType {
       A map or other cartographic resource.
     }
   }
-  electronicResource {
-    definition {
-      A resource avaiulable in digital form.
-
-      NOTE: The overloaded type `electronicResource` should be avoided where possible, particularly if the
-      resource corresponds closely to a paper bibliographic type, such as `book` or `article`.
-      Specialisations of `electronicResource` include `dataset`, `webResource`, `website`,
-      `socialMedia`, and `software`.
-    }
-  }
   audiovisual {
     definition {
       An audiovisual resource. Is a superclass of other types such as `video` and `music`.
@@ -102,7 +92,7 @@ enum BibItemType {
       A broadcast made through mass media, including radio and television.
     }
   }
-  graphicWork {
+  graphic_work {
     definition {
       A graphic work, a work with two-dimensional or three-dimensional content.
     }
@@ -119,17 +109,17 @@ enum BibItemType {
       A patent.
     }
   }
-  inBook {
+  inbook {
     definition {
       A (typically untitled) part of a book. May be a chapter (or section, etc.) and/or a range of pages.
     }
   }
-  inCollection {
+  incollection {
     definition {
       A part of a book having its own title, and typically having distinct authorship.
     }
   }
-  inProceedings {
+  inproceedings {
     definition {
       An article in a conference proceedings.
     }
@@ -139,7 +129,7 @@ enum BibItemType {
       A journal or periodical publication.
     }
   }
-  webResource {
+  webresource {
     definition {
       A human-readable or consumable web resource,
       a single item accessible online via a web browser,
@@ -174,7 +164,7 @@ enum BibItemType {
       Computer executable code, not itself human-readable text (though it may generate such text).
     }
   }
-  socialMedia {
+  social_media {
     definition {
       One or more resources within a collection that is typically collectively authored by member users.
       Includes blog posts, forum posts, social media posts, tweets. Is usually a `webResource`,
@@ -203,6 +193,11 @@ enum BibItemType {
   misc {
     definition {
       Bibliographic type not adequately described in the foregoing.
+    }
+  }
+  collection {
+    definition {
+      Two or more bibliographic items grouped together and cited as a set.
     }
   }
 }

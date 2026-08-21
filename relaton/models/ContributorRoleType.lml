@@ -159,4 +159,15 @@ enum ContributorRoleType {
       Includes: addressee, cited, dedicatee, depicted, honoree, subject.
     }
   }
+  printer {
+    definition {
+      Responsible for the printing or manufacture of the document (ISO 690 clause 7.8).
+    }
+  }
+  sponsor {
+    definition {
+      Body sponsoring or commissioning the document (ISO 690 clause 7.8).
+    }
+  }
+
 }
