@@ -40,14 +40,14 @@ L4  IMPLEMENTATIONS   relaton-bib gems · relaton-render (engine only) ·
 | # | Item | Status |
 |---|------|--------|
 | 01 | Relation vocabulary retirement (#67) | done |
-| 02 | Vocabulary parity gate (LML ↔ RNC) | done |
+| 02 | Vocabulary parity gate (LML ↔ RNC) | done (base + 14 flavours) |
 | 03 | ISO 690 coverage gaps in the models | partial (audience, printer, sponsor done; provenance designed) |
 | 04 | citation-doc chapter parity (L1 → L2) | open |
 | 05 | Element parity gate (L2 → L3) | open |
 | 06 | Full model + relationship inventory | done (inventory.json); atlas page open |
 | 07 | Citation scheme/style/index/style models | open — flagship |
 | 08 | CSL subset mapping and importer | open |
-| 09 | LML → RNC generation (#35) | open |
-| 10 | LML → JSON Schema (#9) | open |
+| 09 | LML → RNC generation (#35) | stage A partially realized |
+| 10 | LML → JSON Schema (#9) | core done |
 | 11 | MODS gap analysis (#18) | open |
 | 12 | relaton.org legacy site retirement (#59) | open |

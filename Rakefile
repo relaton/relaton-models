@@ -98,26 +98,46 @@ task :parity do
     "DocumentRelationType" => ["DocRelationType", "relaton/grammars/biblio.rnc"],
     "BibItemType" => ["BibItemType", "relaton/grammars/biblio.rnc"],
     "BibliographicDateType" => ["BibliographicDateType", "relaton/grammars/biblio.rnc"],
-    "ContributorRoleType" => ["ContributorRoleType", "relaton/grammars/biblio.rnc"]
+    "ContributorRoleType" => ["ContributorRoleType", "relaton/grammars/biblio.rnc"],
+    "BsiDocumentType" => ["DocumentType", "bsi/grammars/relaton-bsi.rnc"],
+    "GbDocumentType" => ["DocumentType", "gb/grammars/relaton-gb.rnc"],
+    "IeeeDocumentType" => ["DocumentType", "ieee/grammars/relaton-ieee.rnc"],
+    "IsoDocumentType" => ["DocumentType", "iso/grammars/relaton-iso.rnc"],
+    "EtsiDocumentType" => ["DocumentType", "etsi/grammars/relaton-etsi.rnc"],
+    "IecDocumentType" => ["DocumentType", "iec/grammars/relaton-iec.rnc"],
+    "IetfDocumentType" => ["DocumentType", "ietf/grammars/relaton-ietf.rnc"],
+    "JisDocumentType" => ["DocumentType", "jis/grammars/relaton-jis.rnc"],
+    "PlateauDocumentType" => ["DocumentType", "plateau/grammars/relaton-plateau.rnc"],
+    "CsaDocumentType" => ["DocumentType", "csa/grammars/relaton-csa.rnc"],
+    "M3aawgDocumentType" => ["DocumentType", "m3aawg/grammars/relaton-m3aawg.rnc"],
+    "RiboseDocumentType" => ["DocumentType", "ribose/grammars/relaton-ribose.rnc"],
+    "UnDocumentType" => ["DocumentType", "un/grammars/relaton-un.rnc"],
+    "ItuDocumentType" => ["DocumentType", "itu/grammars/relaton-itu.rnc"]
   }
   vocab_parity.each do |lml_type, (rnc_name, rnc_path)|
-    lml_file = Dir["*/models/#{lml_type}.lml"].first
+    lml_file = Dir["*/models/**/#{lml_type}.lml"].first || Dir["*/models/#{lml_type}.lml"].first
     if lml_file.nil?
       errors << "vocab parity: no LML enum file for #{lml_type}"
       next
     end
-    lml_vals = File.read(lml_file).scan(/^  ([A-Za-z][\w-]*)[ ]*\{/).flatten - ["definition"]
+    lml_vals = File.read(lml_file).scan(/^  ([^\s}]+?)[ ]*(?:\{|$)/).flatten - ["definition"]
     rnc = File.read(rnc_path)
-    start_idx = rnc.index(/^#{Regexp.escape(rnc_name)} =/)
-    if start_idx.nil?
+    best_vals = nil
+    rnc.scan(/^\s*#{Regexp.escape(rnc_name)}\s*=/) do
+      region = Regexp.last_match.post_match
+      stop = region.index(/^([A-Za-z-]+ =|^## |^\})/, 1) || region.size
+      vals = region[0, stop].scan(/"([^"]+)"/).flatten
+      best_vals = vals if best_vals.nil? || vals.size > best_vals.size
+    end
+    if best_vals.nil?
       errors << "vocab parity: #{rnc_path} has no definition #{rnc_name}"
       next
     end
-    region = rnc[start_idx..]
-    stop = region.index(/^([A-Za-z-]+ =|^## )/, 1) || region.size
-    rnc_vals = region[0, stop].scan(/"([\w.-]+)"/).flatten
-    if lml_vals.uniq.sort != rnc_vals.uniq.sort
-      errors << "vocab parity #{lml_type}: LML-only=#{(lml_vals - rnc_vals).inspect} RNC-only=#{(rnc_vals - lml_vals).inspect}"
+    rnc_vals = best_vals
+        fold = ->(v) { v.tr("ÉÈÊËÀÂÄÇÎÏÔÖÛÜéèêëàâäçîïôöûü", "EEEEAAACIIOOUUeeeeaaaciioouu") }
+    kebab = ->(v) { fold.call(v).gsub(/([a-z0-9])([A-Z])/, "\1-\2").downcase.tr("_ ", "--").squeeze("-") }
+    if lml_vals.uniq.map(&kebab).sort != rnc_vals.uniq.map(&kebab).sort
+      errors << "vocab parity #{lml_type}: LML-only=#{(lml_vals.uniq.map(&kebab) - rnc_vals.uniq.map(&kebab)).inspect} RNC-only=#{(rnc_vals.uniq.map(&kebab) - lml_vals.uniq.map(&kebab)).inspect}"
     end
   end
 
@@ -201,8 +221,18 @@ task :"fixtures:yaml" do
   sh "ruby", "tools/validate_yaml.rb"
 end
 
-desc "Validate XML and YAML instance fixtures"
-task fixtures: [:"fixtures:xml", :"fixtures:yaml"]
+desc "Generate the JSON Schema from the LML models"
+task :schema do
+  sh "python3", "tools/generate_schema.py"
+end
+
+desc "Validate examples/*.yaml against the generated JSON Schema (needs python3 + jsonschema + pyyaml)"
+task :"fixtures:schema" do
+  sh "python3", "tools/validate_schema.py"
+end
+
+desc "Validate XML, YAML, and schema fixtures"
+task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema]
 
 desc "Render, verify PNGs, lint, and check LML/RNC parity"
 task check: %i[render verify lint parity]

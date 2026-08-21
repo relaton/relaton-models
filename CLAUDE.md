@@ -54,7 +54,8 @@ bundle exec rake verify          # assert PNG magic bytes on every committed dia
 bundle exec rake parity          # assert every flavour has LML models + RNC overlay; basicdoc submodule present
 bundle exec rake check           # render + verify + lint + parity
 bundle exec rake lint            # semantic LML lint: file/type match, in-module duplicates, attribute type resolution, view endpoints
-bundle exec rake fixtures        # validate examples/ fixtures (XML vs RNC via tools/validate_xml.py, YAML vs LML via tools/validate_yaml.rb)
+bundle exec rake fixtures        # fixtures: XML vs RNC, YAML vs LML, YAML vs JSON Schema
+bundle exec rake schema         # regenerate relaton/schema/bibitem-2020-12.json from the LML (CI asserts it is fresh)
 bundle exec rake site            # build the model catalog site into _site/ (deployed by .github/workflows/pages.yml)
 bundle exec rake <module>/images/<Name>.png   # render a single diagram
 ```

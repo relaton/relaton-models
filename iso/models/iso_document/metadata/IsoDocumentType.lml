@@ -1,41 +1,7 @@
 enum IsoDocumentType {
-  definition {
-    Type of ISO/IEC document.
-  }
-
-  internationalStandard {
+  addendum {
     definition {
-      International Standard.
-    }
-  }
-  technicalSpecification {
-    definition {
-      Technical Specification.
-    }
-  }
-  technicalReport {
-    definition {
-      Technical Report.
-    }
-  }
-  publiclyAvailableSpecification {
-    definition {
-      Publicly Available Specification.
-    }
-  }
-  internationalWorkshopAgreement {
-    definition {
-      International Workshop Agreement.
-    }
-  }
-  guide {
-    definition {
-      Guide.
-    }
-  }
-  interpretationSheet {
-    definition {
-      Interpretation Sheet.
+      Addendum (legacy type).
     }
   }
   amendment {
@@ -43,24 +9,64 @@ enum IsoDocumentType {
       Amendment.
     }
   }
-  technical-corrigendum {
-    definition {
-      Technical Corrigendum.
-    }
-  }
-  addendum {
-    definition {
-      Addendum (legacy type).
-    }
-  }
   committee-document {
     definition {
       Committee Document (for internal use).
     }
   }
+  directive {
+    definition {
+      Directive document type.
+    }
+  }
+  extract {
+    definition {
+      Extract document type.
+    }
+  }
+  guide {
+    definition {
+      Guide.
+    }
+  }
+  international-standard {
+    definition {
+      International Standard.
+    }
+  }
+  international-workshop-agreement {
+    definition {
+      International Workshop Agreement.
+    }
+  }
+  publicly-available-specification {
+    definition {
+      Publicly Available Specification.
+    }
+  }
   recommendation {
     definition {
       Recommendation (legacy type).
+    }
+  }
+  supplement {
+    definition {
+      Supplement document type.
+    }
+  }
+  technical-corrigendum {
+    definition {
+      Technical Corrigendum.
+    }
+  }
+  technical-report {
+    definition {
+      Technical Report.
+    }
+  }
+  technical-specification {
+    definition {
+      Technical Specification.
     }
   }
 }
