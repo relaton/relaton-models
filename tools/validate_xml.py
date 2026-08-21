@@ -23,8 +23,9 @@ G = ROOT / "relaton" / "grammars"
 COMPOSER = """
 include "biblio-standoc.rnc"
 
-# Consuming grammars wrap the item pattern in the bibdata element.
-start = element bibdata { BibData }
+# Consuming document grammars wrap the item pattern in the bibdata element;
+# Relaton instance files are bibitem-rooted (bibitem carries an xsd:ID).
+start = bibitem | bibitem_no_id | element bibdata { BibData }
 
 # Stubs for constructs supplied elsewhere: amend by the document grammar,
 # br/fn/image-no-id by basicdoc, code-list types by their registries.
@@ -61,16 +62,22 @@ def build_schema():
     return etree.RelaxNG(etree.fromstring(rng.encode()))
 
 
-schema = build_schema()
-
-failed = 0
-for xml_path in sorted((ROOT / "examples").glob("*.xml")):
-    doc = etree.parse(str(xml_path))
-    if schema.validate(doc):
-        print(f"fixtures:xml OK {xml_path.name}")
-    else:
-        failed += 1
-        print(f"fixtures:xml FAIL {xml_path.name}")
+def main(directory=None):
+    schema = build_schema()
+    directory = Path(directory) if directory else ROOT / "examples"
+    failed = 0
+    for xml_path in sorted(Path(directory).glob("*.xml")):
+        doc = etree.parse(str(xml_path))
+        if schema.validate(doc):
+            print(f"fixtures:xml OK {xml_path.name}")
+        else:
+            failed += 1
+            print(f"fixtures:xml FAIL {xml_path.name}")
         for e in schema.error_log:
             print(f"  line {e.line}: {e.message}")
-sys.exit(1 if failed else 0)
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.argv  # allow: validate_xml.py [directory]
+    sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else None))

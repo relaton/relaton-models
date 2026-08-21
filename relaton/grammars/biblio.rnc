@@ -1121,6 +1121,9 @@ DocRelationType =
 "complementOf" |
 "obsoletes" |
 "obsoletedBy" |
+"identical" |
+"equivalent" |
+"nonequivalent" |
 "cites" |
 "isCitedIn"
 
