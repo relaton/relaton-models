@@ -71,7 +71,7 @@ task :parity do
 
   # Every LML-bearing flavour should also have its RNC overlay (or be the base).
   Dir["*/models"].map { |d| File.dirname(d) }.each do |flavour|
-    next if flavour == "relaton" || flavour == "basicdoc"
+    next if %w[relaton basicdoc citation].include?(flavour)
     rnc = Dir["#{flavour}/grammars/relaton-*.rnc"]
     errors << "#{flavour}: has LML models but no grammars/relaton-*.rnc overlay" if rnc.empty?
   end
@@ -231,8 +231,13 @@ task :"fixtures:schema" do
   sh "python3", "tools/validate_schema.py"
 end
 
+desc "Validate mapping/csl.yaml against the generated schema (needs python3 + pyyaml)"
+task :csl do
+  sh "python3", "tools/validate_csl.py"
+end
+
 desc "Validate XML, YAML, and schema fixtures"
-task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema]
+task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl]
 
 desc "Render, verify PNGs, lint, and check LML/RNC parity"
 task check: %i[render verify lint parity]
