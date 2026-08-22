@@ -1,0 +1,7 @@
+class GroupingRule {
+  definition {
+    Grouping of entries in a bibliographic index, e.g. by type or by initial.
+  }
+  +attribute: String
+  +order: String[0..1]
+}

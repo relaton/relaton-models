@@ -1,0 +1,49 @@
+# ISO 690 citation style, expressed as data over the Relaton models.
+# Validated against the schema generated from the LML (rake fixtures:schema).
+class: CitationStyle
+name: "ISO 690 (name and date)"
+scheme:
+  class: CitationScheme
+  system: name-date
+  disambiguation:
+    class: DisambiguationRules
+    yearSuffix: a
+    suffixSeparator: ""
+    truncateNamesTo: 3
+  nameForm:
+    class: NameFormRules
+    initials: true
+    givenNameFirst: false
+    connective: and
+    nameSeparator: ", "
+    othersThreshold: 3
+  locale:
+    class: LocalizedStrings
+    and: and
+    others: et al.
+    noDate: no date
+    noAuthor: "—"
+    in: "In:"
+    at: "At:"
+    availableAt: "Available at:"
+templates:
+  class: TemplateMap
+  citation: "{{creator}} {{date}}{{disambiguator}}"
+  reference: "{{creator}} {{date}}. {{title}}. {{production}}. {{identifier}}. {{access}}."
+  name: "{{surname}}, {{givenNames}}"
+  series: "{{seriesTitle}}, {{seriesNumber}}"
+perType:
+  - class: TypeTemplate
+    type: journal
+    template: "{{creator}} {{date}}. {{title}}. {{series}}: {{pages}}."
+  - class: TypeTemplate
+    type: techreport
+    template: "{{creator}} {{date}}. {{title}}. {{identifier}}."
+  - class: TypeTemplate
+    type: website
+    template: "{{creator}} {{date}}. {{title}}. {{access}}."
+sortKey:
+  - class: SortRule
+    attribute: creator
+  - class: SortRule
+    attribute: date

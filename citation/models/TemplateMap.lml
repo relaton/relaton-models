@@ -1,0 +1,11 @@
+class TemplateMap {
+  definition {
+    Citation and reference templates as data. Placeholders are
+    double-brace slot names resolved by the rendering engine against the
+    Relaton models.
+  }
+  +citation: String
+  +reference: String
+  +name: String[0..1]
+  +series: String[0..1]
+}

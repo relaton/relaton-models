@@ -1,0 +1,12 @@
+class SortRule {
+  definition {
+    One sort key of a bibliographic index.
+  }
+  +attribute: String
+  +descending: Boolean[0..1]
+  +languageAware: Boolean[0..1] {
+    definition {
+      Collation follows the attribute's language and script.
+    }
+  }
+}

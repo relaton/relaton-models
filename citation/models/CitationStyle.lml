@@ -1,0 +1,13 @@
+class CitationStyle {
+  definition {
+    A complete style for citations and reference rendering, instantiated
+    over the Relaton models (ISO 690 oriented). A new style is an instance
+    of this model validated against the generated schema - the rendering
+    engine contains no styles, no vocabularies, no localized strings.
+  }
+  +name: String
+  +scheme: CitationScheme
+  +templates: TemplateMap
+  +perType: TypeTemplate[0..*]
+  +sortKey: SortRule[0..*]
+}

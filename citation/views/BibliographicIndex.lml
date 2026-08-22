@@ -1,0 +1,23 @@
+diagram BibliographicIndex {
+  title 'Bibliographic Index'
+
+  include ../models/BibliographicIndex.lml
+  include ../models/CollationRules.lml
+  include ../models/GroupingRule.lml
+
+  association {
+    owner BibliographicIndex
+    member BibliographicItem
+    owner_type direct
+  }
+  association {
+    owner BibliographicIndex
+    member CollationRules
+    owner_type direct
+  }
+  association {
+    owner BibliographicIndex
+    member GroupingRule
+    owner_type direct
+  }
+}

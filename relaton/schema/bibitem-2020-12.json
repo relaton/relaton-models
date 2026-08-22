@@ -639,6 +639,324 @@
       "type": "object",
       "title": "CieBibliographicItem"
     },
+    "BibliographicIndex": {
+      "type": "object",
+      "title": "BibliographicIndex",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibliographicItem"
+          }
+        },
+        "collation": {
+          "$ref": "#/$defs/CollationRules"
+        },
+        "grouping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GroupingRule"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "BibliographicStyle": {
+      "type": "object",
+      "title": "BibliographicStyle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "index": {
+          "$ref": "#/$defs/BibliographicIndex"
+        },
+        "layout": {
+          "$ref": "#/$defs/LayoutRules"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "index"
+      ]
+    },
+    "CitationScheme": {
+      "type": "object",
+      "title": "CitationScheme",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "system": {
+          "$ref": "#/$defs/CitationSystem"
+        },
+        "disambiguation": {
+          "$ref": "#/$defs/DisambiguationRules"
+        },
+        "nameForm": {
+          "$ref": "#/$defs/NameFormRules"
+        },
+        "locale": {
+          "$ref": "#/$defs/LocalizedStrings"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "system"
+      ]
+    },
+    "CitationStyle": {
+      "type": "object",
+      "title": "CitationStyle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scheme": {
+          "$ref": "#/$defs/CitationScheme"
+        },
+        "templates": {
+          "$ref": "#/$defs/TemplateMap"
+        },
+        "perType": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypeTemplate"
+          }
+        },
+        "sortKey": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SortRule"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "scheme",
+        "templates"
+      ]
+    },
+    "CitationSystem": {
+      "enum": [
+        "implied",
+        "name-date",
+        "named-tag",
+        "numeric",
+        "running-notes"
+      ],
+      "title": "CitationSystem"
+    },
+    "CollationRules": {
+      "type": "object",
+      "title": "CollationRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/$defs/Iso639Code"
+        },
+        "script": {
+          "$ref": "#/$defs/Iso15924Code"
+        },
+        "numericOrder": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DisambiguationRules": {
+      "type": "object",
+      "title": "DisambiguationRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "yearSuffix": {
+          "type": "string"
+        },
+        "suffixSeparator": {
+          "type": "string"
+        },
+        "truncateNamesTo": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupingRule": {
+      "type": "object",
+      "title": "GroupingRule",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "attribute"
+      ]
+    },
+    "LayoutRules": {
+      "type": "object",
+      "title": "LayoutRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "numbering": {
+          "type": "string"
+        },
+        "indent": {
+          "type": "string"
+        },
+        "hangingIndent": {
+          "type": "boolean"
+        },
+        "groupHeadings": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LocalizedStrings": {
+      "type": "object",
+      "title": "LocalizedStrings",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "and": {
+          "type": "string"
+        },
+        "others": {
+          "type": "string"
+        },
+        "noDate": {
+          "type": "string"
+        },
+        "noAuthor": {
+          "type": "string"
+        },
+        "in": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string"
+        },
+        "availableAt": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NameFormRules": {
+      "type": "object",
+      "title": "NameFormRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "initials": {
+          "type": "boolean"
+        },
+        "givenNameFirst": {
+          "type": "boolean"
+        },
+        "connective": {
+          "type": "string"
+        },
+        "nameSeparator": {
+          "type": "string"
+        },
+        "othersThreshold": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SortRule": {
+      "type": "object",
+      "title": "SortRule",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "descending": {
+          "type": "boolean"
+        },
+        "languageAware": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "attribute"
+      ]
+    },
+    "TemplateMap": {
+      "type": "object",
+      "title": "TemplateMap",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "citation",
+        "reference"
+      ]
+    },
+    "TypeTemplate": {
+      "type": "object",
+      "title": "TypeTemplate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemType"
+        },
+        "template": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "template"
+      ]
+    },
     "CsaBibliographicItem": {
       "type": "object",
       "title": "CsaBibliographicItem",

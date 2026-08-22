@@ -1,0 +1,111 @@
+# CSL → Relaton subset mapping
+# CSL is a lower-level subset of ISO 690/Relaton: less expressive, a special
+# case. Relaton → CSL is a lossy downgrade; CSL → Relaton is an import that
+# always fits. CSL never extends the model.
+position: subset
+
+types:
+  article-journal: article
+  article-magazine: article
+  article-newspaper: article
+  bill: misc
+  book: book
+  broadcast: broadcast
+  chapter: incollection
+  classic: book
+  collection: collection
+  dataset: dataset
+  document: misc
+  entry: misc
+  entry-dictionary: misc
+  entry-encyclopedia: misc
+  event: proceedings
+  figure: graphic_work
+  graphic: graphic_work
+  hearing: misc
+  interview: conversation
+  legal_case: misc
+  legislation: misc
+  patent: patent
+  personal_communication: personal-communication
+  post: message
+  post-blog: message
+  post-weblog: message
+  regulation: misc
+  report: techreport
+  review-book: article
+  review-report: article
+  song: performed-music
+  speech: presentation
+  thesis: thesis
+  treaty: misc
+  webpage: website
+
+variables:
+  abstract: abstract
+  accessed: {attribute: date, wire: "date[@type='accessed']"}
+  annote: note
+  archive: place
+  archive_location: extent
+  authority: contributor
+  call-number: docidentifier
+  chapter-number: extent
+  citation-number: docnumber
+  citation-label: docidentifier
+  collection-editor: contributor
+  composer: contributor
+  container-title: series
+  container-title-short: series
+  DOI: {attribute: docidentifier, wire: "docidentifier[@type='DOI']"}
+  edition: edition
+  event: series
+  event-date: date
+  event-place: place
+  genre: medium
+  ISBN: {attribute: docidentifier, wire: "docidentifier[@type='ISBN']"}
+  ISSN: {attribute: docidentifier, wire: "docidentifier[@type='ISSN']"}
+  issue: extent
+  issued: {attribute: date, wire: "date[@type='published']"}
+  jurisdiction: place
+  keyword: keyword
+  language: language
+  locator: extent
+  medium: medium
+  note: note
+  number: series
+  number-of-pages: size
+  number-of-volumes: version
+  original-date: date
+  original-publisher: contributor
+  original-publisher-place: place
+  original-title: title
+  page: extent
+  page-first: extent
+  PMCID: {attribute: docidentifier, wire: "docidentifier[@type='PMCID']"}
+  PMID: {attribute: docidentifier, wire: "docidentifier[@type='PMID']"}
+  publisher: contributor
+  publisher-place: place
+  references: relation
+  reviewed-title: title
+  scale: medium
+  section: extent
+  source: link
+  status: status
+  title: title
+  title-short: title
+  translator: contributor
+  URL: {attribute: link, wire: "uri[@type='src']"}
+  version: version
+  volume: series
+  volume-title: title
+  year-suffix: date
+
+downgrade_losses:
+  - "FRBR relation family (59 values): CSL has no general relation model"
+  - "Series from/to temporal bounds"
+  - "Validity windows"
+  - "Surrogate / manifestation relations"
+  - "Audience-differentiated editions"
+  - "ISO 24229 spelling systems on localized strings"
+  - "Typed notes with semantic distinction from generic notes"
+  - "Role taxonomy: CSL's name-variable categories are less granular than ContributorRoleType's production roles"

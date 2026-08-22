@@ -1,0 +1,11 @@
+class CitationScheme {
+  definition {
+    How an in-text citation points at a bibliographic index entry: the
+    citation system, disambiguation, name formation, and localized strings.
+    Creating a scheme is instantiating this model - never code.
+  }
+  +system: CitationSystem
+  +disambiguation: DisambiguationRules[0..1]
+  +nameForm: NameFormRules[0..1]
+  +locale: LocalizedStrings[0..1]
+}

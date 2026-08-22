@@ -1,0 +1,8 @@
+class TypeTemplate {
+  definition {
+    A template specialisation for one bibliographic item type; selected by
+    data lookup, never by code branching.
+  }
+  +type: BibItemType
+  +template: String
+}

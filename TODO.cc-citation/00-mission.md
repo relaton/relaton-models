@@ -44,9 +44,9 @@ L4  IMPLEMENTATIONS   relaton-bib gems · relaton-render (engine only) ·
 | 03 | ISO 690 coverage gaps in the models | partial (audience, printer, sponsor done; provenance designed) |
 | 04 | citation-doc chapter parity (L1 → L2) | open |
 | 05 | Element parity gate (L2 → L3) | open |
-| 06 | Full model + relationship inventory | done (inventory.json); atlas page open |
-| 07 | Citation scheme/style/index/style models | open — flagship |
-| 08 | CSL subset mapping and importer | open |
+| 06 | Full model + relationship inventory | done |
+| 07 | Citation scheme/style/index/style models | models + first style done; engine open |
+| 08 | CSL subset mapping and importer | mapping + gate done; importer open |
 | 09 | LML → RNC generation (#35) | stage A partially realized |
 | 10 | LML → JSON Schema (#9) | core done |
 | 11 | MODS gap analysis (#18) | open |

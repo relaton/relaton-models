@@ -1,0 +1,17 @@
+diagram BibliographicStyle {
+  title 'Bibliographic Style'
+
+  include ../models/BibliographicStyle.lml
+  include ../models/LayoutRules.lml
+
+  association {
+    owner BibliographicStyle
+    member BibliographicIndex
+    owner_type direct
+  }
+  association {
+    owner BibliographicStyle
+    member LayoutRules
+    owner_type direct
+  }
+}

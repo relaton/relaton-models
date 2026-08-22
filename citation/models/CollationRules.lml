@@ -1,0 +1,12 @@
+class CollationRules {
+  definition {
+    Sorting behaviour of a bibliographic index.
+  }
+  +language: Iso639Code[0..1]
+  +script: Iso15924Code[0..1]
+  +numericOrder: String[0..1] {
+    definition {
+      Ordering of numeric strings, e.g. natural lexicographic.
+    }
+  }
+}
