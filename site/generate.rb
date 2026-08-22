@@ -206,7 +206,15 @@ module RelatonSite
                  index_page: false, depth: 2)
     end
 
-    File.write(OUT.join("inventory.json"), JSON.pretty_generate(build_inventory(mods)))
+    inventory = build_inventory(mods)
+    File.write(OUT.join("inventory.json"), JSON.pretty_generate(inventory))
+
+    inv_html = render("inventory.html.erb",
+                      { inventory: inventory }, depth: 0)
+    write_page(OUT.join("inventory.html"), inv_html,
+               title: "Inventory — Relaton Models",
+               description: "Machine-generated inventory of all Relaton models, attributes, enums, and the relation vocabulary.",
+               index_page: false, depth: 0)
 
     File.write(OUT.join(".nojekyll"), "")
     puts "site: wrote #{plates.size + 1} pages -> #{OUT}"
