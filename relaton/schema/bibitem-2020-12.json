@@ -5482,6 +5482,12 @@
             "$ref": "#/$defs/NoteBlock"
           }
         },
+        "contribMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionElementMetadata"
+          }
+        },
         "attributes": {
           "type": "array",
           "items": {
@@ -5532,6 +5538,9 @@
         "path": {
           "type": "string"
         },
+        "position": {
+          "$ref": "#/$defs/AmendPosition"
+        },
         "pathEnd": {
           "type": "string"
         },
@@ -5564,6 +5573,13 @@
       "required": [
         "change"
       ]
+    },
+    "AmendPosition": {
+      "enum": [
+        "after",
+        "before"
+      ],
+      "title": "AmendPosition"
     },
     "ChangeType": {
       "enum": [

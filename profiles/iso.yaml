@@ -1,0 +1,41 @@
+# Profile: iso/1.0
+# A worked example of a FLAVOUR PROFILE — narrowing the RelBib base model
+# to the ISO document type vocabulary and ISO-specific cardinalities.
+# Rules (same narrowing-only doctrine as basicdoc-models profiles):
+# a flavour may only narrow the base — exclude constructs, tighten
+# cardinalities, subset enumerations. It may never widen or add.
+# Extensions live ABOVE the profile, as flavour modules (iso/).
+profile: iso/1.0
+base: relaton
+
+# Constructs this profile does not use at the base level.
+# (The iso/ module provides flavour-specific extensions.)
+exclude:
+  - NistTitle
+  - BipmSIAspect
+  - IhoPubSeriesEnum
+  - OgcCommittee
+
+# Cardinality constraints: MUST be narrower than the base
+constrain:
+  BibliographicItem.title: "1..*"
+  BibliographicItem.docidentifier: "1..*"
+
+# Enumeration subset: the ISO document types
+enums:
+  IsoDocumentType:
+    - international-standard
+    - technical-specification
+    - technical-report
+    - publicly-available-specification
+    - international-workshop-agreement
+    - guide
+    - interpretation-sheet
+    - amendment
+    - technical-corrigendum
+    - addendum
+    - committee-document
+    - recommendation
+    - directive
+    - extract
+    - supplement
