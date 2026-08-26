@@ -11,6 +11,7 @@
 # view associations with owner_type inheritance, across every module.
 
 require "yaml"
+require "lutaml/lml"
 
 ROOT = File.expand_path("..", __dir__)
 
@@ -19,22 +20,24 @@ def model_files
                   .reject { |p| p.include?("/basicdoc/") } + Dir[File.join(ROOT, "basicdoc/models/**/*.lml")]
 end
 
-def defined_types
-  @defined_types ||= model_files.each_with_object({}) do |f, acc|
-    File.read(f).scan(/^\s*(?:class|enum|data_type|primitive)\s+([A-Za-z_]\w*)/).flatten.each do |t|
-      acc[t] ||= f
-    end
+# Parser-based model extraction (lutaml-lml Pipeline.call, not regex)
+def parsed_models
+  @parsed_models ||= model_files.each_with_object({}) do |f, acc|
+    doc = Lutaml::Lml::Pipeline.call(File.read(f))
+    file_key = f
+    (doc.classes || []).each { |k| acc[k.name] ||= { kind: "class", obj: k, file: file_key } }
+    (doc.enums || []).each { |e| acc[e.name] ||= { kind: "enum", obj: e, file: file_key } }
   end
 end
 
+def defined_types
+  parsed_models.transform_values { |v| v[:file] }
+end
+
 def duplicates
-  # Duplicate type names across modules are by design (flavours reuse
-  # generic names like DocumentType); duplicates within one module are not.
-  @duplicates ||= model_files.each_with_object(Hash.new { |h, k| h[k] = Hash.new { |hh, kk| hh[kk] = [] } }) do |f, acc|
-    mod = f.sub(ROOT + "/", "").split("/").first
-    File.read(f).scan(/^\s*(?:class|enum|data_type|primitive)\s+([A-Za-z_]\w*)/).flatten.each do |t|
-      acc[mod][t] << f
-    end
+  parsed_models.each_with_object(Hash.new { |h, k| h[k] = Hash.new { |hh, kk| hh[kk] = [] } }) do |(name, info), acc|
+    mod = info[:file].sub(ROOT + "/", "").split("/").first
+    acc[mod][name] << info[:file]
   end.flat_map { |mod, types| types.select { |_, files| files.size > 1 }.map { |t, files| [t, files] } }
 end
 
@@ -45,13 +48,11 @@ end
 def parent_of
   @parent_of ||= begin
     parents = {}
-    # native LML inheritance
-    model_files.each do |f|
-      File.read(f).scan(/^\s*(?:class|enum|data_type)\s+(\w+)\s*<\s*(\w+)/).each do |child, parent|
-        parents[child] ||= parent
-      end
+    parsed_models.each_value do |info|
+      next unless info[:kind] == "class"
+      parent = info[:obj].respond_to?(:parent_class) ? info[:obj].parent_class : nil
+      parents[info[:obj].name] ||= parent if parent
     end
-    # view associations (owner parent of member)
     Dir[File.join(ROOT, "*/views/*.lml")].each do |v|
       File.read(v).scan(/association\s*\{[^}]*?owner\s+(\w+)[^}]*?member\s+(\w+)[^}]*?owner_type\s+inheritance/m).each do |parent, child|
         parents[child] ||= parent
@@ -64,12 +65,14 @@ end
 def attributes_of(type)
   @attributes_of ||= {}
   @attributes_of[type] ||= begin
-    own = body_of(type).to_s.lines.filter_map do |line|
-      m = line.match(/^\s*[+#-]([a-zA-Z][\w-]*)\s*:\s*(.+)$/)
-      next unless m
-      type_str = m[2].split("[")[0].split("{")[0].strip
-      type_str = type_str.gsub(/<<[^>]*>>/, "").strip
-      [m[1], type_str]
+    info = parsed_models[type]
+    own = if info && info[:obj].respond_to?(:attributes) && info[:obj].attributes
+      info[:obj].attributes.map do |a|
+        type_str = a.type.to_s.gsub(/<<[^>]*>>/, "").strip
+        [a.name.to_s, type_str]
+      end
+    else
+      []
     end
     inherited = parent_of[type] ? attributes_of(parent_of[type]) : []
     (own + inherited).reject { |n, _| n == "definition" }
@@ -77,8 +80,15 @@ def attributes_of(type)
 end
 
 def enum_values_of(type)
-  return [] unless body_of(type).to_s =~ /^\s*enum\s/
-  body_of(type).scan(/^\s{2,}([a-zA-Z][\w-]*)\s*\{$/).flatten - %w[definition]
+  info = parsed_models[type]
+  return [] unless info && info[:kind] == "enum"
+  if info[:obj].respond_to?(:values) && info[:obj].values.to_a.any?
+    info[:obj].values.map(&:to_s)
+  elsif info[:obj].respond_to?(:attributes) && info[:obj].attributes
+    info[:obj].attributes.map(&:name).map(&:to_s) - %w[definition]
+  else
+    []
+  end
 end
 
 RESERVED = %w[class text].freeze
