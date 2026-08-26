@@ -1,20 +1,80 @@
 enum EtsiDocumentType {
   definition {
-    Type of ETSI document.
+    ETSI document type.
   }
-  European-Standard
-  ETSI-Standard
-  ETSI-Guide
-  Technical-Specification
-  Group-Specification
-  Group-Report
-  Technical-Report
-  ETSI-Technical-Report
-  GSM-Technical-Specification
-  Special-Report
-  Technical-Committee-Reference-Technical-Report
-  Technical-Basis-for-Regulation
-  European-Telecommunication-Standard
-  Interim-European-Telecommunication-Standard
-  Norme-Europeenne-de-Telecommunication
+  european-standard {
+    definition {
+      european standard document type.
+    }
+  }
+  etsi-standard {
+    definition {
+      etsi standard document type.
+    }
+  }
+  etsi-guide {
+    definition {
+      etsi guide document type.
+    }
+  }
+  technical-specification {
+    definition {
+      technical specification document type.
+    }
+  }
+  group-specification {
+    definition {
+      group specification document type.
+    }
+  }
+  group-report {
+    definition {
+      group report document type.
+    }
+  }
+  technical-report {
+    definition {
+      technical report document type.
+    }
+  }
+  etsi-technical-report {
+    definition {
+      etsi technical report document type.
+    }
+  }
+  gsm-technical-specification {
+    definition {
+      gsm technical specification document type.
+    }
+  }
+  special-report {
+    definition {
+      special report document type.
+    }
+  }
+  technical-committee-reference-technical-report {
+    definition {
+      technical committee reference technical report document type.
+    }
+  }
+  technical-basis-for-regulation {
+    definition {
+      technical basis for regulation document type.
+    }
+  }
+  european-telecommunication-standard {
+    definition {
+      european telecommunication standard document type.
+    }
+  }
+  interim-european-telecommunication-standard {
+    definition {
+      interim european telecommunication standard document type.
+    }
+  }
+  norme-europeenne-de-telecommunication {
+    definition {
+      norme europeenne de telecommunication document type.
+    }
+  }
 }

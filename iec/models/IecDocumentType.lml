@@ -10,4 +10,52 @@ enum IecDocumentType {
   guide
   industry-technical-agreement
   system-reference-deliverable
+  guide {
+    definition {
+      Guide document type.
+    }
+  }
+
+  industry-technical-agreement {
+    definition {
+      Industry technical agreement document type.
+    }
+  }
+
+  international-standard {
+    definition {
+      International standard document type.
+    }
+  }
+
+  international-workshop-agreement {
+    definition {
+      International workshop agreement document type.
+    }
+  }
+
+  publicly-available-specification {
+    definition {
+      Publicly available specification document type.
+    }
+  }
+
+  system-reference-deliverable {
+    definition {
+      System reference deliverable document type.
+    }
+  }
+
+  technical-report {
+    definition {
+      Technical report document type.
+    }
+  }
+
+  technical-specification {
+    definition {
+      Technical specification document type.
+    }
+  }
+
 }

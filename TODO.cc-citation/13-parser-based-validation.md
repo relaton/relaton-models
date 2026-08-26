@@ -20,3 +20,6 @@ type-safe.
 
 ## Acceptance
 `rake fixtures` green; no regex-based model extraction remains in tools/.
+
+## Done
+`tools/validate_yaml.rb` uses `Lutaml::Lml::Pipeline.call` for model extraction.

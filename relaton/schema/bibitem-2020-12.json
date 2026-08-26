@@ -278,7 +278,9 @@
         "meeting-report",
         "mise-en-pratique",
         "monographie",
+        "policy",
         "rapport",
+        "resolution",
         "resolutions",
         "strategy",
         "technical-report",
@@ -559,13 +561,14 @@
     "CcDocumentType": {
       "enum": [
         "administrative",
+        "advisory",
         "amendment",
         "directive",
         "guide",
         "report",
         "specification",
         "standard",
-        "technicalCorrigendum"
+        "technical-corrigendum"
       ],
       "title": "CcDocumentType"
     },
@@ -1056,21 +1059,21 @@
     },
     "EtsiDocumentType": {
       "enum": [
-        "ETSI-Guide",
-        "ETSI-Standard",
-        "ETSI-Technical-Report",
-        "European-Standard",
-        "European-Telecommunication-Standard",
-        "GSM-Technical-Specification",
-        "Group-Report",
-        "Group-Specification",
-        "Interim-European-Telecommunication-Standard",
-        "Norme-Europeenne-de-Telecommunication",
-        "Special-Report",
-        "Technical-Basis-for-Regulation",
-        "Technical-Committee-Reference-Technical-Report",
-        "Technical-Report",
-        "Technical-Specification"
+        "etsi-guide",
+        "etsi-standard",
+        "etsi-technical-report",
+        "european-standard",
+        "european-telecommunication-standard",
+        "group-report",
+        "group-specification",
+        "gsm-technical-specification",
+        "interim-european-telecommunication-standard",
+        "norme-europeenne-de-telecommunication",
+        "special-report",
+        "technical-basis-for-regulation",
+        "technical-committee-reference-technical-report",
+        "technical-report",
+        "technical-specification"
       ],
       "title": "EtsiDocumentType"
     },
@@ -2193,10 +2196,19 @@
     },
     "IhoDocumentType": {
       "enum": [
+        "best-practices",
+        "directives",
+        "legal",
+        "policy-and-procedures",
+        "proposal",
+        "regulation",
         "regulations",
+        "report",
+        "resolution",
         "resolutions",
         "specification",
-        "standard"
+        "standard",
+        "supporting-document"
       ],
       "title": "IhoDocumentType"
     },
@@ -3410,12 +3422,14 @@
         "community-practice",
         "community-standard",
         "discussion-paper",
+        "draft-standard",
         "engineering-report",
         "other",
         "policy",
         "reference-model",
         "release-notes",
         "standard",
+        "test-suite",
         "user-guide",
         "white-paper"
       ],
@@ -4356,6 +4370,10 @@
       "type": "string",
       "title": "Iso15924Code"
     },
+    "Iso24229Code": {
+      "type": "string",
+      "title": "Iso24229Code"
+    },
     "Iso3166Code": {
       "type": "string",
       "title": "Iso3166Code"
@@ -4455,6 +4473,12 @@
           "type": "array",
           "items": {
             "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "spellingSystem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso24229Code"
           }
         },
         "content": {
@@ -5417,6 +5441,7 @@
         "proposedRecommendation",
         "recommendation",
         "retired",
+        "technicalReport",
         "workingDraft"
       ],
       "title": "W3cDocumentType"

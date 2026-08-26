@@ -1,6 +1,6 @@
 # 16 — ISO 24229 spelling systems on localized strings
 
-**Status: open** · Source: basicdoc-models commit 0bc0c90
+**Status: done** · Source: basicdoc-models commit 0bc0c90
 
 ## Why
 basicdoc-models identified localized strings as ISO 24229 spelling

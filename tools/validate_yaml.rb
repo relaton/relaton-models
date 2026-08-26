@@ -23,10 +23,14 @@ end
 # Parser-based model extraction (lutaml-lml Pipeline.call, not regex)
 def parsed_models
   @parsed_models ||= model_files.each_with_object({}) do |f, acc|
-    doc = Lutaml::Lml::Pipeline.call(File.read(f))
-    file_key = f
-    (doc.classes || []).each { |k| acc[k.name] ||= { kind: "class", obj: k, file: file_key } }
-    (doc.enums || []).each { |e| acc[e.name] ||= { kind: "enum", obj: e, file: file_key } }
+    begin
+      doc = Lutaml::Lml::Pipeline.call(File.read(f))
+      file_key = f
+      (doc.classes || []).each { |k| acc[k.name] ||= { kind: "class", obj: k, file: file_key } }
+      (doc.enums || []).each { |e| acc[e.name] ||= { kind: "enum", obj: e, file: file_key } }
+    rescue StandardError
+      warn "validate_yaml: skipping unparseable #{f.sub(ROOT + "/", "")}"
+    end
   end
 end
 

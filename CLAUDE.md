@@ -55,6 +55,7 @@ bundle exec rake parity          # assert every flavour has LML models + RNC ove
 bundle exec rake check           # render + verify + lint + parity
 bundle exec rake lint            # semantic LML lint: file/type match, in-module duplicates, attribute type resolution, view endpoints
 bundle exec rake fixtures        # fixtures: XML vs RNC, YAML vs LML, YAML vs JSON Schema
+bundle exec rake profiles        # validate profiles/*.yaml (narrowing-only)
 bundle exec rake schema         # regenerate relaton/schema/bibitem-2020-12.json from the LML (CI asserts it is fresh)
 bundle exec rake site            # build the model catalog site into _site/ (deployed by .github/workflows/pages.yml)
 bundle exec rake <module>/images/<Name>.png   # render a single diagram
@@ -62,9 +63,25 @@ bundle exec rake <module>/images/<Name>.png   # render a single diagram
 
 Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.github/workflows/rake.yml`) runs `rake clean render`, `rake verify`, and `rake parity` on ubuntu-latest with `submodules: recursive`.
 
+## Flavour profiles
+
+`profiles/*.yaml` declaratively narrow the RelBib base model per flavour:
+excluded constructs, constrained cardinalities, enum subsets. Profiles may
+only narrow — widening is rejected by `rake profiles` (from basicdoc-models).
+A flavour profile, its LML models, its RNC overlay, and a fixture instance
+together constitute the flavour definition.
+
 ## Instance fixtures
 
 `examples/` carries twin fixtures (`bibitem.xml` + `bibitem.yaml`) of the same BibliographicItem. The XML is validated against `relaton/grammars/biblio-standoc.rnc` (composed the way consuming document grammars compose it — see `tools/validate_xml.py`); the YAML is walked against the LML model (`tools/validate_yaml.rb`). Keep the README example and `examples/bibitem.xml` in sync: the README embeds the validated fixture.
+
+## Construct doctrine
+
+- Constructs are generic; formats specialize them via types and the
+  attribute register. Never add a per-format class where a type or
+  register entry covers it.
+- Relaxed content models: containers hold the broadest reasonable type.
+- Composition: anything that can hold a block can hold a document.
 
 ## Model file conventions
 

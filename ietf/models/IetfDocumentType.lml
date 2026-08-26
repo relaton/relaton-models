@@ -4,4 +4,16 @@ enum IetfDocumentType {
   }
   rfc
   internet-draft
+  internet-draft {
+    definition {
+      Internet draft document type.
+    }
+  }
+
+  rfc {
+    definition {
+      Rfc document type.
+    }
+  }
+
 }

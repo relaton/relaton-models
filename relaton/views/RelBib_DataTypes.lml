@@ -5,6 +5,7 @@ diagram RelBib_DataTypes {
   include ../models/Iso8601Date.lml
   include ../models/Iso639Code.lml
   include ../models/Iso15924Code.lml
+  include ../models/Iso24229Code.lml
   include ../models/Iso4217Code.lml
   include ../models/Iso3166Code.lml
   include ../models/DateTime.lml

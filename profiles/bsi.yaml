@@ -1,0 +1,23 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  BsiDocumentType:
+  - british-standard
+  - draft-for-development
+  - european-workshop-agreement
+  - expert-commentary
+  - fast-track-standard
+  - flex-standard
+  - guide
+  - industry-technical-agreement
+  - international-standard
+  - international-workshop-agreement
+  - privately-subscribed-standard
+  - publicly-available-specification
+  - published-document
+  - standard
+  - technical-report
+  - technical-specification
+profile: bsi/1.0

@@ -1,72 +1,75 @@
 enum IsoDocumentType {
-  addendum {
-    definition {
-      Addendum (legacy type).
-    }
-  }
-  amendment {
-    definition {
-      Amendment.
-    }
-  }
-  committee-document {
-    definition {
-      Committee Document (for internal use).
-    }
-  }
-  directive {
-    definition {
-      Directive document type.
-    }
-  }
-  extract {
-    definition {
-      Extract document type.
-    }
-  }
-  guide {
-    definition {
-      Guide.
-    }
+  definition {
+    ISO 690 document type.
   }
   international-standard {
     definition {
-      International Standard.
-    }
-  }
-  international-workshop-agreement {
-    definition {
-      International Workshop Agreement.
-    }
-  }
-  publicly-available-specification {
-    definition {
-      Publicly Available Specification.
-    }
-  }
-  recommendation {
-    definition {
-      Recommendation (legacy type).
-    }
-  }
-  supplement {
-    definition {
-      Supplement document type.
-    }
-  }
-  technical-corrigendum {
-    definition {
-      Technical Corrigendum.
-    }
-  }
-  technical-report {
-    definition {
-      Technical Report.
+      ISO 690 document type.
     }
   }
   technical-specification {
     definition {
-      Technical Specification.
+      ISO 690 document type.
+    }
+  }
+  technical-report {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  publicly-available-specification {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  international-workshop-agreement {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  guide {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  recommendation {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  amendment {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  technical-corrigendum {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  directive {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  committee-document {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  addendum {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  supplement {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  extract {
+    definition {
+      ISO 690 document type.
     }
   }
 }

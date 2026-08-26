@@ -52,6 +52,6 @@ L4  IMPLEMENTATIONS   relaton-bib gems · relaton-render (engine only) ·
 | 11 | MODS gap analysis (#18) | open |
 | 12 | relaton.org legacy site retirement (#59) | open |
 | 13 | Parser-based model extraction (from basicdoc) | done (YAML) |
-| 14 | Declarative flavour profiles (from basicdoc) | first profile done |
+| 14 | Declarative flavour profiles (from basicdoc) | done (22 profiles + gate) |
 | 15 | Versioning and stability policy (from basicdoc) | done |
-| 16 | ISO 24229 spelling systems (from basicdoc) | open |
+| 16 | ISO 24229 spelling systems (from basicdoc) | done |
