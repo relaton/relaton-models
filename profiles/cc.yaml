@@ -1,0 +1,16 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  CcDocumentType:
+  - administrative
+  - advisory
+  - amendment
+  - directive
+  - guide
+  - report
+  - specification
+  - standard
+  - technical-corrigendum
+profile: cc/1.0

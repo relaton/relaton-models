@@ -6,4 +6,16 @@ enum W3cDocumentType {
   recommendation
   retired
   workingDraft
+  groupNote {
+    definition {
+      Groupnote document type.
+    }
+  }
+
+  technicalReport {
+    definition {
+      Technicalreport document type.
+    }
+  }
+
 }

@@ -1,0 +1,16 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  CsaDocumentType:
+  - case-study
+  - charter
+  - glossary
+  - guidance
+  - policy
+  - proposal
+  - report
+  - standard
+  - whitepaper
+profile: csa/1.0

@@ -8,4 +8,70 @@ enum IhoDocumentType {
   specification
   resolutions
   regulations
+  best-practices {
+    definition {
+      Best practices document type.
+    }
+  }
+
+  directives {
+    definition {
+      Directives document type.
+    }
+  }
+
+  legal {
+    definition {
+      Legal document type.
+    }
+  }
+
+  policy-and-procedures {
+    definition {
+      Policy and procedures document type.
+    }
+  }
+
+  proposal {
+    definition {
+      Proposal document type.
+    }
+  }
+
+  regulation {
+    definition {
+      Regulation document type.
+    }
+  }
+
+  report {
+    definition {
+      Report document type.
+    }
+  }
+
+  resolution {
+    definition {
+      Resolution document type.
+    }
+  }
+
+  specification {
+    definition {
+      Specification document type.
+    }
+  }
+
+  standard {
+    definition {
+      Standard document type.
+    }
+  }
+
+  supporting-document {
+    definition {
+      Supporting document document type.
+    }
+  }
+
 }

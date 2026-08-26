@@ -1,10 +1,30 @@
 enum DocumentType {
   definition {
-    Type of CCSDS document.
+    CCSDS document type.
   }
-  standard
-  practice
-  report
-  specification
-  record
+  standard {
+    definition {
+      Standard document type.
+    }
+  }
+  practice {
+    definition {
+      Practice document type.
+    }
+  }
+  report {
+    definition {
+      Report document type.
+    }
+  }
+  specification {
+    definition {
+      Specification document type.
+    }
+  }
+  record {
+    definition {
+      Record document type.
+    }
+  }
 }
