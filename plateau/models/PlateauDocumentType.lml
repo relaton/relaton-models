@@ -5,4 +5,22 @@ enum PlateauDocumentType {
   handbook
   technical-report
   annex
+  annex {
+    definition {
+      Annex document type.
+    }
+  }
+
+  handbook {
+    definition {
+      Handbook document type.
+    }
+  }
+
+  technical-report {
+    definition {
+      Technical report document type.
+    }
+  }
+
 }

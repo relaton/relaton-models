@@ -1,0 +1,23 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  OgcDocumentType:
+  - abstract-specification-topic
+  - best-practice
+  - change-request-supporting-document
+  - community-practice
+  - community-standard
+  - discussion-paper
+  - draft-standard
+  - engineering-report
+  - other
+  - policy
+  - reference-model
+  - release-notes
+  - standard
+  - test-suite
+  - user-guide
+  - white-paper
+profile: ogc/1.0

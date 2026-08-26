@@ -1,0 +1,16 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  M3aawgDocumentType:
+  - case-study
+  - charter
+  - glossary
+  - guidance
+  - policy
+  - proposal
+  - report
+  - standard
+  - whitepaper
+profile: m3aawg/1.0

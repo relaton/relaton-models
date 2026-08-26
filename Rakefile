@@ -239,7 +239,12 @@ end
 desc "Validate XML, YAML, and schema fixtures"
 task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl]
 
+desc "Validate profiles/*.yaml against the LML model (narrowing-only enforced)"
+task :profiles do
+  sh "ruby", "-I", "tools", "-rbundler/setup", "tools/validate_profiles.rb"
+end
+
 desc "Render, verify PNGs, lint, and check LML/RNC parity"
-task check: %i[render verify lint parity]
+task check: %i[render verify lint parity profiles]
 
 task default: :render

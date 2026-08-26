@@ -34,4 +34,82 @@ enum ItuDocumentType {
       ITU contribution document.
     }
   }
+  focus-group {
+    definition {
+      Focus group document type.
+    }
+  }
+
+  implementers-guide {
+    definition {
+      Implementers guide document type.
+    }
+  }
+
+  joint-itu-iso-iec {
+    definition {
+      Joint itu iso iec document type.
+    }
+  }
+
+  recommendation {
+    definition {
+      Recommendation document type.
+    }
+  }
+
+  recommendation-amendment {
+    definition {
+      Recommendation amendment document type.
+    }
+  }
+
+  recommendation-annex {
+    definition {
+      Recommendation annex document type.
+    }
+  }
+
+  recommendation-corrigendum {
+    definition {
+      Recommendation corrigendum document type.
+    }
+  }
+
+  recommendation-errata {
+    definition {
+      Recommendation errata document type.
+    }
+  }
+
+  recommendation-supplement {
+    definition {
+      Recommendation supplement document type.
+    }
+  }
+
+  resolution {
+    definition {
+      Resolution document type.
+    }
+  }
+
+  service-publication {
+    definition {
+      Service publication document type.
+    }
+  }
+
+  technical-paper {
+    definition {
+      Technical paper document type.
+    }
+  }
+
+  technical-report {
+    definition {
+      Technical report document type.
+    }
+  }
+
 }

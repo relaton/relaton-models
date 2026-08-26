@@ -1,0 +1,13 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  IeeeDocumentType:
+  - guide
+  - other
+  - recommended-practice
+  - redline
+  - standard
+  - whitepaper
+profile: ieee/1.0

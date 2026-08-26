@@ -1,0 +1,15 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  RiboseDocumentType:
+  - best-practices
+  - directives
+  - legal
+  - policy-and-procedures
+  - proposal
+  - report
+  - standard
+  - supporting-document
+profile: ribose/1.0

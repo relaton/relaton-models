@@ -1,0 +1,10 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  PlateauDocumentType:
+  - annex
+  - handbook
+  - technical-report
+profile: plateau/1.0

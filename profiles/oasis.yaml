@@ -1,0 +1,11 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  oasis/DocumentType:
+  - memorandum
+  - resolution
+  - specification
+  - standard
+profile: oasis/1.0

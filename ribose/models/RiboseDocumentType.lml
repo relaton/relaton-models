@@ -10,4 +10,52 @@ enum RiboseDocumentType {
   directives
   proposal
   standard
+  best-practices {
+    definition {
+      Best practices document type.
+    }
+  }
+
+  directives {
+    definition {
+      Directives document type.
+    }
+  }
+
+  legal {
+    definition {
+      Legal document type.
+    }
+  }
+
+  policy-and-procedures {
+    definition {
+      Policy and procedures document type.
+    }
+  }
+
+  proposal {
+    definition {
+      Proposal document type.
+    }
+  }
+
+  report {
+    definition {
+      Report document type.
+    }
+  }
+
+  standard {
+    definition {
+      Standard document type.
+    }
+  }
+
+  supporting-document {
+    definition {
+      Supporting document document type.
+    }
+  }
+
 }

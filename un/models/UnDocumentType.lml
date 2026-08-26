@@ -13,4 +13,70 @@ enum UnDocumentType {
   sec-gen-notes
   expert-report
   resolution
+  addendum {
+    definition {
+      Addendum document type.
+    }
+  }
+
+  agenda {
+    definition {
+      Agenda document type.
+    }
+  }
+
+  budgetary {
+    definition {
+      Budgetary document type.
+    }
+  }
+
+  communication {
+    definition {
+      Communication document type.
+    }
+  }
+
+  corrigendum {
+    definition {
+      Corrigendum document type.
+    }
+  }
+
+  expert-report {
+    definition {
+      Expert report document type.
+    }
+  }
+
+  plenary {
+    definition {
+      Plenary document type.
+    }
+  }
+
+  recommendation {
+    definition {
+      Recommendation document type.
+    }
+  }
+
+  reissue {
+    definition {
+      Reissue document type.
+    }
+  }
+
+  resolution {
+    definition {
+      Resolution document type.
+    }
+  }
+
+  sec-gen-notes {
+    definition {
+      Sec gen notes document type.
+    }
+  }
+
 }

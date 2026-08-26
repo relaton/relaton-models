@@ -15,4 +15,76 @@ enum BipmDocumentType {
   strategy
   cipm-mra
   resolutions
+  brochure {
+    definition {
+      Brochure document type.
+    }
+  }
+
+  cipm-mra {
+    definition {
+      Cipm mra document type.
+    }
+  }
+
+  guide {
+    definition {
+      Guide document type.
+    }
+  }
+
+  meeting-report {
+    definition {
+      Meeting report document type.
+    }
+  }
+
+  mise-en-pratique {
+    definition {
+      Mise en pratique document type.
+    }
+  }
+
+  monographie {
+    definition {
+      Monographie document type.
+    }
+  }
+
+  policy {
+    definition {
+      Policy document type.
+    }
+  }
+
+  rapport {
+    definition {
+      Rapport document type.
+    }
+  }
+
+  resolution {
+    definition {
+      Resolution document type.
+    }
+  }
+
+  strategy {
+    definition {
+      Strategy document type.
+    }
+  }
+
+  technical-report {
+    definition {
+      Technical report document type.
+    }
+  }
+
+  working-party-note {
+    definition {
+      Working party note document type.
+    }
+  }
+
 }

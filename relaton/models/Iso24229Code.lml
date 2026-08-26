@@ -1,0 +1,8 @@
+data_type Iso24229Code {
+  definition {
+    Code for a script-conversion (spelling) system, as specified in
+    ISO 24229. Distinguishes the system used to convert text between
+    scripts (transliteration, transcription) from the language code
+    (ISO 639) and script code (ISO 15924).
+  }
+}
