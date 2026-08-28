@@ -216,7 +216,17 @@ module RelatonSite
                description: "Machine-generated inventory of all Relaton models, attributes, enums, and the relation vocabulary.",
                index_page: false, depth: 0)
 
+    FileUtils.mkdir_p(OUT.join("modules"))
+    inventory["modules"].each do |mod|
+      mod_html = render("module.html.erb",
+                        { mod: mod, plates: plates }, depth: 1)
+      write_page(OUT.join("modules/#{mod["module"]}.html"), mod_html,
+                 title: "#{mod["module"]} — Relaton Models",
+                 description: "Per-module detail: all types, attributes, and enums in #{mod["module"]}.",
+                 index_page: false, depth: 1)
+    end
+
     File.write(OUT.join(".nojekyll"), "")
-    puts "site: wrote #{plates.size + 1} pages -> #{OUT}"
+    puts "site: wrote #{plates.size + 1 + inventory["modules"].size} pages -> #{OUT}"
   end
 end
