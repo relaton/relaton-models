@@ -22,7 +22,7 @@
   <h2 id="inventory-heading" class="visually-hidden" style="position:absolute;left:-9999px">Inventory</h2>
   <% inventory["modules"].each do |mod| %>
   <div class="reading-rule" style="margin-bottom:12px" id="<%= h(mod["module"]) %>">
-    <strong><%= h(mod["module"]) %> <span class="punct">· </span><%= h(mod["kind"]) %></strong>
+    <strong><a href="<%= asset_path("modules/#{mod["module"]}.html") %>"><%= h(mod["module"]) %></a> <span class="punct">· </span><%= h(mod["kind"]) %></strong>
     <table>
       <thead><tr><th>Type</th><th>Kind</th><th>Attributes / Values</th></tr></thead>
       <tbody>
