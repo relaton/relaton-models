@@ -41,15 +41,15 @@ L4  IMPLEMENTATIONS   relaton-bib gems · relaton-render (engine only) ·
 |---|------|--------|
 | 01 | Relation vocabulary retirement (#67) | done |
 | 02 | Vocabulary parity gate (LML ↔ RNC) | done (base + 14 flavours) |
-| 03 | ISO 690 coverage gaps in the models | partial (audience, printer, sponsor done; provenance designed) |
+| 03 | ISO 690 coverage gaps in the models | done |
 | 04 | citation-doc chapter parity (L1 → L2) | open |
 | 05 | Element parity gate (L2 → L3) | open |
 | 06 | Full model + relationship inventory | done |
 | 07 | Citation scheme/style/index/style models | models + first style done; engine open |
-| 08 | CSL subset mapping and importer | mapping + gate done; importer open |
-| 09 | LML → RNC generation (#35) | stage A partially realized |
+| 08 | CSL subset mapping and importer | done |
+| 09 | LML → RNC generation (#35) | stage B done; C open |
 | 10 | LML → JSON Schema (#9) | core done |
-| 11 | MODS gap analysis (#18) | open |
+| 11 | MODS gap analysis (#18) | done |
 | 12 | relaton.org legacy site retirement (#59) | open |
 | 13 | Parser-based model extraction (from basicdoc) | done (YAML) |
 | 14 | Declarative flavour profiles (from basicdoc) | done (22 profiles + gate) |

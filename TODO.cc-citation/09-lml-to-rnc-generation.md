@@ -1,6 +1,6 @@
 # 09 — Generate the RNC from the LML (issue #35)
 
-**Status: stage A partially realized** · Repo: relaton-models + lutaml
+**Status: stage B done; stage C open** · Repo: relaton-models + lutaml
 
 ## Why
 The original sin: two hand-maintained artifacts. 02 freezes the drift; 09
@@ -8,7 +8,10 @@ ends it — RNC becomes a derived artifact.
 
 ## Stages
 - **A — vocabularies**: parity gate shipped (see 02; 19 vocabularies).
-  Emitting/rewriting the RNC lists from LML is the remaining step.
+- **B — vocabulary emission**: `tools/generate_rnc.py` emits RNC vocab
+  definitions from LML enums; `--check` mode validates generated ==
+  committed (with kebab-fold normalization, consistent with the parity
+  gate). All 4 base vocabularies green.
   (`DocRelationType = "includes" | …`); flip parity to "generated matches
   committed" then commit generated. Flavour `DocumentType` overlays included
   via the 02 map.
