@@ -236,8 +236,13 @@ task :csl do
   sh "python3", "tools/validate_csl.py"
 end
 
+desc "Check LML-generated RNC vocabularies against committed"
+task :"rnc:check" do
+  sh "python3", "tools/generate_rnc.py", "--check"
+end
+
 desc "Validate XML, YAML, and schema fixtures"
-task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl]
+task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl rnc:check]
 
 desc "Validate profiles/*.yaml against the LML model (narrowing-only enforced)"
 task :profiles do

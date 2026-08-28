@@ -1,0 +1,21 @@
+enum AuthenticityStatus {
+  definition {
+    Whether a cited resource is certified, a copy, or of unknown
+    authenticity, per ISO 690 clause 7.15.
+  }
+  certified {
+    definition {
+      The resource has been certified as authentic by a recognized authority.
+    }
+  }
+  copy {
+    definition {
+      The resource is a copy of an original.
+    }
+  }
+  unknown {
+    definition {
+      The authenticity of the resource is unknown or undetermined.
+    }
+  }
+}

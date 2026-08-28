@@ -3600,6 +3600,14 @@
       },
       "additionalProperties": false
     },
+    "AuthenticityStatus": {
+      "enum": [
+        "certified",
+        "copy",
+        "unknown"
+      ],
+      "title": "AuthenticityStatus"
+    },
     "BibItemLocality": {
       "type": "object",
       "title": "BibItemLocality",
@@ -5167,6 +5175,15 @@
         },
         "revision": {
           "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "authenticity": {
+          "$ref": "#/$defs/AuthenticityStatus"
         }
       },
       "additionalProperties": false

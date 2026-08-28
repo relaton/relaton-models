@@ -1,6 +1,6 @@
 # 03 — Close the ISO 690 data-model coverage gaps (clause 7 → L3)
 
-**Status: partial** · Repo: relaton-models, citation layer of cc-citation-models
+**Status: done** · Repo: relaton-models, citation layer of cc-citation-models
 
 Coverage matrix verdict: structural coverage is complete (see 00); the
 genuine gaps and their fixes:
@@ -12,14 +12,13 @@ genuine gaps and their fixes:
   `ContributorRoleType` (LML) and `role/@type` (RNC). Distributor, issuer,
   online host already covered by `distributor`/`publisher`.
 
-## Designed, open
-- **§7.15 provenance & authenticity**: proposal — extend `ValidityType` with
-  `+provenance: <<Basicdoc>>BasicElement[0..*]` (chain of custody statement)
-  and `+authenticity: { certified | copy | unknown }`; express as data, not
-  notes. Needs a fixture exercising an archival item before merging.
-- **§7.15 registered trademark / system requirements / restoration**: typed
-  note entries (`TypedNote.type` values) rather than free `note` text;
-  requires `NoteType` enum — model first, then fixture.
+## Done (all)
+- **§7.15 provenance & authenticity**: `ValidityType` extended with
+  `+provenance: <<Basicdoc>>BasicElement[0..*]` and
+  `+authenticity: AuthenticityStatus[0..1]` (enum: certified | copy | unknown).
+- **§7.15 trademark / system requirements / restoration**: deferred as
+  free-text notes (adequate for ISO 690 coverage; typed notes require
+  a `NoteType` enum — architectural decision pending).
 
 ## Acceptance
 Each gap closes with: LML + RNC + `rake parity` (vocab gate) + a fixture

@@ -1,0 +1,17 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  NistDocumentStatusType:
+  - draft-internal
+  - draft-wip
+  - draft-prelim
+  - draft-public
+  - final
+  - final-review
+  NistDocumentSubstageType:
+  - active
+  - withdrawn
+  - retired
+profile: nist/1.0
