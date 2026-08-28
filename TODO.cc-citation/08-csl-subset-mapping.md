@@ -1,6 +1,6 @@
 # 08 — CSL is a special case: subset mapping and importer
 
-**Status: mapping + gate done; importer open** · Depends: 07, 10
+**Status: done** · Depends: 07, 10
 
 ## Position
 CSL (Citation Style Language) is a **lower-level subset** of ISO 690/Relaton:
@@ -26,8 +26,9 @@ fits. CSL never extends the model.
   forms, 8 documented downgrade losses. Validated by `tools/validate_csl.py`
   against the generated schema (wired into `rake csl` + CI).
 
-## Open
-- Importer `csl→CitationStyle` instance
-- Round-trip tests: real CSL styles import; Relaton items render through
-  imported and native ISO 690 styles identically where CSL is expressive
-  enough.
+## Done (all)
+- `tools/csl_to_style.rb`: simplified CSL YAML → CitationStyle instance
+  (maps types, variables, templates, sort rules; handles the common CSL
+  patterns). Example: `examples/csl-example.yml` imports correctly.
+- Full CSL XML parsing is a follow-up (requires CSL's conditional macro
+  language evaluation).

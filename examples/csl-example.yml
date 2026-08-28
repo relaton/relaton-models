@@ -1,0 +1,8 @@
+# Simplified CSL style for APA-like author-date citations
+name: "Example APA (CSL import)"
+citation-format: author-date
+citation:
+  template: "author (issued-year)"
+sort:
+  author: asc
+  issued: asc

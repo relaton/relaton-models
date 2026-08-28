@@ -19,4 +19,16 @@ class ValidityType {
       for which this claim of validity is made, if applicable.
     }
   }
+
+  +provenance: <<Basicdoc>>BasicElement[0..*] {
+    definition {
+      Chain of custody for the cited resource, per ISO 690 clause 7.15.
+    }
+  }
+  +authenticity: AuthenticityStatus[0..1] {
+    definition {
+      Whether the cited resource is certified, a copy, or of unknown
+      authenticity, per ISO 690 clause 7.15.
+    }
+  }
 }

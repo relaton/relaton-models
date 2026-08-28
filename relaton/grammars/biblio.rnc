@@ -79,7 +79,9 @@ edition = element edition {
 LocalizedStringAttributes =
   attribute language { LanguageType }?,
   attribute locale { LocaleType }?,
-  attribute script { ScriptType }?
+  attribute script { ScriptType }?,
+  ## Script-conversion (spelling) system code per ISO 24229
+  attribute spelling-system { text }?
 
 LocalizedString =
   LocalizedStringAttributes,
@@ -607,6 +609,12 @@ BibItemType =
      ## Bibliographic type not adequately described in the foregoing
     "misc"
 
+## Whether a cited resource is certified, a copy, or of unknown authenticity
+AuthenticityStatus =
+  "certified" |
+  "copy" |
+  "unknown"
+
 ## Description of a bibliographic resource
 BibliographicItem =
     ## The type of the bibliographic item
@@ -742,6 +750,11 @@ validity = element validity {
   ## The date and time of issuance of the version of the document
   ## for which this claim of validity is made, if applicable
   validityRevision?
+,
+  ## Chain of custody for the cited resource
+  element provenance { text }*,
+  ## Whether the resource is certified, a copy, or of unknown authenticity
+  element authenticity { AuthenticityStatus }?
 }
 validityBegins = element validityBegins { ISO8601DateTime }
 validityEnds = element validityEnds { ISO8601DateTime }
