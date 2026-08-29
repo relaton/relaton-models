@@ -252,4 +252,7 @@ end
 desc "Render, verify PNGs, lint, and check LML/RNC parity"
 task check: %i[render verify lint parity profiles]
 
+desc "ALL gates: render, verify, lint, parity, profiles, fixtures, schema, CSL, RNC"
+task ci: %i[render verify lint parity profiles fixtures csl rnc:check]
+
 task default: :render
