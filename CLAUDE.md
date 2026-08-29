@@ -4,8 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architectural rule (cannot be violated)
 
-**The models ARE the LML files.** Every model is defined in LutaML: `models/*.lml` are the definition modules, `views/*.lml` are the diagram views. The RNC files in `grammars/` are implementation grammars that *accompany* the LML models — never a substitute for them. A flavour directory containing only an RNC overlay is incomplete; its model must exist as LML. This is also stated prominently in README.adoc. Enforced by `rake parity`.
-
+**The models ARE the LML files.** Every model is defined in LutaML: `models/*.lml` are the definition modules, `views/*.lml` are the diagram views. The RNC files in `grammars/` are implementation grammars that *accompany* the LML models — never a substitute for them. A flavour directory containing only an RNC overlay is incomplete; its model must exist as LML. Enforced by `rake parity`. The JSON Schema (`relaton/schema/`) is generated from the LML — never hand-edit it.
 
 ## Views vs models (hard separation)
 
@@ -14,84 +13,75 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `*/models/**/*.lml` | `class` / `enum` / `data_type` definitions only | `diagram`, `view`, `association`, `title` |
 | `*/views/*.lml` | one `diagram`/`view`, `include`s, `association`s, title/caption | class/enum/data_type bodies |
 
-Rakefile globs **only** `*/views/*.lml` for PNG output. `rake parity` must fail if a `diagram` keyword appears under `models/` or a class body appears under `views/`. Cross-module reuse = relative `include` of the real file — never a stub copy under the consumer's `models/`.
+Rakefile globs **only** `*/views/*.lml` for PNG output. `rake parity` fails if a `diagram` keyword appears under `models/` or a class body appears under `views/`. Cross-module reuse = relative `include` of the real file — never a stub copy under the consumer's `models/`.
 
 ## Repository layout
 
 One module per directory, uniform internal layout everywhere:
 
-- `relaton/` — the shared RelBib base models (was the unnamespaced top-level `models/`, `views/`, `images/`, `grammars/`; moved here to match the flavour layout, mirroring `standoc/` in standoc-models)
-- `basicdoc/` — git submodule of [metanorma/basicdoc-models](https://github.com/metanorma/basicdoc-models). Provides `Image`, `BasicElement`, `BasicBlock` and the rest of the Basicdoc types that RelBib attributes reference via `<<Basicdoc>>Type`. Do not vendor copies under `relaton/models/`.
-- `<flavour>/` (29 total) — each former `relaton-model-<flavour>` repository, merged with full git history via git-subtree (see `git-subtree-dir:` markers in merge commits)
+| Path | Purpose |
+|---|---|
+| `relaton/` | Shared RelBib base models (BibliographicItem, Citation, Contributor, ...) |
+| `basicdoc/` | Git submodule of metanorma/basicdoc-models (Basicdoc types: Image, BasicElement, BasicBlock) |
+| `citation/` | Citation scheme/style/index/style models (CitationScheme, CitationStyle, BibliographicIndex, BibliographicStyle) |
+| `<flavour>/` (29) | Each former `relaton-model-<flavour>` repository: models, views, images, grammar overlay |
+| `profiles/` | Declarative flavour profiles (narrowing-only, YAML) |
+| `examples/` | Twin XML/YAML fixtures + real Relaton instances |
+| `mapping/` | CSL-to-Relaton subset mapping |
+| `tools/` | Validation and generation scripts |
+| `docs/` | Versioning policy, MODS gap analysis |
+| `site/` | Atlas site generator (ERB templates + generate.rb) |
+| `TODO.cc-citation/` | Mission plan (17 items) |
 
-Each module: `models/` (LML definitions), `views/` (LML diagrams), `images/` (rendered PNGs, committed), `grammars/` (RNC overlays).
-
-History provenance:
-- The 29 flavour histories arrive via git-subtree merges from `relaton-model-<flavour>`.
-- Bibliographic models restored from standoc-models / migrated from WSD (iso, cc, bsi, gb, ogc, bipm, iho, itu, nist, mpfa, ieee) additionally carry their original `metanorma-model-<flavour>` histories, grafted as `merge -s ours` commits — tree unchanged, ancestry recorded.
-
-### Querying grafted history
-
-`git log --follow` on a current path will not jump the path+extension rename into a grafted tip. Query the grafted tip directly:
-
-```sh
-# list grafted second-parents
-git log --grep='metanorma-model-.*history' --format='%h %s'
-
-# history of a file under its original path inside the grafted tip
-git log --oneline <grafted-sha> -- models/ItuBibliographicItem.wsd
-```
+Each module: `models/` (LML), `views/` (diagrams), `images/` (committed PNGs), `grammars/` (RNC overlays).
 
 ## Build commands
 
 ```sh
 git submodule update --init --recursive
 bundle install
-bundle exec rake render          # regenerate all */images/*.png from */views/*.lml (default)
-bundle exec rake <module>        # render one module (e.g. rake iso, rake relaton)
-bundle exec rake clean           # remove regenerable PNGs only
-bundle exec rake verify          # assert PNG magic bytes on every committed diagram
-bundle exec rake parity          # assert every flavour has LML models + RNC overlay; basicdoc submodule present
-bundle exec rake check           # render + verify + lint + parity
-bundle exec rake lint            # semantic LML lint: file/type match, in-module duplicates, attribute type resolution, view endpoints
-bundle exec rake fixtures        # fixtures: XML vs RNC, YAML vs LML, YAML vs JSON Schema
-bundle exec rake profiles        # validate profiles/*.yaml (narrowing-only)
-bundle exec rake schema         # regenerate relaton/schema/bibitem-2020-12.json from the LML (CI asserts it is fresh)
-bundle exec rake site            # build the model catalog site into _site/ (deployed by .github/workflows/pages.yml)
-bundle exec rake <module>/images/<Name>.png   # render a single diagram
+bundle exec rake ci                 # ALL gates (render, verify, lint, parity, profiles, fixtures, schema, CSL, RNC check)
+bundle exec rake render             # regenerate all */images/*.png from */views/*.lml
+bundle exec rake <module>           # render one module
+bundle exec rake verify             # PNG magic bytes
+bundle exec rake lint               # semantic LML lint
+bundle exec rake parity             # LML/RNC parity + vocabulary parity (19 vocabularies)
+bundle exec rake profiles           # flavour profiles (narrowing-only)
+bundle exec rake fixtures           # XML/YAML/schema/CSL fixtures
+bundle exec rake schema             # regenerate JSON Schema from LML
+bundle exec rake csl                # validate CSL mapping against schema
+bundle exec rake rnc:check          # LML-generated RNC vs committed
+bundle exec rake site               # build atlas into _site/
 ```
-
-Rendering uses `lutaml-lml` (graphviz-backed); `dot` must be on PATH. CI (`.github/workflows/rake.yml`) runs `rake clean render`, `rake verify`, and `rake parity` on ubuntu-latest with `submodules: recursive`.
-
-## Flavour profiles
-
-`profiles/*.yaml` declaratively narrow the RelBib base model per flavour:
-excluded constructs, constrained cardinalities, enum subsets. Profiles may
-only narrow — widening is rejected by `rake profiles` (from basicdoc-models).
-A flavour profile, its LML models, its RNC overlay, and a fixture instance
-together constitute the flavour definition.
-
-## Instance fixtures
-
-`examples/` carries twin fixtures (`bibitem.xml` + `bibitem.yaml`) of the same BibliographicItem. The XML is validated against `relaton/grammars/biblio-standoc.rnc` (composed the way consuming document grammars compose it — see `tools/validate_xml.py`); the YAML is walked against the LML model (`tools/validate_yaml.rb`). Keep the README example and `examples/bibitem.xml` in sync: the README embeds the validated fixture.
 
 ## Construct doctrine
 
-- Constructs are generic; formats specialize them via types and the
-  attribute register. Never add a per-format class where a type or
-  register entry covers it.
+- Constructs are generic; formats specialize them via types and the attribute register.
 - Relaxed content models: containers hold the broadest reasonable type.
 - Composition: anything that can hold a block can hold a document.
 
+## Flavour profiles
+
+`profiles/*.yaml` declaratively narrow the RelBib base per flavour: excluded constructs, constrained cardinalities, enum subsets. Profiles may only narrow — widening is rejected by `rake profiles`. All 29 flavours have profiles.
+
+## Citation models (TODO 07)
+
+The `citation/` module defines how citations, styles, indexes, and bibliographic styles are expressed as DATA over the Relaton models. `citation/styles/iso-690.yml` is the first style instance, validated against the generated schema. A new style = a YAML instance, never code.
+
+## Instance fixtures
+
+`examples/` carries: `bibitem.xml` + `bibitem.yaml` (twin fixtures of the same BibliographicItem), `relaton-bibitem.xml` (real IETF instance), `csl-example.yml` (CSL import test). XML validates against RNC; YAML validates against LML and JSON Schema; CSL validates against the mapping.
+
 ## Model file conventions
 
-- **Never duplicate a base model in a flavour.** Cross-module reuse is by reference, never by copy.
-- **Views are fully encapsulated.** A view includes only its own module's models; classes from other modules referenced in associations render as collapsed, name-only boxes. Including a cross-module model (`include ../../relaton/models/X.lml`) explodes its internals into the diagram — do that only when the internals are the subject of the card (the base RelBib views are the exploded reference).
-- gb's models live under `gb/models/gb_document/metadata/`; iso's bib models under `iso/models/iso_document/metadata/`.
-- LML parser notes (lutaml-lml >= 0.1.3): quoted titles accept any character (parentheses, Unicode); definition bodies track brace depth so `ZB{code}` is fine. A space is still conventional before `{` after class names.
-- `rake render` failure usually means an included path is broken — check that every `include` resolves relative to the including file.
-- Legacy `.wsd` files may sit next to their LML successors as historical source; nothing renders from `.wsd`.
+- **Never duplicate a base model in a flavour.** Cross-module reuse by reference.
+- **Views are fully encapsulated.** Include only own-module models; cross-module classes render as collapsed boxes.
+- Every attribute has an explicit visibility marker (`+`/`#`/`-`), a resolvable type, and every class/enum a `definition { }`.
+
+## Versioning
+
+See `docs/VERSIONING.md` for the MAJOR.MINOR.PATCH policy, deprecation cycle, and standardization snapshot tags.
 
 ## Consumers
 
-The Metanorma grammar hub (metanorma/standoc-models) consumes the base grammars (`relaton/grammars/biblio*.rnc`) and the flavour overlays (`<flavour>/grammars/relaton-<flavour>.rnc`). Document-structure models remain in standoc-models — do not import those here.
+The Metanorma grammar hub (metanorma/standoc-models) consumes the base grammars and flavour overlays. relaton.org submodules this repo at `vendor/relaton-models` and syncs diagrams via `scripts/sync-models.sh`. The atlas at relaton.github.io/relaton-models is deployed by the `pages` workflow.

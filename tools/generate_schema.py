@@ -115,5 +115,13 @@ def main(out=None):
     out.write_text(json.dumps(schema, indent=2, ensure_ascii=False) + "\n")
     print(f"schema: {len(schema['$defs'])} definitions -> {out}")
 
+    # CitationStyle-specific schema (rooted at CitationStyle, same $defs)
+    if "CitationStyle" in schema["$defs"]:
+        style = {**schema, "$ref": "#/$defs/CitationStyle",
+                 "title": "Relaton CitationStyle (generated from the LML)"}
+        style_out = ROOT / "relaton" / "schema" / "citation-style-2020-12.json"
+        style_out.write_text(json.dumps(style, indent=2, ensure_ascii=False) + "\n")
+        print(f"schema: CitationStyle schema -> {style_out}")
+
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else None)

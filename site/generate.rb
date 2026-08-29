@@ -217,9 +217,13 @@ module RelatonSite
                index_page: false, depth: 0)
 
     FileUtils.mkdir_p(OUT.join("modules"))
+    all_types = {}
+    inventory["modules"].each do |m|
+      m["types"].each { |t| all_types[t["name"]] = m["module"] }
+    end
     inventory["modules"].each do |mod|
       mod_html = render("module.html.erb",
-                        { mod: mod, plates: plates }, depth: 1)
+                        { mod: mod, plates: plates, all_types: all_types }, depth: 1)
       write_page(OUT.join("modules/#{mod["module"]}.html"), mod_html,
                  title: "#{mod["module"]} — Relaton Models",
                  description: "Per-module detail: all types, attributes, and enums in #{mod["module"]}.",

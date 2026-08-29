@@ -44,7 +44,14 @@
         <% t["attributes"].each do |a| %>
         <tr>
           <td><code>+<%= h(a["name"]) %></code></td>
-          <td><code><%= h(a["type"]) %></code></td>
+          <td><%
+  type_name = a["type"].split("[").first.strip
+  if all_types.key?(type_name)
+  %><a href="<%= asset_path("modules/#{all_types[type_name]}.html##{type_name}") %>"><code><%= h(a["type"]) %></code></a><%
+  else
+  %><code><%= h(a["type"]) %></code><%
+  end
+  %></td>
         </tr>
         <% end %>
       </tbody>
