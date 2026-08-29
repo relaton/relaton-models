@@ -218,7 +218,7 @@ end
 
 desc "Validate examples/*.yaml against the LML model"
 task :"fixtures:yaml" do
-  sh "ruby", "tools/validate_yaml.rb"
+  sh "bundle", "exec", "ruby", "tools/validate_yaml.rb"
 end
 
 desc "Generate the JSON Schema from the LML models"
@@ -246,7 +246,7 @@ task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl rnc:check]
 
 desc "Validate profiles/*.yaml against the LML model (narrowing-only enforced)"
 task :profiles do
-  sh "ruby", "-I", "tools", "-rbundler/setup", "tools/validate_profiles.rb"
+  sh "bundle", "exec", "ruby", "-I", "tools", "tools/validate_profiles.rb"
 end
 
 desc "Render, verify PNGs, lint, and check LML/RNC parity"

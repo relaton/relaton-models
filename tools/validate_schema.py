@@ -9,6 +9,9 @@ ROOT = Path(__file__).resolve().parent.parent
 base = json.loads((ROOT / "relaton" / "schema" / "bibitem-2020-12.json").read_text())
 validator = Draft202012Validator(base)
 style_validator = Draft202012Validator({**base, "$ref": "#/$defs/CitationStyle"})
+# Note: the citation-style-2020-12.json file is a thin wrapper that delegates
+# to bibitem-2020-12.json#/$defs/CitationStyle; we inline the $ref here so the
+# validator has the full $defs context.
 
 failed = 0
 for path in sorted((ROOT / "citation" / "styles").glob("*.yml")):

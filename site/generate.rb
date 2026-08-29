@@ -209,6 +209,14 @@ module RelatonSite
     inventory = build_inventory(mods)
     File.write(OUT.join("inventory.json"), JSON.pretty_generate(inventory))
 
+    # Per-module inventory files (API ergonomics: fetch just what you need)
+    inv_dir = OUT.join("inventory")
+    FileUtils.mkdir_p(inv_dir)
+    inventory["modules"].each do |mod|
+      File.write(inv_dir.join("#{mod["module"]}.json"),
+                 JSON.pretty_generate(mod))
+    end
+
     inv_html = render("inventory.html.erb",
                       { inventory: inventory }, depth: 0)
     write_page(OUT.join("inventory.html"), inv_html,
