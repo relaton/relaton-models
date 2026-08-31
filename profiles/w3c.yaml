@@ -1,0 +1,9 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  W3cDocumentType:
+  - groupNote
+  - technicalReport
+profile: w3c/1.0

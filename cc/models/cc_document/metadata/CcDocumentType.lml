@@ -28,7 +28,7 @@ enum CcDocumentType {
       Amendment.
     }
   }
-  technicalCorrigendum {
+  technical-corrigendum {
     definition {
       Technical Corrigendum.
     }
@@ -41,6 +41,11 @@ enum CcDocumentType {
   administrative {
     definition {
       Administrative.
+    }
+  }
+  advisory {
+    definition {
+      Advisory document type.
     }
   }
 }

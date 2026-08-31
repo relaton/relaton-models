@@ -1,6 +1,6 @@
 # 07 — Citation scheme, citation style, bibliographic index & style AS MODELS
 
-**Status: open — flagship** · Repo: relaton-models (new `citation/` module),
+**Status: models + first style done; engine open** · Repo: relaton-models (new `citation/` module),
 consumer: relaton-render v2 (engine only)
 
 ## Why
@@ -42,14 +42,24 @@ Templates are **data with constrained placeholders** (the inventory's
 attribute names — 06), evaluated by a generic engine; the engine contains
 zero styles, zero vocabularies, zero i18n.
 
-## Execution
-1. Model `citation/` in LML (module layout, parity, lint).
-2. ISO 690 itself as the first style instance (`iso-690.yml` instantiating
-   CitationStyle) — validated against the JSON Schema from 10.
-3. relaton-render v2: strip Liquid/config/i18n to a template evaluator +
+## Done
+1. `citation/` module: 14 LML models (CitationScheme, CitationStyle,
+   BibliographicIndex, BibliographicStyle + CitationSystem enum,
+   DisambiguationRules, NameFormRules, LocalizedStrings, TemplateMap,
+   TypeTemplate, SortRule, CollationRules, GroupingRule, LayoutRules).
+   Four views, rendered, parity + lint green.
+2. First style instance: `citation/styles/iso-690.yml` — the ISO 690
+   name-and-date scheme as data, validated against the schema generated
+   from the LML (rake fixtures:schema).
+3. Atlas: the four citation-model cards render alongside every other
+   module.
+
+## Open
+4. relaton-render v2: strip Liquid/config/i18n to a template evaluator +
    field resolver over the inventory; all existing flavours' configurations
-   ported to style instances (mechanical translation of their YAML).
-4. Atlas page: browse styles/schemes like models.
+   ported to style instances.
+5. BibliographicIndex/BibliographicStyle instances (the index + layout
+   counterparts to the style).
 
 ## Acceptance
 A new style (e.g. "ISO 690 numeric, French") = one YAML instance + schema

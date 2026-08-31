@@ -1,0 +1,19 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  BipmDocumentType:
+  - brochure
+  - cipm-mra
+  - guide
+  - meeting-report
+  - mise-en-pratique
+  - monographie
+  - policy
+  - rapport
+  - resolution
+  - strategy
+  - technical-report
+  - working-party-note
+profile: bipm/1.0

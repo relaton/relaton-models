@@ -1,0 +1,7311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://relaton.github.io/relaton-models/bibitem-2020-12.json",
+  "title": "Relaton BibliographicItem (generated from the LML)",
+  "$ref": "#/$defs/BibliographicItem",
+  "$defs": {
+    "3gppBibliographicItem": {
+      "type": "object",
+      "title": "3gppBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "radiotechnology": {
+          "$ref": "#/$defs/RadioTechnologyType"
+        },
+        "common-ims-spec": {
+          "type": "boolean"
+        },
+        "release": {
+          "$ref": "#/$defs/Release"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DocumentSubType": {
+      "enum": [
+        "release",
+        "spec"
+      ],
+      "title": "DocumentSubType"
+    },
+    "DocumentType": {
+      "enum": [
+        "TR",
+        "TS"
+      ],
+      "title": "DocumentType"
+    },
+    "RadioTechnologyType": {
+      "enum": [
+        "LTE"
+      ],
+      "title": "RadioTechnologyType"
+    },
+    "Release": {
+      "type": "object",
+      "title": "Release",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "version2G": {
+          "type": "string"
+        },
+        "version3G": {
+          "type": "string"
+        },
+        "defunct": {
+          "type": "boolean"
+        },
+        "wpm-code-2G": {
+          "type": "string"
+        },
+        "wpm-code-3G": {
+          "type": "string"
+        },
+        "freeze-meeting": {
+          "type": "string"
+        },
+        "freeze-stage1-meeting": {
+          "type": "string"
+        },
+        "freeze-stage2-meeting": {
+          "type": "string"
+        },
+        "freeze-stage3-meeting": {
+          "type": "string"
+        },
+        "close-meeting": {
+          "type": "string"
+        },
+        "project-start": {
+          "type": "string"
+        },
+        "project-end": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BipmBibliographicDate": {
+      "type": "object",
+      "title": "BipmBibliographicDate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BipmBibliographicDateType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "BipmBibliographicDateType": {
+      "enum": [
+        "effective",
+        "superseded"
+      ],
+      "title": "BipmBibliographicDateType"
+    },
+    "BipmBibliographicItem": {
+      "type": "object",
+      "title": "BipmBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "projectGroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BipmProjectTeam"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "$ref": "#/$defs/BipmDocumentType"
+        },
+        "title": {
+          "$ref": "#/$defs/BipmStructuredTitle"
+        },
+        "dates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BipmBibliographicDate"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BipmDocumentRelation"
+          }
+        },
+        "documentStatus": {
+          "$ref": "#/$defs/BipmDocumentStatus"
+        },
+        "commentPeriod": {
+          "$ref": "#/$defs/BipmCommentPeriod"
+        },
+        "structuredIdentifier": {
+          "$ref": "#/$defs/BipmStructuredIdentifier"
+        },
+        "si-aspect": {
+          "$ref": "#/$defs/BipmSIAspect"
+        },
+        "meeting-note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "documentStatus",
+        "structuredIdentifier"
+      ]
+    },
+    "BipmCommentPeriod": {
+      "type": "object",
+      "title": "BipmCommentPeriod",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "from"
+      ]
+    },
+    "BipmCommittee": {
+      "type": "object",
+      "title": "BipmCommittee",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "acronym": {
+          "$ref": "#/$defs/BipmCommitteeAcronym"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "acronym",
+        "name"
+      ]
+    },
+    "BipmCommitteeAcronym": {
+      "enum": [
+        "bipm",
+        "ccauv",
+        "ccem",
+        "ccl",
+        "ccl-cctfwg",
+        "ccm",
+        "ccpr",
+        "ccqm",
+        "ccri",
+        "cct",
+        "cctf",
+        "ccu",
+        "cgpm",
+        "cipm",
+        "inetqi",
+        "jcgm",
+        "jcrb",
+        "jctlm"
+      ],
+      "title": "BipmCommitteeAcronym"
+    },
+    "BipmDocumentCitation": {
+      "type": "object",
+      "title": "BipmDocumentCitation"
+    },
+    "BipmDocumentRelation": {
+      "type": "object",
+      "title": "BipmDocumentRelation"
+    },
+    "BipmDocumentRelationType": {
+      "enum": [
+        "supersededBy",
+        "supersedes"
+      ],
+      "title": "BipmDocumentRelationType"
+    },
+    "BipmDocumentStatus": {
+      "type": "object",
+      "title": "BipmDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/BipmDocumentStatusType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ]
+    },
+    "BipmDocumentStatusType": {
+      "enum": [
+        "draft-development",
+        "draft-proposal",
+        "in-force",
+        "retired"
+      ],
+      "title": "BipmDocumentStatusType"
+    },
+    "BipmDocumentType": {
+      "enum": [
+        "brochure",
+        "cipm-mra",
+        "guide",
+        "meeting-report",
+        "mise-en-pratique",
+        "monographie",
+        "policy",
+        "rapport",
+        "resolution",
+        "resolutions",
+        "strategy",
+        "technical-report",
+        "working-party-note"
+      ],
+      "title": "BipmDocumentType"
+    },
+    "BipmProjectTeam": {
+      "type": "object",
+      "title": "BipmProjectTeam",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "committee": {
+          "$ref": "#/$defs/BipmCommittee"
+        },
+        "workgroup": {
+          "$ref": "#/$defs/BipmWorkingGroup"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "committee",
+        "workgroup"
+      ]
+    },
+    "BipmSIAspect": {
+      "enum": [
+        "A_eD",
+        "A_e_deltanu",
+        "K_k",
+        "K_k_deltanu",
+        "cd_Kc",
+        "cd_Kcd_h_deltanu",
+        "full",
+        "kg_h",
+        "kg_h_c_deltanu",
+        "m_c",
+        "m_c_deltanu",
+        "mol_NA",
+        "s_deltanu"
+      ],
+      "title": "BipmSIAspect"
+    },
+    "BipmStructuredIdentifier": {
+      "type": "object",
+      "title": "BipmStructuredIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "docnumber": {
+          "type": "string"
+        },
+        "part": {
+          "type": "string"
+        },
+        "subpart": {
+          "type": "string"
+        },
+        "appendix": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "docnumber"
+      ]
+    },
+    "BipmStructuredTitle": {
+      "type": "object",
+      "title": "BipmStructuredTitle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "title-main": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "title-part": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "title-subpart": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "title-main"
+      ]
+    },
+    "BipmWorkingGroup": {
+      "type": "object",
+      "title": "BipmWorkingGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "acronym": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "BsiBibDataExtensionType": {
+      "type": "object",
+      "title": "BsiBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "editorialGroup": {
+          "$ref": "#/$defs/IsoProjectGroup"
+        },
+        "stageName": {
+          "type": "string"
+        },
+        "subtype": {
+          "$ref": "#/$defs/BsiDocumentSubtype"
+        },
+        "ics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IcsType"
+          }
+        },
+        "structuredidentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StructuredIdentifierType"
+          }
+        },
+        "coverimages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Image"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "editorialGroup"
+      ]
+    },
+    "BsiBibliographicItem": {
+      "type": "object",
+      "title": "BsiBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "docIdentifier": {
+          "$ref": "#/$defs/IsoDocumentId"
+        },
+        "title": {
+          "$ref": "#/$defs/IsoLocalizedTitle"
+        },
+        "type": {
+          "$ref": "#/$defs/BsiDocumentType"
+        },
+        "status": {
+          "$ref": "#/$defs/IsoDocumentStatus"
+        },
+        "source": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedUri"
+          }
+        },
+        "abstract": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "ext": {
+          "$ref": "#/$defs/BsiBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "docIdentifier",
+        "title",
+        "type",
+        "status",
+        "ext"
+      ]
+    },
+    "BsiDocumentSubtype": {
+      "enum": [
+        "codeOfPractice",
+        "methodOfSpecifying",
+        "methodOfTest",
+        "specification",
+        "vocabulary"
+      ],
+      "title": "BsiDocumentSubtype"
+    },
+    "BsiDocumentType": {
+      "enum": [
+        "british-standard",
+        "draft-for-development",
+        "european-workshop-agreement",
+        "expert-commentary",
+        "fast-track-standard",
+        "flex-standard",
+        "guide",
+        "industry-technical-agreement",
+        "international-standard",
+        "international-workshop-agreement",
+        "privately-subscribed-standard",
+        "publicly-available-specification",
+        "published-document",
+        "standard",
+        "technical-report",
+        "technical-specification"
+      ],
+      "title": "BsiDocumentType"
+    },
+    "IcsType": {
+      "type": "object",
+      "title": "IcsType"
+    },
+    "StructuredIdentifierType": {
+      "type": "object",
+      "title": "StructuredIdentifierType"
+    },
+    "CcBibliographicItem": {
+      "type": "object",
+      "title": "CcBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "committee": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CcTechnicalCommittee"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "$ref": "#/$defs/CcDocumentType"
+        },
+        "title": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title"
+      ]
+    },
+    "CcDocumentStatus": {
+      "type": "object",
+      "title": "CcDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/CcStatusType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ]
+    },
+    "CcDocumentType": {
+      "enum": [
+        "administrative",
+        "advisory",
+        "amendment",
+        "directive",
+        "guide",
+        "report",
+        "specification",
+        "standard",
+        "technical-corrigendum"
+      ],
+      "title": "CcDocumentType"
+    },
+    "CcStatusType": {
+      "enum": [
+        "committeeDraft",
+        "finalDraft",
+        "proposal",
+        "published",
+        "withdrawn",
+        "workingDraft"
+      ],
+      "title": "CcStatusType"
+    },
+    "CcTechnicalCommittee": {
+      "type": "object",
+      "title": "CcTechnicalCommittee",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/CcTechnicalCommitteeType"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name"
+      ]
+    },
+    "CcTechnicalCommitteeType": {
+      "enum": [
+        "provisional",
+        "technical"
+      ],
+      "title": "CcTechnicalCommitteeType"
+    },
+    "CcsdsBibliographicItem": {
+      "type": "object",
+      "title": "CcsdsBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "technology-area": {
+          "$ref": "#/$defs/TechnologyArea"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TechnologyArea": {
+      "enum": [
+        "CSS",
+        "MOIMS",
+        "SEA",
+        "SIS",
+        "SLS",
+        "SOIS"
+      ],
+      "title": "TechnologyArea"
+    },
+    "CenBibliographicItem": {
+      "type": "object",
+      "title": "CenBibliographicItem"
+    },
+    "CieBibliographicItem": {
+      "type": "object",
+      "title": "CieBibliographicItem"
+    },
+    "BibliographicIndex": {
+      "type": "object",
+      "title": "BibliographicIndex",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibliographicItem"
+          }
+        },
+        "collation": {
+          "$ref": "#/$defs/CollationRules"
+        },
+        "grouping": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GroupingRule"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "BibliographicStyle": {
+      "type": "object",
+      "title": "BibliographicStyle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "index": {
+          "$ref": "#/$defs/BibliographicIndex"
+        },
+        "layout": {
+          "$ref": "#/$defs/LayoutRules"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "index"
+      ]
+    },
+    "CitationScheme": {
+      "type": "object",
+      "title": "CitationScheme",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "system": {
+          "$ref": "#/$defs/CitationSystem"
+        },
+        "disambiguation": {
+          "$ref": "#/$defs/DisambiguationRules"
+        },
+        "nameForm": {
+          "$ref": "#/$defs/NameFormRules"
+        },
+        "locale": {
+          "$ref": "#/$defs/LocalizedStrings"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "system"
+      ]
+    },
+    "CitationStyle": {
+      "type": "object",
+      "title": "CitationStyle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scheme": {
+          "$ref": "#/$defs/CitationScheme"
+        },
+        "templates": {
+          "$ref": "#/$defs/TemplateMap"
+        },
+        "perType": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypeTemplate"
+          }
+        },
+        "sortKey": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SortRule"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "scheme",
+        "templates"
+      ]
+    },
+    "CitationSystem": {
+      "enum": [
+        "implied",
+        "name-date",
+        "named-tag",
+        "numeric",
+        "running-notes"
+      ],
+      "title": "CitationSystem"
+    },
+    "CollationRules": {
+      "type": "object",
+      "title": "CollationRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/$defs/Iso639Code"
+        },
+        "script": {
+          "$ref": "#/$defs/Iso15924Code"
+        },
+        "numericOrder": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DisambiguationRules": {
+      "type": "object",
+      "title": "DisambiguationRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "yearSuffix": {
+          "type": "string"
+        },
+        "suffixSeparator": {
+          "type": "string"
+        },
+        "truncateNamesTo": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "GroupingRule": {
+      "type": "object",
+      "title": "GroupingRule",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "order": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "attribute"
+      ]
+    },
+    "LayoutRules": {
+      "type": "object",
+      "title": "LayoutRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "numbering": {
+          "type": "string"
+        },
+        "indent": {
+          "type": "string"
+        },
+        "hangingIndent": {
+          "type": "boolean"
+        },
+        "groupHeadings": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "LocalizedStrings": {
+      "type": "object",
+      "title": "LocalizedStrings",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "and": {
+          "type": "string"
+        },
+        "others": {
+          "type": "string"
+        },
+        "noDate": {
+          "type": "string"
+        },
+        "noAuthor": {
+          "type": "string"
+        },
+        "in": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string"
+        },
+        "availableAt": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NameFormRules": {
+      "type": "object",
+      "title": "NameFormRules",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "initials": {
+          "type": "boolean"
+        },
+        "givenNameFirst": {
+          "type": "boolean"
+        },
+        "connective": {
+          "type": "string"
+        },
+        "nameSeparator": {
+          "type": "string"
+        },
+        "othersThreshold": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SortRule": {
+      "type": "object",
+      "title": "SortRule",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "attribute": {
+          "type": "string"
+        },
+        "descending": {
+          "type": "boolean"
+        },
+        "languageAware": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "attribute"
+      ]
+    },
+    "TemplateMap": {
+      "type": "object",
+      "title": "TemplateMap",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "citation",
+        "reference"
+      ]
+    },
+    "TypeTemplate": {
+      "type": "object",
+      "title": "TypeTemplate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemType"
+        },
+        "template": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "template"
+      ]
+    },
+    "CsaBibliographicItem": {
+      "type": "object",
+      "title": "CsaBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/CsaDocumentType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "CsaDocumentType": {
+      "enum": [
+        "case-study",
+        "charter",
+        "glossary",
+        "guidance",
+        "policy",
+        "proposal",
+        "report",
+        "standard",
+        "whitepaper"
+      ],
+      "title": "CsaDocumentType"
+    },
+    "EcmaBibliographicItem": {
+      "type": "object",
+      "title": "EcmaBibliographicItem"
+    },
+    "EtsiBibDataExtensionType": {
+      "type": "object",
+      "title": "EtsiBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stage": {
+          "$ref": "#/$defs/EtsiStageType"
+        },
+        "marker": {
+          "$ref": "#/$defs/EtsiMarker"
+        },
+        "frequency": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mandate": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "customCollection": {
+          "$ref": "#/$defs/EtsiCustomCollection"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EtsiBibliographicItem": {
+      "type": "object",
+      "title": "EtsiBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/EtsiDocumentType"
+        },
+        "typeAbbreviation": {
+          "$ref": "#/$defs/EtsiDocumentTypeAbbreviation"
+        },
+        "ext": {
+          "$ref": "#/$defs/EtsiBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "EtsiCustomCollection": {
+      "enum": [
+        "HSs-EMC-cited-in-OJ",
+        "HSs-RED-cited-in-OJ",
+        "HSs-cited-in-OJ",
+        "HSs-not-yet-cited-in-OJ"
+      ],
+      "title": "EtsiCustomCollection"
+    },
+    "EtsiDocumentType": {
+      "enum": [
+        "etsi-guide",
+        "etsi-standard",
+        "etsi-technical-report",
+        "european-standard",
+        "european-telecommunication-standard",
+        "group-report",
+        "group-specification",
+        "gsm-technical-specification",
+        "interim-european-telecommunication-standard",
+        "norme-europeenne-de-telecommunication",
+        "special-report",
+        "technical-basis-for-regulation",
+        "technical-committee-reference-technical-report",
+        "technical-report",
+        "technical-specification"
+      ],
+      "title": "EtsiDocumentType"
+    },
+    "EtsiDocumentTypeAbbreviation": {
+      "enum": [
+        "EG",
+        "EN",
+        "ES",
+        "ETR",
+        "ETS",
+        "GR",
+        "GS",
+        "GTS",
+        "I-ETS",
+        "NET",
+        "SR",
+        "TBR",
+        "TCRTR",
+        "TR",
+        "TS"
+      ],
+      "title": "EtsiDocumentTypeAbbreviation"
+    },
+    "EtsiMarker": {
+      "enum": [
+        "Current",
+        "Superseded"
+      ],
+      "title": "EtsiMarker"
+    },
+    "EtsiStageType": {
+      "enum": [
+        "EN-approval",
+        "ES-approval",
+        "Historical",
+        "Published",
+        "SG-approval",
+        "Withdrawn"
+      ],
+      "title": "EtsiStageType"
+    },
+    "Ccs": {
+      "type": "object",
+      "title": "Ccs",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "code"
+      ]
+    },
+    "GbBibliographicItem": {
+      "type": "object",
+      "title": "GbBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "committee": {
+          "$ref": "#/$defs/GbTechnicalCommittee"
+        },
+        "gbtype": {
+          "$ref": "#/$defs/GbStandardType"
+        },
+        "topic": {
+          "$ref": "#/$defs/GbStandardTopic"
+        },
+        "ccs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Ccs"
+          },
+          "minItems": 1
+        },
+        "planNumber": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/GbDocumentType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "gbtype",
+        "type"
+      ]
+    },
+    "GbDocumentType": {
+      "enum": [
+        "recommendation",
+        "standard"
+      ],
+      "title": "GbDocumentType"
+    },
+    "GbLocalCodes": {
+      "enum": [],
+      "title": "GbLocalCodes"
+    },
+    "GbProfessionCodes": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "G",
+        "J",
+        "K",
+        "N",
+        "Q",
+        "Y"
+      ],
+      "title": "GbProfessionCodes"
+    },
+    "GbSectorCodes": {
+      "enum": [
+        "AQ_production_safety",
+        "BB_packaging",
+        "CB_ships",
+        "CH_surveying",
+        "CJ_town_construction",
+        "CY_news_publishing",
+        "DA_archiving",
+        "DB_seismology",
+        "DL_electricity",
+        "DZ_geological",
+        "EJ_nuclear_industry",
+        "FZ_textile",
+        "GA_public_safety",
+        "GH_supply_marketing",
+        "GM_cryptography",
+        "GY_media",
+        "HB_aviation",
+        "HG_chemical_industry",
+        "HJ_environment_protection",
+        "HS_customs",
+        "HY_oceanic",
+        "JB_mechanical",
+        "JC_building_materials",
+        "JG_construction_industry",
+        "JR_financial",
+        "JT_traffic",
+        "JY_education",
+        "LB_tourism",
+        "LD_work_safety",
+        "LS_food",
+        "LY_forestry",
+        "MN_civil_aviation",
+        "MT_coal",
+        "MZ_civil_affairs",
+        "NY_agriculture",
+        "QB_light_industry",
+        "QC_automotive",
+        "QJ_aerospace",
+        "QX_meteorological",
+        "SB_business",
+        "SC_aquatic",
+        "SH_petrochemical",
+        "SJ_electronics",
+        "SL_water_resources",
+        "SN_inspection",
+        "SY_natural_gas",
+        "TB_rail_transport",
+        "TD_land_management",
+        "TJ_railway_traffic",
+        "TY_sports",
+        "WB_materials_management",
+        "WH_culture",
+        "WJ_ordnance",
+        "WM_foreign_trade",
+        "WS_health",
+        "WW_cultural_relics",
+        "XB_rare_earth",
+        "YB_ferrous_metallurgy",
+        "YC_tobacco",
+        "YD_communication",
+        "YS_nonferrous_metallurgy",
+        "YY_medicine",
+        "YZ_postal",
+        "ZY_chinese_medicine"
+      ],
+      "title": "GbSectorCodes"
+    },
+    "GbStandardEnterprisePrefix": {
+      "type": "object",
+      "title": "GbStandardEnterprisePrefix"
+    },
+    "GbStandardLocalPrefix": {
+      "type": "object",
+      "title": "GbStandardLocalPrefix"
+    },
+    "GbStandardMandate": {
+      "enum": [
+        "guideline",
+        "mandatory",
+        "recommended"
+      ],
+      "title": "GbStandardMandate"
+    },
+    "GbStandardNationalPrefix": {
+      "enum": [
+        "GB",
+        "GB/T",
+        "GB/Z",
+        "GBW",
+        "GBZ",
+        "GBn",
+        "GHZB",
+        "GJB",
+        "GSB",
+        "GWKB",
+        "GWPB",
+        "JJF",
+        "JJG"
+      ],
+      "title": "GbStandardNationalPrefix"
+    },
+    "GbStandardPrefix": {
+      "type": "object",
+      "title": "GbStandardPrefix"
+    },
+    "GbStandardProfessionalPrefix": {
+      "type": "object",
+      "title": "GbStandardProfessionalPrefix"
+    },
+    "GbStandardScope": {
+      "enum": [
+        "enterprise",
+        "local",
+        "national",
+        "professional",
+        "sector",
+        "social_group"
+      ],
+      "title": "GbStandardScope"
+    },
+    "GbStandardSectorPrefix": {
+      "type": "object",
+      "title": "GbStandardSectorPrefix"
+    },
+    "GbStandardSocialPrefix": {
+      "type": "object",
+      "title": "GbStandardSocialPrefix"
+    },
+    "GbStandardTopic": {
+      "enum": [
+        "basic",
+        "engineering_and_construction",
+        "environment_protection",
+        "health_and_safety",
+        "management_techniques",
+        "method",
+        "others",
+        "product"
+      ],
+      "title": "GbStandardTopic"
+    },
+    "GbStandardType": {
+      "type": "object",
+      "title": "GbStandardType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "scope": {
+          "$ref": "#/$defs/GbStandardScope"
+        },
+        "prefix": {
+          "$ref": "#/$defs/GbStandardPrefix"
+        },
+        "mandate": {
+          "$ref": "#/$defs/GbStandardMandate"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "prefix",
+        "mandate"
+      ]
+    },
+    "GbTechnicalCommittee": {
+      "type": "object",
+      "title": "GbTechnicalCommittee",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/GbTechnicalCommitteeType"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "name"
+      ]
+    },
+    "GbTechnicalCommitteeType": {
+      "enum": [
+        "provisional",
+        "technical"
+      ],
+      "title": "GbTechnicalCommitteeType"
+    },
+    "IanaBibliographicItem": {
+      "type": "object",
+      "title": "IanaBibliographicItem"
+    },
+    "IecBibDataExtensionType": {
+      "type": "object",
+      "title": "IecBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "horizontal": {
+          "type": "boolean"
+        },
+        "stageName": {
+          "type": "string"
+        },
+        "updatesDocumentType": {
+          "$ref": "#/$defs/IecDocumentType"
+        },
+        "fastTrack": {
+          "type": "boolean"
+        },
+        "priceCode": {
+          "type": "string"
+        },
+        "function": {
+          "$ref": "#/$defs/IecFunction"
+        },
+        "accessibilityColorInside": {
+          "type": "boolean"
+        },
+        "cenProcessing": {
+          "type": "boolean"
+        },
+        "secretary": {
+          "type": "string"
+        },
+        "interestToCommittees": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IecBibliographicItem": {
+      "type": "object",
+      "title": "IecBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/IecDocumentType"
+        },
+        "subtype": {
+          "$ref": "#/$defs/IecDocumentSubtype"
+        },
+        "ext": {
+          "$ref": "#/$defs/IecBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "IecDocumentSubtype": {
+      "enum": [
+        "code-of-practice",
+        "method-of-test",
+        "specification",
+        "vocabulary"
+      ],
+      "title": "IecDocumentSubtype"
+    },
+    "IecDocumentType": {
+      "enum": [
+        "guide",
+        "industry-technical-agreement",
+        "international-standard",
+        "international-workshop-agreement",
+        "publicly-available-specification",
+        "system-reference-deliverable",
+        "technical-report",
+        "technical-specification"
+      ],
+      "title": "IecDocumentType"
+    },
+    "IecFunction": {
+      "enum": [
+        "emc",
+        "environment",
+        "quality-assurance",
+        "safety"
+      ],
+      "title": "IecFunction"
+    },
+    "IeeeBibliographicDate": {
+      "type": "object",
+      "title": "IeeeBibliographicDate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "#/$defs/Iso8601Date"
+        },
+        "type": {
+          "$ref": "#/$defs/IeeeBibliographicDateType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "type"
+      ]
+    },
+    "IeeeBibliographicDateType": {
+      "enum": [
+        "approval",
+        "epub-publication",
+        "last-inspect",
+        "original-publication"
+      ],
+      "title": "IeeeBibliographicDateType"
+    },
+    "IeeeBibliographicItem": {
+      "type": "object",
+      "title": "IeeeBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/IeeeDocumentType"
+        },
+        "subtype": {
+          "$ref": "#/$defs/IeeeDocumentSubType"
+        },
+        "docidentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeDocumentIdentifier"
+          }
+        },
+        "standardNumber": {
+          "type": "string"
+        },
+        "standardFamily": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeStandardFamily"
+          }
+        },
+        "idDoi": {
+          "type": "string"
+        },
+        "idIsbn": {
+          "$ref": "#/$defs/IsbnNumber"
+        },
+        "idAms": {
+          "type": "string"
+        },
+        "idIdams": {
+          "type": "string"
+        },
+        "productNumber": {
+          "type": "string"
+        },
+        "sponsoringCommittee": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeCommittee"
+          }
+        },
+        "holdStatus": {
+          "$ref": "#/$defs/IeeeHoldStatus"
+        },
+        "dates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeBibliographicDate"
+          }
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeDocumentRelation"
+          }
+        },
+        "standardPackage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeStandardPackage"
+          }
+        },
+        "icsCode": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeKeyword"
+          }
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeTopic"
+          }
+        },
+        "openAccess": {
+          "type": "boolean"
+        },
+        "copyrightAssignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeCopyrightAssignment"
+          }
+        },
+        "file": {
+          "$ref": "#/$defs/IeeeDocumentFileSpecification"
+        },
+        "pageNum": {
+          "$ref": "#/$defs/IeeeDocumentPageNum"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "subtype",
+        "standardNumber",
+        "holdStatus",
+        "openAccess"
+      ]
+    },
+    "IeeeCommittee": {
+      "type": "object",
+      "title": "IeeeCommittee",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "IeeeCopyrightAssignment": {
+      "type": "object",
+      "title": "IeeeCopyrightAssignment",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "holder": {
+          "$ref": "#/$defs/IeeeCopyrightHolder"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "year",
+        "holder"
+      ]
+    },
+    "IeeeCopyrightHolder": {
+      "enum": [
+        "AIEE",
+        "ANSI",
+        "ANSI/IEEE",
+        "ASA",
+        "IEEE",
+        "IEEE/AIEE",
+        "IEEE/ANSI",
+        "IEEE/ASA",
+        "IEEE/ASHRAE",
+        "IEEE/ASTM",
+        "IEEE/CSA",
+        "IEEE/IEC",
+        "IEEE/ISO",
+        "IEEE/ISO/IEC",
+        "IEEE/NACE",
+        "IEEE/NSF",
+        "IRE",
+        "IRE/IEEE",
+        "ISO/IEC/IEEE"
+      ],
+      "title": "IeeeCopyrightHolder"
+    },
+    "IeeeDocumentFileSpecification": {
+      "type": "object",
+      "title": "IeeeDocumentFileSpecification"
+    },
+    "IeeeDocumentIdentifier": {
+      "type": "object",
+      "title": "IeeeDocumentIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "projectNumber": {
+          "type": "integer"
+        },
+        "partNumber": {
+          "type": "integer"
+        },
+        "subpartNumber": {
+          "type": "integer"
+        },
+        "draftNumber": {
+          "type": "integer"
+        },
+        "amendmentNumber": {
+          "type": "integer"
+        },
+        "corrigendumNumber": {
+          "type": "integer"
+        },
+        "revisionNumber": {
+          "type": "integer"
+        },
+        "conformanceNumber": {
+          "type": "integer"
+        },
+        "firstYear": {
+          "type": "integer"
+        },
+        "firstMonth": {
+          "type": "integer"
+        },
+        "year": {
+          "type": "integer"
+        },
+        "month": {
+          "type": "integer"
+        },
+        "modifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IeeeStandardModifier"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "IeeeDocumentPageNum": {
+      "type": "object",
+      "title": "IeeeDocumentPageNum",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "firstPage": {
+          "type": "integer"
+        },
+        "lastPage": {
+          "type": "integer"
+        },
+        "range": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "firstPage",
+        "lastPage",
+        "range"
+      ]
+    },
+    "IeeeDocumentRelation": {
+      "type": "object",
+      "title": "IeeeDocumentRelation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "productNumber": {
+          "type": "string"
+        },
+        "relationshipDate": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "type": {
+          "$ref": "#/$defs/IeeeDocumentRelationType"
+        },
+        "url": {
+          "$ref": "#/$defs/Uri"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "productNumber",
+        "relationshipDate",
+        "type",
+        "url"
+      ]
+    },
+    "IeeeDocumentRelationType": {
+      "enum": [
+        "adoptionOf",
+        "amendmentOf",
+        "corrigendumOf",
+        "interpretationOf",
+        "reaffirmedAt",
+        "revisionOf",
+        "supersededBy",
+        "supplementOf",
+        "withdrawnAt"
+      ],
+      "title": "IeeeDocumentRelationType"
+    },
+    "IeeeDocumentSubType": {
+      "enum": [
+        "standard"
+      ],
+      "title": "IeeeDocumentSubType"
+    },
+    "IeeeDocumentType": {
+      "enum": [
+        "guide",
+        "other",
+        "recommended-practice",
+        "redline",
+        "standard",
+        "whitepaper"
+      ],
+      "title": "IeeeDocumentType"
+    },
+    "IeeeHoldStatus": {
+      "enum": [
+        "Hold",
+        "Publish"
+      ],
+      "title": "IeeeHoldStatus"
+    },
+    "IeeeKeyword": {
+      "type": "object",
+      "title": "IeeeKeyword",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "terms": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/IeeeKeywordType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "terms",
+        "type"
+      ]
+    },
+    "IeeeKeywordType": {
+      "enum": [
+        "AuthorFree",
+        "IEEE",
+        "IEEEFree"
+      ],
+      "title": "IeeeKeywordType"
+    },
+    "IeeePubStatus": {
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "title": "IeeePubStatus"
+    },
+    "IeeeStandardBundle": {
+      "type": "object",
+      "title": "IeeeStandardBundle"
+    },
+    "IeeeStandardBundleType": {
+      "enum": [
+        "Mandatory",
+        "Suggested"
+      ],
+      "title": "IeeeStandardBundleType"
+    },
+    "IeeeStandardFamily": {
+      "type": "object",
+      "title": "IeeeStandardFamily"
+    },
+    "IeeeStandardModifier": {
+      "enum": [
+        "Approved",
+        "Draft",
+        "Redline",
+        "Reserved",
+        "Superseded",
+        "Withdrawn"
+      ],
+      "title": "IeeeStandardModifier"
+    },
+    "IeeeStandardPackage": {
+      "enum": [
+        "iel",
+        "none",
+        "stdselect"
+      ],
+      "title": "IeeeStandardPackage"
+    },
+    "IeeeStandardStatus": {
+      "enum": [
+        "active",
+        "inactive",
+        "superseded"
+      ],
+      "title": "IeeeStandardStatus"
+    },
+    "IeeeTopic": {
+      "type": "object",
+      "title": "IeeeTopic"
+    },
+    "IsbnNumber": {
+      "type": "object",
+      "title": "IsbnNumber"
+    },
+    "IsbnNumberScheme": {
+      "enum": [
+        "Electronic",
+        "Historical",
+        "New-2005",
+        "Online",
+        "Paper"
+      ],
+      "title": "IsbnNumberScheme"
+    },
+    "IsbnNumberMediaType": {
+      "enum": [
+        "Electronic",
+        "Historical",
+        "New-2005",
+        "Online",
+        "Paper"
+      ],
+      "title": "IsbnNumberMediaType"
+    },
+    "IetfArea": {
+      "enum": [
+        "Applications-and-Real-Time",
+        "General",
+        "Internet",
+        "Operations-and-Management",
+        "Routing",
+        "Security",
+        "Transport",
+        "art",
+        "gen",
+        "int",
+        "ops",
+        "rtg",
+        "sec",
+        "tsv"
+      ],
+      "title": "IetfArea"
+    },
+    "IetfBibDataExtensionType": {
+      "type": "object",
+      "title": "IetfBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "area": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IetfArea"
+          }
+        },
+        "stream": {
+          "$ref": "#/$defs/IetfStream"
+        },
+        "ipr": {
+          "type": "string"
+        },
+        "consensus": {
+          "type": "string"
+        },
+        "indexInclude": {
+          "type": "string"
+        },
+        "iprExtract": {
+          "type": "string"
+        },
+        "sortRefs": {
+          "type": "string"
+        },
+        "symRefs": {
+          "type": "string"
+        },
+        "tocInclude": {
+          "type": "string"
+        },
+        "tocDepth": {
+          "type": "string"
+        },
+        "showOnFrontPage": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IetfBibliographicItem": {
+      "type": "object",
+      "title": "IetfBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/IetfDocumentType"
+        },
+        "ext": {
+          "$ref": "#/$defs/IetfBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "IetfDocumentType": {
+      "enum": [
+        "internet-draft",
+        "rfc"
+      ],
+      "title": "IetfDocumentType"
+    },
+    "IetfStream": {
+      "enum": [
+        "Editorial",
+        "IAB",
+        "IETF",
+        "IRTF",
+        "Independent",
+        "Legacy"
+      ],
+      "title": "IetfStream"
+    },
+    "IhoBibliographicDate": {
+      "type": "object",
+      "title": "IhoBibliographicDate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/IhoBibliographicDateType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "IhoBibliographicDateType": {
+      "enum": [
+        "effective",
+        "superseded"
+      ],
+      "title": "IhoBibliographicDateType"
+    },
+    "IhoBibliographicItem": {
+      "type": "object",
+      "title": "IhoBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "projectGroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IhoProjectTeam"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "$ref": "#/$defs/IhoDocumentType"
+        },
+        "title": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "series": {
+          "$ref": "#/$defs/IhoPubSeriesType"
+        },
+        "dates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IhoBibliographicDate"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IhoDocumentRelation"
+          }
+        },
+        "documentStatus": {
+          "$ref": "#/$defs/IhoDocumentStatus"
+        },
+        "commentPeriod": {
+          "$ref": "#/$defs/IhoCommentPeriod"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "series",
+        "documentStatus"
+      ]
+    },
+    "IhoCommentPeriod": {
+      "type": "object",
+      "title": "IhoCommentPeriod",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "from"
+      ]
+    },
+    "IhoCommittee": {
+      "enum": [
+        "hssc",
+        "ircc"
+      ],
+      "title": "IhoCommittee"
+    },
+    "IhoDocumentCitation": {
+      "type": "object",
+      "title": "IhoDocumentCitation"
+    },
+    "IhoDocumentRelation": {
+      "type": "object",
+      "title": "IhoDocumentRelation"
+    },
+    "IhoDocumentRelationType": {
+      "enum": [
+        "supersededBy",
+        "supersedes"
+      ],
+      "title": "IhoDocumentRelationType"
+    },
+    "IhoDocumentStatus": {
+      "type": "object",
+      "title": "IhoDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/IhoDocumentStatusType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ]
+    },
+    "IhoDocumentStatusType": {
+      "enum": [
+        "draft-development",
+        "draft-implementation",
+        "draft-proposal",
+        "draft-testing",
+        "in-force",
+        "retired"
+      ],
+      "title": "IhoDocumentStatusType"
+    },
+    "IhoDocumentType": {
+      "enum": [
+        "best-practices",
+        "directives",
+        "legal",
+        "policy-and-procedures",
+        "proposal",
+        "regulation",
+        "regulations",
+        "report",
+        "resolution",
+        "resolutions",
+        "specification",
+        "standard",
+        "supporting-document"
+      ],
+      "title": "IhoDocumentType"
+    },
+    "IhoProjectTeam": {
+      "type": "object",
+      "title": "IhoProjectTeam",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "committee": {
+          "$ref": "#/$defs/IhoCommittee"
+        },
+        "workgroup": {
+          "$ref": "#/$defs/IhoWorkingGroup"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "committee",
+        "workgroup"
+      ]
+    },
+    "IhoPubSeriesEnum": {
+      "enum": [
+        "iho-bathymetric",
+        "iho-capacity",
+        "iho-misc",
+        "iho-resolutions",
+        "iho-standards"
+      ],
+      "title": "IhoPubSeriesEnum"
+    },
+    "IhoPubSeriesType": {
+      "type": "object",
+      "title": "IhoPubSeriesType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/IhoPubSeriesEnum"
+        },
+        "abbreviation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title"
+      ]
+    },
+    "IhoWorkingGroup": {
+      "type": "object",
+      "title": "IhoWorkingGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "IecDocumentCategory": {
+      "enum": [
+        "emc",
+        "environment",
+        "quality-assurance",
+        "safety"
+      ],
+      "title": "IecDocumentCategory"
+    },
+    "IsoBibDataExtensionType": {
+      "type": "object",
+      "title": "IsoBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "horizontal": {
+          "type": "boolean"
+        },
+        "editorialGroup": {
+          "$ref": "#/$defs/IsoProjectGroup"
+        },
+        "approval": {
+          "$ref": "#/$defs/IsoProjectGroup"
+        },
+        "stageName": {
+          "$ref": "#/$defs/StageName"
+        },
+        "category": {
+          "$ref": "#/$defs/IecDocumentCategory"
+        },
+        "updatesDocumentType": {
+          "$ref": "#/$defs/DocumentType"
+        },
+        "fast-track": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "editorialGroup"
+      ]
+    },
+    "IsoBibliographicItem": {
+      "type": "object",
+      "title": "IsoBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "docIdentifier": {
+          "$ref": "#/$defs/IsoDocumentId"
+        },
+        "title": {
+          "$ref": "#/$defs/IsoLocalizedTitle"
+        },
+        "type": {
+          "$ref": "#/$defs/IsoDocumentType"
+        },
+        "status": {
+          "$ref": "#/$defs/IsoDocumentStatus"
+        },
+        "source": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedUri"
+          }
+        },
+        "abstract": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "ext": {
+          "$ref": "#/$defs/IsoBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "docIdentifier",
+        "title",
+        "type",
+        "status",
+        "ext"
+      ]
+    },
+    "IsoDocumentId": {
+      "type": "object",
+      "title": "IsoDocumentId",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "tcDocumentNumber": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "projectNumber": {
+          "type": "integer"
+        },
+        "partNumber": {
+          "type": "integer"
+        },
+        "subpartNumber": {
+          "type": "integer"
+        },
+        "amendmentNumber": {
+          "type": "integer"
+        },
+        "corrigendumNumber": {
+          "type": "integer"
+        },
+        "addendumNumber": {
+          "type": "integer"
+        },
+        "originalyear": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsoDocumentStageCodes": {
+      "enum": [],
+      "title": "IsoDocumentStageCodes"
+    },
+    "IsoDocumentStatus": {
+      "type": "object",
+      "title": "IsoDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stage": {
+          "$ref": "#/$defs/IsoDocumentStageCodes"
+        },
+        "stageAbbreviation": {
+          "type": "string"
+        },
+        "substage": {
+          "$ref": "#/$defs/IsoDocumentSubstageCodes"
+        },
+        "substageAbbreviation": {
+          "type": "string"
+        },
+        "iteration": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "stage"
+      ]
+    },
+    "IsoDocumentSubstageCodes": {
+      "enum": [],
+      "title": "IsoDocumentSubstageCodes"
+    },
+    "IsoDocumentType": {
+      "enum": [
+        "addendum",
+        "amendment",
+        "committee-document",
+        "directive",
+        "extract",
+        "guide",
+        "international-standard",
+        "international-workshop-agreement",
+        "publicly-available-specification",
+        "recommendation",
+        "supplement",
+        "technical-corrigendum",
+        "technical-report",
+        "technical-specification"
+      ],
+      "title": "IsoDocumentType"
+    },
+    "IsoLocalizedTitle": {
+      "type": "object",
+      "title": "IsoLocalizedTitle",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "titleIntro": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "titleMain": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "titlePart": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "titleMain"
+      ]
+    },
+    "IsoProjectGroup": {
+      "type": "object",
+      "title": "IsoProjectGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "agency": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "technicalCommittee": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IsoSubGroup"
+          },
+          "minItems": 1
+        },
+        "subcommittee": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IsoSubGroup"
+          }
+        },
+        "workgroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IsoSubGroup"
+          }
+        },
+        "secretariat": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "IsoSubGroup": {
+      "type": "object",
+      "title": "IsoSubGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "StageName": {
+      "type": "object",
+      "title": "StageName",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "abbreviation": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "StandardBibDataExtensionType": {
+      "type": "object",
+      "title": "StandardBibDataExtensionType"
+    },
+    "ItuAapStatusCode": {
+      "enum": [
+        "a",
+        "ac",
+        "aj",
+        "ar",
+        "at",
+        "c",
+        "lc",
+        "lj",
+        "na",
+        "ri",
+        "sg",
+        "tap"
+      ],
+      "title": "ItuAapStatusCode"
+    },
+    "ItuApprovalProcess": {
+      "enum": [
+        "aap",
+        "tap"
+      ],
+      "title": "ItuApprovalProcess"
+    },
+    "ItuApprovalProcessStage": {
+      "type": "object",
+      "title": "ItuApprovalProcessStage",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "process": {
+          "$ref": "#/$defs/ItuApprovalProcess"
+        },
+        "tapStatusCode": {
+          "$ref": "#/$defs/ItuTapStatusCode"
+        },
+        "aapStatusCode": {
+          "$ref": "#/$defs/ItuAapStatusCode"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "process"
+      ]
+    },
+    "ItuBibliographicItem": {
+      "type": "object",
+      "title": "ItuBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/ItuDocumentType"
+        },
+        "documentIdentifier": {
+          "$ref": "#/$defs/ItuDocumentId"
+        },
+        "provisionalName": {
+          "$ref": "#/$defs/DocumentIdentifier"
+        },
+        "title": {
+          "$ref": "#/$defs/TypedTitleString"
+        },
+        "uri": {
+          "$ref": "#/$defs/Uri"
+        },
+        "documentStatus": {
+          "$ref": "#/$defs/ItuDocumentStatus"
+        },
+        "version": {
+          "$ref": "#/$defs/VersionInfo"
+        },
+        "projectStatus": {
+          "$ref": "#/$defs/ItuRecommendationStatus"
+        },
+        "keyword": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "editorialGroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ItuProjectGroup"
+          },
+          "minItems": 1
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SeriesType"
+          }
+        },
+        "ipnoticereceived": {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "meeting": {
+          "type": "string"
+        },
+        "meeting-date": {
+          "$ref": "#/$defs/BibliographicDate"
+        },
+        "intended-type": {
+          "$ref": "#/$defs/ItuIntendedDate"
+        },
+        "source": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title",
+        "uri",
+        "version"
+      ]
+    },
+    "ItuBureau": {
+      "enum": [
+        "D",
+        "R",
+        "T"
+      ],
+      "title": "ItuBureau"
+    },
+    "ItuDocumentId": {
+      "type": "object",
+      "title": "ItuDocumentId",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "series": {
+          "$ref": "#/$defs/ItuSerie"
+        },
+        "code": {
+          "type": "integer"
+        },
+        "annex": {
+          "type": "string"
+        },
+        "amendment": {
+          "type": "integer"
+        },
+        "corrigendum": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "series",
+        "code"
+      ]
+    },
+    "ItuDocumentStatus": {
+      "enum": [
+        "draft",
+        "in-force",
+        "in-force-prepublished",
+        "superseded",
+        "withdrawn"
+      ],
+      "title": "ItuDocumentStatus"
+    },
+    "ItuDocumentType": {
+      "enum": [
+        "contribution",
+        "focus-group",
+        "handbook",
+        "implementers-guide",
+        "joint-itu-iso-iec",
+        "question",
+        "recommendation",
+        "recommendation-amendment",
+        "recommendation-annex",
+        "recommendation-corrigendum",
+        "recommendation-errata",
+        "recommendation-supplement",
+        "resolution",
+        "service-publication",
+        "technical-paper",
+        "technical-report"
+      ],
+      "title": "ItuDocumentType"
+    },
+    "ItuGroup": {
+      "type": "object",
+      "title": "ItuGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/FormattedString"
+        },
+        "type": {
+          "$ref": "#/$defs/ItuGroupType"
+        },
+        "acronym": {
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/$defs/ItuStudyPeriod"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "ItuGroupType": {
+      "enum": [
+        "study-group",
+        "tsag",
+        "work-group"
+      ],
+      "title": "ItuGroupType"
+    },
+    "ItuIntendedDate": {
+      "enum": [
+        "C",
+        "R",
+        "TD"
+      ],
+      "title": "ItuIntendedDate"
+    },
+    "ItuProjectGroup": {
+      "type": "object",
+      "title": "ItuProjectGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "bureau": {
+          "$ref": "#/$defs/ItuBureau"
+        },
+        "group": {
+          "$ref": "#/$defs/ItuGroup"
+        },
+        "subgroup": {
+          "$ref": "#/$defs/ItuGroup"
+        },
+        "workgroup": {
+          "$ref": "#/$defs/ItuGroup"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "bureau"
+      ]
+    },
+    "ItuRecommendationStatus": {
+      "type": "object",
+      "title": "ItuRecommendationStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "approvalStage": {
+          "$ref": "#/$defs/ItuApprovalProcessStage"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to"
+      ]
+    },
+    "ItuSerie": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "title": "ItuSerie"
+    },
+    "ItuStudyPeriod": {
+      "type": "object",
+      "title": "ItuStudyPeriod",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "yearStart": {
+          "type": "integer"
+        },
+        "yearEnd": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "yearStart"
+      ]
+    },
+    "ItuTapStatusCode": {
+      "enum": [
+        "determined",
+        "in-force"
+      ],
+      "title": "ItuTapStatusCode"
+    },
+    "JisBibDataExtensionType": {
+      "type": "object",
+      "title": "JisBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stageName": {
+          "type": "string"
+        },
+        "stageNameAbbreviation": {
+          "type": "string"
+        },
+        "structuredIdentifier": {
+          "$ref": "#/$defs/JisStructuredIdentifier"
+        }
+      },
+      "additionalProperties": false
+    },
+    "JisBibliographicItem": {
+      "type": "object",
+      "title": "JisBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/JisDocumentType"
+        },
+        "ext": {
+          "$ref": "#/$defs/JisBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "JisDocumentType": {
+      "enum": [
+        "amendment",
+        "japanese-industrial-standard",
+        "technical-report",
+        "technical-specification"
+      ],
+      "title": "JisDocumentType"
+    },
+    "JisStructuredIdentifier": {
+      "type": "object",
+      "title": "JisStructuredIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "projectNumber": {
+          "type": "string"
+        },
+        "part": {
+          "type": "integer"
+        },
+        "subpart": {
+          "type": "integer"
+        },
+        "amendment": {
+          "type": "integer"
+        },
+        "corrigendum": {
+          "type": "integer"
+        },
+        "origyr": {
+          "type": "string"
+        },
+        "tcDocumentNumber": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "projectNumber"
+      ]
+    },
+    "M3aawgBibliographicItem": {
+      "type": "object",
+      "title": "M3aawgBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/M3aawgDocumentType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "M3aawgDocumentType": {
+      "enum": [
+        "case-study",
+        "charter",
+        "glossary",
+        "guidance",
+        "policy",
+        "proposal",
+        "report",
+        "standard",
+        "whitepaper"
+      ],
+      "title": "M3aawgDocumentType"
+    },
+    "MpfaBibliographicItem": {
+      "type": "object",
+      "title": "MpfaBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "schemeName": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/MpfaDocStatus"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "schemeName",
+        "status"
+      ]
+    },
+    "MpfaDocStatus": {
+      "enum": [
+        "approval_draft",
+        "committee_draft",
+        "final_draft",
+        "internal_draft",
+        "published",
+        "withdrawn",
+        "working_draft"
+      ],
+      "title": "MpfaDocStatus"
+    },
+    "NistBibliographicDate": {
+      "type": "object",
+      "title": "NistBibliographicDate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/NistBibliographicDateType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "NistBibliographicDateType": {
+      "enum": [
+        "abandoned",
+        "superseded"
+      ],
+      "title": "NistBibliographicDateType"
+    },
+    "NistBibliographicItem": {
+      "type": "object",
+      "title": "NistBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemType"
+        },
+        "documentIdentifier": {
+          "$ref": "#/$defs/NistDocumentId"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          },
+          "minItems": 1
+        },
+        "subtitle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "short-title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "short-subtitle": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "document_class_title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FormattedString"
+          }
+        },
+        "link": {
+          "$ref": "#/$defs/TypedUri"
+        },
+        "doi": {
+          "$ref": "#/$defs/TypedUri"
+        },
+        "dates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NistBibliographicDate"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NistDocumentRelation"
+          }
+        },
+        "docemail": {
+          "$ref": "#/$defs/TypedUri"
+        },
+        "series": {
+          "$ref": "#/$defs/NistPubSeriesType"
+        },
+        "documentStatus": {
+          "$ref": "#/$defs/NistDocumentStatus"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "keyword": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "commentPeriod": {
+          "$ref": "#/$defs/NistCommentPeriod"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "documentIdentifier",
+        "link",
+        "doi",
+        "series",
+        "revision"
+      ]
+    },
+    "NistCommentPeriod": {
+      "type": "object",
+      "title": "NistCommentPeriod",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "extended": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "from"
+      ]
+    },
+    "NistDocumentId": {
+      "type": "object",
+      "title": "NistDocumentId",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "NistDocumentRelation": {
+      "type": "object",
+      "title": "NistDocumentRelation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/NistDocumentRelationType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "NistDocumentRelationType": {
+      "enum": [
+        "obsoletedBy",
+        "supersededBy",
+        "supersedes"
+      ],
+      "title": "NistDocumentRelationType"
+    },
+    "NistDocumentStatus": {
+      "type": "object",
+      "title": "NistDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stage": {
+          "$ref": "#/$defs/NistDocumentStatusType"
+        },
+        "iteration": {
+          "type": "string"
+        },
+        "substage": {
+          "$ref": "#/$defs/NistDocumentSubstageType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "stage"
+      ]
+    },
+    "NistDocumentStatusType": {
+      "enum": [
+        "draft-internal",
+        "draft-prelim",
+        "draft-public",
+        "draft-wip",
+        "final",
+        "final-review"
+      ],
+      "title": "NistDocumentStatusType"
+    },
+    "NistDocumentSubstageType": {
+      "enum": [
+        "active",
+        "retired",
+        "withdrawn"
+      ],
+      "title": "NistDocumentSubstageType"
+    },
+    "NistPubSeriesEnum": {
+      "enum": [
+        "building-science",
+        "csrc-book",
+        "csrc-building-block",
+        "csrc-use-case",
+        "csrc-white-paper",
+        "itl-bulletin",
+        "jpcrd",
+        "letter-circular",
+        "nist-ams",
+        "nist-fips",
+        "nist-gcr",
+        "nist-hb",
+        "nist-jres",
+        "nist-monograph",
+        "nist-ncstar",
+        "nist-nsrds",
+        "nist-sp",
+        "nist-tn",
+        "nistir",
+        "other",
+        "product-standards"
+      ],
+      "title": "NistPubSeriesEnum"
+    },
+    "NistPubSeriesType": {
+      "type": "object",
+      "title": "NistPubSeriesType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "$ref": "#/$defs/NistPubSeriesEnum"
+        },
+        "abbreviation": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title"
+      ]
+    },
+    "NistTitle": {
+      "type": "object",
+      "title": "NistTitle"
+    },
+    "OasisBibliographicItem": {
+      "type": "object",
+      "title": "OasisBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "technology-area": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TechnologyArea"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "OgcBibliographicItem": {
+      "type": "object",
+      "title": "OgcBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "projectGroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OgcProjectGroup"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "$ref": "#/$defs/OgcDocumentType"
+        },
+        "subtype": {
+          "$ref": "#/$defs/OgcDocumentSubType"
+        },
+        "title": {
+          "$ref": "#/$defs/FormattedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "title"
+      ]
+    },
+    "OgcCommittee": {
+      "enum": [
+        "planning",
+        "strategic-member-advisory",
+        "technical"
+      ],
+      "title": "OgcCommittee"
+    },
+    "OgcDocumentStatus": {
+      "type": "object",
+      "title": "OgcDocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/OgcStatusType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ]
+    },
+    "OgcDocumentSubType": {
+      "enum": [
+        "conceptual-model",
+        "conceptual-model-and-encoding",
+        "conceptual-model-and-implementation",
+        "encoding",
+        "extension",
+        "general",
+        "implementation",
+        "profile",
+        "profile-with-extension",
+        "test-suite"
+      ],
+      "title": "OgcDocumentSubType"
+    },
+    "OgcDocumentType": {
+      "enum": [
+        "abstract-specification-topic",
+        "best-practice",
+        "change-request-supporting-document",
+        "community-practice",
+        "community-standard",
+        "discussion-paper",
+        "draft-standard",
+        "engineering-report",
+        "other",
+        "policy",
+        "reference-model",
+        "release-notes",
+        "standard",
+        "test-suite",
+        "user-guide",
+        "white-paper"
+      ],
+      "title": "OgcDocumentType"
+    },
+    "OgcProjectGroup": {
+      "type": "object",
+      "title": "OgcProjectGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "committee": {
+          "$ref": "#/$defs/OgcCommittee"
+        },
+        "subcommittee": {
+          "$ref": "#/$defs/OgcSubGroup"
+        },
+        "workgroup": {
+          "$ref": "#/$defs/OgcSubGroup"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "committee"
+      ]
+    },
+    "OgcStatusType": {
+      "enum": [
+        "deprecated",
+        "draft",
+        "oab-review",
+        "public-rfc",
+        "published",
+        "retired",
+        "swg-draft",
+        "tc-vote",
+        "work-item-draft"
+      ],
+      "title": "OgcStatusType"
+    },
+    "OgcSubGroup": {
+      "type": "object",
+      "title": "OgcSubGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "OmgBibliographicItem": {
+      "type": "object",
+      "title": "OmgBibliographicItem"
+    },
+    "PlateauBibDataExtensionType": {
+      "type": "object",
+      "title": "PlateauBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stageName": {
+          "type": "string"
+        },
+        "stageNameAbbreviation": {
+          "type": "string"
+        },
+        "filesize": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PlateauBibliographicItem": {
+      "type": "object",
+      "title": "PlateauBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/PlateauDocumentType"
+        },
+        "ext": {
+          "$ref": "#/$defs/PlateauBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "PlateauDocumentType": {
+      "enum": [
+        "annex",
+        "handbook",
+        "technical-report"
+      ],
+      "title": "PlateauDocumentType"
+    },
+    "Address": {
+      "type": "object",
+      "title": "Address",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "formattedAddress": {
+          "type": "string"
+        },
+        "street": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "country"
+      ]
+    },
+    "Affiliation": {
+      "type": "object",
+      "title": "Affiliation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "description": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "organization": {
+          "$ref": "#/$defs/Organization"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuthenticityStatus": {
+      "enum": [
+        "certified",
+        "copy",
+        "unknown"
+      ],
+      "title": "AuthenticityStatus"
+    },
+    "BibItemLocality": {
+      "type": "object",
+      "title": "BibItemLocality",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/SpecificLocalityType"
+        },
+        "referenceFrom": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "referenceTo": {
+          "$ref": "#/$defs/LocalizedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "BibItemSize": {
+      "type": "object",
+      "title": "BibItemSize",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemSizeType"
+        },
+        "value": {
+          "$ref": "#/$defs/LocalizedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "BibItemSizeType": {
+      "enum": [
+        "data",
+        "page",
+        "time",
+        "value",
+        "volume"
+      ],
+      "title": "BibItemSizeType"
+    },
+    "BibItemType": {
+      "enum": [
+        "alert",
+        "archival",
+        "article",
+        "audiovisual",
+        "book",
+        "booklet",
+        "broadcast",
+        "collection",
+        "conversation",
+        "dataset",
+        "electronic-resource",
+        "film",
+        "graphic_work",
+        "inbook",
+        "incollection",
+        "inproceedings",
+        "journal",
+        "manual",
+        "map",
+        "message",
+        "misc",
+        "music",
+        "notated-music",
+        "patent",
+        "performed-music",
+        "personal-communication",
+        "presentation",
+        "proceedings",
+        "social_media",
+        "software",
+        "standard",
+        "techreport",
+        "thesis",
+        "unpublished",
+        "video",
+        "webresource",
+        "website"
+      ],
+      "title": "BibItemType"
+    },
+    "BibliographicDate": {
+      "type": "object",
+      "title": "BibliographicDate",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibliographicDateType"
+        },
+        "text": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "on": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "BibliographicDateType": {
+      "enum": [
+        "accessed",
+        "adapted",
+        "announced",
+        "circulated",
+        "confirmed",
+        "copied",
+        "corrected",
+        "created",
+        "implemented",
+        "issued",
+        "obsoleted",
+        "published",
+        "stable-until",
+        "transmitted",
+        "unchanged",
+        "updated",
+        "viewed",
+        "vote-ended",
+        "vote-started"
+      ],
+      "title": "BibliographicDateType"
+    },
+    "BibliographicItem": {
+      "type": "object",
+      "title": "BibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemType"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "fetched": {
+          "type": "string"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedTitleString"
+          },
+          "minItems": 1
+        },
+        "formattedref": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "link": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedUri"
+          }
+        },
+        "docidentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentIdentifier"
+          }
+        },
+        "docnumber": {
+          "type": "string"
+        },
+        "date": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibliographicDate"
+          }
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionInfo"
+          }
+        },
+        "edition": {
+          "$ref": "#/$defs/Edition"
+        },
+        "version": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VersionInfo"
+          }
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedNote"
+          }
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso639Code"
+          }
+        },
+        "locale": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso3166Code"
+          }
+        },
+        "script": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "abstract": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/DocumentStatus"
+        },
+        "copyright": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CopyrightAssociation"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentRelation"
+          }
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SeriesType"
+          }
+        },
+        "medium": {
+          "$ref": "#/$defs/MediumType"
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlaceType"
+          }
+        },
+        "price": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceType"
+          }
+        },
+        "extent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibItemSize"
+          }
+        },
+        "accessLocation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "license": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentIdentifier"
+          }
+        },
+        "keyword": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/KeywordType"
+          }
+        },
+        "validity": {
+          "$ref": "#/$defs/ValidityType"
+        },
+        "depiction": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Depiction"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Citation": {
+      "type": "object",
+      "title": "Citation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "bibLocalityStack": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        },
+        "bibItem": {
+          "$ref": "#/$defs/BibliographicItem"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContactMethod": {
+      "type": "object",
+      "title": "ContactMethod",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/$defs/Address"
+        },
+        "phone": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Phone"
+          }
+        },
+        "email": {
+          "type": "string"
+        },
+        "uri": {
+          "$ref": "#/$defs/TypedUri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContributionInfo": {
+      "type": "object",
+      "title": "ContributionInfo",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "role": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributorRole"
+          },
+          "minItems": 1
+        },
+        "entity": {
+          "$ref": "#/$defs/Contributor"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "entity"
+      ]
+    },
+    "Contributor": {
+      "type": "object",
+      "title": "Contributor"
+    },
+    "ContributorRole": {
+      "type": "object",
+      "title": "ContributorRole",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/ContributorRoleType"
+        },
+        "description": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "ContributorRoleType": {
+      "enum": [
+        "adapter",
+        "author",
+        "authorizer",
+        "distributor",
+        "editor",
+        "enabler",
+        "owner",
+        "performer",
+        "printer",
+        "publisher",
+        "realizer",
+        "sponsor",
+        "subject",
+        "translator"
+      ],
+      "title": "ContributorRoleType"
+    },
+    "CopyrightAssociation": {
+      "type": "object",
+      "title": "CopyrightAssociation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Contributor"
+          },
+          "minItems": 1
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "from"
+      ]
+    },
+    "DateTime": {
+      "type": "object",
+      "title": "DateTime",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Depiction": {
+      "type": "object",
+      "title": "Depiction",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "image": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Image"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "DocumentIdentifier": {
+      "type": "object",
+      "title": "DocumentIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "language": {
+          "$ref": "#/$defs/Iso639Code"
+        },
+        "script": {
+          "$ref": "#/$defs/Iso15924Code"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DocumentRelation": {
+      "type": "object",
+      "title": "DocumentRelation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/DocumentRelationType"
+        },
+        "description": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "bibitem": {
+          "$ref": "#/$defs/ReducedBibliographicItem"
+        },
+        "bibLocality": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        },
+        "bibSourceLocality": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "bibitem"
+      ]
+    },
+    "DocumentRelationType": {
+      "enum": [
+        "abridgementOf",
+        "adaptedFrom",
+        "adoptedAs",
+        "adoptedFrom",
+        "annotationOf",
+        "arrangementOf",
+        "cataloguedBy",
+        "catalogues",
+        "cites",
+        "commentaryOf",
+        "complementOf",
+        "derivedFrom",
+        "derives",
+        "describedBy",
+        "describes",
+        "draftOf",
+        "editionOf",
+        "equivalent",
+        "exemplarOf",
+        "expressionOf",
+        "hasAbridgement",
+        "hasAdaptation",
+        "hasAnnotation",
+        "hasArrangement",
+        "hasCommentary",
+        "hasComplement",
+        "hasDraft",
+        "hasEdition",
+        "hasExemplar",
+        "hasExpression",
+        "hasInstance",
+        "hasManifestation",
+        "hasPart",
+        "hasReprint",
+        "hasReproduction",
+        "hasReview",
+        "hasSuccessor",
+        "hasTranslation",
+        "identical",
+        "includedIn",
+        "includes",
+        "instanceOf",
+        "isCitedIn",
+        "manifestationOf",
+        "mergedInto",
+        "merges",
+        "nonequivalent",
+        "obsoletedBy",
+        "obsoletes",
+        "partOf",
+        "related",
+        "reprintOf",
+        "reproductionOf",
+        "reviewOf",
+        "splitInto",
+        "splits",
+        "successorOf",
+        "translatedFrom",
+        "updatedBy",
+        "updates"
+      ],
+      "title": "DocumentRelationType"
+    },
+    "DocumentStatus": {
+      "type": "object",
+      "title": "DocumentStatus",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stage": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "stageAbbreviation": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "substage": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "substageAbbreviation": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "iteration": {
+          "$ref": "#/$defs/LocalizedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "stage"
+      ]
+    },
+    "Edition": {
+      "type": "object",
+      "title": "Edition",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "audience": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "Forename": {
+      "type": "object",
+      "title": "Forename",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "initial": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "FullName": {
+      "type": "object",
+      "title": "FullName",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          }
+        },
+        "forename": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Forename"
+          }
+        },
+        "formatted-initials": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "abbreviation": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "surname": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "addition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          }
+        },
+        "completeName": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          }
+        },
+        "variant": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariantFullName"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "surname"
+      ]
+    },
+    "Iso15924Code": {
+      "type": "string",
+      "title": "Iso15924Code"
+    },
+    "Iso24229Code": {
+      "type": "string",
+      "title": "Iso24229Code"
+    },
+    "Iso3166Code": {
+      "type": "string",
+      "title": "Iso3166Code"
+    },
+    "Iso4217Code": {
+      "type": "string",
+      "title": "Iso4217Code"
+    },
+    "Iso639Code": {
+      "type": "string",
+      "title": "Iso639Code"
+    },
+    "Iso8601Date": {
+      "type": "string",
+      "title": "Iso8601Date"
+    },
+    "Iso8601DateTime": {
+      "type": "string",
+      "title": "Iso8601DateTime"
+    },
+    "KeywordType": {
+      "type": "object",
+      "title": "KeywordType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "vocab": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "taxon": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "vocabid": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VocabIdType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "LocalityConnective": {
+      "enum": [
+        "and",
+        "from",
+        "or",
+        "to"
+      ],
+      "title": "LocalityConnective"
+    },
+    "LocalityStack": {
+      "type": "object",
+      "title": "LocalityStack",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "connective": {
+          "$ref": "#/$defs/LocalityConnective"
+        },
+        "bibLocality": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibItemLocality"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "LocalizedString": {
+      "type": "object",
+      "title": "LocalizedString",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso639Code"
+          }
+        },
+        "locale": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso3166Code"
+          }
+        },
+        "script": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "spellingSystem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso24229Code"
+          }
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "Logo": {
+      "type": "object",
+      "title": "Logo",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Image"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "MediumType": {
+      "type": "object",
+      "title": "MediumType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "form": {
+          "type": "string"
+        },
+        "carrier": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "scale": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrgIdentifier": {
+      "type": "object",
+      "title": "OrgIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "OrgSubdivision": {
+      "type": "object",
+      "title": "OrgSubdivision",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "subdivision": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Organization"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Organization": {
+      "type": "object",
+      "title": "Organization",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          },
+          "minItems": 1
+        },
+        "variant": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VariantOrgName"
+          }
+        },
+        "subdivision": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrgSubdivision"
+          }
+        },
+        "abbreviation": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrgIdentifier"
+          }
+        },
+        "contact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContactMethod"
+          }
+        },
+        "logo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Logo"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Person": {
+      "type": "object",
+      "title": "Person",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/FullName"
+        },
+        "credential": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "affiliation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Affiliation"
+          }
+        },
+        "identifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PersonIdentifier"
+          }
+        },
+        "contact": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContactMethod"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "PersonIdentifier": {
+      "type": "object",
+      "title": "PersonIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    "Phone": {
+      "type": "object",
+      "title": "Phone",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "PlaceType": {
+      "type": "object",
+      "title": "PlaceType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "region": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "country": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uri": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PriceType": {
+      "type": "object",
+      "title": "PriceType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "currency": {
+          "$ref": "#/$defs/Iso4217Code"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "ReducedBibliographicItem": {
+      "type": "object",
+      "title": "ReducedBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedTitleString"
+          },
+          "minItems": 1
+        },
+        "type": {
+          "$ref": "#/$defs/BibItemType"
+        },
+        "schema_version": {
+          "type": "string"
+        },
+        "fetched": {
+          "type": "string"
+        },
+        "formattedref": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "link": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedUri"
+          }
+        },
+        "docidentifier": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentIdentifier"
+          }
+        },
+        "docnumber": {
+          "type": "string"
+        },
+        "date": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibliographicDate"
+          }
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionInfo"
+          }
+        },
+        "edition": {
+          "$ref": "#/$defs/Edition"
+        },
+        "version": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/VersionInfo"
+          }
+        },
+        "note": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedNote"
+          }
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso639Code"
+          }
+        },
+        "locale": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso3166Code"
+          }
+        },
+        "script": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "abstract": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        },
+        "status": {
+          "$ref": "#/$defs/DocumentStatus"
+        },
+        "copyright": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CopyrightAssociation"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentRelation"
+          }
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SeriesType"
+          }
+        },
+        "medium": {
+          "$ref": "#/$defs/MediumType"
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PlaceType"
+          }
+        },
+        "price": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PriceType"
+          }
+        },
+        "extent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        },
+        "size": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibItemSize"
+          }
+        },
+        "accessLocation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "license": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "classification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentIdentifier"
+          }
+        },
+        "keyword": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/KeywordType"
+          }
+        },
+        "validity": {
+          "$ref": "#/$defs/ValidityType"
+        },
+        "depiction": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Depiction"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RegionType": {
+      "type": "object",
+      "title": "RegionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "iso": {
+          "type": "string"
+        },
+        "recommended": {
+          "type": "boolean"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RelatonCollection": {
+      "type": "object",
+      "title": "RelatonCollection",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedTitleString"
+          }
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionInfo"
+          }
+        },
+        "relation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentRelation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "SeriesType": {
+      "type": "object",
+      "title": "SeriesType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/SeriesTypeType"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TypedTitleString"
+          }
+        },
+        "place": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "abbrev": {
+          "$ref": "#/$defs/LocalizedString"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "partnumber": {
+          "type": "string"
+        },
+        "run": {
+          "type": "string"
+        },
+        "formattedref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SeriesTypeType": {
+      "enum": [
+        "alt",
+        "main"
+      ],
+      "title": "SeriesTypeType"
+    },
+    "SpecificLocalityType": {
+      "enum": [
+        "anchor",
+        "annex",
+        "chapter",
+        "clause",
+        "example",
+        "figure",
+        "issue",
+        "line",
+        "list",
+        "localityString",
+        "note",
+        "page",
+        "paragraph",
+        "part",
+        "section",
+        "table",
+        "time",
+        "title",
+        "volume",
+        "whole"
+      ],
+      "title": "SpecificLocalityType"
+    },
+    "TitleType": {
+      "enum": [
+        "alternative",
+        "main",
+        "original",
+        "subtitle",
+        "unofficial"
+      ],
+      "title": "TitleType"
+    },
+    "TypedNote": {
+      "type": "object",
+      "title": "TypedNote",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TypedTitleString": {
+      "type": "object",
+      "title": "TypedTitleString",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/TitleType"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TypedUri": {
+      "type": "object",
+      "title": "TypedUri",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso639Code"
+          }
+        },
+        "script": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "locale": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso3166Code"
+          }
+        },
+        "content": {
+          "$ref": "#/$defs/Uri"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "Uri": {
+      "type": "string",
+      "title": "Uri"
+    },
+    "ValidityType": {
+      "type": "object",
+      "title": "ValidityType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "validityBegins": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "validityEnds": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "revision": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "authenticity": {
+          "$ref": "#/$defs/AuthenticityStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VariantFullName": {
+      "type": "object",
+      "title": "VariantFullName",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/FullName"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "content"
+      ]
+    },
+    "VariantOrgName": {
+      "type": "object",
+      "title": "VariantOrgName",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/LocalizedString"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "content"
+      ]
+    },
+    "VersionInfo": {
+      "type": "object",
+      "title": "VersionInfo",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "revision-date": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "draft": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "VocabIdType": {
+      "type": "object",
+      "title": "VocabIdType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "uri": {
+          "$ref": "#/$defs/Uri"
+        },
+        "code": {
+          "type": "string"
+        },
+        "term": {
+          "$ref": "#/$defs/VocabIdType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "RiboseBibDataExtensionType": {
+      "type": "object",
+      "title": "RiboseBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "security": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RiboseBibliographicItem": {
+      "type": "object",
+      "title": "RiboseBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/RiboseDocumentType"
+        },
+        "ext": {
+          "$ref": "#/$defs/RiboseBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "RiboseDocumentType": {
+      "enum": [
+        "best-practices",
+        "directives",
+        "legal",
+        "policy-and-procedures",
+        "proposal",
+        "report",
+        "standard",
+        "supporting-document"
+      ],
+      "title": "RiboseDocumentType"
+    },
+    "UnBibDataExtensionType": {
+      "type": "object",
+      "title": "UnBibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "submissionLanguage": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "distribution": {
+          "$ref": "#/$defs/UnDistribution"
+        },
+        "session": {
+          "$ref": "#/$defs/UnSession"
+        },
+        "jobNumber": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnBibliographicItem": {
+      "type": "object",
+      "title": "UnBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/UnDocumentType"
+        },
+        "ext": {
+          "$ref": "#/$defs/UnBibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "ext"
+      ]
+    },
+    "UnDistribution": {
+      "enum": [
+        "general",
+        "limited",
+        "provisional",
+        "restricted"
+      ],
+      "title": "UnDistribution"
+    },
+    "UnDocumentType": {
+      "enum": [
+        "addendum",
+        "agenda",
+        "budgetary",
+        "communication",
+        "corrigendum",
+        "expert-report",
+        "plenary",
+        "recommendation",
+        "reissue",
+        "resolution",
+        "sec-gen-notes"
+      ],
+      "title": "UnDocumentType"
+    },
+    "UnSession": {
+      "type": "object",
+      "title": "UnSession",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "sessionDate": {
+          "type": "string"
+        },
+        "itemNumber": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "itemName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subitemName": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "collaborator": {
+          "type": "string"
+        },
+        "agendaId": {
+          "type": "string"
+        },
+        "itemFootnote": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "W3cBibliographicItem": {
+      "type": "object",
+      "title": "W3cBibliographicItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "doctype": {
+          "$ref": "#/$defs/W3cDocumentType"
+        },
+        "workgroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/W3cProjectGroup"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "doctype"
+      ]
+    },
+    "W3cDocumentType": {
+      "enum": [
+        "candidateRecommendation",
+        "groupNote",
+        "proposedEditedRecommendation",
+        "proposedRecommendation",
+        "recommendation",
+        "retired",
+        "technicalReport",
+        "workingDraft"
+      ],
+      "title": "W3cDocumentType"
+    },
+    "W3cProjectGroup": {
+      "type": "object",
+      "title": "W3cProjectGroup",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "BibData": {
+      "type": "object",
+      "title": "BibData",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "ext": {
+          "$ref": "#/$defs/BibDataExtensionType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ext"
+      ]
+    },
+    "BibDataExtensionType": {
+      "type": "object",
+      "title": "BibDataExtensionType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "doctype": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DocumentType"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "BasicBlock": {
+      "type": "object",
+      "title": "BasicBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NoteBlock"
+          }
+        },
+        "contribMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionElementMetadata"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attribute"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "NoteBlock": {
+      "type": "object",
+      "title": "NoteBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ParagraphBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "AmendBlock": {
+      "type": "object",
+      "title": "AmendBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "change": {
+          "$ref": "#/$defs/ChangeType"
+        },
+        "bibLocality": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibItemLocality"
+          }
+        },
+        "localityStack": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalityStack"
+          }
+        },
+        "path": {
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/AmendPosition"
+        },
+        "pathEnd": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        },
+        "newContent": {
+          "$ref": "#/$defs/NewContentBlock"
+        },
+        "classification": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attribute"
+          }
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Contributor"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "change"
+      ]
+    },
+    "AmendPosition": {
+      "enum": [
+        "after",
+        "before"
+      ],
+      "title": "AmendPosition"
+    },
+    "ChangeType": {
+      "enum": [
+        "add",
+        "delete",
+        "modify",
+        "replace"
+      ],
+      "title": "ChangeType"
+    },
+    "NewContentBlock": {
+      "type": "object",
+      "title": "NewContentBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "newContentBlocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        },
+        "clause": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicSection"
+          }
+        },
+        "document": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicDocument"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ExampleBlock": {
+      "type": "object",
+      "title": "ExampleBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FigureBlock": {
+      "type": "object",
+      "title": "FigureBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "image": {
+          "$ref": "#/$defs/Image"
+        },
+        "video": {
+          "$ref": "#/$defs/Video"
+        },
+        "audio": {
+          "$ref": "#/$defs/Audio"
+        },
+        "figure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Subfigure"
+          }
+        },
+        "definitions": {
+          "$ref": "#/$defs/DefinitionList"
+        },
+        "footnotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceToIdWithParagraphElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "FormulaBlock": {
+      "type": "object",
+      "title": "FormulaBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stem": {
+          "$ref": "#/$defs/StemElement"
+        },
+        "inequality": {
+          "type": "boolean"
+        },
+        "definitions": {
+          "$ref": "#/$defs/DefinitionList"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "stem"
+      ]
+    },
+    "LiteralBlock": {
+      "type": "object",
+      "title": "LiteralBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "SourcecodeBlock": {
+      "type": "object",
+      "title": "SourcecodeBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "filename": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "callouts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceToIdElement"
+          }
+        },
+        "calloutAnnotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ParagraphBlock"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "Subfigure": {
+      "type": "object",
+      "title": "Subfigure"
+    },
+    "Definition": {
+      "type": "object",
+      "title": "Definition",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "item": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "definition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "DefinitionList": {
+      "type": "object",
+      "title": "DefinitionList",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "listitem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Definition"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "List": {
+      "type": "object",
+      "title": "List",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "listitem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ListItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ListItem": {
+      "type": "object",
+      "title": "ListItem",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "OrderedList": {
+      "type": "object",
+      "title": "OrderedList",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/OrderedListType"
+        },
+        "start": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "OrderedListType": {
+      "enum": [
+        "alphabet",
+        "alphabetUpper",
+        "arabic",
+        "roman",
+        "romanUpper"
+      ],
+      "title": "OrderedListType"
+    },
+    "UnorderedList": {
+      "type": "object",
+      "title": "UnorderedList"
+    },
+    "AdmonitionBlock": {
+      "type": "object",
+      "title": "AdmonitionBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/AdmonitionType"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "uri": {
+          "$ref": "#/$defs/Uri"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "AdmonitionType": {
+      "enum": [
+        "caution",
+        "important",
+        "note",
+        "tip",
+        "warning"
+      ],
+      "title": "AdmonitionType"
+    },
+    "ParagraphsBlock": {
+      "type": "object",
+      "title": "ParagraphsBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "QuoteBlock": {
+      "type": "object",
+      "title": "QuoteBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/ReferenceToCitationElement"
+        },
+        "author": {
+          "$ref": "#/$defs/Contributor"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReviewBlock": {
+      "type": "object",
+      "title": "ReviewBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "type": {
+          "type": "string"
+        },
+        "appliesFrom": {
+          "$ref": "#/$defs/IdElement"
+        },
+        "appliesTo": {
+          "$ref": "#/$defs/IdElement"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ParagraphBlock": {
+      "type": "object",
+      "title": "ParagraphBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicElement"
+          }
+        },
+        "alignment": {
+          "$ref": "#/$defs/TextAlignment"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ParagraphWithFootnote": {
+      "type": "object",
+      "title": "ParagraphWithFootnote",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "footnotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferenceToIdWithParagraphElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TextAlignment": {
+      "enum": [
+        "center",
+        "justified",
+        "left",
+        "right"
+      ],
+      "title": "TextAlignment"
+    },
+    "CellTextAlignment": {
+      "enum": [
+        "center",
+        "left",
+        "right"
+      ],
+      "title": "CellTextAlignment"
+    },
+    "CellVerticalAlignment": {
+      "enum": [
+        "baseline",
+        "bottom",
+        "middle",
+        "top"
+      ],
+      "title": "CellVerticalAlignment"
+    },
+    "ParagraphTableCell": {
+      "type": "object",
+      "title": "ParagraphTableCell",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TableBlock": {
+      "type": "object",
+      "title": "TableBlock",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "alt": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "uri": {
+          "$ref": "#/$defs/Uri"
+        },
+        "head": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextTableRow"
+          }
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextTableRow"
+          },
+          "minItems": 1
+        },
+        "foot": {
+          "$ref": "#/$defs/TextTableRow"
+        },
+        "definitions": {
+          "$ref": "#/$defs/DefinitionList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TableCell": {
+      "type": "object",
+      "title": "TableCell",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "colspan": {
+          "type": "integer"
+        },
+        "rowspan": {
+          "type": "integer"
+        },
+        "align": {
+          "$ref": "#/$defs/CellTextAlignment"
+        },
+        "valign": {
+          "$ref": "#/$defs/CellVerticalAlignment"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TextTableCell": {
+      "type": "object",
+      "title": "TextTableCell",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TextTableRow": {
+      "type": "object",
+      "title": "TextTableRow",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "td": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TableCell"
+          }
+        },
+        "th": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TableCell"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "AttributeChangeAction": {
+      "type": "object",
+      "title": "AttributeChangeAction",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "attributeId": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "attributeId"
+      ]
+    },
+    "AttributeModify": {
+      "type": "object",
+      "title": "AttributeModify",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AttributeChangeAction"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "Change": {
+      "type": "object",
+      "title": "Change",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/ReferenceToIdElement"
+        },
+        "identifier": {
+          "$ref": "#/$defs/UniqueIdentifier"
+        },
+        "parentIdentifier": {
+          "$ref": "#/$defs/UniqueIdentifier"
+        },
+        "contribMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionElementMetadata"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "identifier"
+      ]
+    },
+    "ChangeSet": {
+      "type": "object",
+      "title": "ChangeSet",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Change"
+          }
+        },
+        "documentIdentifier": {
+          "$ref": "#/$defs/UniqueIdentifier"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "documentIdentifier"
+      ]
+    },
+    "ContentAction": {
+      "enum": [
+        "delete",
+        "insert"
+      ],
+      "title": "ContentAction"
+    },
+    "ContentChange": {
+      "type": "object",
+      "title": "ContentChange"
+    },
+    "ContentChangeAction": {
+      "type": "object",
+      "title": "ContentChangeAction",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/$defs/ContentAction"
+        },
+        "from": {
+          "type": "integer"
+        },
+        "to": {
+          "type": "integer"
+        },
+        "text": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "from",
+        "to"
+      ]
+    },
+    "ContentModify": {
+      "type": "object",
+      "title": "ContentModify",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContentChangeAction"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "NodeChange": {
+      "type": "object",
+      "title": "NodeChange"
+    },
+    "NodeDelete": {
+      "type": "object",
+      "title": "NodeDelete",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "hashValue": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "hashValue"
+      ]
+    },
+    "NodeInsert": {
+      "type": "object",
+      "title": "NodeInsert",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/BasicElement"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "NodeMove": {
+      "type": "object",
+      "title": "NodeMove",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "positionOld": {
+          "$ref": "#/$defs/ReferenceToIdElement"
+        },
+        "positionNew": {
+          "$ref": "#/$defs/ReferenceToIdElement"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "positionOld",
+        "positionNew"
+      ]
+    },
+    "UniqueIdentifier": {
+      "type": "object",
+      "title": "UniqueIdentifier",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "ContributionElementMetadata": {
+      "type": "object",
+      "title": "ContributionElementMetadata",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "dateTime": {
+          "$ref": "#/$defs/Iso8601DateTime"
+        },
+        "contributor": {
+          "$ref": "#/$defs/Contributor"
+        },
+        "integrityValue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntegrityValue"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dateTime"
+      ]
+    },
+    "Hash": {
+      "type": "object",
+      "title": "Hash",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "algorithm": {
+          "$ref": "#/$defs/Iso10118Oid"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "value"
+      ]
+    },
+    "IntegrityValue": {
+      "type": "object",
+      "title": "IntegrityValue"
+    },
+    "Iso10118Oid": {
+      "type": "string",
+      "title": "Iso10118Oid"
+    },
+    "Iso14888Oid": {
+      "type": "string",
+      "title": "Iso14888Oid"
+    },
+    "Signature": {
+      "type": "object",
+      "title": "Signature",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "algorithm": {
+          "$ref": "#/$defs/Iso14888Oid"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "publicKey",
+        "signature"
+      ]
+    },
+    "Attribute": {
+      "type": "object",
+      "title": "Attribute",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scheme": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "key"
+      ]
+    },
+    "FormattedString": {
+      "type": "object",
+      "title": "FormattedString",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "format": {
+          "$ref": "#/$defs/StringFormat"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "format"
+      ]
+    },
+    "ImageSizeType": {
+      "type": "string",
+      "title": "ImageSizeType"
+    },
+    "StringFormat": {
+      "enum": [
+        "asciidoc",
+        "docbook",
+        "markdown",
+        "metanorma",
+        "plain",
+        "standarddoc",
+        "tei"
+      ],
+      "title": "StringFormat"
+    },
+    "BasicDocument": {
+      "type": "object",
+      "title": "BasicDocument",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "identifier": {
+          "$ref": "#/$defs/UniqueIdentifier"
+        },
+        "bibdata": {
+          "$ref": "#/$defs/BibData"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicSection"
+          },
+          "minItems": 1
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ReferencesSection"
+          }
+        },
+        "integrityValue": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IntegrityValue"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attribute"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "bibdata"
+      ]
+    },
+    "BasicElement": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "HorizontalRuleElement": {
+      "type": "object",
+      "title": "HorizontalRuleElement"
+    },
+    "IndexElement": {
+      "type": "object",
+      "title": "IndexElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "string"
+        },
+        "tertiary": {
+          "type": "string"
+        },
+        "to": {
+          "$ref": "#/$defs/IdElement"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "primary"
+      ]
+    },
+    "LineBreakElement": {
+      "type": "object",
+      "title": "LineBreakElement"
+    },
+    "PageBreakElement": {
+      "type": "object",
+      "title": "PageBreakElement"
+    },
+    "AltSource": {
+      "type": "object",
+      "title": "AltSource",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Uri"
+        },
+        "type": {
+          "$ref": "#/$defs/MediaType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "type"
+      ]
+    },
+    "Audio": {
+      "type": "object",
+      "title": "Audio",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "altsource": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AltSource"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Bookmark": {
+      "type": "object",
+      "title": "Bookmark"
+    },
+    "IdElement": {
+      "type": "object",
+      "title": "IdElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ]
+    },
+    "Image": {
+      "type": "object",
+      "title": "Image",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "height": {
+          "$ref": "#/$defs/ImageSizeType"
+        },
+        "width": {
+          "$ref": "#/$defs/ImageSizeType"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Media": {
+      "type": "object",
+      "title": "Media",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Uri"
+        },
+        "type": {
+          "$ref": "#/$defs/MediaType"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "longdesc": {
+          "$ref": "#/$defs/Uri"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "type"
+      ]
+    },
+    "MediaType": {
+      "type": "string",
+      "title": "MediaType"
+    },
+    "Video": {
+      "type": "object",
+      "title": "Video",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "altsource": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AltSource"
+          }
+        },
+        "height": {
+          "type": "integer"
+        },
+        "width": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Callout": {
+      "type": "object",
+      "title": "Callout",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "text"
+      ]
+    },
+    "Footnote": {
+      "type": "object",
+      "title": "Footnote",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "reference"
+      ]
+    },
+    "IndexXrefElement": {
+      "type": "object",
+      "title": "IndexXrefElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "string"
+        },
+        "tertiary": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "also": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "also"
+      ]
+    },
+    "ReferenceElement": {
+      "type": "object",
+      "title": "ReferenceElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/ReferenceFormat"
+        },
+        "text": {
+          "$ref": "#/$defs/BasicElement"
+        },
+        "alt": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ]
+    },
+    "ReferenceFormat": {
+      "enum": [
+        "callout",
+        "external",
+        "footnote",
+        "inline"
+      ],
+      "title": "ReferenceFormat"
+    },
+    "ReferenceToCitationElement": {
+      "type": "object",
+      "title": "ReferenceToCitationElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "normative": {
+          "type": "boolean"
+        },
+        "citeAs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReferenceToIdElement": {
+      "type": "object",
+      "title": "ReferenceToIdElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/IdElement"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "target"
+      ]
+    },
+    "ReferenceToIdWithParagraphElement": {
+      "type": "object",
+      "title": "ReferenceToIdWithParagraphElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ParagraphBlock"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReferenceToLinkElement": {
+      "type": "object",
+      "title": "ReferenceToLinkElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/Uri"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "target"
+      ]
+    },
+    "ReferenceToVariable": {
+      "type": "object",
+      "title": "ReferenceToVariable",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "AsciiML": {
+      "type": "object",
+      "title": "AsciiML",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "EmphasisElement": {
+      "type": "object",
+      "title": "EmphasisElement"
+    },
+    "KeywordElement": {
+      "type": "object",
+      "title": "KeywordElement"
+    },
+    "LaTeX": {
+      "type": "object",
+      "title": "LaTeX",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "MathML": {
+      "type": "object",
+      "title": "MathML",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "MonospaceElement": {
+      "type": "object",
+      "title": "MonospaceElement"
+    },
+    "PureTextElement": {
+      "type": "object",
+      "title": "PureTextElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/PureTextElementType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "PureTextElementType": {
+      "type": "object",
+      "title": "PureTextElementType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          }
+        },
+        "elements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PureTextElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RubyAnnotation": {
+      "type": "object",
+      "title": "RubyAnnotation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "script": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "RubyElement": {
+      "type": "object",
+      "title": "RubyElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "pronunciation": {
+          "$ref": "#/$defs/RubyPronunciation"
+        },
+        "annotation": {
+          "$ref": "#/$defs/RubyAnnotation"
+        },
+        "text": {
+          "type": "string"
+        },
+        "ruby": {
+          "$ref": "#/$defs/RubyElement"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RubyPronunciation": {
+      "type": "object",
+      "title": "RubyPronunciation",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "script": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "value"
+      ]
+    },
+    "SmallCapsElement": {
+      "type": "object",
+      "title": "SmallCapsElement"
+    },
+    "StemElement": {
+      "type": "object",
+      "title": "StemElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "stemType": {
+          "$ref": "#/$defs/StemType"
+        },
+        "stemValue": {
+          "$ref": "#/$defs/StemValue"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "stemType",
+        "stemValue"
+      ]
+    },
+    "StemType": {
+      "enum": [
+        "AsciiML",
+        "LaTeX",
+        "MathML"
+      ],
+      "title": "StemType"
+    },
+    "StemValue": {
+      "type": "object",
+      "title": "StemValue"
+    },
+    "StrikeElement": {
+      "type": "object",
+      "title": "StrikeElement"
+    },
+    "StrongElement": {
+      "type": "object",
+      "title": "StrongElement"
+    },
+    "SubscriptElement": {
+      "type": "object",
+      "title": "SubscriptElement"
+    },
+    "SuperscriptElement": {
+      "type": "object",
+      "title": "SuperscriptElement"
+    },
+    "TextElement": {
+      "type": "object",
+      "title": "TextElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/$defs/TextElementType"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "content"
+      ]
+    },
+    "TextElementType": {
+      "type": "object",
+      "title": "TextElementType",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LocalizedString"
+          }
+        },
+        "elements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "UnderlineElement": {
+      "type": "object",
+      "title": "UnderlineElement",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "style": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "BasicSection": {
+      "type": "object",
+      "title": "BasicSection",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "title": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TextElement"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso639Code"
+          }
+        },
+        "script": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Iso15924Code"
+          }
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicBlock"
+          }
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Attribute"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContentSection": {
+      "type": "object",
+      "title": "ContentSection"
+    },
+    "HierarchicalSection": {
+      "type": "object",
+      "title": "HierarchicalSection",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "subsections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/HierarchicalSection"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReferencesSection": {
+      "type": "object",
+      "title": "ReferencesSection",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BibliographicItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

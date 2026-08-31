@@ -1,0 +1,9 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  3gpp/DocumentType:
+  - TR
+  - TS
+profile: 3gpp/1.0

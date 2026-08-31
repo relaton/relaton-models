@@ -1,0 +1,30 @@
+class NameFormRules {
+  definition {
+    How personal names are formed in citations and references.
+  }
+  +initials: Boolean[0..1] {
+    definition {
+      Render given names as initials.
+    }
+  }
+  +givenNameFirst: Boolean[0..1] {
+    definition {
+      Given name precedes the surname.
+    }
+  }
+  +connective: String[0..1] {
+    definition {
+      Connective between the last two names, e.g. "and", "und".
+    }
+  }
+  +nameSeparator: String[0..1] {
+    definition {
+      Separator between names, e.g. ", ".
+    }
+  }
+  +othersThreshold: Integer[0..1] {
+    definition {
+      Number of names beyond which the others-marker replaces the tail.
+    }
+  }
+}

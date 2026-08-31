@@ -1,0 +1,30 @@
+diagram CitationScheme {
+  title 'Citation Scheme'
+
+  include ../models/CitationScheme.lml
+  include ../models/CitationSystem.lml
+  include ../models/DisambiguationRules.lml
+  include ../models/NameFormRules.lml
+  include ../models/LocalizedStrings.lml
+
+  association {
+    owner CitationScheme
+    member CitationSystem
+    owner_type direct
+  }
+  association {
+    owner CitationScheme
+    member DisambiguationRules
+    owner_type direct
+  }
+  association {
+    owner CitationScheme
+    member NameFormRules
+    owner_type direct
+  }
+  association {
+    owner CitationScheme
+    member LocalizedStrings
+    owner_type direct
+  }
+}

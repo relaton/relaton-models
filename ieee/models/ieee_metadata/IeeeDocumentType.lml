@@ -1,10 +1,32 @@
 enum IeeeDocumentType {
-  definition {
-    Type of IEEE document.
+  guide {
+    definition {
+      Guide document type.
+    }
+  }
+  other {
+    definition {
+      Other document type.
+    }
+  }
+  recommended-practice {
+    definition {
+      Recommended practice document type.
+    }
+  }
+  redline {
+    definition {
+      Redline document type.
+    }
   }
   standard {
     definition {
       IEEE Standard
+    }
+  }
+  whitepaper {
+    definition {
+      Whitepaper document type.
     }
   }
 }

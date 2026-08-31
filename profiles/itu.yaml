@@ -1,0 +1,23 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  ItuDocumentType:
+  - contribution
+  - focus-group
+  - handbook
+  - implementers-guide
+  - joint-itu-iso-iec
+  - question
+  - recommendation
+  - recommendation-amendment
+  - recommendation-annex
+  - recommendation-corrigendum
+  - recommendation-errata
+  - recommendation-supplement
+  - resolution
+  - service-publication
+  - technical-paper
+  - technical-report
+profile: itu/1.0

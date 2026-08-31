@@ -206,9 +206,39 @@ module RelatonSite
                  index_page: false, depth: 2)
     end
 
-    File.write(OUT.join("inventory.json"), JSON.pretty_generate(build_inventory(mods)))
+    inventory = build_inventory(mods)
+    File.write(OUT.join("inventory.json"), JSON.pretty_generate(inventory))
+
+    # Per-module inventory files (API ergonomics: fetch just what you need)
+    inv_dir = OUT.join("inventory")
+    FileUtils.mkdir_p(inv_dir)
+    inventory["modules"].each do |mod|
+      File.write(inv_dir.join("#{mod["module"]}.json"),
+                 JSON.pretty_generate(mod))
+    end
+
+    inv_html = render("inventory.html.erb",
+                      { inventory: inventory }, depth: 0)
+    write_page(OUT.join("inventory.html"), inv_html,
+               title: "Inventory — Relaton Models",
+               description: "Machine-generated inventory of all Relaton models, attributes, enums, and the relation vocabulary.",
+               index_page: false, depth: 0)
+
+    FileUtils.mkdir_p(OUT.join("modules"))
+    all_types = {}
+    inventory["modules"].each do |m|
+      m["types"].each { |t| all_types[t["name"]] = m["module"] }
+    end
+    inventory["modules"].each do |mod|
+      mod_html = render("module.html.erb",
+                        { mod: mod, plates: plates, all_types: all_types }, depth: 1)
+      write_page(OUT.join("modules/#{mod["module"]}.html"), mod_html,
+                 title: "#{mod["module"]} — Relaton Models",
+                 description: "Per-module detail: all types, attributes, and enums in #{mod["module"]}.",
+                 index_page: false, depth: 1)
+    end
 
     File.write(OUT.join(".nojekyll"), "")
-    puts "site: wrote #{plates.size + 1} pages -> #{OUT}"
+    puts "site: wrote #{plates.size + 1 + inventory["modules"].size} pages -> #{OUT}"
   end
 end

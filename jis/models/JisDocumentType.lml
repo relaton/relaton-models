@@ -6,4 +6,28 @@ enum JisDocumentType {
   technical-report
   technical-specification
   amendment
+  amendment {
+    definition {
+      Amendment document type.
+    }
+  }
+
+  japanese-industrial-standard {
+    definition {
+      Japanese industrial standard document type.
+    }
+  }
+
+  technical-report {
+    definition {
+      Technical report document type.
+    }
+  }
+
+  technical-specification {
+    definition {
+      Technical specification document type.
+    }
+  }
+
 }

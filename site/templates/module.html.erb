@@ -1,0 +1,62 @@
+<article class="plate-page wrap">
+  <header class="plate-head">
+    <div>
+      <p class="crumb">
+        <a href="<%= asset_path('index.html') %>">Catalog</a>
+        <span class="punct"> · </span>
+        <a href="<%= asset_path('inventory.html') %>">Inventory</a>
+        <span class="punct"> · </span> <%= h(mod["module"]) %>
+      </p>
+      <p class="eyebrow"><%= h(mod["kind"]) %> module</p>
+      <h1><%= h(mod["module"]) %></h1>
+      <p class="plate-summary">
+        <%= mod["types"].size %> types ·
+        <%= mod["types"].count { |t| t["kind"] == "class" } %> classes ·
+        <%= mod["types"].count { |t| t["kind"] == "enum" } %> enums ·
+        <%= mod["types"].count { |t| t["kind"] == "data_type" } %> data types
+      </p>
+    </div>
+    <div class="side-stats" aria-label="Module statistics">
+      <div class="stat"><b>Types</b><span><%= mod["types"].size %></span></div>
+      <div class="stat"><b>Files</b><span><%= mod["modelFiles"] %></span></div>
+    </div>
+  </header>
+
+  <% mod["types"].each do |t| %>
+  <div class="reading-rule" style="margin-bottom:16px" id="<%= h(t["name"]) %>">
+    <strong>
+      <code><%= h(t["name"]) %></code>
+      <span class="punct"> · </span>
+      <%= h(t["kind"]) %>
+      <% if t["parent"] %>
+        <span class="punct"> · </span>
+        extends <code><%= h(t["parent"]) %></code>
+      <% end %>
+      <span style="float:right;font-size:0.8em;color:var(--mist)"><%= h(t["file"]) %></span>
+    </strong>
+    <% if t["values"] && t["values"].any? %>
+      <p style="margin:8px 0 0"><%= h(t["values"].join(" · ")) %></p>
+    <% end %>
+    <% if t["attributes"] && t["attributes"].any? %>
+    <table style="margin:8px 0 0;width:100%">
+      <thead><tr><th>Attribute</th><th>Type</th></tr></thead>
+      <tbody>
+        <% t["attributes"].each do |a| %>
+        <tr>
+          <td><code>+<%= h(a["name"]) %></code></td>
+          <td><%
+  type_name = a["type"].split("[").first.strip
+  if all_types.key?(type_name)
+  %><a href="<%= asset_path("modules/#{all_types[type_name]}.html##{type_name}") %>"><code><%= h(a["type"]) %></code></a><%
+  else
+  %><code><%= h(a["type"]) %></code><%
+  end
+  %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+  <% end %>
+</article>

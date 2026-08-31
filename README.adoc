@@ -43,11 +43,28 @@ One root `Gemfile` (lutaml-lml) and one root `Rakefile`. Initialise the
   bundle exec rake clean
   bundle exec rake site     # build the model catalog into _site/
   bundle exec rake lint     # semantic LML lint (names, types, view references)
-  bundle exec rake fixtures # validate examples/*.xml against RNC and examples/*.yaml against the LML
+  bundle exec rake fixtures # validate examples/ fixtures: XML vs RNC, YAML vs LML, YAML vs JSON Schema
+  bundle exec rake profiles # validate profiles/*.yaml (narrowing-only)
+  bundle exec rake schema   # regenerate the JSON Schema from the LML (relaton/schema/)
 
 The workflow runs the same build on ubuntu.
 A https://relaton.github.io/relaton-models/[model catalog site] is generated
 from the views and deployed to GitHub Pages by the `pages` workflow.
+
+== Architecture
+
+This repository is the machine model for ISO 690, organized as:
+
+* `relaton/` — shared RelBib base (BibliographicItem, Citation, Contributor)
+* `citation/` — citation scheme/style/index/style models (as data, not code)
+* `<flavour>/` — 29 SDO overlays (ISO, IEC, ITU, BSI, ...) with LML models + RNC grammars
+* `profiles/` — declarative flavour profiles (narrowing-only)
+* `examples/` — twin XML/YAML fixtures + real Relaton instances
+* `mapping/` — CSL-to-Relaton subset mapping (CSL is a lower-level subset)
+* `docs/VERSIONING.md` — model semver, deprecation cycle, ISO 690 snapshots
+
+See https://relaton.github.io/relaton-models/[the model catalog] for browsable
+diagrams, per-module detail pages, and a machine-readable inventory.
 
 == Bibliography UML Models
 

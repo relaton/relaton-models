@@ -37,5 +37,7 @@ jobs:
       - run: bundle exec rake lint
       - run: bundle exec rake parity
 
-      - run: pip install --user rnc2rng lxml
-      - run: bundle exec rake fixtures
+      - run: pip install --user rnc2rng lxml jsonschema pyyaml
+      - run: bundle exec rake schema
+      - run: git diff --exit-code relaton/schema
+      - run: bundle exec rake fixtures rnc:check

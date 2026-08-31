@@ -1,0 +1,18 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  UnDocumentType:
+  - addendum
+  - agenda
+  - budgetary
+  - communication
+  - corrigendum
+  - expert-report
+  - plenary
+  - recommendation
+  - reissue
+  - resolution
+  - sec-gen-notes
+profile: un/1.0

@@ -1,6 +1,6 @@
 # 06 — Full model + relationship inventory (machine-readable)
 
-**Status: done (inventory.json); atlas page open**
+**Status: done**
 
 ## Why
 "People can create citation schemes, styles, indexes using ISO 690 oriented
@@ -13,7 +13,9 @@ attributes, cardinalities; the complete relation vocabulary (59 values with
 definitions); BibItemType and all shared enums. Generated from the LML —
 single source, no drift possible.
 
-## Open
-- Atlas `/models` page rendering the inventory (searchable, filterable,
-  per-model anchors) — extend `site/templates` with an inventory view.
-- Emit `_data` form for consumers (07's style models will import it).
+## Done (all)
+- `inventory.json` at the site root
+- Atlas `/inventory.html` page: every module's types with attributes/values,
+  linked from the primary navigation
+- The citation module (07) models appear automatically (OCP: the generator
+  globs `*/models/**/*.lml`)

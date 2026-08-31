@@ -1,0 +1,15 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  IecDocumentType:
+  - guide
+  - industry-technical-agreement
+  - international-standard
+  - international-workshop-agreement
+  - publicly-available-specification
+  - system-reference-deliverable
+  - technical-report
+  - technical-specification
+profile: iec/1.0

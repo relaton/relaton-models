@@ -1,0 +1,46 @@
+<section class="hero wrap">
+  <div class="hero-copy">
+    <p class="eyebrow">The full model + relationship inventory</p>
+    <h1>Every model, every <em>relationship.</em></h1>
+    <p class="hero-lead">
+      Machine-generated from the LML: all modules, classes, attributes,
+      cardinalities, enumerations, and the complete relation vocabulary.
+      Available as data at <code>inventory.json</code>.
+    </p>
+  </div>
+  <aside class="drawer" aria-label="Inventory statistics">
+    <div class="drawer-head">Inventory</div>
+    <dl class="drawer-list">
+      <div><dt>Modules</dt><dd><%= inventory["modules"].size %></dd></div>
+      <div><dt>Types</dt><dd><%= inventory["modules"].sum { |m| m["types"].size } %></dd></div>
+      <div><dt>Relation types</dt><dd><%= inventory["vocabularies"]["relationTypes"].size %></dd></div>
+    </dl>
+  </aside>
+</section>
+
+<section class="wrap" aria-labelledby="inventory-heading">
+  <h2 id="inventory-heading" class="visually-hidden" style="position:absolute;left:-9999px">Inventory</h2>
+  <% inventory["modules"].each do |mod| %>
+  <div class="reading-rule" style="margin-bottom:12px" id="<%= h(mod["module"]) %>">
+    <strong><a href="<%= asset_path("modules/#{mod["module"]}.html") %>"><%= h(mod["module"]) %></a> <span class="punct">· </span><%= h(mod["kind"]) %></strong>
+    <table>
+      <thead><tr><th>Type</th><th>Kind</th><th>Attributes / Values</th></tr></thead>
+      <tbody>
+        <% mod["types"].each do |t| %>
+        <tr>
+          <td><code><%= h(t["name"]) %></code></td>
+          <td><%= h(t["kind"]) %></td>
+          <td>
+            <% if t["values"] %>
+              <%= h(t["values"].join(", ")) %>
+            <% else %>
+              <%= t["attributes"] ? t["attributes"].map { |a| h(a["name"]) }.join(", ") : "—" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+</section>

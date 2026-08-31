@@ -1,0 +1,35 @@
+diagram CitationStyle {
+  title 'Citation Style'
+
+  include ../models/CitationStyle.lml
+  include ../models/CitationScheme.lml
+  include ../models/TemplateMap.lml
+  include ../models/TypeTemplate.lml
+  include ../models/SortRule.lml
+
+  association {
+    owner CitationStyle
+    member CitationScheme
+    owner_type direct
+  }
+  association {
+    owner CitationStyle
+    member TemplateMap
+    owner_type direct
+  }
+  association {
+    owner CitationStyle
+    member TypeTemplate
+    owner_type direct
+  }
+  association {
+    owner CitationStyle
+    member SortRule
+    owner_type direct
+  }
+  association {
+    owner TypeTemplate
+    member BibItemType
+    owner_type direct
+  }
+}

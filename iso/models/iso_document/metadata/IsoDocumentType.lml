@@ -1,66 +1,75 @@
 enum IsoDocumentType {
   definition {
-    Type of ISO/IEC document.
+    ISO 690 document type.
   }
-
-  internationalStandard {
+  international-standard {
     definition {
-      International Standard.
+      ISO 690 document type.
     }
   }
-  technicalSpecification {
+  technical-specification {
     definition {
-      Technical Specification.
+      ISO 690 document type.
     }
   }
-  technicalReport {
+  technical-report {
     definition {
-      Technical Report.
+      ISO 690 document type.
     }
   }
-  publiclyAvailableSpecification {
+  publicly-available-specification {
     definition {
-      Publicly Available Specification.
+      ISO 690 document type.
     }
   }
-  internationalWorkshopAgreement {
+  international-workshop-agreement {
     definition {
-      International Workshop Agreement.
+      ISO 690 document type.
     }
   }
   guide {
     definition {
-      Guide.
-    }
-  }
-  interpretationSheet {
-    definition {
-      Interpretation Sheet.
-    }
-  }
-  amendment {
-    definition {
-      Amendment.
-    }
-  }
-  technical-corrigendum {
-    definition {
-      Technical Corrigendum.
-    }
-  }
-  addendum {
-    definition {
-      Addendum (legacy type).
-    }
-  }
-  committee-document {
-    definition {
-      Committee Document (for internal use).
+      ISO 690 document type.
     }
   }
   recommendation {
     definition {
-      Recommendation (legacy type).
+      ISO 690 document type.
+    }
+  }
+  amendment {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  technical-corrigendum {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  directive {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  committee-document {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  addendum {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  supplement {
+    definition {
+      ISO 690 document type.
+    }
+  }
+  extract {
+    definition {
+      ISO 690 document type.
     }
   }
 }

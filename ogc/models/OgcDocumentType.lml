@@ -13,4 +13,100 @@ enum OgcDocumentType {
   standard
   user-guide
   white-paper
+  abstract-specification-topic {
+    definition {
+      Abstract specification topic document type.
+    }
+  }
+
+  best-practice {
+    definition {
+      Best practice document type.
+    }
+  }
+
+  change-request-supporting-document {
+    definition {
+      Change request supporting document document type.
+    }
+  }
+
+  community-practice {
+    definition {
+      Community practice document type.
+    }
+  }
+
+  community-standard {
+    definition {
+      Community standard document type.
+    }
+  }
+
+  discussion-paper {
+    definition {
+      Discussion paper document type.
+    }
+  }
+
+  draft-standard {
+    definition {
+      Draft standard document type.
+    }
+  }
+
+  engineering-report {
+    definition {
+      Engineering report document type.
+    }
+  }
+
+  other {
+    definition {
+      Other document type.
+    }
+  }
+
+  policy {
+    definition {
+      Policy document type.
+    }
+  }
+
+  reference-model {
+    definition {
+      Reference model document type.
+    }
+  }
+
+  release-notes {
+    definition {
+      Release notes document type.
+    }
+  }
+
+  standard {
+    definition {
+      Standard document type.
+    }
+  }
+
+  test-suite {
+    definition {
+      Test suite document type.
+    }
+  }
+
+  user-guide {
+    definition {
+      User guide document type.
+    }
+  }
+
+  white-paper {
+    definition {
+      White paper document type.
+    }
+  }
+
 }

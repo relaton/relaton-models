@@ -1,0 +1,18 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  IhoDocumentType:
+  - best-practices
+  - directives
+  - legal
+  - policy-and-procedures
+  - proposal
+  - regulation
+  - report
+  - resolution
+  - specification
+  - standard
+  - supporting-document
+profile: iho/1.0

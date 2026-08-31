@@ -1,0 +1,22 @@
+base: relaton
+constrain:
+  BibliographicItem.docidentifier: 1..*
+  BibliographicItem.title: 1..*
+enums:
+  EtsiDocumentType:
+  - etsi-guide
+  - etsi-standard
+  - etsi-technical-report
+  - european-standard
+  - european-telecommunication-standard
+  - group-report
+  - group-specification
+  - gsm-technical-specification
+  - interim-european-telecommunication-standard
+  - norme-europeenne-de-telecommunication
+  - special-report
+  - technical-basis-for-regulation
+  - technical-committee-reference-technical-report
+  - technical-report
+  - technical-specification
+profile: etsi/1.0

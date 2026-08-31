@@ -1,6 +1,7 @@
 class LocalizedString {
   definition {
-    FormattedString which optionally specifies its language, locale, and/or script.
+    FormattedString which optionally specifies its language, locale, script,
+    and script-conversion spelling system.
   }
   +language: Iso639Code[0..*] {
     definition {
@@ -15,6 +16,12 @@ class LocalizedString {
   +script: Iso15924Code[0..*] {
     definition {
       Script of string.
+    }
+  }
+  +spellingSystem: Iso24229Code[0..*] {
+    definition {
+      Script-conversion (spelling) system codes per ISO 24229, distinguishing
+      the conversion method from language and script.
     }
   }
   +content: String  {
