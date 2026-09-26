@@ -14,16 +14,17 @@ GEM
   specs:
     base64 (0.3.0)
     bigdecimal (4.1.2)
-    canon (0.2.12)
+    canon (0.3.73)
       diff-lcs
       json
-      moxml (~> 0.1.22)
-      nokogiri
+      leptris (~> 1.9.242)
+      moxml (~> 0.5.84)
       paint
       rainbow
       table_tennis
       thor
       unicode-name
+      yeptris (~> 0.6.16)
     concurrent-ruby (1.3.8)
     csv (3.3.6)
     diff-lcs (2.0.0)
@@ -31,39 +32,36 @@ GEM
     ffi (1.17.4-arm64-darwin)
     ffi (1.17.4-x86_64-darwin)
     json (2.21.2)
+    leptris (1.9.248.0)
+      ffi (~> 1.15)
+    leptris (1.9.248.0-arm64-darwin)
+      ffi (~> 1.15)
+    leptris (1.9.248.0-x86_64-darwin)
+      ffi (~> 1.15)
     liquid (5.13.0)
       bigdecimal
       strscan (>= 3.1.1)
-    lutaml-model (0.8.19)
+    lutaml-model (0.8.64)
       base64
       bigdecimal
       canon
       concurrent-ruby
       liquid (>= 4.0, < 6.0)
-      moxml (~> 0.1.25)
+      moxml (~> 0.5.84)
       ostruct
-      rubyzip (~> 2.3)
+      rubyzip (~> 3.4)
       thor
     memo_wise (1.13.0)
-    mini_portile2 (2.8.9)
-    moxml (0.1.26)
-    nokogiri (1.19.4)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
-    nokogiri (1.19.4-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.19.4-x86_64-darwin)
-      racc (~> 1.4)
+    moxml (0.5.86)
     ostruct (0.6.3)
     paint (2.3.0)
     parslet (2.0.0)
-    racc (1.8.1)
     rainbow (3.1.1)
     rake (13.4.2)
     rexml (3.4.4)
     ruby-graphviz (1.2.5)
       rexml
-    rubyzip (2.4.1)
+    rubyzip (3.4.0)
     strscan (3.1.8)
     table_tennis (1.0.0)
       csv (~> 3.3)
@@ -78,6 +76,12 @@ GEM
     unicode-name (1.14.0)
       unicode-types (~> 1.11)
     unicode-types (1.11.0)
+    yeptris (0.6.22.1)
+      ffi (~> 1.15)
+    yeptris (0.6.22.1-arm64-darwin)
+      ffi (~> 1.15)
+    yeptris (0.6.22.1-x86_64-darwin)
+      ffi (~> 1.15)
 
 PLATFORMS
   arm64-darwin-21
