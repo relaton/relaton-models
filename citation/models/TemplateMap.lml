@@ -1,0 +1,16 @@
+class TemplateMap {
+  definition {
+    Citation and reference templates as data. Placeholders are
+    double-brace slot names resolved by the rendering engine against the
+    ISO 690 data element inventory (creator, title, edition, medium,
+    series, production, date, numeration, componentPart, identifier,
+    location) or name-form fields (surname, givenNames, disambiguator).
+    The title emphasis markers are style data, not engine constants.
+  }
+  +titleOpen: String[0..1]
+  +titleClose: String[0..1]
+  +citation: String
+  +reference: String
+  +name: String[0..1]
+  +series: String[0..1]
+}

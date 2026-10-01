@@ -1,0 +1,9 @@
+class BibliographicIndex {
+  definition {
+    An ordered reference list: Relaton bibliographic items plus collation
+    and grouping rules. An index is data over the models.
+  }
+  +entries: BibliographicItem[0..*]
+  +collation: CollationRules[0..1]
+  +grouping: GroupingRule[0..*]
+}

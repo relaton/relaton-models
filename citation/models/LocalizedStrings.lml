@@ -1,0 +1,17 @@
+class LocalizedStrings {
+  definition {
+    Localized connective strings used when forming citations and references,
+    replacing hard-coded i18n tables in rendering code.
+  }
+  +and: String[0..1]
+  +others: String[0..1] {
+    definition {
+      Marker replacing a truncated name list, e.g. "et al.".
+    }
+  }
+  +noDate: String[0..1]
+  +noAuthor: String[0..1]
+  +in: String[0..1]
+  +at: String[0..1]
+  +availableAt: String[0..1]
+}

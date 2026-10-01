@@ -128,7 +128,9 @@ unless dupes.empty?
   dupes.each { |d| warn "  #{d}" }
 end
 
-Dir[File.expand_path("../examples/*.yaml", __dir__)].sort.each do |path|
+files = Dir[File.expand_path("../examples/*.yaml", __dir__)] +
+        Dir[File.expand_path("../citation/styles/*.yml", __dir__)]
+files.sort.each do |path|
   @errors.clear
   data = YAML.safe_load_file(path, permitted_classes: [], aliases: false)
   data = data.values.first while data.is_a?(Hash) && data.keys.size == 1 && data.values.first.is_a?(Hash) && !data.key?("class")

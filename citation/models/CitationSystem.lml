@@ -1,0 +1,12 @@
+enum CitationSystem {
+  definition {
+    The system by which an in-text citation points at a bibliographic index
+    entry, as systems are defined in ISO 690 Annex A (informative here:
+    structural data, not rendering guidance).
+  }
+  name-date
+  numeric
+  named-tag
+  running-notes
+  implied
+}

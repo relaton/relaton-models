@@ -1,0 +1,15 @@
+class SortRule {
+  definition {
+    One ordering key of a bibliographic index sort.
+  }
+  +attribute: String {
+    definition {
+      The resolved field the entries sort on, e.g. creator, date.
+    }
+  }
+  +order: String[0..1] {
+    definition {
+      ascending (default) or descending.
+    }
+  }
+}
