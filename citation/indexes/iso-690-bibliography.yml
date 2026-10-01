@@ -1,0 +1,62 @@
+# A BibliographicStyle instance: an ordered reference list (the index) plus
+# its layout rules, as data over the citation module's models. Validated
+# against the LML by `rake fixtures:yaml`. The entries are BibliographicItem
+# instances; rendering order comes from the paired CitationStyle's sortKey.
+class: BibliographicStyle
+index:
+  class: BibliographicIndex
+  entries:
+    - class: BibliographicItem
+      type: book
+      title:
+        - class: TypedTitleString
+          content:
+            - text: "Eric, or Little by Little: a tale of Roslyn School"
+      contributor:
+        - class: ContributionInfo
+          role:
+            - class: ContributorRole
+              type: author
+          entity:
+            class: Person
+            name:
+              class: FullName
+              completeName:
+                text: "Frederic William Farrar"
+      date:
+        - class: BibliographicDate
+          type: published
+          from: "1971"
+    - class: BibliographicItem
+      type: book
+      title:
+        - class: TypedTitleString
+          content:
+            - text: "From martyr to muppy"
+      contributor:
+        - class: ContributionInfo
+          role:
+            - class: ContributorRole
+              type: author
+          entity:
+            class: Person
+            name:
+              class: FullName
+              completeName:
+                text: "Alastair Hamilton"
+      date:
+        - class: BibliographicDate
+          type: published
+          from: "1994"
+  collation:
+    class: CollationRules
+    language: en
+    script: Latn
+  grouping:
+    - class: GroupingRule
+      attribute: creator
+layout:
+  class: LayoutRules
+  numbering: arabic
+  hangingIndent: true
+  groupHeadings: false
