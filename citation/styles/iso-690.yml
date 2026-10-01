@@ -1,0 +1,65 @@
+# ISO 690 name-and-date citation style, expressed as data over the Relaton
+# models (the CitationStyle LML). This file is the canonical instance: the
+# relaton-render engine's styles/author-date.yml is its executable port and
+# relaton-ts consumes the same shape. Slots are the resolved ISO 690 data
+# element names (creator, title, edition, medium, series, production, date,
+# numeration, componentPart, identifier, location) plus the name-form fields
+# (surname, givenNames) and disambiguator. Title emphasis is style data
+# (titleOpen/titleClose), not engine constants. perType selects on the
+# ISO 690 clause 8 resource kinds (TemplateType); the engine maps a
+# bibliographic item's wire type value to its kind.
+class: CitationStyle
+name: "ISO 690 (name and date)"
+scheme:
+  class: CitationScheme
+  system: name-date
+  disambiguation:
+    class: DisambiguationRules
+    yearSuffix: a
+    suffixSeparator: ""
+    truncateNamesTo: 3
+  nameForm:
+    class: NameFormRules
+    initials: false
+    givenNameFirst: false
+  locale:
+    class: LocalizedStrings
+    and: and
+    others: et al.
+    noDate: no date
+    noAuthor: "—"
+    in: "In:"
+    at: "At:"
+    availableAt: "Available at:"
+templates:
+  class: TemplateMap
+  titleOpen: "_"
+  titleClose: "_"
+  citation: "{{surname}}, {{date}}{{disambiguator}}"
+  reference: "{{creator}}. {{title}}. {{medium}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  name: "{{surname}}, {{givenNames}}"
+  series: "{{seriesTitle}}, {{seriesNumber}}"
+perType:
+  - class: TypeTemplate
+    type: monograph
+    template: "{{creator}}. {{title}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  - class: TypeTemplate
+    type: component_part
+    template: "{{creator}}. {{title}}. {{componentPart}}. {{edition}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  - class: TypeTemplate
+    type: continuing
+    template: "{{creator}}. {{title}}. {{componentPart}}. {{medium}}. {{edition}}. {{production}}, {{date}}. {{numeration}}. {{identifier}}. {{location}}."
+  - class: TypeTemplate
+    type: patent
+    template: "{{creator}}. {{title}}. {{identifier}}. {{date}}."
+  - class: TypeTemplate
+    type: report
+    template: "{{creator}}. {{title}}. {{numeration}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  - class: TypeTemplate
+    type: online
+    template: "{{creator}}. {{title}}. {{date}}. {{identifier}}. {{location}}."
+sortKey:
+  - class: SortRule
+    attribute: creator
+  - class: SortRule
+    attribute: date

@@ -1,0 +1,47 @@
+diagram CitationStyle {
+  title 'Citation Style'
+  caption 'A citation style instantiated over the Relaton models: scheme, templates, per-type variants, sort keys'
+
+  include ../models/CitationStyle.lml
+  include ../models/CitationScheme.lml
+  include ../models/CitationSystem.lml
+  include ../models/DisambiguationRules.lml
+  include ../models/NameFormRules.lml
+  include ../models/LocalizedStrings.lml
+  include ../models/TemplateMap.lml
+  include ../models/TypeTemplate.lml
+  include ../models/SortRule.lml
+
+  association {
+    owner CitationStyle
+    member CitationScheme
+  }
+  association {
+    owner CitationStyle
+    member TemplateMap
+  }
+  association {
+    owner CitationStyle
+    member TypeTemplate
+  }
+  association {
+    owner CitationStyle
+    member SortRule
+  }
+  association {
+    owner CitationScheme
+    member CitationSystem
+  }
+  association {
+    owner CitationScheme
+    member DisambiguationRules
+  }
+  association {
+    owner CitationScheme
+    member NameFormRules
+  }
+  association {
+    owner CitationScheme
+    member LocalizedStrings
+  }
+}

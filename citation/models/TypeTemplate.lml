@@ -1,0 +1,9 @@
+class TypeTemplate {
+  definition {
+    A template specialisation for one ISO 690 clause 8 resource kind;
+    selected by data lookup on the kind, never by code branching and
+    never by enumerating wire type synonyms.
+  }
+  +type: TemplateType
+  +template: String
+}

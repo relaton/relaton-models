@@ -1,0 +1,21 @@
+class DisambiguationRules {
+  definition {
+    Rules for disambiguating citations that would otherwise render
+    identically, such as the same authors publishing in the same year.
+  }
+  +yearSuffix: String[0..1] {
+    definition {
+      Suffix pattern appended to the year, e.g. "a", "b".
+    }
+  }
+  +suffixSeparator: String[0..1] {
+    definition {
+      Separator between year and suffix; empty string for immediate suffixing.
+    }
+  }
+  +truncateNamesTo: Integer[0..1] {
+    definition {
+      Number of names shown before disambiguating truncation applies.
+    }
+  }
+}

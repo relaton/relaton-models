@@ -1,0 +1,9 @@
+class BibliographicStyle {
+  definition {
+    Presentation of a bibliographic index: which index, laid out how.
+    Pairs with a CitationStyle for the full ISO 690 rendering contract,
+    both as data.
+  }
+  +index: BibliographicIndex
+  +layout: LayoutRules[0..1]
+}

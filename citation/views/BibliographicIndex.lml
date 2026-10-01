@@ -1,0 +1,21 @@
+diagram BibliographicIndex {
+  title 'Bibliographic Index'
+  caption 'An ordered reference list: entries, collation and grouping rules'
+
+  include ../models/BibliographicIndex.lml
+  include ../models/CollationRules.lml
+  include ../models/GroupingRule.lml
+
+  association {
+    owner BibliographicIndex
+    member BibliographicItem
+  }
+  association {
+    owner BibliographicIndex
+    member CollationRules
+  }
+  association {
+    owner BibliographicIndex
+    member GroupingRule
+  }
+}

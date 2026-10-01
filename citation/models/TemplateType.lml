@@ -1,0 +1,38 @@
+enum TemplateType {
+  definition {
+    The template-selection vocabulary: the ISO 690 clause 8 information
+    resource kinds. A style's perType entries select on these kinds; the
+    rendering engine owns the mapping from a bibliographic item's wire
+    type value to its kind, so instances never enumerate type synonyms.
+  }
+  monograph {
+    definition {
+      Whole monographs (clause 8.2).
+    }
+  }
+  component_part {
+    definition {
+      Component parts of monographs (clause 8.3).
+    }
+  }
+  continuing {
+    definition {
+      Serials and their component parts (clause 8.4).
+    }
+  }
+  patent {
+    definition {
+      Patents (clause 8.10).
+    }
+  }
+  report {
+    definition {
+      Reports and standards in series (clause 8.11); the fallback kind.
+    }
+  }
+  online {
+    definition {
+      Online resources and websites (clause 8.14).
+    }
+  }
+}

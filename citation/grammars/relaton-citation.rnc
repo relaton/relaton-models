@@ -1,0 +1,100 @@
+# The citation module's instance grammar: the wire format of citation
+# styles, bibliographic indexes and bibliographic styles as instances of
+# the CitationStyle LML models (citation/models/). A new style is an
+# instance of this grammar - the rendering engine holds none of it.
+include "biblio-standoc.rnc" {
+
+CitationSystem = "name-date" | "numeric" | "named-tag" | "running-notes" | "implied"
+
+SortOrder = "ascending" | "descending"
+
+CitationStyle = element citation-style {
+  element name { text },
+  element scheme { CitationScheme },
+  element templates { TemplateMap },
+  element perType { TypeTemplate }*,
+  element sortKey { SortRule }*
+}
+
+CitationScheme = element scheme {
+  element system { CitationSystem },
+  element disambiguation { DisambiguationRules }?,
+  element nameForm { NameFormRules }?,
+  element locale { LocalizedStrings }?
+}
+
+DisambiguationRules = element disambiguation {
+  element yearSuffix { text }?,
+  element suffixSeparator { text }?,
+  element truncateNamesTo { xsd:integer }?
+}
+
+NameFormRules = element nameForm {
+  element initials { xsd:boolean }?,
+  element givenNameFirst { xsd:boolean }?,
+  element connective { text }?,
+  element nameSeparator { text }?,
+  element othersThreshold { xsd:integer }?
+}
+
+LocalizedStrings = element locale {
+  element and { text }?,
+  element others { text }?,
+  element noDate { text }?,
+  element noAuthor { text }?,
+  element in { text }?,
+  element at { text }?,
+  element availableAt { text }?
+}
+
+TemplateMap = element templates {
+  element titleOpen { text }?,
+  element titleClose { text }?,
+  element citation { text },
+  element reference { text },
+  element name { text }?,
+  element series { text }?
+}
+
+TypeTemplate = element perType {
+  attribute type { TemplateType },
+  element template { text }
+}
+
+TemplateType = "monograph" | "component_part" | "continuing" | "patent" | "report" | "online"
+
+SortRule = element sortKey {
+  element attribute { text },
+  element order { SortOrder }?
+}
+
+CollationRules = element collation {
+  element language { text }?,
+  element script { text }?,
+  element numericOrder { text }?
+}
+
+GroupingRule = element grouping {
+  element attribute { text },
+  element order { text }?
+}
+
+LayoutRules = element layout {
+  element numbering { text }?,
+  element indent { text }?,
+  element hangingIndent { xsd:boolean }?,
+  element groupHeadings { xsd:boolean }?
+}
+
+BibliographicIndex = element bibliographic-index {
+  element entries { BibliographicItem }*,
+  element collation { CollationRules }?,
+  element grouping { GroupingRule }*
+}
+
+BibliographicStyle = element bibliographic-style {
+  element index { BibliographicIndex },
+  element layout { LayoutRules }?
+}
+
+}

@@ -1,0 +1,13 @@
+class LayoutRules {
+  definition {
+    Presentation of a bibliographic index.
+  }
+  +numbering: String[0..1] {
+    definition {
+      Entry numbering scheme, e.g. arabic, roman, none.
+    }
+  }
+  +indent: String[0..1]
+  +hangingIndent: Boolean[0..1]
+  +groupHeadings: Boolean[0..1]
+}

@@ -1,0 +1,27 @@
+diagram CitationScheme {
+  title 'Citation Scheme'
+  caption 'How an in-text citation points at an index entry: system, disambiguation, name form, localized strings'
+
+  include ../models/CitationScheme.lml
+  include ../models/CitationSystem.lml
+  include ../models/DisambiguationRules.lml
+  include ../models/NameFormRules.lml
+  include ../models/LocalizedStrings.lml
+
+  association {
+    owner CitationScheme
+    member CitationSystem
+  }
+  association {
+    owner CitationScheme
+    member DisambiguationRules
+  }
+  association {
+    owner CitationScheme
+    member NameFormRules
+  }
+  association {
+    owner CitationScheme
+    member LocalizedStrings
+  }
+}

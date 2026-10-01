@@ -1,0 +1,17 @@
+diagram BibliographicStyle {
+  title 'Bibliographic Style'
+  caption 'Presentation of a bibliographic index, paired with a CitationStyle'
+
+  include ../models/BibliographicStyle.lml
+  include ../models/BibliographicIndex.lml
+  include ../models/LayoutRules.lml
+
+  association {
+    owner BibliographicStyle
+    member BibliographicIndex
+  }
+  association {
+    owner BibliographicStyle
+    member LayoutRules
+  }
+}

@@ -1,7 +1,6 @@
 # 07 — Citation scheme, citation style, bibliographic index & style AS MODELS
 
-**Status: open — flagship** · Repo: relaton-models (new `citation/` module),
-consumer: relaton-render v2 (engine only)
+**Status: models + canonical instance landed; engine landed; flavour instances port open** · Repo: relaton-models (`citation/` module), consumer: relaton-render v2 + relaton-ts
 
 ## Why
 Today the rendering knowledge lives as ad-hoc artifacts: relaton-render's
