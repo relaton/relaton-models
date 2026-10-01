@@ -129,7 +129,8 @@ unless dupes.empty?
 end
 
 files = Dir[File.expand_path("../examples/*.yaml", __dir__)] +
-        Dir[File.expand_path("../citation/styles/*.yml", __dir__)]
+        Dir[File.expand_path("../citation/styles/*.yml", __dir__)] +
+        Dir[File.expand_path("../citation/indexes/*.yml", __dir__)]
 files.sort.each do |path|
   @errors.clear
   data = YAML.safe_load_file(path, permitted_classes: [], aliases: false)

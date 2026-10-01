@@ -22,15 +22,6 @@ scheme:
     class: NameFormRules
     initials: false
     givenNameFirst: false
-  locale:
-    class: LocalizedStrings
-    and: and
-    others: et al.
-    noDate: no date
-    noAuthor: "—"
-    in: "In:"
-    at: "At:"
-    availableAt: "Available at:"
 templates:
   class: TemplateMap
   titleOpen: "_"
