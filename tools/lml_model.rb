@@ -72,4 +72,14 @@ module LmlModel
       []
     end
   end
+
+  # First line of an attribute's LML definition (the RNC ## annotation source)
+  def definition_of(type_name, attr_name)
+    info = type_index[type_name]
+    return nil unless info && info[:obj].respond_to?(:attributes)
+    a = info[:obj].attributes.find { |x| x.name.to_s == attr_name }
+    d = a && a.respond_to?(:definition) ? a.definition : nil
+    d.to_s.strip.split("
+").first
+  end
 end

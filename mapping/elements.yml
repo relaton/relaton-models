@@ -1,0 +1,33 @@
+# The explicit LML↔wire mapping table (TODO.cc-citation/09 Stage B).
+#
+# The wire grammar carries decisions the flat LML cannot express: class→
+# element renames, attribute-vs-child-element, enum-or-open-text widening,
+# and mutual-exclusivity groups. This table states those decisions; the
+# generator (tools/generate_elements.rb) takes everything derivable —
+# names, `##` annotations, attribute types — from the LML.
+#
+# Per class: `file` is the RNC to splice; `anchor` is the definition the
+# generator owns (all `definitions` render at that point, in order).
+BibliographicDate:
+  file: relaton/grammars/biblio.rnc
+  anchor: bdate
+  through: bDateAttributes   # first adoption replaces anchor..through
+  definitions:
+    # `bdate = element date { ... }` — attributes live in the referenced
+    # bDateAttributes; the group is the from/to range vs on point date
+    # mutual exclusivity, which the flat LML cardinalities cannot say.
+    bdate:
+      element: date
+      attributes_ref: bDateAttributes,
+      group:
+        - "("
+        - "  ("
+        - "    @from: element from { ISO8601Date },"
+        - "    @to: element to { ISO8601Date }?"
+        - "  ) |"
+        - "  @on: element on { ISO8601Date }"
+        - ")?"
+    bDateAttributes:
+      attributes:
+        type: { type: "( BibliographicDateType | text )", required: true }
+        text: {}

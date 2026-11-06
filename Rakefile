@@ -241,8 +241,33 @@ task :"rnc:check" do
   sh "python3", "tools/generate_rnc.py", "--check"
 end
 
+desc "Generate the RNC element definitions from the LML + the wire mapping"
+task grammar: %i[rnc:generate elements:generate]
+
+namespace :grammar do
+  desc "Fail when the generated RNC differs from committed (CI gate)"
+  task check: %i[rnc:check elements:check]
+end
+
+desc "Generate RNC vocabularies from LML enums"
+task :"rnc:generate" do
+  sh "python3", "tools/generate_rnc.py"
+end
+
+namespace :elements do
+  desc "Splice the LML+mapping element definitions into the RNC"
+  task :generate do
+    sh "bundle", "exec", "ruby", "tools/generate_elements.rb"
+  end
+
+  desc "Fail when the spliced element definitions differ from committed"
+  task :check do
+    sh "bundle", "exec", "ruby", "tools/generate_elements.rb", "--check"
+  end
+end
+
 desc "Validate XML, YAML, and schema fixtures"
-task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl rnc:check]
+task fixtures: %i[fixtures:xml fixtures:yaml fixtures:schema csl rnc:check elements:check]
 
 desc "Validate profiles/*.yaml against the LML model (narrowing-only enforced)"
 task :profiles do
