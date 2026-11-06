@@ -902,11 +902,8 @@
         "attribute": {
           "type": "string"
         },
-        "descending": {
-          "type": "boolean"
-        },
-        "languageAware": {
-          "type": "boolean"
+        "order": {
+          "type": "string"
         }
       },
       "additionalProperties": false,
@@ -919,6 +916,12 @@
       "title": "TemplateMap",
       "properties": {
         "class": {
+          "type": "string"
+        },
+        "titleOpen": {
+          "type": "string"
+        },
+        "titleClose": {
           "type": "string"
         },
         "citation": {
@@ -940,6 +943,17 @@
         "reference"
       ]
     },
+    "TemplateType": {
+      "enum": [
+        "component_part",
+        "continuing",
+        "monograph",
+        "online",
+        "patent",
+        "report"
+      ],
+      "title": "TemplateType"
+    },
     "TypeTemplate": {
       "type": "object",
       "title": "TypeTemplate",
@@ -948,7 +962,7 @@
           "type": "string"
         },
         "type": {
-          "$ref": "#/$defs/BibItemType"
+          "$ref": "#/$defs/TemplateType"
         },
         "template": {
           "type": "string"
@@ -5524,6 +5538,12 @@
             "$ref": "#/$defs/NoteBlock"
           }
         },
+        "contribMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ContributionElementMetadata"
+          }
+        },
         "attributes": {
           "type": "array",
           "items": {
@@ -5574,6 +5594,9 @@
         "path": {
           "type": "string"
         },
+        "position": {
+          "$ref": "#/$defs/AmendPosition"
+        },
         "pathEnd": {
           "type": "string"
         },
@@ -5606,6 +5629,13 @@
       "required": [
         "change"
       ]
+    },
+    "AmendPosition": {
+      "enum": [
+        "after",
+        "before"
+      ],
+      "title": "AmendPosition"
     },
     "ChangeType": {
       "enum": [
