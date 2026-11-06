@@ -20,9 +20,10 @@ ends it — RNC becomes a derived artifact.
   cardinality → `?`/`*`/`+`, `<<Basicdoc>>` types → basicdoc RNC include).
   Keep `## definition` doc-comments as RNC `##` annotations (they already
   mirror).
-- **C — flip**: `rake grammar` regenerates `relaton/grammars/`;
-  hand-editing RNC ends (CI asserts clean tree); flavours' overlays compose
-  over generated base exactly as they do today.
+- **C — flip**: mechanics wired — `rake grammar` regenerates
+  (rnc:generate + elements:generate); `grammar:check` gates the clean tree
+  (and rides `rake fixtures`). Hand-editing a generated region ends; the
+  mapping table + the LML are the sources of truth.
 
 Coordinate with lutaml/lutaml-uml#96 (renderer-level generation) — our
 generator is domain-specific to the biblio wire format and lives here.

@@ -839,25 +839,27 @@ BibliographicDateType =
   "stable-until"
 
 ## Significant date in the lifecycle of the bibliographic item, including its production and its access
+# {GENERATED(BibliographicDate):} begin — rake grammar owns this region
 bdate = element date {
   bDateAttributes,
+(
   (
-    (
-       ## The start of the date range described
-       element from { ISO8601Date },
-       ## The end of the date range described
-       element to { ISO8601Date }?
-    ) |
-    ## The point date described
-    element on { ISO8601Date }
-  )?
+    ## The start of the date range described.
+    element from { ISO8601Date },
+    ## The end of the date range described.
+    element to { ISO8601Date }?
+  ) |
+  ## The point date described (mutually exclusive with date range).
+  element on { ISO8601Date }
+)?
 }
 
 bDateAttributes =
-  ## The phase of the production of or access to a bibliographic item
+  ## The phase of the production of or access to a bibliographic item.
   attribute type { ( BibliographicDateType | text ) },
-  ## An optional textual description of the date, especially when a Gregorian date is not applicable
+  ## An optional textual description of the date, especially when a Gregorian date is not applicable.
   attribute text { text }?
+# {GENERATED(BibliographicDate):} end
 
 ## An identifier of a bibliographic item in an international standard scheme
 docidentifier = element docidentifier { DocIdentifierType }
