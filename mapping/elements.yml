@@ -31,3 +31,26 @@ BibliographicDate:
       attributes:
         type: { type: "( BibliographicDateType | text )", required: true }
         text: {}
+BibItemSize:
+  file: relaton/grammars/biblio.rnc
+  anchor: sizevalue
+  through: bibliographic_size   # first adoption replaces anchor..through
+  definitions:
+    # `sizevalue = element value { ... }` — the wire widens the LML's
+    # BibItemSizeType to free text with recommended values, and the
+    # quantity rides as the element's inline content.
+    sizevalue:
+      element: value
+      attributes:
+        type:
+          type: "text"
+          required: true
+          definition: "The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), data (including unit), value (free-form string)"
+      content:
+        - "  @value: text?"
+    # `bibliographic_size = element size { sizevalue+ }` — the wrapper the
+    # corpus composes; the repetition is wire structure.
+    bibliographic_size:
+      element: size
+      group:
+        - "  sizevalue+"

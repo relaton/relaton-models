@@ -967,15 +967,18 @@ accesslocation = element accesslocation { text }
 ## The size of a bibliographic item being referred to.
 ## A sequence of sizes can be used to indicate different numberings, e.g. xii + 40 pp.,
 ## or different kinds of measures, e.g. pages + plates
+# {GENERATED(BibItemSize):} begin — rake grammar owns this region
 sizevalue = element value {
-  ## The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), 
-  ## data (including unit), value (free-form string)
+  ## The type of size. Recommended values: page, volume, time (in ISO 8601 duration values), data (including unit), value (free-form string)
   attribute type { text },
   ## The quantity of the size
   text?
 }
 
-bibliographic_size = element size { sizevalue+ }
+bibliographic_size = element size {
+  sizevalue+
+}
+# {GENERATED(BibItemSize):} end
 
 extent = element extent  {
   locality* | localityStack*

@@ -86,33 +86,45 @@ class GenerateElements
 
   # Render one mapping entry into an RNC definition block.
   def render(lml_class, name, d)
-    if d["attributes"]
-      attributes_block(lml_class, name, d["attributes"])
-    else
+    if d["element"]
       element_block(lml_class, name, d)
+    else
+      attributes_block(lml_class, name, d["attributes"])
     end
   end
 
   # `name =\n  ## def\n  attribute a { T },\n  ## def\n  attribute b { T }?`
+  # A mapping entry may override an annotation with `definition:`.
   def attributes_block(lml_class, name, attributes)
     parts = attributes.map do |attr, w|
-      "  ## #{definition_line(lml_class, attr)}\n" \
+      "  ## #{w['definition'] || definition_line(lml_class, attr)}\n" \
         "  attribute #{attr} { #{w['type'] || lml_type(lml_class, attr)} }#{w['required'] ? '' : '?'}"
     end
     "#{name} =\n#{parts.join(",\n")}"
   end
 
-  # `name = element <element> {\n  <attributes_ref line>\n  <group lines>\n}`;
-  # `@attr:` tokens in the group pull the LML definition as a `##` annotation.
+  # `name = element <element> {\n  <attributes lines>\n  <content lines>\n}`;
+  # `@attr:` tokens pull the LML definition as a `##` annotation. Pattern
+  # members are comma-separated: the last attribute takes a comma when
+  # content lines follow.
   def element_block(lml_class, name, d)
     lines = []
     lines << "  #{d['attributes_ref']}" if d["attributes_ref"]
-    d["group"].each do |line|
+    attrs = (d["attributes"] || {}).map do |attr, w|
+      "  ## #{w['definition'] || definition_line(lml_class, attr)}\n" \
+        "  attribute #{attr} { #{w['type']} }#{w['required'] ? '' : '?'}"
+    end
+    content = (d["content"] || d["group"] || []).map do |line|
       indent = line[/\A\s*/]
-      lines << line.gsub(/@([a-z]+):\s*/) do
+      line.gsub(/@([a-z]+):\s*/) do
         "## #{definition_line(lml_class, Regexp.last_match(1))}\n#{indent}"
       end
     end
+    unless attrs.empty?
+      attrs[-1] += "," unless content.empty?
+      lines.concat(attrs)
+    end
+    lines.concat(content)
     "#{name} = element #{d['element']} {\n#{lines.join("\n")}\n}"
   end
 
