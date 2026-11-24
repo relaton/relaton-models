@@ -1,0 +1,45 @@
+# IEEE-SA Standards Style Manual bibliography forms (clause 17): a
+# standard's entry is its designation and title, nothing else - no
+# authors, no publisher, no place; articles and books follow the
+# Chicago-derived forms, with only the first author name inverting and
+# the in-text citation carrying the designation and the [B#] number.
+name: "IEEE-SA standards bibliography"
+family: ieee-sa
+scheme:
+  system: designation
+  nameForm:
+    initials: true
+    initialsSeparator: " "
+    initialsPeriod: true
+    invertedAll: false
+    givenNameFirst: false
+    editorsMarked: false
+    surnameUpcase: false
+    subsequentSurnameUpcase: false
+  locale:
+    labels:
+      "and": "and"
+      oxford_comma: ","
+templates:
+  titleOpen: ""
+  titleClose: ""
+  citation: "{{identifier}}"
+  reference: "{{creator}}, {{title}}. {{series}}. {{extent}}. {{date}}."
+  name: "{{surname}}, {{givenNames}}"
+  identifierMode: first
+perType:
+  - type: report
+    home: true
+    template: "{{title}}"
+  - type: report
+    template: "{{identifier}}, {{title}}"
+  - type: monograph
+    title: "<em>{{title}}</em>"
+    template: "{{creator}}, {{title}}, {{edition}}. {{production}}, {{date}}, {{extent}}."
+  - type: component_part
+    title: "\"{{title}},\""
+    template: "{{creator}}, {{title}} {{componentpart}}, {{extent}}, {{date}}."
+  - type: continuing
+    title: "\"{{title}},\""
+    series: "<em>{{seriestitle}}</em>"
+    template: "{{creator}}, {{title}} {{series}}, {{extent}}, {{date}}."

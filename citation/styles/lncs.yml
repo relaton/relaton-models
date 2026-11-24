@@ -1,0 +1,54 @@
+# Springer LNCS citation style, an instance of the relaton-models
+# CitationStyle model. The LNCS shape: "Author, A.B.: Title. In:
+# Editor, E. (ed.), Proceedings. LNCS 1234, pp. 10-20. Springer,
+# Heidelberg (2010)" - the creator list closes on a colon, the year
+# closes the entry in parentheses, publishers precede places, and a
+# standard with no personal authors leads with the publisher's
+# abbreviation.
+name: "Springer LNCS"
+family: lncs
+requires:
+  - production_order
+  - extent_units
+scheme:
+  system: name-date
+  nameForm:
+    initials: true
+    initialsSeparator: ""
+    initialsPeriod: true
+    invertedAll: true
+    givenNameFirst: false
+    editorsMarked: true
+    loneEditorMarked: true
+    creatorFallback: publisher_abbrev
+    surnameUpcase: false
+    subsequentSurnameUpcase: false
+  locale:
+    "in": "In"
+    availableAt: ""
+    labels:
+      "and": ""
+      oxford_comma: ""
+      series_no: ""
+    punct:
+      production_order: publisher_first
+      production_sep: ", "
+templates:
+  titleOpen: ""
+  titleClose: ""
+  citation: "{{surname}}, {{date}}"
+  reference: "{{creator}}: {{title}}. {{series}}. {{production}} {{dategroup}}. {{location}}"
+  name: "{{surname}}, {{givenNames}}"
+  identifierMode: first
+perType:
+  - type: report
+    home: true
+    template: "{{title}}"
+  - type: report
+    template: "{{creator}}: {{identifier}}, {{title}}. {{production}} {{dategroup}}."
+  - type: monograph
+    template: "{{creator}}: {{title}}. {{series}} {{production}} {{dategroup}}"
+  - type: component_part
+    template: "{{creator}}: {{title}}. {{componentpart}} {{extent}} {{production}} {{dategroup}}"
+  - type: continuing
+    template: "{{creator}}: {{title}}. {{series}} {{extent}} {{dategroup}}"

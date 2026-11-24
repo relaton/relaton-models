@@ -1,0 +1,31 @@
+# ISO 690 name-and-date citation style, an instance of the relaton-models
+# CitationStyle model. Templates place the ISO 690 clause 7 data elements
+# ({{creator}}, {{title}}, ...) in each resource kind's clause 8 order; an
+# absent element takes its trailing punctuation with it. A new style is a
+# YAML instance — the engine holds no styles.
+name: "ISO 690 (name and date)"
+scheme:
+  system: name-date
+  nameForm:
+    initials: false
+    givenNameFirst: false
+    # ISO 690 marks an editor list's role ("(éd.)") also when the list
+    # holds a single editor; flavors opt out per their own style
+    loneEditorMarked: true
+templates:
+  titleOpen: "_"
+  titleClose: "_"
+  citation: "{{surname}}, {{date}}{{disambiguator}}"
+  reference: "{{creator}}. {{title}}. {{medium}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  name: "{{surname}}, {{givenNames}}"
+perType:
+  - type: monograph
+    template: "{{creator}}. {{title}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  - type: report
+    template: "{{creator}}. {{title}}. {{numeration}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{identifier}}. {{location}}."
+  - type: patent
+    template: "{{creator}}. {{title}}. {{identifier}}. {{date}}."
+  - type: continuing
+    template: "{{creator}}. {{title}}. {{componentPart}}. {{medium}}. {{edition}}. {{production}}, {{date}}. {{numeration}}. {{identifier}}. {{location}}."
+  - type: online
+    template: "{{creator}}. {{title}}. {{date}}. {{identifier}}. {{location}}."

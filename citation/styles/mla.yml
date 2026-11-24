@@ -1,0 +1,56 @@
+# MLA Handbook (9th ed.), Works Cited forms: every author after the
+# first renders in natural order ("Dorris, Michael, and Louise
+# Erdrich"), three or more collapse to "et al."; self-contained titles
+# are italic and container/part titles take quotation marks; the date
+# closes the entry before the extent. The in-text citation carries the
+# author alone - MLA has no date in the parenthesis.
+name: "MLA (9th edition) Works Cited"
+family: mla
+requires:
+  - extent_units
+scheme:
+  system: name-date
+  nameForm:
+    initials: false
+    initialsSeparator: " "
+    initialsPeriod: true
+    invertedAll: false
+    givenNameFirst: false
+    editorsMarked: true
+    surnameUpcase: false
+    subsequentSurnameUpcase: false
+    orgUpcase: false
+    listStyle: serial
+    etalCount: 3
+    etalDisplay: 1
+  locale:
+    "in": "in"
+    labels:
+      "and": "and"
+      oxford_comma: ","
+      others: "et al."
+templates:
+  titleOpen: "\""
+  titleClose: "\""
+  citation: "{{surname}}"
+  reference: "{{creator}}. {{title}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{extent}}."
+  name: "{{surname}}, {{givenNames}}"
+  identifierMode: all
+perType:
+  - type: report
+    title: "<em>{{title}}</em>"
+    template: "{{creator}}. {{title}}. {{edition}}. {{production}}, {{date}}."
+  - type: monograph
+    title: "<em>{{title}}</em>"
+    template: "{{creator}}. {{title}}. {{edition}}. {{production}}, {{date}}. {{extent}}."
+  - type: component_part
+    title: "\"{{title}}\""
+    componentpart: "<em>{{componentpart}}</em>"
+    template: "{{creator}}. {{title}}. {{componentpart}}, {{production}}, {{date}}. {{extent}}."
+  - type: continuing
+    title: "\"{{title}}\""
+    series: "<em>{{seriestitle}}</em>"
+    template: "{{creator}}. {{title}}. {{series}}, {{date}}. {{extent}}."
+sortKey:
+  - attribute: creator
+  - attribute: date

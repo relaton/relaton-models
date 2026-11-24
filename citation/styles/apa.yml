@@ -1,0 +1,45 @@
+# American Psychological Association (7th ed.) reference forms: all
+# author names invert with initials ("Author, A. B."), the date
+# follows the authors in parentheses, article titles take no marks
+# (sentence case is the author's), and only book titles and journal
+# names carry italics. The reference list joins with a comma and ampersand.
+name: "APA (7th edition) references"
+family: apa
+scheme:
+  system: name-date
+  nameForm:
+    initials: true
+    initialsSeparator: " "
+    initialsPeriod: true
+    invertedAll: true
+    givenNameFirst: false
+    editorsMarked: false
+    surnameUpcase: false
+    orgUpcase: false
+    subsequentSurnameUpcase: false
+  locale:
+    "in": "In"
+    labels:
+      "and": "&"
+      oxford_comma: ","
+templates:
+  titleOpen: ""
+  titleClose: ""
+  citation: "{{surname}}, {{date}}"
+  reference: "{{creator}} ({{date}}). {{title}}. {{series}}. {{production}}. {{extent}}"
+  name: "{{surname}}, {{givenNames}}"
+  identifierMode: all
+perType:
+  - type: report
+    home: true
+    template: "{{title}}"
+  - type: report
+    template: "{{identifier}}. ({{date}}). {{title}}. {{production}}."
+  - type: monograph
+    title: "<em>{{title}}</em>"
+    template: "{{creator}} ({{date}}). {{title}}. {{production}}."
+  - type: component_part
+    template: "{{creator}} ({{date}}). {{title}}. {{componentpart}} ({{extent}}). {{production}}."
+  - type: continuing
+    series: "<em>{{seriestitle}}, {{serienumber}}</em>"
+    template: "{{creator}} ({{date}}). {{title}}. {{series}} {{extent}}. {{location}}"

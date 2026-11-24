@@ -1,0 +1,84 @@
+# The metanorma-jis CitationStyle instance, English forms
+# (relaton-render 3.0.0.pre Iso690 engine): the ISO 690 order with the
+# Latin punctuation of the en language pack.
+name: "ISO 690 (metanorma-jis flavour, en)"
+scheme:
+  system: name-date
+  shortFromReference: false
+  homeDocidType: []
+  nameForm:
+    initials: true
+    initialsSeparator: ""
+    initialsPeriod: true
+    surnameUpcase: false
+    subsequentSurnameUpcase: false
+    invertedAll: true
+    completenameUpcase: false
+    orgUpcase: false
+    editorsMarked: false
+  locale:
+    availableAt: "Available at:"
+    labels:
+      oxford_comma: ""
+      series_no: ""
+      edition_1: "第1版"
+      edition_2: "第2版"
+      edition_3: "第3版"
+      edition_4: "第4版"
+      edition_5: "第5版"
+      edition_6: "第6版"
+      edition_7: "第7版"
+      edition_8: "第8版"
+      edition_9: "第9版"
+      edition_10: "第10版"
+rules:
+  component_part: jis_component_part
+  series: jis_series
+  extent: jis_extent
+templates:
+  titleOpen: ""
+  titleClose: ""
+  identifierMode: first
+  citation: "{{surname}} {{date}}"
+  uri: "<span class='biburl'><fmt-link target='{{uri}}'>{{uri}}</fmt-link></span>"
+  reference: "{{creator}}{{role}}. {{title}}. {{edition}}. ({{series}}). {{production}}. {{date}}. {{size}}"
+  name: "{{surname}} {{givenNames}}"
+perType:
+  - type: report
+    home: true
+    short: "<span class='stddocTitle'>{{title}}</span>, {{extent}}"
+    template: "{{title}}"
+    title: "<span class='stddocTitle'>{{title}}</span>"
+  - type: report
+    fallbacks:
+      date: "n.d"
+    template: "{{creator}}. {{title}}{{authorizer}}{{production}}. {{location}}"
+    authorizer: ". {{authorizer}}"
+    production: ", {{production}}"
+    short: "{{creator}}. <span class='stddocTitle'>{{title}}</span>. {{edition}}. {{production}}"
+    title: "<span class='stddocTitle'>{{title}}</span>"
+  - type: monograph
+    noPlace: true
+    fallbacks:
+      date: "n.d"
+    template: "{{creator}}{{role}} {{title}}. {{edition}}. ({{series}}). {{production}}. {{date}}. {{size}}. {{location}}"
+    title: "_{{title}}_"
+  - type: continuing
+    template: "{{title}}. {{date}}"
+  - type: online
+    fallbacks:
+      date: "n.d"
+    template: "{{creator}}. {{title}}. {{production}}. {{date}}. {{location}}"
+  - type: webdoc
+    fallbacks:
+      date: "n.d"
+    template: "{{creator}}. {{title}}. {{production}}. {{date}}. {{location}}"
+  - type: component_part
+    noPlace: true
+    template: "{{creator}}{{role}}. {{title}}. {{componentpart}}. {{edition}}. ({{series}}). {{production}}. {{date}}. {{extent}}. {{location}}"
+  - type: serial_part
+    template: "{{creator}}{{role}}. {{title}}. {{series}}. {{date}}, {{extent}}. {{location}}"
+    series: "{{seriestitle}} ({{seriesrun}})"
+  - type: article
+    template: "{{creator}}{{role}}. {{title}}. {{series}}. {{date}}, {{extent}}"
+    series: "{{seriestitle}} ({{seriesrun}})"

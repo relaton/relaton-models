@@ -1,0 +1,49 @@
+# Chicago Manual of Style (17th ed.), bibliography forms: the notes
+# system's reference list. Only the first author name inverts ("Peck,
+# R. B., W. E. Hanson, and T. H. Thornburn"), article titles carry
+# quotation marks, book titles are set in italics, and production runs
+# "Place: Publisher".
+name: "Chicago Manual of Style (bibliography)"
+family: chicago
+requires:
+  - extent_units
+scheme:
+  system: name-date
+  nameForm:
+    initials: false
+    initialsSeparator: " "
+    initialsPeriod: true
+    invertedAll: false
+    givenNameFirst: false
+    editorsMarked: true
+    loneEditorMarked: true
+    surnameUpcase: false
+    subsequentSurnameUpcase: true
+    orgUpcase: false
+  locale:
+    "in": "in"
+    labels:
+      "and": "and"
+      oxford_comma: ","
+      series_no: "no."
+templates:
+  titleOpen: "\""
+  titleClose: "\""
+  citation: "{{surname}}, {{date}}"
+  reference: "{{creator}}. {{title}}. {{edition}}. {{series}}. {{production}}, {{date}}. {{extent}}."
+  name: "{{surname}}, {{givenNames}}"
+  identifierMode: all
+perType:
+  - type: report
+    home: true
+    template: "{{title}}"
+  - type: report
+    template: "{{creator}}. {{title}}. {{edition}}. {{production}}, {{date}}."
+  - type: monograph
+    title: "<em>{{title}}</em>"
+    template: "{{creator}}. {{title}}. {{edition}}. {{production}}, {{date}}. {{extent}}."
+  - type: component_part
+    template: "{{creator}}. \"{{title}}.\" {{componentpart}}. {{production}}, {{date}}. {{extent}}."
+  - type: continuing
+    series: "<em>{{seriestitle}}</em>"
+    template: "{{creator}}. \"{{title}}.\" {{series}} {{extent}} ({{date}}). {{location}}"
